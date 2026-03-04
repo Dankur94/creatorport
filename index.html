@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FutureMinds HK — AI · Creativity · Robotics</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-primary: #0a0a0f;
@@ -1404,16 +1404,30 @@
   }
 
   /* LANG SWITCHING */
-  [data-lang-de] { display: none; }
+  [data-lang-de], [data-lang-zh] { display: none; }
+  span[data-lang-de], em[data-lang-de], a[data-lang-de] { display: none; }
+  span[data-lang-zh], em[data-lang-zh], a[data-lang-zh] { display: none; }
+
   body.lang-de [data-lang-en] { display: none; }
+  body.lang-de [data-lang-zh] { display: none; }
   body.lang-de [data-lang-de] { display: block; }
   body.lang-de span[data-lang-de],
   body.lang-de em[data-lang-de],
   body.lang-de a[data-lang-de] { display: inline-block; }
-  span[data-lang-de], em[data-lang-de], a[data-lang-de] { display: none; }
   body.lang-de div[data-lang-de] { display: block; }
-  a[data-lang-de] { display: none; }
   body.lang-de a[data-lang-en] { display: none; }
+
+  body.lang-zh [data-lang-en] { display: none; }
+  body.lang-zh [data-lang-de] { display: none; }
+  body.lang-zh [data-lang-zh] { display: none; }
+  body.lang-zh [data-lang-zh] { display: block; }
+  body.lang-zh span[data-lang-zh],
+  body.lang-zh em[data-lang-zh],
+  body.lang-zh a[data-lang-zh] { display: inline-block; }
+  body.lang-zh div[data-lang-zh] { display: block; }
+  body.lang-zh a[data-lang-en] { display: none; }
+
+  body.lang-zh * { font-family: 'Noto Sans TC', 'Sora', sans-serif; }
 </style>
 </head>
 <body>
@@ -1425,20 +1439,22 @@
     <div class="logo-text">Future<em>Minds</em></div>
   </a>
   <ul class="nav-links">
-    <li><a href="#programs" class="nav-link-text" data-en="Programs" data-de="Programme">Programs</a></li>
-    <li><a href="#how" class="nav-link-text" data-en="How It Works" data-de="So funktioniert's">How It Works</a></li>
-    <li><a href="#pricing" class="nav-link-text" data-en="Pricing" data-de="Preise">Pricing</a></li>
-    <li><a href="#about" class="nav-link-text" data-en="About" data-de="Über uns">About</a></li>
+    <li><a href="#programs" class="nav-link-text" data-en="Programs" data-de="Programme" data-zh="課程">Programs</a></li>
+    <li><a href="#how" class="nav-link-text" data-en="How It Works" data-de="So funktioniert's" data-zh="如何運作">How It Works</a></li>
+    <li><a href="#pricing" class="nav-link-text" data-en="Pricing" data-de="Preise" data-zh="價格">Pricing</a></li>
+    <li><a href="#about" class="nav-link-text" data-en="About" data-de="Über uns" data-zh="關於我們">About</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('en')">EN</button>
         <button class="lang-btn" onclick="setLang('de')">DE</button>
+        <button class="lang-btn" onclick="setLang('zh')">中</button>
       </div>
     </li>
   </ul>
   <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20FutureMinds.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%20interest%20%28AI%20Track%20/%20Robotics%20Track%20/%20Think.Learn.Present.%29%3A%0A-%20Level%20%28Explorer%209-12%20/%20Builder%2013-17%29%3A%0A-%20Preferred%20language%20%28EN/DE%29%3A%0A-%20Format%20%28In-person%20HK%20/%20Online%29%3A" target="_blank" class="nav-cta" data-lang-en>Pre-Register</a>
   <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20FutureMinds.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%20interest%20%28AI%20Track%20/%20Robotics%20Track%20/%20Think.Learn.Present.%29%3A%0A-%20Level%20%28Explorer%209-12%20/%20Builder%2013-17%29%3A%0A-%20Preferred%20language%20%28EN/DE%29%3A%0A-%20Format%20%28In-person%20HK%20/%20Online%29%3A" target="_blank" class="nav-cta" data-lang-de>Voranmeldung</a>
+  <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20FutureMinds.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%20interest%20%28AI%20Track%20/%20Robotics%20Track%20/%20Think.Learn.Present.%29%3A%0A-%20Level%20%28Explorer%209-12%20/%20Builder%2013-17%29%3A%0A-%20Preferred%20language%20%28EN/DE%29%3A%0A-%20Format%20%28In-person%20HK%20/%20Online%29%3A" target="_blank" class="nav-cta" data-lang-zh>預報名</a>
   <div class="hamburger" onclick="toggleMenu()">
     <span></span>
     <span></span>
@@ -1455,7 +1471,7 @@
 
   <div class="hero-content">
     <div class="hero-badge" data-lang-en>
-      Launching 14 May 2026 — Limited spots · Pre-Register Now
+      Launching 14 May 2026 · Hong Kong Island, Central — Limited spots · Pre-Register Now
     </div>
     <div class="hero-badge" data-lang-de>
       Start am 14. Mai 2026 — Begrenzte Plätze · Jetzt auf die Voranmeldung
@@ -1478,8 +1494,10 @@
     <div class="hero-actions">
       <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20FutureMinds.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%20interest%20%28AI%20Track%20/%20Robotics%20Track%20/%20Think.Learn.Present.%29%3A%0A-%20Level%20%28Explorer%209-12%20/%20Builder%2013-17%29%3A%0A-%20Preferred%20language%20%28EN/DE%29%3A%0A-%20Format%20%28In-person%20HK%20/%20Online%29%3A" target="_blank" class="btn-primary" data-lang-en>Pre-Register →</a>
       <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20FutureMinds.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%20interest%20%28AI%20Track%20/%20Robotics%20Track%20/%20Think.Learn.Present.%29%3A%0A-%20Level%20%28Explorer%209-12%20/%20Builder%2013-17%29%3A%0A-%20Preferred%20language%20%28EN/DE%29%3A%0A-%20Format%20%28In-person%20HK%20/%20Online%29%3A" target="_blank" class="btn-primary" data-lang-de>Jetzt voranmelden →</a>
+      <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20FutureMinds.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%20interest%20%28AI%20Track%20/%20Robotics%20Track%20/%20Think.Learn.Present.%29%3A%0A-%20Level%20%28Explorer%209-12%20/%20Builder%2013-17%29%3A%0A-%20Preferred%20language%20%28EN/DE%29%3A%0A-%20Format%20%28In-person%20HK%20/%20Online%29%3A" target="_blank" class="btn-primary" data-lang-zh>立即預報名 →</a>
       <a href="#programs" class="btn-secondary" data-lang-en>Explore Programs</a>
       <a href="#programs" class="btn-secondary" data-lang-de>Programme entdecken</a>
+      <a href="#programs" class="btn-secondary" data-lang-zh>探索課程</a>
     </div>
   </div>
 
@@ -1505,21 +1523,25 @@
     <div class="stat-number">9–17</div>
     <div class="stat-label" data-lang-en>Age Range</div>
     <div class="stat-label" data-lang-de>Altersgruppe</div>
+    <div class="stat-label" data-lang-zh>年齡範圍</div>
   </div>
   <div class="stat-item reveal">
-    <div class="stat-number">2</div>
-    <div class="stat-label" data-lang-en>Languages (EN/DE)</div>
-    <div class="stat-label" data-lang-de>Sprachen (EN/DE)</div>
+    <div class="stat-number">3</div>
+    <div class="stat-label" data-lang-en>Languages (EN/DE/中)</div>
+    <div class="stat-label" data-lang-de>Sprachen (EN/DE/中)</div>
+    <div class="stat-label" data-lang-zh>語言（EN/DE/中）</div>
   </div>
   <div class="stat-item reveal">
     <div class="stat-number">HK Island</div>
     <div class="stat-label" data-lang-en>Face to face & online</div>
     <div class="stat-label" data-lang-de>Face to face & online</div>
+    <div class="stat-label" data-lang-zh>面授及線上</div>
   </div>
   <div class="stat-item reveal">
     <div class="stat-number">∞</div>
     <div class="stat-label" data-lang-en>Creativity Unleashed</div>
     <div class="stat-label" data-lang-de>Kreativität entfesselt</div>
+    <div class="stat-label" data-lang-zh>釋放創造力</div>
   </div>
 </div>
 
@@ -1527,12 +1549,16 @@
 <section id="programs">
   <div class="section-label reveal" data-lang-en>Program</div>
   <div class="section-label reveal" data-lang-de>Programm</div>
+  <div class="section-label reveal" data-lang-zh>課程</div>
   <h2 class="section-title reveal" data-lang-en>One program.<br>Three tracks. <span class="gradient-text">Your choice.</span></h2>
   <h2 class="section-title reveal" data-lang-de>Ein Programm.<br>Drei Tracks. <span class="gradient-text">Deine Wahl.</span></h2>
+  <h2 class="section-title reveal" data-lang-zh>一個課程。<br>三條路徑。<span class="gradient-text">你的選擇。</span></h2>
   <p class="section-desc reveal" data-lang-en>Choose the track that fits your child's curiosity. Each track has two levels — Explorer for beginners, Builder for those ready to go deeper.</p>
   <p class="section-desc reveal" data-lang-de>Wähle den Track, der zur Neugier deines Kindes passt. Jeder Track hat zwei Levels — Explorer für Einsteiger, Builder für Fortgeschrittene.</p>
+  <p class="section-desc reveal" data-lang-zh>選擇適合孩子好奇心的路徑。每條路徑有兩個級別 — Explorer適合初學者，Builder適合準備深入學習的學生。</p>
   <p class="section-desc reveal" style="font-size: 13px; color: var(--text-muted); margin-top: -8px;" data-lang-en>Ages are guidelines — we place each student based on their experience, not just their age.</p>
   <p class="section-desc reveal" style="font-size: 13px; color: var(--text-muted); margin-top: -8px;" data-lang-de>Altersangaben sind Richtwerte — wir stufen jedes Kind nach Erfahrung ein, nicht nur nach Alter.</p>
+  <p class="section-desc reveal" style="font-size: 13px; color: var(--text-muted); margin-top: -8px;" data-lang-zh>年齡僅供參考 — 我們根據每位學生的經驗來分配級別，而非僅根據年齡。</p>
 
   <div class="programs-grid">
 
@@ -1541,10 +1567,13 @@
       <div class="card-icon">🧠</div>
       <div class="card-age" data-lang-en>Ages 9–17</div>
       <div class="card-age" data-lang-de>Alter 9–17</div>
+      <div class="card-age" data-lang-zh>Ages 9–17</div>
       <h3 class="card-title" data-lang-en>AI Track</h3>
       <h3 class="card-title" data-lang-de>AI Track</h3>
+      <h3 class="card-title" data-lang-zh>AI Track</h3>
       <p class="card-desc" data-lang-en>Understand how AI really works — from the inside out. Build your own models, not just use them.</p>
       <p class="card-desc" data-lang-de>Verstehe wie KI wirklich funktioniert — von innen heraus. Baue eigene Modelle, statt sie nur zu nutzen.</p>
+      <p class="card-desc" data-lang-zh>從內到外真正理解人工智能如何運作。建造自己的模型，而不只是使用它們。</p>
 
       <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-subtle);">
         <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-electric); font-weight: 600; margin-bottom: 12px;">Explorer · Ages 9–12</div>
@@ -1576,10 +1605,13 @@
       <div class="card-icon">⚙️</div>
       <div class="card-age" data-lang-en>Ages 9–17</div>
       <div class="card-age" data-lang-de>Alter 9–17</div>
+      <div class="card-age" data-lang-zh>Ages 9–17</div>
       <h3 class="card-title" data-lang-en>Robotics Track</h3>
       <h3 class="card-title" data-lang-de>Robotics Track</h3>
+      <h3 class="card-title" data-lang-zh>Robotics Track</h3>
       <p class="card-desc" data-lang-en>Build real robots from scratch. Sensors, motors, code — engineer machines that move, balance, and think.</p>
       <p class="card-desc" data-lang-de>Baue echte Roboter von Grund auf. Sensoren, Motoren, Code — konstruiere Maschinen die sich bewegen, balancieren und denken.</p>
+      <p class="card-desc" data-lang-zh>從零開始建造真正的機械人。感應器、馬達、程式碼 — 設計能移動、平衡和思考的機器。</p>
 
       <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-subtle);">
         <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 600; margin-bottom: 12px;">Explorer · Ages 9–12</div>
@@ -1611,9 +1643,11 @@
       <div class="card-icon">🎤</div>
       <div class="card-age" data-lang-en>Ages 14+ · Online only</div>
       <div class="card-age" data-lang-de>Ab 14 · Nur online</div>
+      <div class="card-age" data-lang-zh>Ages 14+ · Online only</div>
       <h3 class="card-title">Think. Learn. Present.</h3>
       <p class="card-desc" data-lang-en>Master the science of learning and the art of presenting. Evidence-based memory techniques meet confident public speaking — skills that last a lifetime.</p>
       <p class="card-desc" data-lang-de>Meistere die Wissenschaft des Lernens und die Kunst des Präsentierens. Evidenzbasierte Gedächtnistechniken treffen auf selbstbewusstes Auftreten — Fähigkeiten fürs Leben.</p>
+      <p class="card-desc" data-lang-zh>掌握學習的科學和演講的藝術。以科學為基礎的記憶技巧結合自信的公開演講 — 受用終身的技能。</p>
 
       <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-subtle);">
         <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-magenta); font-weight: 600; margin-bottom: 12px;">How to Memorize</div>
@@ -1637,6 +1671,7 @@
       <div style="margin-top: 16px; font-size: 12px; color: var(--text-muted);">
         <span data-lang-en>Taught by Ananya Singh · M.Sc. RWTH · PhD Candidate</span>
         <span data-lang-de>Unterrichtet von Ananya Singh · M.Sc. RWTH · PhD Candidate</span>
+        <span data-lang-zh>Taught by Ananya Singh · M.Sc. RWTH · PhD Candidate</span>
       </div>
     </div>
 
@@ -1647,8 +1682,10 @@
 <section id="how" class="how-section">
   <div class="section-label reveal" data-lang-en>How It Works</div>
   <div class="section-label reveal" data-lang-de>So funktioniert's</div>
+  <div class="section-label reveal" data-lang-zh>如何運作</div>
   <h2 class="section-title reveal" data-lang-en>From curious to<br>confident creator.</h2>
   <h2 class="section-title reveal" data-lang-de>Von neugierig zum<br>selbstbewussten Gestalter.</h2>
+  <h2 class="section-title reveal" data-lang-zh>從好奇<br>到自信的創造者。</h2>
 
   <div class="steps-grid">
     <div class="step reveal">
@@ -1656,8 +1693,10 @@
       <div class="step-content">
         <h3 class="step-title" data-lang-en>Discover & Explore</h3>
         <h3 class="step-title" data-lang-de>Entdecken & Erkunden</h3>
+        <h3 class="step-title" data-lang-zh>發現與探索</h3>
         <p class="step-desc" data-lang-en>Start with play. Experiment with AI tools, robots, and creative challenges in a safe, supportive environment.</p>
         <p class="step-desc" data-lang-de>Beginne mit Spiel. Experimentiere mit KI-Tools, Robotern und kreativen Herausforderungen in einer sicheren Umgebung.</p>
+        <p class="step-desc" data-lang-zh>從遊戲開始。在安全、支持性的環境中嘗試人工智能工具、機械人和創意挑戰。</p>
       </div>
     </div>
 
@@ -1666,8 +1705,10 @@
       <div class="step-content">
         <h3 class="step-title" data-lang-en>Learn & Build</h3>
         <h3 class="step-title" data-lang-de>Lernen & Bauen</h3>
+        <h3 class="step-title" data-lang-zh>學習與建造</h3>
         <p class="step-desc" data-lang-en>Develop real skills through hands-on projects. Each session builds on the last, with expert mentors guiding the way.</p>
         <p class="step-desc" data-lang-de>Entwickle echte Fähigkeiten durch praktische Projekte. Jede Sitzung baut auf der letzten auf, begleitet von Experten-Mentoren.</p>
+        <p class="step-desc" data-lang-zh>通過動手項目發展真實技能。每堂課都在上一堂的基礎上建立，由專業導師引導。</p>
       </div>
     </div>
 
@@ -1676,8 +1717,10 @@
       <div class="step-content">
         <h3 class="step-title" data-lang-en>Create & Express</h3>
         <h3 class="step-title" data-lang-de>Gestalten & Ausdrücken</h3>
+        <h3 class="step-title" data-lang-zh>創造與表達</h3>
         <p class="step-desc" data-lang-en>Channel new skills into a personal project that reflects your ideas, passions, and personality.</p>
         <p class="step-desc" data-lang-de>Kanalisiere neue Fähigkeiten in ein persönliches Projekt, das deine Ideen und Persönlichkeit widerspiegelt.</p>
+        <p class="step-desc" data-lang-zh>將新技能融入個人項目，反映你的想法、熱情和個性。</p>
       </div>
     </div>
 
@@ -1686,8 +1729,10 @@
       <div class="step-content">
         <h3 class="step-title" data-lang-en>Showcase & Inspire</h3>
         <h3 class="step-title" data-lang-de>Präsentieren & Inspirieren</h3>
+        <h3 class="step-title" data-lang-zh>展示與啟發</h3>
         <p class="step-desc" data-lang-en>Present your creation at our Demo Day. Share with families, friends, and the community.</p>
         <p class="step-desc" data-lang-de>Präsentiere dein Werk am Demo Day. Teile es mit Familien, Freunden und der Community.</p>
+        <p class="step-desc" data-lang-zh>在Demo Day展示你的作品。與家人、朋友和社區分享。</p>
       </div>
     </div>
   </div>
@@ -1697,10 +1742,13 @@
 <section id="bilingual" class="bilingual-section">
   <div class="section-label reveal" data-lang-en>Bilingual by Design</div>
   <div class="section-label reveal" data-lang-de>Zweisprachig konzipiert</div>
+  <div class="section-label reveal" data-lang-zh>雙語設計</div>
   <h2 class="section-title reveal" data-lang-en>Learn in the language<br>you think in.</h2>
   <h2 class="section-title reveal" data-lang-de>Lerne in der Sprache,<br>in der du denkst.</h2>
+  <h2 class="section-title reveal" data-lang-zh>用你思考的語言<br>來學習。</h2>
   <p class="section-desc reveal" data-lang-en>All programs available in both English and German.</p>
   <p class="section-desc reveal" data-lang-de>Alle Programme auf Englisch und Deutsch verfügbar.</p>
+  <p class="section-desc reveal" data-lang-zh>所有課程均提供英語、德語及中文。</p>
 
   <div class="bilingual-grid">
     <div class="bilingual-card en reveal">
@@ -1708,12 +1756,14 @@
       <h3 class="bilingual-title">English Track</h3>
       <p class="bilingual-desc" data-lang-en>Perfect for international school students and English-speaking families in Hong Kong. All materials, instruction, and mentorship in English.</p>
       <p class="bilingual-desc" data-lang-de>Perfekt für Schüler internationaler Schulen und englischsprachige Familien in Hongkong. Alle Materialien und Betreuung auf Englisch.</p>
+      <p class="bilingual-desc" data-lang-zh>適合國際學校學生和香港英語家庭。所有教材、教學和指導均為英語。</p>
     </div>
     <div class="bilingual-card de reveal">
       <div class="bilingual-flag">🇩🇪</div>
       <h3 class="bilingual-title">Deutscher Kurs</h3>
       <p class="bilingual-desc" data-lang-en>Tailored for German-speaking families. Learn cutting-edge tech while strengthening German language skills.</p>
       <p class="bilingual-desc" data-lang-de>Speziell für deutschsprachige Familien. Lerne modernste Technologie und stärke gleichzeitig deine Deutschkenntnisse.</p>
+      <p class="bilingual-desc" data-lang-zh>專為德語家庭量身定制。在學習尖端科技的同時加強德語能力。</p>
     </div>
   </div>
 </section>
@@ -1722,23 +1772,30 @@
 <section id="format">
   <div class="section-label reveal" data-lang-en>Hybrid Learning</div>
   <div class="section-label reveal" data-lang-de>Hybrides Lernen</div>
+  <div class="section-label reveal" data-lang-zh>混合學習</div>
   <h2 class="section-title reveal" data-lang-en>Your classroom,<br>your way.</h2>
   <h2 class="section-title reveal" data-lang-de>Dein Klassenzimmer,<br>dein Weg.</h2>
+  <h2 class="section-title reveal" data-lang-zh>你的教室，<br>你的方式。</h2>
 
   <div class="format-grid">
     <div class="format-card reveal">
       <div class="format-icon">🏙️</div>
       <h3 class="format-title" data-lang-en>In-Person · Hong Kong</h3>
       <h3 class="format-title" data-lang-de>Vor Ort · Hongkong</h3>
+      <h3 class="format-title" data-lang-zh>In-Person · Hong Kong</h3>
       <p class="format-desc" data-lang-en>Hands-on workshops in our fully equipped makerspace. Build real robots, use professional tools, and collaborate face-to-face.</p>
       <p class="format-desc" data-lang-de>Praxisworkshops in unserem voll ausgestatteten Makerspace. Baue echte Roboter, nutze professionelle Tools und arbeite persönlich zusammen.</p>
+      <p class="format-desc" data-lang-zh>在設備齊全的創客空間進行動手工作坊。建造真正的機械人，使用專業工具，面對面協作。</p>
       <div class="format-features">
         <div class="format-feature" data-lang-en>Small groups (max 5 students)</div>
         <div class="format-feature" data-lang-de>Kleine Gruppen (max. 5 Schüler)</div>
+        <div class="format-feature" data-lang-zh>小班教學（最多5名學生）</div>
         <div class="format-feature" data-lang-en>Weekend & after-school sessions</div>
         <div class="format-feature" data-lang-de>Wochenend- & Nachmittagskurse</div>
+        <div class="format-feature" data-lang-zh>週末及課後課程</div>
         <div class="format-feature" data-lang-en>Holiday camps? Talk to us</div>
         <div class="format-feature" data-lang-de>Feriencamps? Sprich uns an</div>
+        <div class="format-feature" data-lang-zh>假期營？歡迎諮詢</div>
       </div>
     </div>
 
@@ -1746,15 +1803,20 @@
       <div class="format-icon">🌐</div>
       <h3 class="format-title" data-lang-en>Online · Worldwide</h3>
       <h3 class="format-title" data-lang-de>Online · Weltweit</h3>
+      <h3 class="format-title" data-lang-zh>線上 · 全球</h3>
       <p class="format-desc" data-lang-en>Live interactive sessions with screen sharing, collaborative coding, and shipped robotics kits. Same quality, from anywhere.</p>
       <p class="format-desc" data-lang-de>Live interaktive Sitzungen mit Bildschirmfreigabe, kollaborativem Coding und zugesandten Robotik-Kits. Gleiche Qualität, von überall.</p>
+      <p class="format-desc" data-lang-zh>即時互動課程，包括螢幕共享、協作編程和郵寄機械人套件。同等質量，隨處可學。</p>
       <div class="format-features">
         <div class="format-feature" data-lang-en>Robotics kits shipped to your door</div>
         <div class="format-feature" data-lang-de>Robotik-Kits direkt nach Hause geliefert</div>
+        <div class="format-feature" data-lang-zh>機械人套件送貨上門</div>
         <div class="format-feature" data-lang-en>Live mentorship & feedback</div>
         <div class="format-feature" data-lang-de>Live-Mentoring & Feedback</div>
+        <div class="format-feature" data-lang-zh>即時指導與回饋</div>
         <div class="format-feature" data-lang-en>Flexible scheduling for global timezones</div>
         <div class="format-feature" data-lang-de>Flexible Zeiten für globale Zeitzonen</div>
+        <div class="format-feature" data-lang-zh>配合全球時區的靈活排課</div>
       </div>
     </div>
   </div>
@@ -1764,54 +1826,67 @@
 <section id="about" class="about-section">
   <div class="section-label reveal" data-lang-en>About Us</div>
   <div class="section-label reveal" data-lang-de>Über uns</div>
+  <div class="section-label reveal" data-lang-zh>關於我們</div>
   <h2 class="section-title reveal" data-lang-en>Built by German engineers.<br>Driven by passion.</h2>
   <h2 class="section-title reveal" data-lang-de>Von deutschen Ingenieuren gebaut.<br>Aus Leidenschaft.</h2>
+  <h2 class="section-title reveal" data-lang-zh>由德國工程師打造。<br>以熱情驅動。</h2>
   <p class="section-desc reveal" data-lang-en>We're RWTH-trained engineers and scientists who believe every child deserves to understand the technology shaping their future.</p>
   <p class="section-desc reveal" data-lang-de>Wir sind RWTH-ausgebildete Ingenieure und Wissenschaftler, die glauben, dass jedes Kind die Technologie verstehen sollte, die seine Zukunft prägt.</p>
+  <p class="section-desc reveal" data-lang-zh>我們是RWTH培訓的工程師和科學家，相信每個孩子都值得了解塑造其未來的科技。</p>
 
   <div class="about-grid">
     <div class="about-card reveal">
       <div class="about-role" data-lang-en>Founder & Lead Instructor</div>
       <div class="about-role" data-lang-de>Gründer & Kursleiter</div>
+      <div class="about-role" data-lang-zh>創辦人及首席導師</div>
       <div class="about-degree">B.Sc. RWTH <span style="color: var(--text-primary); font-size: 24px; font-weight: 700; letter-spacing: -0.5px;">Daniel Kurth</span></div>
       <div style="color: var(--accent-lime); font-size: 14px; font-weight: 600; margin-bottom: 16px;">Mechanical Engineering · Business Administration · Manufacturing Engineering</div>
       <p class="about-desc" data-lang-en>Combines engineering precision with creative teaching to make AI, robotics, and coding accessible for young minds. Available in-person in Hong Kong and online worldwide.</p>
       <p class="about-desc" data-lang-de>Verbindet Ingenieursgenauigkeit mit kreativem Unterricht, um KI, Robotik und Coding für junge Köpfe zugänglich zu machen. Vor Ort in Hongkong und online weltweit.</p>
+      <p class="about-desc" data-lang-zh>將工程精確性與創意教學相結合，讓年輕人輕鬆學習人工智能、機械人和編程。香港面授及全球線上教學。</p>
       <div class="about-tags">
         <span class="about-tag" data-lang-en>🏙️ In-Person & Online</span>
         <span class="about-tag" data-lang-de>🏙️ Vor Ort & Online</span>
+        <span class="about-tag" data-lang-zh>🏙️ In-Person & Online</span>
         <span class="about-tag">CAD / 3D Design</span>
         <span class="about-tag">Robotics</span>
         <span class="about-tag">AI & Coding</span>
         <span class="about-tag" data-lang-en>🇩🇪 🇬🇧 Bilingual</span>
         <span class="about-tag" data-lang-de>🇩🇪 🇬🇧 Zweisprachig</span>
+        <span class="about-tag" data-lang-zh>🇩🇪 🇬🇧 Bilingual</span>
       </div>
     </div>
 
     <div class="about-card reveal">
       <div class="about-role" data-lang-en>Instructor & Science Mentor</div>
       <div class="about-role" data-lang-de>Dozent & Wissenschaftsmentor</div>
+      <div class="about-role" data-lang-zh>導師及科學指導</div>
       <div class="about-degree">M.Sc. RWTH <span style="color: var(--text-primary); font-size: 24px; font-weight: 700; letter-spacing: -0.5px;">Ananya Singh</span></div>
       <div style="color: var(--accent-lime); font-size: 14px; font-weight: 600; margin-bottom: 16px;">Experimental Physics · Theoretical Physics</div>
       <p class="about-desc" data-lang-en>PhD Candidate at the Chair of Experimental Physics & II. Institute of Physics, RWTH Aachen University. Available online only.</p>
       <p class="about-desc" data-lang-de>Doktorand am Lehrstuhl für Experimentalphysik & II. Physikalisches Institut, RWTH Aachen. Nur online verfügbar.</p>
+      <p class="about-desc" data-lang-zh>RWTH亞琛大學實驗物理學及第二物理研究所博士候選人。僅提供線上教學。</p>
       <div class="about-award">
         <span class="about-award-icon">🏆</span>
         <span data-lang-en>Winner, Physics Teaching Award "Best Supportive Teaching", RWTH Aachen, 2021 — <a href="https://www.fsmpi.rwth-aachen.de/en/studium/lehrpreise" target="_blank">View Award</a></span>
         <span data-lang-de>Gewinner, Physik-Lehrpreis „Best Supportive Teaching", RWTH Aachen, 2021 — <a href="https://www.fsmpi.rwth-aachen.de/en/studium/lehrpreise" target="_blank">Zum Preis</a></span>
+        <span data-lang-zh>Winner, Physics Teaching Award "Best Supportive Teaching", RWTH Aachen, 2021 — <a href="https://www.fsmpi.rwth-aachen.de/en/studium/lehrpreise" target="_blank">View Award</a></span>
       </div>
       <div class="about-award">
         <span class="about-award-icon">🎤</span>
         <span data-lang-en>Science Slam Winner, Cologne, Jan 2025 — "The Dance of Electron Quantum" — <a href="https://www.youtube.com/watch?v=hxs4gLeBBbI" target="_blank">Watch Talk</a></span>
         <span data-lang-de>Science Slam Gewinner, Köln, Jan 2025 — „The Dance of Electron Quantum" — <a href="https://www.youtube.com/watch?v=hxs4gLeBBbI" target="_blank">Talk ansehen</a></span>
+        <span data-lang-zh>Science Slam Winner, Cologne, Jan 2025 — "The Dance of Electron Quantum" — <a href="https://www.youtube.com/watch?v=hxs4gLeBBbI" target="_blank">Watch Talk</a></span>
       </div>
       <div class="about-tags">
         <span class="about-tag" data-lang-en>🌐 Online Only</span>
         <span class="about-tag" data-lang-de>🌐 Nur Online</span>
+        <span class="about-tag" data-lang-zh>🌐 Online Only</span>
         <span class="about-tag">Physics</span>
         <span class="about-tag">Research</span>
         <span class="about-tag" data-lang-en>Award-Winning Educator</span>
         <span class="about-tag" data-lang-de>Preisgekrönter Dozent</span>
+        <span class="about-tag" data-lang-zh>屢獲殊榮的教育工作者</span>
       </div>
     </div>
   </div>
@@ -1821,16 +1896,21 @@
     <div class="rwth-content">
       <h4 data-lang-en>What is RWTH?</h4>
       <h4 data-lang-de>Was ist die RWTH?</h4>
+      <h4 data-lang-zh>什麼是RWTH？</h4>
       <p data-lang-en>RWTH Aachen is Germany's largest technical university, ranked #1 for Mechanical Engineering and #23 worldwide (QS Rankings). Founded in 1870, with 45,000+ students.</p>
       <p data-lang-de>Die RWTH Aachen ist Deutschlands größte technische Universität, #1 für Maschinenbau und #23 weltweit (QS Rankings). Gegründet 1870, mit über 45.000 Studierenden.</p>
+      <p data-lang-zh>RWTH亞琛工業大學是德國最大的技術大學，機械工程排名全德第一、全球第23位（QS排名）。創立於1870年，擁有超過45,000名學生。</p>
       <div class="rwth-stats">
         <div class="rwth-stat" data-lang-en><strong>#1</strong> in Germany<br>Mechanical Eng.</div>
         <div class="rwth-stat" data-lang-de><strong>#1</strong> in Deutschland<br>Maschinenbau</div>
+        <div class="rwth-stat" data-lang-zh><strong>#1</strong> 德國<br>機械工程</div>
         <div class="rwth-stat"><strong>#23</strong> Worldwide<br>(QS Rankings)</div>
         <div class="rwth-stat" data-lang-en><strong>45,000+</strong><br>Students</div>
         <div class="rwth-stat" data-lang-de><strong>45.000+</strong><br>Studierende</div>
+        <div class="rwth-stat" data-lang-zh><strong>45,000+</strong><br>學生</div>
         <div class="rwth-stat" data-lang-en><strong>1870</strong><br>Founded</div>
         <div class="rwth-stat" data-lang-de><strong>1870</strong><br>Gegründet</div>
+        <div class="rwth-stat" data-lang-zh><strong>1870</strong><br>創立</div>
       </div>
     </div>
   </div>
@@ -1840,10 +1920,13 @@
 <section id="pricing">
   <div class="section-label reveal" data-lang-en>Pricing</div>
   <div class="section-label reveal" data-lang-de>Preise</div>
+  <div class="section-label reveal" data-lang-zh>價格</div>
   <h2 class="section-title reveal" data-lang-en>Invest in their future.</h2>
   <h2 class="section-title reveal" data-lang-de>Investiere in ihre Zukunft.</h2>
+  <h2 class="section-title reveal" data-lang-zh>投資他們的未來。</h2>
   <p class="section-desc reveal" data-lang-en>Choose your track, then pick the plan that fits. All prices in HKD per term. Explorer & Builder level same price.</p>
   <p class="section-desc reveal" data-lang-de>Wähle deinen Track, dann den passenden Plan. Alle Preise in HKD pro Semester. Explorer & Builder Level gleicher Preis.</p>
+  <p class="section-desc reveal" data-lang-zh>選擇你的路徑，然後選擇合適的方案。所有價格以港幣計算。Explorer和Builder級別價格相同。</p>
 
   <div class="pricing-tabs reveal">
     <button class="pricing-tab active" onclick="switchPricing('ai', this)">
@@ -2009,7 +2092,7 @@
   </div>
 </section>
 
-<div style="max-width: 900px; margin: 0 auto; padding: 0 60px 32px;">
+<div style="max-width: 900px; margin: 0 auto; padding: 0 24px 32px;">
   <div class="reveal" style="padding: 32px; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px;">
     <div style="font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-electric); font-weight: 600; margin-bottom: 16px;">Healthy Minds, Healthy Bodies</div>
     <div style="display: flex; gap: 24px; flex-wrap: wrap;">
@@ -2032,7 +2115,7 @@
   </div>
 </div>
 
-<div style="max-width: 900px; margin: 0 auto; padding: 0 60px 40px; display: flex; gap: 24px; flex-wrap: wrap;">
+<div style="max-width: 900px; margin: 0 auto; padding: 0 24px 40px; display: flex; gap: 24px; flex-wrap: wrap;">
 
   <!-- OPTION 1: Reserve Spot with $500 Deposit -->
   <div class="reveal" style="flex: 1; min-width: 280px; padding: 32px 28px; background: rgba(168,255,60,0.05); border: 1px solid rgba(168,255,60,0.15); border-radius: 16px; text-align: center;">
@@ -2069,17 +2152,20 @@
   <div class="section-label reveal">FAQ</div>
   <h2 class="section-title reveal" data-lang-en>Questions?<br>We've got answers.</h2>
   <h2 class="section-title reveal" data-lang-de>Fragen?<br>Wir haben Antworten.</h2>
+  <h2 class="section-title reveal" data-lang-zh>有疑問？<br>我們為你解答。</h2>
 
   <div class="faq-grid">
     <div class="faq-item reveal">
       <button class="faq-question" onclick="toggleFaq(this)">
         <span data-lang-en>Does my child need any prior coding experience?</span>
         <span data-lang-de>Braucht mein Kind Programmiererfahrung?</span>
+        <span data-lang-zh>我的孩子需要有編程經驗嗎？</span>
         <span class="faq-toggle">+</span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner" data-lang-en>Not at all! Our programs are designed to meet students where they are. Beginners start with visual coding and guided experiments, while experienced coders can dive straight into Python and advanced AI projects.</div>
         <div class="faq-answer-inner" data-lang-de>Überhaupt nicht! Unsere Programme holen die Schüler dort ab, wo sie stehen. Anfänger starten mit visuellem Coding, während erfahrene Programmierer direkt in Python und fortgeschrittene KI-Projekte einsteigen können.</div>
+        <div class="faq-answer-inner" data-lang-zh>完全不需要！我們的課程旨在配合每位學生的程度。初學者從視覺化編程和引導式實驗開始，而有經驗的學生可以直接進入Python和進階人工智能項目。</div>
       </div>
     </div>
 
@@ -2087,11 +2173,13 @@
       <button class="faq-question" onclick="toggleFaq(this)">
         <span data-lang-en>What equipment does my child need for online sessions?</span>
         <span data-lang-de>Welche Ausrüstung braucht mein Kind für Online-Sitzungen?</span>
+        <span data-lang-zh>線上課程需要什麼設備？</span>
         <span class="faq-toggle">+</span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner" data-lang-en>Just a laptop or desktop computer with a webcam and stable internet. For robotics tracks, we ship a complete kit to your door before the course begins. All software tools are free and browser-based.</div>
         <div class="faq-answer-inner" data-lang-de>Nur einen Laptop oder Desktop-Computer mit Webcam und stabilem Internet. Für Robotik-Kurse senden wir ein komplettes Kit vor Kursbeginn zu. Alle Software-Tools sind kostenlos und browserbasiert.</div>
+        <div class="faq-answer-inner" data-lang-zh>只需一部配有鏡頭和穩定網絡的手提電腦或桌面電腦。機械人課程會在開課前將完整套件寄送到你家。所有軟件工具均免費且可在瀏覽器中使用。</div>
       </div>
     </div>
 
@@ -2099,11 +2187,13 @@
       <button class="faq-question" onclick="toggleFaq(this)">
         <span data-lang-en>Can my child switch between English and German tracks?</span>
         <span data-lang-de>Kann mein Kind zwischen englischen und deutschen Kursen wechseln?</span>
+        <span data-lang-zh>我的孩子可以在英語和德語課程之間轉換嗎？</span>
         <span class="faq-toggle">+</span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner" data-lang-en>Absolutely. Students can switch language tracks between terms, or even attend sessions in both languages within the Creator and Innovator plans. Many bilingual families love this flexibility.</div>
         <div class="faq-answer-inner" data-lang-de>Auf jeden Fall. Schüler können zwischen den Semestern die Sprachschiene wechseln oder sogar Sitzungen in beiden Sprachen besuchen — besonders mit dem Gestalter- und Innovator-Plan. Viele zweisprachige Familien lieben diese Flexibilität.</div>
+        <div class="faq-answer-inner" data-lang-zh>當然可以。學生可以在學期之間轉換語言課程。許多雙語家庭都喜歡這種靈活性。</div>
       </div>
     </div>
 
@@ -2111,11 +2201,13 @@
       <button class="faq-question" onclick="toggleFaq(this)">
         <span data-lang-en>Is AI safe for children to learn and use?</span>
         <span data-lang-de>Ist KI sicher für Kinder?</span>
+        <span data-lang-zh>人工智能對兒童學習和使用安全嗎？</span>
         <span class="faq-toggle">+</span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner" data-lang-en>We believe teaching AI literacy is essential for today's children. All AI tools in our programs are age-appropriate, supervised, and used as creative tools — not replacements for thinking. We also teach critical thinking about AI ethics and responsible usage.</div>
         <div class="faq-answer-inner" data-lang-de>Wir glauben, dass KI-Kompetenz für Kinder heute essenziell ist. Alle KI-Tools in unseren Programmen sind altersgerecht, beaufsichtigt und werden als kreative Werkzeuge eingesetzt. Wir unterrichten auch kritisches Denken über KI-Ethik und verantwortungsvollen Umgang.</div>
+        <div class="faq-answer-inner" data-lang-zh>We believe teaching AI literacy is essential for today's children. All AI tools in our programs are age-appropriate, supervised, and used as creative tools — not replacements for thinking. We also teach critical thinking about AI ethics and responsible usage.</div>
       </div>
     </div>
 
@@ -2123,11 +2215,13 @@
       <button class="faq-question" onclick="toggleFaq(this)">
         <span data-lang-en>Do you offer trial sessions?</span>
         <span data-lang-de>Gibt es Probestunden?</span>
+        <span data-lang-zh>你們提供試堂嗎？</span>
         <span class="faq-toggle">+</span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner" data-lang-en>Yes! We offer a free 60-minute discovery session where your child can try out a mini-project and meet our mentors. No commitment required — just curiosity.</div>
         <div class="faq-answer-inner" data-lang-de>Ja! Wir bieten eine kostenlose 60-minütige Schnupperstunde an, bei der dein Kind ein Mini-Projekt ausprobieren und unsere Mentoren kennenlernen kann. Keine Verpflichtung — nur Neugier.</div>
+        <div class="faq-answer-inner" data-lang-zh>Yes! We offer a free 60-minute discovery session where your child can try out a mini-project and meet our mentors. No commitment required — just curiosity.</div>
       </div>
     </div>
   </div>
@@ -2135,6 +2229,7 @@
   <div class="reveal" style="text-align: center; margin-top: 48px;">
     <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 16px;" data-lang-en>Can't find your answer?</p>
     <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 16px;" data-lang-de>Antwort nicht gefunden?</p>
+    <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 16px;" data-lang-zh>找不到答案？</p>
     <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
       <a href="https://wa.me/85265427963?text=Hi%21%20I%20have%20a%20question%20about%20FutureMinds%3A%0A" target="_blank" style="display: inline-block; padding: 14px 32px; background: #25D366; color: #fff; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 14px; border-radius: 100px; text-decoration: none; transition: all 0.3s;">💬 Ask us on WhatsApp</a>
       <a href="mailto:contact@spaceop.education" style="display: inline-block; padding: 14px 32px; background: transparent; color: var(--text-primary); font-family: 'Sora', sans-serif; font-weight: 700; font-size: 14px; border-radius: 100px; text-decoration: none; border: 1px solid var(--border-subtle); transition: all 0.3s;">✉️ contact@spaceop.education</a>
@@ -2145,11 +2240,14 @@
   <div class="cta-content">
     <h2 class="cta-title reveal" data-lang-en>Ready to build<br><span class="gradient-text">the future?</span></h2>
     <h2 class="cta-title reveal" data-lang-de>Bereit,<br><span class="gradient-text">die Zukunft zu bauen?</span></h2>
+    <h2 class="cta-title reveal" data-lang-zh>準備好建造<br><span class="gradient-text">未來嗎？</span></h2>
     <p class="cta-desc reveal" data-lang-en>Reserve your spot with a $500 HKD deposit and get an exclusive free discovery session before launch. Changed your mind? Full refund, no questions asked.</p>
     <p class="cta-desc reveal" data-lang-de>Sichere deinen Platz mit einer $500 HKD Anzahlung und erhalte eine exklusive kostenlose Schnupperstunde vor dem Start. Meinung geändert? Volle Rückerstattung, ohne Fragen.</p>
+    <p class="cta-desc reveal" data-lang-zh>Reserve your spot with a $500 HKD deposit and get an exclusive free discovery session before launch. Changed your mind? Full refund, no questions asked.</p>
     <div class="hero-actions reveal" style="justify-content: center; flex-wrap: wrap;">
       <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20FutureMinds.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%20interest%20%28AI%20Track%20/%20Robotics%20Track%20/%20Think.Learn.Present.%29%3A%0A-%20Level%20%28Explorer%209-12%20/%20Builder%2013-17%29%3A%0A-%20Preferred%20language%20%28EN/DE%29%3A%0A-%20Format%20%28In-person%20HK%20/%20Online%29%3A" target="_blank" class="btn-primary" data-lang-en>💬 Pre-Register on WhatsApp</a>
       <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20FutureMinds.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%20interest%20%28AI%20Track%20/%20Robotics%20Track%20/%20Think.Learn.Present.%29%3A%0A-%20Level%20%28Explorer%209-12%20/%20Builder%2013-17%29%3A%0A-%20Preferred%20language%20%28EN/DE%29%3A%0A-%20Format%20%28In-person%20HK%20/%20Online%29%3A" target="_blank" class="btn-primary" data-lang-de>💬 Voranmeldung auf WhatsApp</a>
+      <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20FutureMinds.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%20interest%20%28AI%20Track%20/%20Robotics%20Track%20/%20Think.Learn.Present.%29%3A%0A-%20Level%20%28Explorer%209-12%20/%20Builder%2013-17%29%3A%0A-%20Preferred%20language%20%28EN/DE%29%3A%0A-%20Format%20%28In-person%20HK%20/%20Online%29%3A" target="_blank" class="btn-primary" data-lang-zh>💬 Pre-Register on WhatsApp</a>
       <a href="https://wa.me/85265427963?text=Hi%21%20I%27ve%20paid%20the%20%24500%20HKD%20deposit%20to%20reserve%20a%20spot.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%20%28AI%20Track%20/%20Robotics%20Track%20/%20Think.Learn.Present.%29%3A%0A-%20Level%20%28Explorer%209-12%20/%20Builder%2013-17%29%3A%0A-%20Preferred%20language%20%28EN/DE%29%3A%0A-%20Format%20%28In-person%20HK%20/%20Online%29%3A%0A-%20FPS%20reference%20number%3A" target="_blank" class="btn-secondary" data-lang-en>✅ I've paid — confirm deposit</a>
     </div>
   </div>
@@ -2164,16 +2262,20 @@
     </a>
     <p data-lang-en>Empowering young minds in Hong Kong and beyond through AI, creativity, and robotics education.</p>
     <p data-lang-de>Wir stärken junge Köpfe in Hongkong und darüber hinaus durch KI-, Kreativitäts- und Robotikunterricht.</p>
+    <p data-lang-zh>Empowering young minds in Hong Kong and beyond through AI, creativity, and robotics education.</p>
   </div>
   <div class="footer-col">
     <h4 data-lang-en>Company</h4>
     <h4 data-lang-de>Unternehmen</h4>
+    <h4 data-lang-zh>Company</h4>
     <a href="#about" data-lang-en>About Us</a>
     <a href="#about" data-lang-de>Über uns</a>
+    <a href="#about" data-lang-zh>關於我們</a>
   </div>
   <div class="footer-col">
     <h4 data-lang-en>Connect</h4>
     <h4 data-lang-de>Kontakt</h4>
+    <h4 data-lang-zh>聯繫我們</h4>
     <a href="https://wa.me/85265427963" target="_blank">WhatsApp</a>
     <a href="mailto:contact@spaceop.education">contact@spaceop.education</a>
   </div>
@@ -2183,10 +2285,12 @@
   <span>
     <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; margin-right: 20px;" data-lang-en>Privacy Policy</a>
     <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; margin-right: 20px;" data-lang-de>Datenschutz</a>
+    <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; margin-right: 20px;" data-lang-zh>Privacy Policy</a>
     <a href="terms.html" style="color: var(--text-muted); text-decoration: none;" data-lang-en>Terms of Service</a>
     <a href="terms.html" style="color: var(--text-muted); text-decoration: none;" data-lang-de>AGB</a>
+    <a href="terms.html" style="color: var(--text-muted); text-decoration: none;" data-lang-zh>Terms of Service</a>
   </span>
-  <span style="color: #333; font-size: 10px;">V29</span>
+  <span style="color: #333; font-size: 10px;">V32</span>
 </div>
 
 <script>
@@ -2226,13 +2330,18 @@
 
   // Language Toggle
   function setLang(lang) {
-    document.body.classList.toggle('lang-de', lang === 'de');
+    document.body.classList.remove('lang-de', 'lang-zh');
+    if (lang === 'de') document.body.classList.add('lang-de');
+    if (lang === 'zh') document.body.classList.add('lang-zh');
     document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+      var btnLang = btn.textContent === '中' ? 'zh' : btn.textContent.toLowerCase();
+      btn.classList.toggle('active', btnLang === lang);
     });
     // Update nav link text
     document.querySelectorAll('.nav-link-text').forEach(function(a) {
-      a.textContent = lang === 'de' ? a.getAttribute('data-de') : a.getAttribute('data-en');
+      if (lang === 'zh') a.textContent = a.getAttribute('data-zh') || a.getAttribute('data-en');
+      else if (lang === 'de') a.textContent = a.getAttribute('data-de');
+      else a.textContent = a.getAttribute('data-en');
     });
   }
 
