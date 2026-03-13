@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CreatorPort for Institutions — AI & Robotics Workshops for Schools & Universities</title>
-<meta name="description" content="Bring AI and robotics education to your school, university, or organisation. German-engineered workshops by RWTH Aachen engineers.">
+<meta name="description" content="Bring AI and robotics education to your school, university, or organisation. German-engineered workshops led by an RWTH Aachen University engineer.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -28,13 +28,17 @@
     line-height: 1.7;
   }
 
-  /* LANGUAGE TOGGLE — !important needed to override display set by button/link classes */
+  /* LANGUAGE TOGGLE */
   [data-lang-de] { display: none !important; }
   body.lang-de [data-lang-en] { display: none !important; }
   body.lang-de [data-lang-de] { display: block !important; }
   body.lang-de span[data-lang-de],
   body.lang-de a[data-lang-de] { display: inline-block !important; }
   body.lang-de li[data-lang-de] { display: flex !important; }
+  /* Preserve layout for containers */
+  body.lang-de .trust[data-lang-de] { display: flex !important; }
+  body.lang-de .formats[data-lang-de] { display: grid !important; }
+  body.lang-de .hero-actions[data-lang-de] { display: flex !important; }
 
   .lang-toggle {
     display: flex; gap: 4px; align-items: center; margin-right: 16px;
@@ -66,9 +70,8 @@
   .logo-sub { font-size: 12px; color: var(--text-muted); margin-left: 12px; font-weight: 400; }
 
   .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
-  .nav-links a { color: var(--text-sub); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+  .nav-links a { color: var(--text-sub); text-decoration: none !important; font-size: 14px; font-weight: 500; transition: color 0.3s; }
   .nav-links a:hover { color: var(--accent-blue); }
-  .nav-links a { text-decoration: none !important; }
   a[class] { text-decoration: none; }
   .nav-cta {
     padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 14px;
@@ -80,7 +83,7 @@
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
   .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
 
-  .nav-right { display: flex; align-items: center; gap: 0; }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
 
   /* HERO */
   .hero {
@@ -144,8 +147,10 @@
   }
   .offering-img {
     background: #f0f0f5; border-radius: 16px; height: 360px;
-    display: flex; align-items: center; justify-content: center; font-size: 80px;
+    display: flex; align-items: center; justify-content: center;
     border: 1px solid var(--border);
+    font-family: 'Space Mono', monospace; font-size: 64px; font-weight: 700;
+    color: var(--accent); letter-spacing: -2px; opacity: 0.15;
   }
   .offering-content h3 { font-size: 28px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px; }
   .offering-content p { font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px; }
@@ -155,7 +160,7 @@
     border-bottom: 1px solid var(--border);
     display: flex; align-items: center; gap: 10px;
   }
-  .offering-features li::before { content: '✓'; color: var(--accent-blue); font-weight: 700; }
+  .offering-features li::before { content: '\2713'; color: var(--accent-blue); font-weight: 700; }
 
   /* FORMATS */
   .formats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
@@ -164,7 +169,10 @@
     padding: 32px; transition: all 0.3s;
   }
   .format-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.06); transform: translateY(-3px); }
-  .format-icon { font-size: 32px; margin-bottom: 16px; }
+  .format-num {
+    font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700;
+    color: var(--accent-blue); letter-spacing: 1px; margin-bottom: 16px;
+  }
   .format-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
   .format-desc { font-size: 14px; color: var(--text-sub); line-height: 1.6; }
 
@@ -176,12 +184,19 @@
   }
   .cta-banner h2 { font-size: 32px; font-weight: 800; margin-bottom: 12px; letter-spacing: -1px; }
   .cta-banner p { font-size: 16px; opacity: 0.8; margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
   .btn-white {
     padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 15px;
     text-decoration: none; color: var(--accent); background: #fff;
     transition: all 0.3s; display: inline-block;
   }
   .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+  .btn-white-outline {
+    padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 15px;
+    text-decoration: none; color: #fff; background: transparent;
+    border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s; display: inline-block;
+  }
+  .btn-white-outline:hover { border-color: #fff; transform: translateY(-2px); }
 
   /* FOOTER */
   .footer-bottom {
@@ -207,9 +222,11 @@
     .offering { grid-template-columns: 1fr; }
     .offering-img { height: 240px; }
     .formats { grid-template-columns: 1fr; }
+    body.lang-de .formats[data-lang-de] { grid-template-columns: 1fr !important; }
     .trust { padding: 24px; gap: 24px; }
     .cta-banner { margin: 40px 24px 0; padding: 40px 24px; }
     .cta-banner h2 { font-size: 24px; }
+    .cta-actions { flex-direction: column; align-items: center; }
     .footer-bottom { padding: 24px; flex-direction: column; text-align: center; }
   }
 </style>
@@ -223,7 +240,7 @@
       <div class="logo-text">Creator<em>Port</em></div>
     </a>
     <span class="logo-sub" data-lang-en>for Institutions</span>
-    <span class="logo-sub" data-lang-de>für Institutionen</span>
+    <span class="logo-sub" data-lang-de>f&uuml;r Institutionen</span>
   </div>
   <ul class="nav-links">
     <li><a href="#offering"><span data-lang-en>The OrbBot</span><span data-lang-de>Der OrbBot</span></a></li>
@@ -237,8 +254,8 @@
       <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
       <button id="btn-de" onclick="setLang('de')">DE</button>
     </div>
-    <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20inquiring%20about%20CreatorPort%20for%20our%20institution.%0A-%20Organisation%3A%0A-%20Type%20%28School%20/%20University%20/%20Other%29%3A%0A-%20Number%20of%20students%3A%0A-%20What%20we%27re%20looking%20for%3A" target="_blank" class="nav-cta" data-lang-en>Get in Touch</a>
-    <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20CreatorPort%20f%C3%BCr%20unsere%20Institution.%0A-%20Organisation%3A%0A-%20Typ%20%28Schule%20/%20Universit%C3%A4t%20/%20Andere%29%3A%0A-%20Anzahl%20der%20Sch%C3%BCler%3A%0A-%20Was%20wir%20suchen%3A" target="_blank" class="nav-cta" data-lang-de>Kontakt aufnehmen</a>
+    <a href="mailto:contact@spaceop.education" class="nav-cta" data-lang-en>Get in Touch</a>
+    <a href="mailto:contact@spaceop.education" class="nav-cta" data-lang-de>Kontakt aufnehmen</a>
   </div>
   <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open');document.querySelector('nav').classList.toggle('menu-open');">
     <span></span><span></span><span></span>
@@ -247,34 +264,32 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-label" data-lang-en>For Schools · Universities · Organisations</div>
-  <div class="hero-label" data-lang-de>Für Schulen · Universitäten · Organisationen</div>
+  <div class="hero-label" data-lang-en>For Schools &middot; Universities &middot; Organisations</div>
+  <div class="hero-label" data-lang-de>F&uuml;r Schulen &middot; Universit&auml;ten &middot; Organisationen</div>
   <h1 data-lang-en>Bring robotics &amp; AI into your classroom.</h1>
   <h1 data-lang-de>Bringen Sie Robotik &amp; KI in Ihr Klassenzimmer.</h1>
-  <p class="hero-sub" data-lang-en>German-engineered workshops led by RWTH Aachen engineers. On-site at your institution or at our studio on Hong Kong Island.</p>
-  <p class="hero-sub" data-lang-de>Deutsche Ingenieurskunst — Workshops geleitet von RWTH Aachen Ingenieuren. Vor Ort in Ihrer Institution oder in unserem Studio auf Hong Kong Island.</p>
+  <p class="hero-sub" data-lang-en>Hands-on workshops led by an M.Sc. engineer from RWTH Aachen University &mdash; one of Europe's leading technical universities. On-site at your institution or at our studio on Hong Kong Island.</p>
+  <p class="hero-sub" data-lang-de>Praxisnahe Workshops geleitet von einem M.Sc.-Ingenieur der RWTH Aachen &mdash; einer der f&uuml;hrenden technischen Universit&auml;ten Europas. Vor Ort in Ihrer Institution oder in unserem Studio auf Hong Kong Island.</p>
   <div class="hero-actions" data-lang-en>
-    <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20inquiring%20about%20CreatorPort%20for%20our%20institution.%0A-%20Organisation%3A%0A-%20Type%20%28School%20/%20University%20/%20Other%29%3A%0A-%20Number%20of%20students%3A%0A-%20What%20we%27re%20looking%20for%3A" target="_blank" class="btn-dark">Request a Proposal</a>
+    <a href="mailto:contact@spaceop.education" class="btn-dark">Request a Proposal</a>
     <a href="#offering" class="btn-outline">Learn More</a>
   </div>
   <div class="hero-actions" data-lang-de>
-    <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20CreatorPort%20f%C3%BCr%20unsere%20Institution.%0A-%20Organisation%3A%0A-%20Typ%20%28Schule%20/%20Universit%C3%A4t%20/%20Andere%29%3A%0A-%20Anzahl%20der%20Sch%C3%BCler%3A%0A-%20Was%20wir%20suchen%3A" target="_blank" class="btn-dark">Angebot anfordern</a>
+    <a href="mailto:contact@spaceop.education" class="btn-dark">Angebot anfordern</a>
     <a href="#offering" class="btn-outline">Mehr erfahren</a>
   </div>
 </div>
 
 <!-- TRUST BAR -->
 <div class="trust" data-lang-en>
-  <div class="trust-item"><strong>RWTH Aachen</strong> trained engineers</div>
-  <div class="trust-item"><strong>B.Sc. & M.Sc.</strong> level instructors</div>
-  <div class="trust-item"><strong>Bilingual</strong> EN / DE</div>
+  <div class="trust-item"><strong>RWTH Aachen</strong> University &mdash; M.Sc. engineer</div>
+  <div class="trust-item"><strong>Bilingual</strong> English / German</div>
   <div class="trust-item"><strong>Custom</strong> programs available</div>
 </div>
 <div class="trust" data-lang-de>
-  <div class="trust-item"><strong>RWTH Aachen</strong> ausgebildete Ingenieure</div>
-  <div class="trust-item"><strong>B.Sc. & M.Sc.</strong> Kursleiter</div>
-  <div class="trust-item"><strong>Zweisprachig</strong> EN / DE</div>
-  <div class="trust-item"><strong>Individuelle</strong> Programme möglich</div>
+  <div class="trust-item"><strong>RWTH Aachen</strong> &mdash; M.Sc.-Ingenieur</div>
+  <div class="trust-item"><strong>Zweisprachig</strong> Englisch / Deutsch</div>
+  <div class="trust-item"><strong>Individuelle</strong> Programme m&ouml;glich</div>
 </div>
 
 <!-- OFFERING -->
@@ -282,29 +297,29 @@
   <div class="section-label" data-lang-en>Flagship Workshop</div>
   <div class="section-label" data-lang-de>Flaggschiff-Workshop</div>
   <div class="offering">
-    <div class="offering-img">⚖️</div>
+    <div class="offering-img">OrbBot</div>
     <div class="offering-content">
       <h3 data-lang-en>The OrbBot Workshop</h3>
       <h3 data-lang-de>Der OrbBot Workshop</h3>
-      <p data-lang-en>Students build a self-balancing robot that stays upright on a ball — combining mechanical assembly, electronics, coding, and LQR control theory in one hands-on project.</p>
-      <p data-lang-de>Schüler bauen einen selbstbalancierenden Roboter, der auf einem Ball aufrecht steht — eine Kombination aus mechanischem Aufbau, Elektronik, Programmierung und LQR-Regelungstechnik in einem praxisnahen Projekt.</p>
-      <p data-lang-en>Each student assembles their own OrbBot from a kit designed and engineered by <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-blue); font-weight: 600;">KurthTechnik</a> — German-engineered hardware with open-source firmware. Students program it, tune the controller, and take it home.</p>
-      <p data-lang-de>Jeder Schüler baut seinen eigenen OrbBot aus einem Bausatz, der von <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-blue); font-weight: 600;">KurthTechnik</a> entworfen und entwickelt wurde — deutsche Ingenieurskunst mit Open-Source-Firmware. Die Schüler programmieren ihn, optimieren den Regler und nehmen ihn mit nach Hause.</p>
+      <p data-lang-en>Students build a self-balancing robot that stays upright on a ball &mdash; combining mechanical assembly, electronics, coding, and LQR control theory in one hands-on project.</p>
+      <p data-lang-de>Sch&uuml;ler bauen einen selbstbalancierenden Roboter, der auf einem Ball aufrecht steht &mdash; eine Kombination aus mechanischem Aufbau, Elektronik, Programmierung und LQR-Regelungstechnik in einem praxisnahen Projekt.</p>
+      <p data-lang-en>Each student assembles their own OrbBot from a kit designed and engineered by <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-blue); font-weight: 600;">KurthTechnik</a> &mdash; German-engineered hardware with open-source firmware. Students program it, tune the controller, and take it home.</p>
+      <p data-lang-de>Jeder Sch&uuml;ler baut seinen eigenen OrbBot aus einem Bausatz, der von <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-blue); font-weight: 600;">KurthTechnik</a> entworfen und entwickelt wurde &mdash; deutsche Ingenieurskunst mit Open-Source-Firmware. Die Sch&uuml;ler programmieren ihn, optimieren den Regler und nehmen ihn mit nach Hause.</p>
       <ul class="offering-features">
         <li data-lang-en>4-hour guided workshop</li>
-        <li data-lang-de>4-stündiger angeleiteter Workshop</li>
+        <li data-lang-de>4-st&uuml;ndiger angeleiteter Workshop</li>
         <li data-lang-en>OrbBot kit included for every student</li>
-        <li data-lang-de>OrbBot-Bausatz für jeden Schüler inklusive</li>
+        <li data-lang-de>OrbBot-Bausatz f&uuml;r jeden Sch&uuml;ler inklusive</li>
         <li data-lang-en>IMU sensors, motors, microcontroller</li>
         <li data-lang-de>IMU-Sensoren, Motoren, Mikrocontroller</li>
-        <li data-lang-en>LQR control — real engineering, not toy code</li>
-        <li data-lang-de>LQR-Regelung — echte Ingenieursarbeit, kein Spielzeug-Code</li>
+        <li data-lang-en>LQR control &mdash; real engineering, not toy code</li>
+        <li data-lang-de>LQR-Regelung &mdash; echte Ingenieursarbeit, kein Spielzeug-Code</li>
         <li data-lang-en>Students take their OrbBot home</li>
-        <li data-lang-de>Schüler nehmen ihren OrbBot mit nach Hause</li>
-        <li data-lang-en>Suitable for ages 14+ (secondary & university)</li>
-        <li data-lang-de>Geeignet ab 14 Jahren (Sekundarstufe & Universität)</li>
-        <li data-lang-en>Groups of 6–30 students</li>
-        <li data-lang-de>Gruppen von 6–30 Schülern</li>
+        <li data-lang-de>Sch&uuml;ler nehmen ihren OrbBot mit nach Hause</li>
+        <li data-lang-en>Suitable for ages 14+ (secondary &amp; university)</li>
+        <li data-lang-de>Geeignet ab 14 Jahren (Sekundarstufe &amp; Universit&auml;t)</li>
+        <li data-lang-en>Groups of 6&ndash;30 students</li>
+        <li data-lang-de>Gruppen von 6&ndash;30 Sch&uuml;lern</li>
         <li data-lang-en>On-site at your institution or at our studio</li>
         <li data-lang-de>Vor Ort in Ihrer Institution oder in unserem Studio</li>
         <li data-lang-en>Taught in English or German</li>
@@ -317,7 +332,7 @@
 <!-- FORMATS -->
 <section id="formats">
   <div class="section-label" data-lang-en>Delivery Formats</div>
-  <div class="section-label" data-lang-de>Durchführungsformate</div>
+  <div class="section-label" data-lang-de>Durchf&uuml;hrungsformate</div>
   <h2 class="section-title" data-lang-en>Flexible to fit your schedule.</h2>
   <h2 class="section-title" data-lang-de>Flexibel anpassbar an Ihren Zeitplan.</h2>
   <p class="section-desc" data-lang-en>We come to you, or you come to us. All workshops delivered in English or German.</p>
@@ -325,22 +340,22 @@
 
   <div class="formats" data-lang-en>
     <div class="format-card">
-      <div class="format-icon">🏫</div>
+      <div class="format-num">01</div>
       <h3 class="format-title">On-Site at Your Institution</h3>
-      <p class="format-desc">We bring everything to your school — kits, tools, laptops. All we need is a classroom with tables and power. Minimum 6 students.</p>
+      <p class="format-desc">We bring everything to your school &mdash; kits, tools, laptops. All we need is a classroom with tables and power. Minimum 6 students.</p>
     </div>
     <div class="format-card">
-      <div class="format-icon">🔬</div>
+      <div class="format-num">02</div>
       <h3 class="format-title">At Our Studio</h3>
       <p class="format-desc">Bring your students to our fully equipped makerspace on Hong Kong Island, Central. Ideal for field trips and enrichment days. Max 12 students per session.</p>
     </div>
     <div class="format-card">
-      <div class="format-icon">👨‍🏫</div>
+      <div class="format-num">03</div>
       <h3 class="format-title">In-House Teaching</h3>
-      <p class="format-desc">Embed our instructors into your school for a term or full year. We teach robotics and AI as part of your regular curriculum, using your classrooms and schedule.</p>
+      <p class="format-desc">Embed our instructor into your school for a term or full year. We teach robotics and AI as part of your regular curriculum, using your classrooms and schedule.</p>
     </div>
     <div class="format-card">
-      <div class="format-icon">📅</div>
+      <div class="format-num">04</div>
       <h3 class="format-title">Multi-Session Program</h3>
       <p class="format-desc">Co-design a syllabus with your teachers over weeks or a full term. Weekly sessions, assessed projects, progress reports.</p>
     </div>
@@ -348,24 +363,24 @@
 
   <div class="formats" data-lang-de>
     <div class="format-card">
-      <div class="format-icon">🏫</div>
+      <div class="format-num">01</div>
       <h3 class="format-title">Vor Ort in Ihrer Institution</h3>
-      <p class="format-desc">Wir bringen alles mit — Bausätze, Werkzeuge, Laptops. Wir brauchen nur einen Raum mit Tischen und Strom. Mindestens 6 Schüler.</p>
+      <p class="format-desc">Wir bringen alles mit &mdash; Baus&auml;tze, Werkzeuge, Laptops. Wir brauchen nur einen Raum mit Tischen und Strom. Mindestens 6 Sch&uuml;ler.</p>
     </div>
     <div class="format-card">
-      <div class="format-icon">🔬</div>
+      <div class="format-num">02</div>
       <h3 class="format-title">In unserem Studio</h3>
-      <p class="format-desc">Bringen Sie Ihre Schüler in unseren voll ausgestatteten Makerspace auf Hong Kong Island, Central. Ideal für Exkursionen und Projekttage. Max. 12 Schüler pro Sitzung.</p>
+      <p class="format-desc">Bringen Sie Ihre Sch&uuml;ler in unseren voll ausgestatteten Makerspace auf Hong Kong Island, Central. Ideal f&uuml;r Exkursionen und Projekttage. Max. 12 Sch&uuml;ler pro Sitzung.</p>
     </div>
     <div class="format-card">
-      <div class="format-icon">👨‍🏫</div>
+      <div class="format-num">03</div>
       <h3 class="format-title">Integrierter Unterricht</h3>
-      <p class="format-desc">Integrieren Sie unsere Kursleiter für ein Semester oder ein ganzes Jahr. Wir unterrichten Robotik und KI als Teil Ihres regulären Lehrplans, in Ihren Räumen und nach Ihrem Zeitplan.</p>
+      <p class="format-desc">Integrieren Sie unseren Kursleiter f&uuml;r ein Semester oder ein ganzes Jahr. Wir unterrichten Robotik und KI als Teil Ihres regul&auml;ren Lehrplans, in Ihren R&auml;umen und nach Ihrem Zeitplan.</p>
     </div>
     <div class="format-card">
-      <div class="format-icon">📅</div>
+      <div class="format-num">04</div>
       <h3 class="format-title">Mehrteiliges Programm</h3>
-      <p class="format-desc">Gestalten Sie gemeinsam mit Ihren Lehrkräften einen Lehrplan über Wochen oder ein ganzes Semester. Wöchentliche Sitzungen, bewertete Projekte, Fortschrittsberichte.</p>
+      <p class="format-desc">Gestalten Sie gemeinsam mit Ihren Lehrkr&auml;ften einen Lehrplan &uuml;ber Wochen oder ein ganzes Semester. W&ouml;chentliche Sitzungen, bewertete Projekte, Fortschrittsberichte.</p>
     </div>
   </div>
 
@@ -375,25 +390,29 @@
     <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">OrbBot kits designed and manufactured by <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">KurthTechnik</a></p>
   </div>
   <div style="text-align: center; margin-top: 40px; padding: 24px; background: #f5f5fa; border-radius: 12px; border: 1px solid var(--border);" data-lang-de>
-    <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 4px;">Alle Workshops und Programme verfügbar auf</p>
+    <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 4px;">Alle Workshops und Programme verf&uuml;gbar auf</p>
     <p style="font-size: 18px; font-weight: 700; color: var(--text);">Englisch oder Deutsch</p>
-    <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">OrbBot-Bausätze entworfen und hergestellt von <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">KurthTechnik</a></p>
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">OrbBot-Baus&auml;tze entworfen und hergestellt von <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">KurthTechnik</a></p>
   </div>
 </section>
 
 <!-- CTA BANNER -->
 <div class="cta-banner">
   <h2 data-lang-en>Let's design a program for your students.</h2>
-  <h2 data-lang-de>Lassen Sie uns ein Programm für Ihre Schüler gestalten.</h2>
-  <p data-lang-en>Tell us about your institution and we'll create a tailored proposal — format, group size, pricing, and schedule.</p>
-  <p data-lang-de>Erzählen Sie uns von Ihrer Institution und wir erstellen ein maßgeschneidertes Angebot — Format, Gruppengröße, Preise und Zeitplan.</p>
-  <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20inquiring%20about%20CreatorPort%20for%20our%20institution.%0A-%20Organisation%3A%0A-%20Type%20%28School%20/%20University%20/%20Other%29%3A%0A-%20Number%20of%20students%3A%0A-%20What%20we%27re%20looking%20for%3A" target="_blank" class="btn-white" data-lang-en>Request a Proposal →</a>
-  <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20CreatorPort%20f%C3%BCr%20unsere%20Institution.%0A-%20Organisation%3A%0A-%20Typ%20%28Schule%20/%20Universit%C3%A4t%20/%20Andere%29%3A%0A-%20Anzahl%20der%20Sch%C3%BCler%3A%0A-%20Was%20wir%20suchen%3A" target="_blank" class="btn-white" data-lang-de>Angebot anfordern →</a>
+  <h2 data-lang-de>Lassen Sie uns ein Programm f&uuml;r Ihre Sch&uuml;ler gestalten.</h2>
+  <p data-lang-en>Tell us about your institution and we'll create a tailored proposal &mdash; format, group size, pricing, and schedule.</p>
+  <p data-lang-de>Erz&auml;hlen Sie uns von Ihrer Institution und wir erstellen ein ma&szlig;geschneidertes Angebot &mdash; Format, Gruppengroesse, Preise und Zeitplan.</p>
+  <div class="cta-actions">
+    <a href="mailto:contact@spaceop.education" class="btn-white" data-lang-en>Email Us</a>
+    <a href="mailto:contact@spaceop.education" class="btn-white" data-lang-de>E-Mail senden</a>
+    <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20inquiring%20about%20CreatorPort%20for%20our%20institution.%0A-%20Organisation%3A%0A-%20Type%20%28School%20/%20University%20/%20Other%29%3A%0A-%20Number%20of%20students%3A%0A-%20What%20we%27re%20looking%20for%3A" target="_blank" class="btn-white-outline" data-lang-en>WhatsApp</a>
+    <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20CreatorPort%20f%C3%BCr%20unsere%20Institution.%0A-%20Organisation%3A%0A-%20Typ%20%28Schule%20/%20Universit%C3%A4t%20/%20Andere%29%3A%0A-%20Anzahl%20der%20Sch%C3%BCler%3A%0A-%20Was%20wir%20suchen%3A" target="_blank" class="btn-white-outline" data-lang-de>WhatsApp</a>
+  </div>
 </div>
 
 <div class="footer-bottom">
-  <span data-lang-en>CreatorPort is a brand operated by © Space of Possibilities Limited · Hong Kong · contact@spaceop.education</span>
-  <span data-lang-de>CreatorPort ist eine Marke der © Space of Possibilities Limited · Hong Kong · contact@spaceop.education</span>
+  <span data-lang-en>CreatorPort is a brand operated by &copy; Space of Possibilities Limited &middot; Hong Kong &middot; contact@spaceop.education</span>
+  <span data-lang-de>CreatorPort ist eine Marke der &copy; Space of Possibilities Limited &middot; Hong Kong &middot; contact@spaceop.education</span>
   <span>
     <a href="privacy.html" style="margin-right: 16px;"><span data-lang-en>Privacy</span><span data-lang-de>Datenschutz</span></a>
     <a href="terms.html"><span data-lang-en>Terms</span><span data-lang-de>AGB</span></a>
@@ -412,7 +431,6 @@ function setLang(lang) {
   localStorage.setItem('creatorport-lang', lang);
 }
 
-// Restore saved language on load
 (function() {
   var saved = localStorage.getItem('creatorport-lang');
   if (saved === 'de') {
