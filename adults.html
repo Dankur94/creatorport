@@ -6,7 +6,7 @@
 <title>CreatorPort — Workshops for Adults</title>
 <meta name="description" content="Build robots. Understand AI. German-engineered workshops for curious adults in Hong Kong.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-primary: #0a0a0f;
@@ -23,6 +23,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
   body {
     font-family: 'Sora', sans-serif;
@@ -48,7 +49,7 @@
     background-clip: text;
   }
 
-  /* LANG — !important needed to override display set by button/link classes */
+  /* LANG */
   [data-lang-de] { display: none !important; }
   body.lang-de [data-lang-en] { display: none !important; }
   body.lang-de [data-lang-de] { display: block !important; }
@@ -96,10 +97,27 @@
   .logo-text em { font-style: normal; color: var(--accent-electric); }
 
   .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
-  .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a { color: var(--text-secondary); text-decoration: none !important; font-size: 14px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.3s; }
   .nav-links a:hover { color: var(--accent-electric); }
-  .nav-links a { text-decoration: none !important; }
   a[class] { text-decoration: none; }
+
+  /* DROPDOWN */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown > a { cursor: pointer; }
+  .nav-dropdown-menu {
+    display: none; position: absolute; top: 100%; left: 0;
+    margin-top: 8px; min-width: 180px;
+    background: rgba(17,17,24,0.95); backdrop-filter: blur(20px);
+    border: 1px solid var(--border-subtle); border-radius: 12px;
+    padding: 8px 0; z-index: 100;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+  .nav-dropdown-menu a {
+    display: block !important; padding: 10px 20px; font-size: 13px !important;
+    text-transform: none !important; letter-spacing: 0 !important;
+    color: var(--text-secondary); transition: all 0.2s;
+  }
+  .nav-dropdown-menu a:hover { color: var(--text-primary); background: rgba(255,255,255,0.04); }
 
   .nav-badge { font-size: 11px; padding: 4px 10px; border-radius: 20px; background: rgba(255,179,71,0.15); color: var(--accent-amber); font-weight: 600; border: 1px solid rgba(255,179,71,0.3); }
 
@@ -190,7 +208,10 @@
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   }
 
-  .workshop-emoji { font-size: 48px; margin-bottom: 16px; }
+  .workshop-num {
+    font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700;
+    color: var(--accent-amber); letter-spacing: 1px; margin-bottom: 16px;
+  }
   .workshop-badge {
     display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
     padding: 4px 12px; border-radius: 20px; font-weight: 600; margin-bottom: 16px;
@@ -213,6 +234,14 @@
   .special-card .workshop-badge {
     background: rgba(255,179,71,0.15); color: var(--accent-amber);
     border: 1px solid rgba(255,179,71,0.3);
+  }
+
+  /* COMING SOON */
+  .coming-soon-badge {
+    display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+    padding: 4px 12px; border-radius: 20px; font-weight: 600; margin-bottom: 16px;
+    background: rgba(255,179,71,0.1); color: var(--accent-amber);
+    border: 1px dashed rgba(255,179,71,0.4);
   }
 
   /* HOW IT WORKS */
@@ -266,6 +295,7 @@
     .nav-links.open { display: flex !important; }
     .nav-links li { text-align: center; width: 100%; }
     .nav-links li a { font-size: 18px; display: block; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .nav-dropdown-menu { position: static; margin-top: 0; background: transparent; border: none; backdrop-filter: none; }
     nav.menu-open {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(15,15,20,0.92); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
@@ -295,11 +325,16 @@
     <div class="logo-text">Creator<em>Port</em></div>
   </a>
   <ul class="nav-links">
-    <li><a href="#workshops" data-lang-en>Workshops</a><a href="#workshops" data-lang-de>Workshops</a></li>
-    <li><a href="#how" data-lang-en>How It Works</a><a href="#how" data-lang-de>So funktioniert's</a></li>
-    <li><a href="#special" data-lang-en>Events</a><a href="#special" data-lang-de>Events</a></li>
-    <li><a href="https://dankur94.github.io/kurthtechnik/" target="_blank" data-lang-en>Product</a><a href="https://dankur94.github.io/kurthtechnik/" target="_blank" data-lang-de>Produkt</a></li>
-    <li><a href="juniors.html" class="nav-badge" data-lang-en>Kids Programs &rarr;</a><a href="juniors.html" class="nav-badge" data-lang-de>Kinderprogramme &rarr;</a></li>
+    <li><a href="#workshops"><span data-lang-en>Workshops</span><span data-lang-de>Workshops</span></a></li>
+    <li><a href="#how"><span data-lang-en>How It Works</span><span data-lang-de>So funktioniert's</span></a></li>
+    <li class="nav-dropdown">
+      <a href="#"><span data-lang-en>Products</span><span data-lang-de>Produkte</span></a>
+      <div class="nav-dropdown-menu">
+        <a href="https://dankur94.github.io/kurthtechnik/" target="_blank">OrbBot</a>
+        <a href="roaster.html">AeroRoast Mini</a>
+      </div>
+    </li>
+    <li><a href="juniors.html" class="nav-badge"><span data-lang-en>Kids Programs</span><span data-lang-de>Kinderprogramme</span></a></li>
     <li>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('en')">EN</button>
@@ -320,11 +355,11 @@
   <div class="hero-tag reveal" data-lang-de>Workshops f&uuml;r Erwachsene &middot; Hong Kong Island, Central</div>
   <h1 class="reveal" data-lang-en>Build it.<br><span class="gradient-text">Understand it.</span></h1>
   <h1 class="reveal" data-lang-de>Baue es.<br><span class="gradient-text">Verstehe es.</span></h1>
-  <p class="hero-sub reveal" data-lang-en>Hands-on AI and robotics workshops for curious adults. No experience needed — just bring your curiosity. German-engineered, Hong Kong-hosted.</p>
-  <p class="hero-sub reveal" data-lang-de>Praxisnahe KI- und Robotik-Workshops f&uuml;r neugierige Erwachsene. Keine Vorkenntnisse n&ouml;tig — bring einfach deine Neugier mit. German-engineered, in Hongkong.</p>
+  <p class="hero-sub reveal" data-lang-en>Hands-on AI and robotics workshops for curious adults. No experience needed &mdash; just bring your curiosity. German-engineered, Hong Kong-hosted.</p>
+  <p class="hero-sub reveal" data-lang-de>Praxisnahe KI- und Robotik-Workshops f&uuml;r neugierige Erwachsene. Keine Vorkenntnisse n&ouml;tig &mdash; bring einfach deine Neugier mit. German-engineered, in Hongkong.</p>
   <div class="hero-actions reveal">
-    <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20a%20CreatorPort%20adult%20workshop.%0A-%20Name%3A%0A-%20Workshop%3A%0A-%20Preferred%20date%3A" target="_blank" class="btn-primary" data-lang-en>Book a Workshop &rarr;</a>
-    <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20einen%20CreatorPort%20Workshop.%0A-%20Name%3A%0A-%20Workshop%3A%0A-%20Wunschtermin%3A" target="_blank" class="btn-primary" data-lang-de>Workshop buchen &rarr;</a>
+    <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20a%20CreatorPort%20adult%20workshop.%0A-%20Name%3A%0A-%20Workshop%3A%0A-%20Preferred%20date%3A" target="_blank" class="btn-primary" data-lang-en>Book a Workshop</a>
+    <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20einen%20CreatorPort%20Workshop.%0A-%20Name%3A%0A-%20Workshop%3A%0A-%20Wunschtermin%3A" target="_blank" class="btn-primary" data-lang-de>Workshop buchen</a>
     <a href="#workshops" class="btn-secondary" data-lang-en>See Workshops</a>
     <a href="#workshops" class="btn-secondary" data-lang-de>Workshops ansehen</a>
   </div>
@@ -334,111 +369,104 @@
 <section id="workshops">
   <div class="section-label reveal" data-lang-en>Workshops</div>
   <div class="section-label reveal" data-lang-de>Workshops</div>
-  <h2 class="section-title reveal" data-lang-en>Pick your<br>Saturday adventure.</h2>
-  <h2 class="section-title reveal" data-lang-de>W&auml;hle dein<br>Samstags-Abenteuer.</h2>
-  <p class="section-desc reveal" data-lang-en>3-hour hands-on sessions. Small groups. Everything provided. Walk in curious, walk out building.</p>
-  <p class="section-desc reveal" data-lang-de>3-st&uuml;ndige Praxis-Sessions. Kleine Gruppen. Alles inklusive. Komm neugierig, geh als Macher.</p>
+  <h2 class="section-title reveal" data-lang-en>Pick your<br>next adventure.</h2>
+  <h2 class="section-title reveal" data-lang-de>W&auml;hle dein<br>n&auml;chstes Abenteuer.</h2>
+  <p class="section-desc reveal" data-lang-en>Hands-on sessions. Small groups. Everything provided. Walk in curious, walk out building.</p>
+  <p class="section-desc reveal" data-lang-de>Praxis-Sessions. Kleine Gruppen. Alles inklusive. Komm neugierig, geh als Macher.</p>
 
   <div class="workshops-grid">
 
-    <div class="workshop-card special-card reveal" id="special">
-      <div class="workshop-emoji">&#127867;</div>
+    <!-- BEER TAP — COMING SOON -->
+    <div class="workshop-card special-card reveal">
+      <div class="workshop-num">01</div>
+      <div class="coming-soon-badge" data-lang-en>Coming Soon</div>
+      <div class="coming-soon-badge" data-lang-de>In Vorbereitung</div>
       <div class="workshop-badge" data-lang-en>Robotics + Brewing</div>
       <div class="workshop-badge" data-lang-de>Robotik + Brauen</div>
       <h3 class="workshop-title" data-lang-en>Build a Beer Tap System</h3>
       <h3 class="workshop-title" data-lang-de>Baue ein Bierzapfsystem</h3>
-      <p class="workshop-desc" data-lang-en>Engineer your own automated beer tap — temperature sensor, flow meter, Arduino-controlled valve. Learn electronics, fluid mechanics, and taste the results. German engineering meets German brewing. Prost!</p>
-      <p class="workshop-desc" data-lang-de>Konstruiere deine eigene automatische Zapfanlage — Temperatursensor, Durchflussmesser, Arduino-gesteuertes Ventil. Lerne Elektronik, Str&ouml;mungsmechanik und probiere die Ergebnisse. Deutsche Ingenieurskunst trifft deutsches Brauhandwerk. Prost!</p>
+      <p class="workshop-desc" data-lang-en>Engineer your own automated beer tap &mdash; temperature sensor, flow meter, Arduino-controlled valve. Learn electronics, fluid mechanics, and taste the results. German engineering meets German brewing.</p>
+      <p class="workshop-desc" data-lang-de>Konstruiere deine eigene automatische Zapfanlage &mdash; Temperatursensor, Durchflussmesser, Arduino-gesteuertes Ventil. Lerne Elektronik, Str&ouml;mungsmechanik und probiere die Ergebnisse. Deutsche Ingenieurskunst trifft deutsches Brauhandwerk.</p>
       <div class="workshop-details" data-lang-en>
-        <span class="workshop-detail">&#9201; 3 hours</span>
-        <span class="workshop-detail">&#128101; Max 6 people</span>
-        <span class="workshop-detail">&#128197; Select Fridays &amp; Saturdays</span>
-        <span class="workshop-detail">&#127866; German beer tasting included</span>
-        <span class="workshop-detail">&#128295; All build kits provided on-site</span>
-        <span class="workshop-detail">&#127968; Take it home for an extra fee — ask for pricing</span>
+        <span class="workshop-detail">3 hours</span>
+        <span class="workshop-detail">Max 6 people</span>
+        <span class="workshop-detail">Flexible scheduling</span>
+        <span class="workshop-detail">German beer tasting included</span>
+        <span class="workshop-detail">All build kits provided on-site</span>
       </div>
       <div class="workshop-details" data-lang-de>
-        <span class="workshop-detail">&#9201; 3 Stunden</span>
-        <span class="workshop-detail">&#128101; Max. 6 Personen</span>
-        <span class="workshop-detail">&#128197; Ausgew&auml;hlte Freitage &amp; Samstage</span>
-        <span class="workshop-detail">&#127866; Deutsche Bierverkostung inklusive</span>
-        <span class="workshop-detail">&#128295; Alle Baus&auml;tze vor Ort verf&uuml;gbar</span>
-        <span class="workshop-detail">&#127968; Zum Mitnehmen gegen Aufpreis — Preis auf Anfrage</span>
+        <span class="workshop-detail">3 Stunden</span>
+        <span class="workshop-detail">Max. 6 Personen</span>
+        <span class="workshop-detail">Flexible Terminwahl</span>
+        <span class="workshop-detail">Deutsche Bierverkostung inklusive</span>
+        <span class="workshop-detail">Alle Baus&auml;tze vor Ort verf&uuml;gbar</span>
       </div>
-      <div class="workshop-price">$600 <span>HKD / <span data-lang-en>person</span><span data-lang-de>Person</span></span></div>
-      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;" data-lang-en>You got one of our tap systems? We offer maintenance plans for restaurants &amp; bars. <a href="mailto:contact@spaceop.education" style="color: var(--accent-amber);">Get in touch &rarr;</a></p>
-      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;" data-lang-de>Du hast bereits eine unserer Zapfanlagen? Wir bieten Wartungspl&auml;ne f&uuml;r Restaurants &amp; Bars. <a href="mailto:contact@spaceop.education" style="color: var(--accent-amber);">Kontakt aufnehmen &rarr;</a></p>
+      <p style="font-size: 14px; color: var(--accent-amber); font-weight: 600; margin-top: 16px;" data-lang-en>This workshop is currently being finalised. Interested? Send us <strong>#zapfsystem</strong> on WhatsApp and we'll prioritise you.</p>
+      <p style="font-size: 14px; color: var(--accent-amber); font-weight: 600; margin-top: 16px;" data-lang-de>Dieser Workshop wird gerade fertiggestellt. Interesse? Schick uns <strong>#zapfsystem</strong> per WhatsApp und wir informieren dich zuerst.</p>
+      <div style="margin-top: 16px;">
+        <a href="https://wa.me/85265427963?text=%23zapfsystem" target="_blank" class="btn-primary" style="font-size: 13px; padding: 10px 24px;" data-lang-en>Send #zapfsystem</a>
+        <a href="https://wa.me/85265427963?text=%23zapfsystem" target="_blank" class="btn-primary" style="font-size: 13px; padding: 10px 24px;" data-lang-de>#zapfsystem senden</a>
+      </div>
     </div>
 
+    <!-- COFFEE ROASTER -->
     <div class="workshop-card special-card reveal">
-      <div class="workshop-emoji">&#9749;</div>
+      <div class="workshop-num">02</div>
       <div class="workshop-badge" data-lang-en>Robotics + Coffee</div>
       <div class="workshop-badge" data-lang-de>Robotik + Kaffee</div>
       <h3 class="workshop-title" data-lang-en>Build a Coffee Roaster</h3>
       <h3 class="workshop-title" data-lang-de>Baue einen Kaffeer&ouml;ster</h3>
-      <p class="workshop-desc" data-lang-en>Build an Arduino-controlled coffee bean roaster — heat sensor, fan control, roast profiling. Understand PID control through the perfect medium roast. Roast your own beans, grind, brew, taste.</p>
-      <p class="workshop-desc" data-lang-de>Baue einen Arduino-gesteuerten Kaffeer&ouml;ster — W&auml;rmesensor, L&uuml;ftersteuerung, R&ouml;stprofil-Erstellung. Verstehe PID-Regelung anhand der perfekten mittleren R&ouml;stung. R&ouml;ste deine eigenen Bohnen, mahle, br&uuml;he, probiere.</p>
+      <p class="workshop-desc" data-lang-en>Build an Arduino-controlled coffee bean roaster &mdash; heat sensor, fan control, roast profiling. Understand PID control through the perfect medium roast. Roast your own beans, grind, brew, taste.</p>
+      <p class="workshop-desc" data-lang-de>Baue einen Arduino-gesteuerten Kaffeer&ouml;ster &mdash; W&auml;rmesensor, L&uuml;ftersteuerung, R&ouml;stprofil-Erstellung. Verstehe PID-Regelung anhand der perfekten mittleren R&ouml;stung. R&ouml;ste deine eigenen Bohnen, mahle, br&uuml;he, probiere.</p>
       <div class="workshop-details" data-lang-en>
-        <span class="workshop-detail">&#9201; 3 hours</span>
-        <span class="workshop-detail">&#128101; Max 6 people</span>
-        <span class="workshop-detail">&#128197; Select Saturdays</span>
-        <span class="workshop-detail">&#9749; Green beans + specialty coffee tasting included</span>
-        <span class="workshop-detail">&#128295; All build kits provided on-site</span>
-        <span class="workshop-detail">&#127968; Buy your own AeroRoast Mini: $2,250 HKD ($289 USD)</span>
+        <span class="workshop-detail">3 hours</span>
+        <span class="workshop-detail">Max 6 people</span>
+        <span class="workshop-detail">Flexible scheduling</span>
+        <span class="workshop-detail">Green beans + specialty coffee tasting</span>
+        <span class="workshop-detail">All build kits provided on-site</span>
+        <span class="workshop-detail">Buy your own AeroRoast Mini: $2,250 HKD</span>
       </div>
       <div class="workshop-details" data-lang-de>
-        <span class="workshop-detail">&#9201; 3 Stunden</span>
-        <span class="workshop-detail">&#128101; Max. 6 Personen</span>
-        <span class="workshop-detail">&#128197; Ausgew&auml;hlte Samstage</span>
-        <span class="workshop-detail">&#9749; Rohkaffee + Spezialit&auml;tenkaffee-Verkostung inklusive</span>
-        <span class="workshop-detail">&#128295; Alle Baus&auml;tze vor Ort verf&uuml;gbar</span>
-        <span class="workshop-detail">&#127968; Eigenen AeroRoast Mini kaufen: $2.250 HKD ($289 USD)</span>
+        <span class="workshop-detail">3 Stunden</span>
+        <span class="workshop-detail">Max. 6 Personen</span>
+        <span class="workshop-detail">Flexible Terminwahl</span>
+        <span class="workshop-detail">Rohkaffee + Spezialit&auml;tenkaffee-Verkostung</span>
+        <span class="workshop-detail">Alle Baus&auml;tze vor Ort verf&uuml;gbar</span>
+        <span class="workshop-detail">Eigenen AeroRoast Mini kaufen: $2.250 HKD</span>
       </div>
       <div class="workshop-price">$600 <span>HKD / <span data-lang-en>person (workshop only)</span><span data-lang-de>Person (nur Workshop)</span></span></div>
-      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;" data-lang-en>Want your own? <a href="roaster.html" style="color: var(--accent-amber);">Get the AeroRoast Mini — $289 USD &rarr;</a> &middot; Maintenance plans for caf&eacute;s &amp; restaurants: <a href="mailto:contact@spaceop.education" style="color: var(--accent-amber);">Get in touch &rarr;</a></p>
-      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;" data-lang-de>Einen eigenen? <a href="roaster.html" style="color: var(--accent-amber);">AeroRoast Mini bestellen — $289 USD &rarr;</a> &middot; Wartungspl&auml;ne f&uuml;r Caf&eacute;s &amp; Restaurants: <a href="mailto:contact@spaceop.education" style="color: var(--accent-amber);">Kontakt aufnehmen &rarr;</a></p>
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;" data-lang-en>Want your own? <a href="roaster.html" style="color: var(--accent-amber);">Get the AeroRoast Mini &mdash; $2,250 HKD</a></p>
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;" data-lang-de>Einen eigenen? <a href="roaster.html" style="color: var(--accent-amber);">AeroRoast Mini bestellen &mdash; $2.250 HKD</a></p>
     </div>
 
+    <!-- ORBBOT -->
     <div class="workshop-card reveal" style="border-color: rgba(0,212,255,0.2); background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(168,255,60,0.03));">
-      <div class="workshop-emoji">&#9878;&#65039;</div>
+      <div class="workshop-num">03</div>
       <div class="workshop-badge" style="background: rgba(0,212,255,0.1); color: var(--accent-electric); border: 1px solid rgba(0,212,255,0.2);" data-lang-en>Premium &middot; Kit Included</div>
       <div class="workshop-badge" style="background: rgba(0,212,255,0.1); color: var(--accent-electric); border: 1px solid rgba(0,212,255,0.2);" data-lang-de>Premium &middot; Bausatz inklusive</div>
       <h3 class="workshop-title" data-lang-en>Build an OrbBot</h3>
       <h3 class="workshop-title" data-lang-de>Baue einen OrbBot</h3>
-      <p class="workshop-desc" data-lang-en>Our flagship workshop. Assemble the OrbBot — a self-balancing robot designed and engineered by <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-electric);">KurthTechnik</a>. It stays upright on a ball using IMU sensors, LQR control, and 3-axis motor coordination. German-engineered hardware, open-source firmware. Full kit included, take it home.</p>
-      <p class="workshop-desc" data-lang-de>Unser Flaggschiff-Workshop. Baue den OrbBot zusammen — einen selbstbalancierenden Roboter, entwickelt und konstruiert von <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-electric);">KurthTechnik</a>. Er balanciert auf einer Kugel mithilfe von IMU-Sensoren, LQR-Regelung und 3-Achsen-Motorsteuerung. German-engineered Hardware, Open-Source-Firmware. Kompletter Bausatz inklusive, zum Mitnehmen.</p>
+      <p class="workshop-desc" data-lang-en>Our flagship workshop. Assemble the OrbBot &mdash; a self-balancing robot designed and engineered by <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-electric);">KurthTechnik</a>. It stays upright on a ball using IMU sensors, LQR control, and 3-axis motor coordination. German-engineered hardware, open-source firmware. Full kit included, take it home.</p>
+      <p class="workshop-desc" data-lang-de>Unser Flaggschiff-Workshop. Baue den OrbBot zusammen &mdash; einen selbstbalancierenden Roboter, entwickelt und konstruiert von <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-electric);">KurthTechnik</a>. Er balanciert auf einer Kugel mithilfe von IMU-Sensoren, LQR-Regelung und 3-Achsen-Motorsteuerung. German-engineered Hardware, Open-Source-Firmware. Kompletter Bausatz inklusive, zum Mitnehmen.</p>
       <div class="workshop-details" data-lang-en>
-        <span class="workshop-detail">&#9201; 4 hours</span>
-        <span class="workshop-detail">&#128101; Max 6 people</span>
-        <span class="workshop-detail">&#128197; Select Saturdays</span>
-        <span class="workshop-detail">&#128230; Full OrbBot kit included</span>
-        <span class="workshop-detail">&#128295; Assembly + coding + LQR tuning</span>
-        <span class="workshop-detail">&#129302; Take your OrbBot home</span>
+        <span class="workshop-detail">4 hours</span>
+        <span class="workshop-detail">Max 6 people</span>
+        <span class="workshop-detail">Flexible scheduling</span>
+        <span class="workshop-detail">Full OrbBot kit included</span>
+        <span class="workshop-detail">Assembly + coding + LQR tuning</span>
+        <span class="workshop-detail">Take your OrbBot home</span>
       </div>
       <div class="workshop-details" data-lang-de>
-        <span class="workshop-detail">&#9201; 4 Stunden</span>
-        <span class="workshop-detail">&#128101; Max. 6 Personen</span>
-        <span class="workshop-detail">&#128197; Ausgew&auml;hlte Samstage</span>
-        <span class="workshop-detail">&#128230; Kompletter OrbBot-Bausatz inklusive</span>
-        <span class="workshop-detail">&#128295; Zusammenbau + Programmierung + LQR-Tuning</span>
-        <span class="workshop-detail">&#129302; Nimm deinen OrbBot mit nach Hause</span>
+        <span class="workshop-detail">4 Stunden</span>
+        <span class="workshop-detail">Max. 6 Personen</span>
+        <span class="workshop-detail">Flexible Terminwahl</span>
+        <span class="workshop-detail">Kompletter OrbBot-Bausatz inklusive</span>
+        <span class="workshop-detail">Zusammenbau + Programmierung + LQR-Tuning</span>
+        <span class="workshop-detail">Nimm deinen OrbBot mit nach Hause</span>
       </div>
       <div class="workshop-price">$2,200 <span>HKD / <span data-lang-en>person</span><span data-lang-de>Person</span></span></div>
     </div>
 
-  </div>
-</section>
-
-<!-- GASTRONOMY B2B -->
-<section style="padding: 60px 40px;">
-  <div class="reveal" style="max-width: 800px; margin: 0 auto; padding: 40px; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 20px; text-align: center;">
-    <div style="font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-amber); font-weight: 600; margin-bottom: 12px;" data-lang-en>For Restaurants, Bars &amp; Caf&eacute;s</div>
-    <div style="font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-amber); font-weight: 600; margin-bottom: 12px;" data-lang-de>F&uuml;r Restaurants, Bars &amp; Caf&eacute;s</div>
-    <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px;" data-lang-en>Custom-built tap systems &amp; roasters — with maintenance.</h3>
-    <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px;" data-lang-de>Ma&szlig;gefertigte Zapfanlagen &amp; R&ouml;ster — mit Wartung.</h3>
-    <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; max-width: 560px; margin-left: auto; margin-right: auto;" data-lang-en>We design, build, and maintain automated beer tap systems and coffee roasters for gastronomy businesses. German-engineered, locally serviced. Monthly maintenance plans available.</p>
-    <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; max-width: 560px; margin-left: auto; margin-right: auto;" data-lang-de>Wir entwerfen, bauen und warten automatisierte Bierzapfanlagen und Kaffeer&ouml;ster f&uuml;r Gastronomiebetriebe. German-engineered, lokal gewartet. Monatliche Wartungspl&auml;ne verf&uuml;gbar.</p>
-    <a href="mailto:contact@spaceop.education" style="color: var(--accent-amber); text-decoration: none; font-weight: 600; font-size: 15px; border-bottom: 1px solid rgba(255,179,71,0.3); padding-bottom: 2px;">contact@spaceop.education &rarr;</a>
   </div>
 </section>
 
@@ -447,8 +475,8 @@
   <div class="section-label reveal" data-lang-de>So funktioniert's</div>
   <h2 class="section-title reveal" data-lang-en>Show up. Build. Leave smarter.</h2>
   <h2 class="section-title reveal" data-lang-de>Komm vorbei. Baue. Geh schlauer.</h2>
-  <p class="section-desc reveal" data-lang-en>No homework. No commitments. Just a great Saturday.</p>
-  <p class="section-desc reveal" data-lang-de>Keine Hausaufgaben. Keine Verpflichtungen. Einfach ein toller Samstag.</p>
+  <p class="section-desc reveal" data-lang-en>No homework. No commitments. Just a great experience.</p>
+  <p class="section-desc reveal" data-lang-de>Keine Hausaufgaben. Keine Verpflichtungen. Einfach ein tolles Erlebnis.</p>
 
   <div class="steps">
     <div class="step reveal">
@@ -469,8 +497,8 @@
       <div class="step-num">03</div>
       <h3 class="step-title" data-lang-en>Build Something Real</h3>
       <h3 class="step-title" data-lang-de>Baue etwas Echtes</h3>
-      <p class="step-desc" data-lang-en>3 hours of hands-on making. Small group. Expert guidance. No lectures.</p>
-      <p class="step-desc" data-lang-de>3 Stunden praktisches Arbeiten. Kleine Gruppe. Fachkundige Anleitung. Keine Vortr&auml;ge.</p>
+      <p class="step-desc" data-lang-en>3&ndash;4 hours of hands-on making. Small group. Expert guidance. No lectures.</p>
+      <p class="step-desc" data-lang-de>3&ndash;4 Stunden praktisches Arbeiten. Kleine Gruppe. Fachkundige Anleitung. Keine Vortr&auml;ge.</p>
     </div>
     <div class="step reveal">
       <div class="step-num">04</div>
@@ -485,9 +513,9 @@
 <!-- KIDS LINK -->
 <section>
   <div class="about-banner reveal">
-    <h3 data-lang-en>Looking for kids programs? &#128102;&#128103;</h3>
-    <h3 data-lang-de>Kinderprogramme gesucht? &#128102;&#128103;</h3>
-    <p data-lang-en>We also run term-based AI and robotics programs for ages 9–17. German-engineered curriculum, small groups, Explorer and Builder levels.</p>
+    <h3 data-lang-en>Looking for kids programs?</h3>
+    <h3 data-lang-de>Kinderprogramme gesucht?</h3>
+    <p data-lang-en>We also run term-based AI and robotics programs for ages 9&ndash;17. German-engineered curriculum, small groups, Explorer and Builder levels.</p>
     <p data-lang-de>Wir bieten auch semesterbasierte KI- und Robotik-Programme f&uuml;r 9- bis 17-J&auml;hrige an. German-engineered Lehrplan, kleine Gruppen, Explorer- und Builder-Level.</p>
     <a href="juniors.html" data-lang-en>Explore Kids Programs &rarr;</a>
     <a href="juniors.html" data-lang-de>Kinderprogramme entdecken &rarr;</a>
@@ -498,11 +526,11 @@
 <section class="cta-section">
   <h2 class="cta-title reveal" data-lang-en>Stop scrolling.<br><span class="gradient-text">Start building.</span></h2>
   <h2 class="cta-title reveal" data-lang-de>H&ouml;r auf zu scrollen.<br><span class="gradient-text">Fang an zu bauen.</span></h2>
-  <p class="cta-desc reveal" data-lang-en>Next workshops launching 14 May 2026. Limited spots per session. Book via WhatsApp.</p>
-  <p class="cta-desc reveal" data-lang-de>N&auml;chste Workshops ab 14. Mai 2026. Begrenzte Pl&auml;tze pro Session. Buche per WhatsApp.</p>
+  <p class="cta-desc reveal" data-lang-en>Limited spots per session. Book via WhatsApp.</p>
+  <p class="cta-desc reveal" data-lang-de>Begrenzte Pl&auml;tze pro Session. Buche per WhatsApp.</p>
   <div class="reveal">
-    <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20a%20CreatorPort%20adult%20workshop.%0A-%20Name%3A%0A-%20Workshop%3A%0A-%20Preferred%20date%3A" target="_blank" class="btn-primary" data-lang-en>Book via WhatsApp &rarr;</a>
-    <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20einen%20CreatorPort%20Workshop.%0A-%20Name%3A%0A-%20Workshop%3A%0A-%20Wunschtermin%3A" target="_blank" class="btn-primary" data-lang-de>Per WhatsApp buchen &rarr;</a>
+    <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20a%20CreatorPort%20adult%20workshop.%0A-%20Name%3A%0A-%20Workshop%3A%0A-%20Preferred%20date%3A" target="_blank" class="btn-primary" data-lang-en>Book via WhatsApp</a>
+    <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20einen%20CreatorPort%20Workshop.%0A-%20Name%3A%0A-%20Workshop%3A%0A-%20Wunschtermin%3A" target="_blank" class="btn-primary" data-lang-de>Per WhatsApp buchen</a>
   </div>
 </section>
 
@@ -513,7 +541,6 @@
     <a href="privacy.html" style="margin-right: 20px;">Privacy Policy</a>
     <a href="terms.html">Terms of Service</a>
   </span>
-  <span style="color: #333; font-size: 10px;">V1</span>
 </div>
 
 <script>
@@ -525,7 +552,6 @@
     localStorage.setItem('creatorport-lang', lang);
   }
 
-  // Restore saved language
   const savedLang = localStorage.getItem('creatorport-lang');
   if (savedLang) setLang(savedLang);
 
@@ -542,7 +568,6 @@
     });
   });
 
-  // Reveal on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('visible');
