@@ -48,6 +48,8 @@
   .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
   .nav-links a { color: var(--text-sub); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
   .nav-links a:hover { color: var(--accent-blue); }
+  a:not(.logo):not(.nav-cta) { text-decoration: underline; text-underline-offset: 3px; }
+  a:not(.logo):not(.nav-cta):hover { color: var(--accent-blue); }
   .nav-cta {
     padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 14px;
     text-decoration: none; color: #fff; background: var(--accent);
@@ -205,6 +207,7 @@
     <li><a href="#formats">Formats</a></li>
     <li><a href="juniors.html">Kids Programs</a></li>
     <li><a href="adults.html">Adult Workshops</a></li>
+    <li><a href="https://dankur94.github.io/kurthtechnik/" target="_blank">Product</a></li>
   </ul>
   <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20inquiring%20about%20CreatorPort%20for%20our%20institution.%0A-%20Organisation%3A%0A-%20Type%20%28School%20/%20University%20/%20Other%29%3A%0A-%20Number%20of%20students%3A%0A-%20What%20we%27re%20looking%20for%3A" target="_blank" class="nav-cta">Get in Touch</a>
   <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open');document.querySelector('nav').classList.toggle('menu-open');">
@@ -239,7 +242,7 @@
     <div class="offering-content">
       <h3>The OrbBot Workshop</h3>
       <p>Students build a self-balancing robot that stays upright on a ball — combining mechanical assembly, electronics, coding, and LQR control theory in one hands-on project.</p>
-      <p>Each student assembles their own OrbBot from our proprietary kit, programs it, tunes the controller, and takes it home. Designed and manufactured by <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">KurthTechnik</a>.</p>
+      <p>Each student assembles their own OrbBot from a kit designed and engineered by <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-blue); font-weight: 600;">KurthTechnik</a> — German-engineered hardware with open-source firmware. Students program it, tune the controller, and take it home.</p>
       <ul class="offering-features">
         <li>4-hour guided workshop</li>
         <li>OrbBot kit included for every student</li>

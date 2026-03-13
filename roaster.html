@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CreatorPort — The Coffee Roaster Kit</title>
+<meta name="description" content="Build your own Arduino-controlled coffee roaster. German-engineered, Hong Kong-made. Buy the kit or join a workshop.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0a0a0f;
+    --bg-card: #111118;
+    --text-primary: #f0f0f0;
+    --text-secondary: #a0a0b0;
+    --text-muted: #666680;
+    --accent-electric: #00d4ff;
+    --accent-lime: #a8ff3c;
+    --accent-amber: #ffb347;
+    --accent-warm: #e8a050;
+    --border-subtle: rgba(255,255,255,0.06);
+    --gradient-main: linear-gradient(135deg, #ffb347, #e8a050);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .gradient-text {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 9000;
+    padding: 20px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(20px);
+    background: rgba(10,10,15,0.7);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--gradient-main);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px; color: #0a0a0f;
+  }
+  .logo-text { font-weight: 700; font-size: 18px; color: var(--text-primary); letter-spacing: -0.5px; }
+  .logo-text em { font-style: normal; color: var(--accent-amber); }
+
+  .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+  .nav-links a { color: var(--text-secondary); text-decoration: underline; text-underline-offset: 3px; font-size: 14px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--accent-amber); }
+
+  .nav-cta {
+    padding: 10px 24px; border-radius: 24px; font-weight: 600; font-size: 14px;
+    text-decoration: none; color: #0a0a0f; background: var(--accent-amber);
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,179,71,0.3); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 9999; }
+  .hamburger span { width: 24px; height: 2px; background: var(--text-primary); transition: all 0.3s; border-radius: 2px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    padding: 120px 40px 80px;
+  }
+
+  .hero-tag {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 3px;
+    color: var(--accent-amber); font-weight: 600; margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: 64px; font-weight: 800; letter-spacing: -3px; line-height: 1.05;
+    margin-bottom: 24px; max-width: 800px;
+  }
+
+  .hero-sub {
+    font-size: 20px; color: var(--text-secondary); max-width: 600px;
+    line-height: 1.7; margin-bottom: 40px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+  .btn-primary {
+    padding: 16px 36px; border-radius: 30px; font-weight: 700; font-size: 16px;
+    text-decoration: none; color: #0a0a0f; background: var(--accent-amber);
+    transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(255,179,71,0.3); }
+
+  .btn-secondary {
+    padding: 16px 36px; border-radius: 30px; font-weight: 600; font-size: 16px;
+    text-decoration: none; color: var(--text-primary);
+    border: 1px solid var(--border-subtle); background: transparent;
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover { border-color: var(--accent-amber); color: var(--accent-amber); }
+
+  /* SECTIONS */
+  section { padding: 100px 40px; }
+  .section-label {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 3px;
+    color: var(--accent-amber); font-weight: 600; text-align: center; margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 48px; font-weight: 800; letter-spacing: -2px;
+    text-align: center; margin-bottom: 16px; line-height: 1.1;
+  }
+  .section-desc {
+    font-size: 16px; color: var(--text-secondary); text-align: center;
+    max-width: 600px; margin: 0 auto 60px; line-height: 1.7;
+  }
+
+  /* FEATURES */
+  .features-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px; max-width: 1000px; margin: 0 auto;
+  }
+
+  .feature-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 32px;
+    transition: all 0.4s;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-amber);
+  }
+
+  .feature-emoji { font-size: 36px; margin-bottom: 16px; }
+  .feature-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .feature-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+  /* PRICING */
+  .pricing-cards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px; max-width: 800px; margin: 0 auto;
+  }
+
+  .price-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    transition: all 0.4s;
+  }
+  .price-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-amber);
+  }
+  .price-card.featured {
+    border-color: var(--accent-amber);
+    background: linear-gradient(135deg, rgba(255,179,71,0.08), rgba(255,179,71,0.02));
+  }
+
+  .price-label { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-amber); font-weight: 600; margin-bottom: 8px; }
+  .price-amount { font-size: 48px; font-weight: 800; color: var(--accent-amber); margin-bottom: 4px; }
+  .price-amount span { font-size: 16px; font-weight: 400; color: var(--text-muted); }
+  .price-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.7; }
+  .price-features { text-align: left; margin-bottom: 24px; }
+  .price-feature { font-size: 14px; color: var(--text-secondary); padding: 6px 0; display: flex; align-items: center; gap: 8px; }
+  .price-check { color: var(--accent-amber); font-weight: 700; }
+
+  .price-btn {
+    display: inline-block; padding: 14px 32px; border-radius: 30px;
+    font-weight: 700; font-size: 15px; text-decoration: none;
+    color: #0a0a0f; background: var(--accent-amber); transition: all 0.3s;
+  }
+  .price-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,179,71,0.3); }
+
+  /* SPECS */
+  .specs {
+    max-width: 700px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .spec-item {
+    padding: 16px 20px; background: var(--bg-card);
+    border: 1px solid var(--border-subtle); border-radius: 12px;
+  }
+  .spec-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px; }
+  .spec-value { font-size: 16px; font-weight: 600; }
+
+  /* CTA */
+  .cta-section {
+    text-align: center; padding: 100px 40px;
+    background: linear-gradient(180deg, transparent, rgba(255,179,71,0.03));
+  }
+  .cta-title { font-size: 48px; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; }
+  .cta-desc { font-size: 16px; color: var(--text-secondary); max-width: 500px; margin: 0 auto 40px; }
+
+  /* FOOTER */
+  .footer-bottom {
+    padding: 24px 40px;
+    border-top: 1px solid var(--border-subtle);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--text-muted);
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom a { color: var(--text-muted); text-decoration: underline; text-underline-offset: 3px; }
+  .footer-bottom a:hover { color: var(--accent-amber); }
+
+  /* ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; flex-wrap: wrap; }
+    .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; gap: 20px; margin: 0; padding: 20px 0 10px; order: 99; }
+    .nav-links.open { display: flex !important; }
+    .hamburger { display: flex; }
+    .nav-cta { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
+    .hero-sub { font-size: 16px; }
+    .hero-actions { flex-direction: column; }
+    .btn-primary, .btn-secondary { width: 100%; text-align: center; justify-content: center; }
+    section { padding: 80px 24px; }
+    .section-title { font-size: 32px; letter-spacing: -1px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .pricing-cards { grid-template-columns: 1fr; }
+    .specs { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon"><span>C</span></div>
+    <div class="logo-text">Creator<em>Port</em></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#specs">Specs</a></li>
+    <li><a href="adults.html">Workshops</a></li>
+    <li><a href="https://dankur94.github.io/kurthtechnik/" target="_blank">Product</a></li>
+  </ul>
+  <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20buying%20the%20Coffee%20Roaster%20Kit.%0A-%20Name%3A%0A-%20Quantity%3A" target="_blank" class="nav-cta">Buy Now</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag reveal">The CreatorPort Coffee Roaster</div>
+  <h1 class="reveal">Roast your own.<br><span class="gradient-text">From green to gold.</span></h1>
+  <p class="hero-sub reveal">An Arduino-controlled coffee roaster you build yourself. Heat sensor, fan control, roast profiling — real engineering in every cup. Designed in Hong Kong, German-engineered.</p>
+  <div class="hero-actions reveal">
+    <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20buying%20the%20Coffee%20Roaster%20Kit.%0A-%20Name%3A%0A-%20Quantity%3A" target="_blank" class="btn-primary">Buy the Kit — $2,000 HKD →</a>
+    <a href="adults.html" class="btn-secondary">Join a Workshop Instead</a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-label reveal">What You Get</div>
+  <h2 class="section-title reveal">Not a toy.<br>A real roaster.</h2>
+  <p class="section-desc reveal">Everything you need to roast specialty-grade coffee at home. Assemble it, program it, roast with it.</p>
+
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-emoji">🌡️</div>
+      <h3 class="feature-title">Temperature Control</h3>
+      <p class="feature-desc">K-type thermocouple with real-time temperature monitoring. PID control keeps your roast profile precise and repeatable.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-emoji">💨</div>
+      <h3 class="feature-title">Fan Speed Control</h3>
+      <p class="feature-desc">Variable fan speed for airflow management. Control the chaff removal and heat distribution throughout the roast.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-emoji">📊</div>
+      <h3 class="feature-title">Roast Profiling</h3>
+      <p class="feature-desc">Arduino-based data logging. Track your roast curves, save profiles, and reproduce your perfect roast every time.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-emoji">🔧</div>
+      <h3 class="feature-title">Full Assembly Kit</h3>
+      <p class="feature-desc">All electronics, housing, and components included. Clear instructions guide you through the build — soldering iron not included.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-emoji">💻</div>
+      <h3 class="feature-title">Open-Source Firmware</h3>
+      <p class="feature-desc">Arduino code included and fully customisable. Modify the control logic, add features, or connect it to your own dashboard.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-emoji">☕</div>
+      <h3 class="feature-title">Green Beans Starter Pack</h3>
+      <p class="feature-desc">Comes with a selection of specialty green beans so you can start roasting right out of the box.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section id="specs" style="background: rgba(255,255,255,0.01);">
+  <div class="section-label reveal">Technical Specs</div>
+  <h2 class="section-title reveal">Built for real roasting.</h2>
+  <p class="section-desc reveal">Not a popcorn-popper hack. A purpose-built roaster with proper engineering.</p>
+
+  <div class="specs">
+    <div class="spec-item reveal"><div class="spec-label">Controller</div><div class="spec-value">Arduino Nano</div></div>
+    <div class="spec-item reveal"><div class="spec-label">Sensor</div><div class="spec-value">K-type thermocouple</div></div>
+    <div class="spec-item reveal"><div class="spec-label">Heating</div><div class="spec-value">Ceramic heat element</div></div>
+    <div class="spec-item reveal"><div class="spec-label">Airflow</div><div class="spec-value">Variable-speed fan</div></div>
+    <div class="spec-item reveal"><div class="spec-label">Batch Size</div><div class="spec-value">100–150g green beans</div></div>
+    <div class="spec-item reveal"><div class="spec-label">Roast Time</div><div class="spec-value">8–14 min typical</div></div>
+    <div class="spec-item reveal"><div class="spec-label">Power</div><div class="spec-value">220V / 50Hz</div></div>
+    <div class="spec-item reveal"><div class="spec-label">Build Time</div><div class="spec-value">~3 hours</div></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-label reveal">Pricing</div>
+  <h2 class="section-title reveal">Two ways to get one.</h2>
+  <p class="section-desc reveal">Buy the kit and build at home, or join a guided workshop where we build it together.</p>
+
+  <div class="pricing-cards">
+    <div class="price-card featured reveal">
+      <div class="price-label">Kit Only</div>
+      <div class="price-amount">$2,000 <span>HKD</span></div>
+      <p class="price-desc">Everything shipped to your door. Build it yourself with our step-by-step guide.</p>
+      <div class="price-features">
+        <div class="price-feature"><span class="price-check">✓</span> Complete roaster kit</div>
+        <div class="price-feature"><span class="price-check">✓</span> Arduino + all electronics</div>
+        <div class="price-feature"><span class="price-check">✓</span> Green beans starter pack</div>
+        <div class="price-feature"><span class="price-check">✓</span> Assembly guide</div>
+        <div class="price-feature"><span class="price-check">✓</span> Open-source firmware</div>
+      </div>
+      <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20buying%20the%20Coffee%20Roaster%20Kit.%0A-%20Name%3A%0A-%20Quantity%3A" target="_blank" class="price-btn">Buy Kit →</a>
+    </div>
+
+    <div class="price-card reveal">
+      <div class="price-label">Workshop + Kit</div>
+      <div class="price-amount">$600 <span>HKD</span></div>
+      <p class="price-desc">Join a 3-hour guided workshop. Kit available separately for $2,000 HKD if you want to take it home.</p>
+      <div class="price-features">
+        <div class="price-feature"><span class="price-check">✓</span> 3-hour hands-on session</div>
+        <div class="price-feature"><span class="price-check">✓</span> Expert guidance</div>
+        <div class="price-feature"><span class="price-check">✓</span> Coffee tasting included</div>
+        <div class="price-feature"><span class="price-check">✓</span> Max 6 people per session</div>
+        <div class="price-feature"><span class="price-check">✓</span> Optional: buy kit to take home</div>
+      </div>
+      <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20the%20Coffee%20Roaster%20Workshop.%0A-%20Name%3A%0A-%20Preferred%20date%3A" target="_blank" class="price-btn">Book Workshop →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="cta-title reveal">Stop buying.<br><span class="gradient-text">Start roasting.</span></h2>
+  <p class="cta-desc reveal">From green beans to your perfect cup — in your own kitchen, with a roaster you built yourself.</p>
+  <div class="reveal">
+    <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20buying%20the%20Coffee%20Roaster%20Kit.%0A-%20Name%3A%0A-%20Quantity%3A" target="_blank" class="btn-primary">Get Your Kit →</a>
+  </div>
+</section>
+
+<div class="footer-bottom">
+  <span>CreatorPort is a brand operated by © Space of Possibilities Limited · Hong Kong · contact@spaceop.education</span>
+  <span>
+    <a href="privacy.html" style="margin-right: 20px;">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </span>
+</div>
+
+<script>
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('open');
+    document.querySelector('nav').classList.toggle('menu-open');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

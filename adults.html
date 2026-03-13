@@ -72,6 +72,8 @@
   .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
   .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.3s; }
   .nav-links a:hover { color: var(--accent-electric); }
+  a:not(.logo):not(.btn-primary):not(.btn-secondary):not(.nav-cta):not(.nav-badge) { text-decoration: underline; text-underline-offset: 3px; }
+  a:not(.logo):not(.btn-primary):not(.btn-secondary):not(.nav-cta):not(.nav-badge):hover { color: var(--accent-electric); }
 
   .nav-badge { font-size: 11px; padding: 4px 10px; border-radius: 20px; background: rgba(255,179,71,0.15); color: var(--accent-amber); font-weight: 600; border: 1px solid rgba(255,179,71,0.3); }
 
@@ -269,6 +271,7 @@
     <li><a href="#workshops">Workshops</a></li>
     <li><a href="#how">How It Works</a></li>
     <li><a href="#special">Events</a></li>
+    <li><a href="https://dankur94.github.io/kurthtechnik/" target="_blank">Product</a></li>
     <li><a href="juniors.html" class="nav-badge">Kids Programs →</a></li>
   </ul>
   <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20a%20CreatorPort%20adult%20workshop.%0A-%20Name%3A%0A-%20Workshop%3A%0A-%20Preferred%20date%3A" target="_blank" class="nav-cta">Book Now</a>
@@ -324,17 +327,17 @@
         <span class="workshop-detail">📅 Select Saturdays</span>
         <span class="workshop-detail">☕ Green beans + specialty coffee tasting included</span>
         <span class="workshop-detail">🔧 All build kits provided on-site</span>
-        <span class="workshop-detail">🏠 Take it home for an extra fee — ask for pricing</span>
+        <span class="workshop-detail">🏠 Buy your own roaster kit: $2,000 HKD</span>
       </div>
-      <div class="workshop-price">$600 <span>HKD / person</span></div>
-      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;">You got one of our roasters? We offer maintenance plans for cafés & restaurants. <a href="mailto:contact@spaceop.education" style="color: var(--accent-amber);">Get in touch →</a></p>
+      <div class="workshop-price">$600 <span>HKD / person (workshop only)</span></div>
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;">Want your own roaster? <a href="roaster.html" style="color: var(--accent-amber);">Buy the kit for $2,000 HKD →</a> · Maintenance plans for cafés & restaurants: <a href="mailto:contact@spaceop.education" style="color: var(--accent-amber);">Get in touch →</a></p>
     </div>
 
     <div class="workshop-card reveal" style="border-color: rgba(0,212,255,0.2); background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(168,255,60,0.03));">
       <div class="workshop-emoji">⚖️</div>
       <div class="workshop-badge" style="background: rgba(0,212,255,0.1); color: var(--accent-electric); border: 1px solid rgba(0,212,255,0.2);">Premium · Kit Included</div>
       <h3 class="workshop-title">Build an OrbBot</h3>
-      <p class="workshop-desc">Our flagship workshop. Assemble a self-balancing robot that stays upright on a ball — using IMU sensors, LQR control, and 3-axis motor coordination. Kit by <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-electric); text-decoration: none;">KurthTechnik</a> included, take it home.</p>
+      <p class="workshop-desc">Our flagship workshop. Assemble the OrbBot — a self-balancing robot designed and engineered by <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-electric);">KurthTechnik</a>. It stays upright on a ball using IMU sensors, LQR control, and 3-axis motor coordination. German-engineered hardware, open-source firmware. Full kit included, take it home.</p>
       <div class="workshop-details">
         <span class="workshop-detail">⏱ 4 hours</span>
         <span class="workshop-detail">👥 Max 6 people</span>
