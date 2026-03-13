@@ -190,11 +190,16 @@
   .card-institutions::before { background: var(--magenta); }
   .card-institutions:hover { border-color: var(--magenta); }
 
-  .card-emoji {
-    font-size: 44px;
-    margin-bottom: 20px;
-    display: block;
+  .card-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700;
+    letter-spacing: -1px;
   }
+  .card-junior .card-icon { background: rgba(0,212,255,0.1); color: var(--accent); }
+  .card-adults .card-icon { background: rgba(255,179,71,0.1); color: var(--amber); }
+  .card-institutions .card-icon { background: rgba(255,60,172,0.1); color: var(--magenta); }
   .card-title {
     font-size: 20px;
     font-weight: 700;
@@ -273,7 +278,7 @@
     .subtitle { font-size: 15px; }
     .cards { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto 48px; }
     .card { padding: 28px 20px; }
-    .card-emoji { font-size: 36px; margin-bottom: 14px; }
+    .card-icon { width: 40px; height: 40px; font-size: 14px; margin-bottom: 14px; }
     .lang-toggle { top: 16px; right: 16px; }
   }
 </style>
@@ -303,7 +308,7 @@
 
   <div class="cards">
     <a href="juniors.html" class="card card-junior fade-in">
-      <span class="card-emoji">🚀</span>
+      <div class="card-icon">&lt;/&gt;</div>
       <div class="card-title" data-lang-en>Junior Programs</div>
       <div class="card-title" data-lang-de>Jugendprogramme</div>
       <div class="card-age" data-lang-en>Ages 9–17</div>
@@ -315,7 +320,7 @@
     </a>
 
     <a href="adults.html" class="card card-adults fade-in">
-      <span class="card-emoji">🍺</span>
+      <div class="card-icon">{ }</div>
       <div class="card-title" data-lang-en>Adult Workshops</div>
       <div class="card-title" data-lang-de>Workshops für Erwachsene</div>
       <div class="card-age" data-lang-en>Adults</div>
@@ -327,7 +332,7 @@
     </a>
 
     <a href="institutions.html" class="card card-institutions fade-in">
-      <span class="card-emoji">🏫</span>
+      <div class="card-icon">[ ]</div>
       <div class="card-title" data-lang-en>Schools & Institutions</div>
       <div class="card-title" data-lang-de>Schulen & Institutionen</div>
       <div class="card-age" data-lang-en>Custom Programs</div>

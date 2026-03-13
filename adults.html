@@ -218,11 +218,14 @@
   }
   .workshop-title { font-size: 22px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px; }
   .workshop-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; }
-  .workshop-details { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+  .workshop-details { margin-bottom: 20px; }
   .workshop-detail {
-    font-size: 12px; color: var(--text-muted); background: rgba(255,255,255,0.04);
-    padding: 6px 12px; border-radius: 8px; font-weight: 500;
+    font-size: 13px; color: var(--text-secondary); line-height: 1.5;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex; align-items: center; gap: 8px;
   }
+  .workshop-detail::before { content: '\2013'; color: var(--text-muted); font-weight: 700; }
   .workshop-price { font-size: 28px; font-weight: 800; color: var(--accent-amber); }
   .workshop-price span { font-size: 14px; font-weight: 400; color: var(--text-muted); }
 
@@ -416,8 +419,8 @@
       <div class="workshop-badge" data-lang-de>Robotik + Kaffee</div>
       <h3 class="workshop-title" data-lang-en>Build a Coffee Roaster</h3>
       <h3 class="workshop-title" data-lang-de>Baue einen Kaffeer&ouml;ster</h3>
-      <p class="workshop-desc" data-lang-en>Build an Arduino-controlled coffee bean roaster &mdash; heat sensor, fan control, roast profiling. Understand PID control through the perfect medium roast. Roast your own beans, grind, brew, taste.</p>
-      <p class="workshop-desc" data-lang-de>Baue einen Arduino-gesteuerten Kaffeer&ouml;ster &mdash; W&auml;rmesensor, L&uuml;ftersteuerung, R&ouml;stprofil-Erstellung. Verstehe PID-Regelung anhand der perfekten mittleren R&ouml;stung. R&ouml;ste deine eigenen Bohnen, mahle, br&uuml;he, probiere.</p>
+      <p class="workshop-desc" data-lang-en>Build an Arduino-controlled <a href="roaster.html" style="color: var(--accent-amber);">AeroRoast Mini</a> coffee roaster &mdash; heat sensor, fan control, roast profiling. Understand PID control through the perfect medium roast. Roast your own beans, grind, brew, taste.</p>
+      <p class="workshop-desc" data-lang-de>Baue einen Arduino-gesteuerten <a href="roaster.html" style="color: var(--accent-amber);">AeroRoast Mini</a> Kaffeer&ouml;ster &mdash; W&auml;rmesensor, L&uuml;ftersteuerung, R&ouml;stprofil-Erstellung. Verstehe PID-Regelung anhand der perfekten mittleren R&ouml;stung. R&ouml;ste deine eigenen Bohnen, mahle, br&uuml;he, probiere.</p>
       <div class="workshop-details" data-lang-en>
         <span class="workshop-detail">3 hours</span>
         <span class="workshop-detail">Max 6 people</span>
@@ -442,8 +445,8 @@
     <!-- ORBBOT -->
     <div class="workshop-card reveal" style="border-color: rgba(0,212,255,0.2); background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(168,255,60,0.03));">
       <div class="workshop-num">03</div>
-      <div class="workshop-badge" style="background: rgba(0,212,255,0.1); color: var(--accent-electric); border: 1px solid rgba(0,212,255,0.2);" data-lang-en>Premium &middot; Kit Included</div>
-      <div class="workshop-badge" style="background: rgba(0,212,255,0.1); color: var(--accent-electric); border: 1px solid rgba(0,212,255,0.2);" data-lang-de>Premium &middot; Bausatz inklusive</div>
+      <div class="workshop-badge" style="background: rgba(0,212,255,0.1); color: var(--accent-electric); border: 1px solid rgba(0,212,255,0.2);" data-lang-en>Flagship &middot; Robotics</div>
+      <div class="workshop-badge" style="background: rgba(0,212,255,0.1); color: var(--accent-electric); border: 1px solid rgba(0,212,255,0.2);" data-lang-de>Flaggschiff &middot; Robotik</div>
       <h3 class="workshop-title" data-lang-en>Build an OrbBot</h3>
       <h3 class="workshop-title" data-lang-de>Baue einen OrbBot</h3>
       <p class="workshop-desc" data-lang-en>Our flagship workshop. Assemble the OrbBot &mdash; a self-balancing robot designed and engineered by <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-electric);">KurthTechnik</a>. It stays upright on a ball using IMU sensors, LQR control, and 3-axis motor coordination. German-engineered hardware, open-source firmware. Full kit included, take it home.</p>
@@ -464,7 +467,9 @@
         <span class="workshop-detail">Zusammenbau + Programmierung + LQR-Tuning</span>
         <span class="workshop-detail">Nimm deinen OrbBot mit nach Hause</span>
       </div>
-      <div class="workshop-price">$2,200 <span>HKD / <span data-lang-en>person</span><span data-lang-de>Person</span></span></div>
+      <div class="workshop-price">$1,030 <span>HKD / <span data-lang-en>person (workshop only)</span><span data-lang-de>Person (nur Workshop)</span></span></div>
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;" data-lang-en>Want to keep your OrbBot? Take it home for <strong style="color: var(--accent-electric);">$2,200 HKD</strong> total (kit included). <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-electric);">Learn more about OrbBot</a></p>
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;" data-lang-de>OrbBot behalten? Nimm ihn mit f&uuml;r <strong style="color: var(--accent-electric);">$2.200 HKD</strong> gesamt (Bausatz inklusive). <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-electric);">Mehr &uuml;ber OrbBot</a></p>
     </div>
 
   </div>
