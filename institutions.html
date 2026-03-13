@@ -68,8 +68,8 @@
   .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
   .nav-links a { color: var(--text-sub); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
   .nav-links a:hover { color: var(--accent-blue); }
-  a:not(.logo):not(.nav-cta):not(.nav-links a) { text-decoration: underline; text-underline-offset: 3px; }
   .nav-links a { text-decoration: none !important; }
+  a[class] { text-decoration: none; }
   .nav-cta {
     padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 14px;
     text-decoration: none; color: #fff; background: var(--accent);

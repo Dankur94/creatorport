@@ -98,8 +98,8 @@
   .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
   .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.3s; }
   .nav-links a:hover { color: var(--accent-electric); }
-  a:not(.logo):not(.btn-primary):not(.btn-secondary):not(.nav-cta):not(.nav-badge):not(.nav-links a) { text-decoration: underline; text-underline-offset: 3px; }
   .nav-links a { text-decoration: none !important; }
+  a[class] { text-decoration: none; }
 
   .nav-badge { font-size: 11px; padding: 4px 10px; border-radius: 20px; background: rgba(255,179,71,0.15); color: var(--accent-amber); font-weight: 600; border: 1px solid rgba(255,179,71,0.3); }
 
