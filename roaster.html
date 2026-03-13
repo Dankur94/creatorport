@@ -35,13 +35,12 @@
 
   .serif { font-family: 'Cormorant Garamond', serif; }
 
-  /* LANG */
-  [data-lang-de] { display: none; }
-  body.lang-de [data-lang-en] { display: none; }
-  body.lang-de [data-lang-de] { display: block; }
+  /* LANG — !important needed to override display set by button/link classes */
+  [data-lang-de] { display: none !important; }
+  body.lang-de [data-lang-en] { display: none !important; }
+  body.lang-de [data-lang-de] { display: block !important; }
   body.lang-de span[data-lang-de],
-  body.lang-de a[data-lang-de] { display: inline; }
-  span[data-lang-de] { display: none; }
+  body.lang-de a[data-lang-de] { display: inline-block !important; }
 
   .lang-toggle {
     display: flex; gap: 2px;
