@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" width="800" height="900">
+  <!-- Kurth Kaffee & Technik - Hero Logo -->
+  
+  <!-- Gear with 8 thick teeth -->
+  <g transform="translate(400, 370)">
+    <rect x="-30" y="-250" width="60" height="500" rx="10" fill="#1a1a1a" transform="rotate(0)"/>
+    <rect x="-30" y="-250" width="60" height="500" rx="10" fill="#1a1a1a" transform="rotate(45)"/>
+    <rect x="-30" y="-250" width="60" height="500" rx="10" fill="#1a1a1a" transform="rotate(90)"/>
+    <rect x="-30" y="-250" width="60" height="500" rx="10" fill="#1a1a1a" transform="rotate(135)"/>
+    
+    <!-- Outer circle -->
+    <circle cx="0" cy="0" r="200" fill="#1a1a1a"/>
+    <!-- Inner cutout -->
+    <circle cx="0" cy="0" r="148" fill="#ffffff"/>
+    
+    <!-- Coffee bean -->
+    <g transform="rotate(-15)">
+      <ellipse cx="0" cy="0" rx="86" ry="114" fill="#1a1a1a"/>
+      <path d="M0,-88 C24,-30 -24,30 0,88" stroke="#ffffff" stroke-width="16" fill="none" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- KURTH -->
+  <text x="400" y="700" text-anchor="middle" font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="72" font-weight="600" fill="#1a1a1a" letter-spacing="18">KURTH</text>
+
+  <!-- Divider lines with gap -->
+  <line x1="160" y1="735" x2="345" y2="735" stroke="#1a1a1a" stroke-width="1.5"/>
+  <line x1="455" y1="735" x2="640" y2="735" stroke="#1a1a1a" stroke-width="1.5"/>
+
+  <!-- Tagline -->
+  <text x="400" y="775" text-anchor="middle" font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="22" font-weight="400" fill="#555555" letter-spacing="8">KAFFEE &amp; TECHNIK</text>
+</svg>
