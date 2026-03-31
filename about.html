@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CreatorPort — About Daniel Kurth</title>
+<meta name="description" content="Meet Daniel Kurth — RWTH Aachen engineer, founder of CreatorPort, KurthTechnik, and ChatBridge. Based in Hong Kong.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0a0a0f;
+    --bg-card: #111118;
+    --text-primary: #f0f0f0;
+    --text-secondary: #a0a0b0;
+    --text-muted: #666680;
+    --accent-electric: #00d4ff;
+    --accent-lime: #a8ff3c;
+    --accent-amber: #ffb347;
+    --accent-magenta: #ff3cac;
+    --border-subtle: rgba(255,255,255,0.06);
+    --gradient-main: linear-gradient(135deg, #00d4ff, #a8ff3c);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .gradient-text {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* LANG */
+  [data-lang-de] { display: none !important; }
+  body.lang-de [data-lang-en] { display: none !important; }
+  body.lang-de [data-lang-de] { display: block !important; }
+  body.lang-de span[data-lang-de],
+  body.lang-de a[data-lang-de] { display: inline-block !important; }
+  body.lang-de div[data-lang-de],
+  body.lang-de p[data-lang-de],
+  body.lang-de h1[data-lang-de],
+  body.lang-de h2[data-lang-de],
+  body.lang-de h3[data-lang-de] { display: block !important; }
+
+  .lang-toggle {
+    display: flex; gap: 4px; background: rgba(0,212,255,0.1);
+    border-radius: 20px; padding: 3px;
+  }
+  .lang-btn {
+    padding: 5px 14px; border-radius: 18px; border: none;
+    font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600;
+    cursor: pointer; transition: all 0.3s;
+    background: transparent; color: var(--text-muted);
+  }
+  .lang-btn.active {
+    background: var(--accent-electric); color: var(--bg-primary);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 9000;
+    padding: 20px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(20px);
+    background: rgba(10,10,15,0.7);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--gradient-main);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px; color: #0a0a0f;
+  }
+  .logo-text { font-weight: 700; font-size: 18px; color: var(--text-primary); letter-spacing: -0.5px; }
+  .logo-text em { font-style: normal; color: var(--accent-electric); }
+
+  .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+  .nav-links a { color: var(--text-secondary); text-decoration: none !important; font-size: 14px; font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--accent-electric); }
+
+  .nav-cta {
+    padding: 10px 24px; border-radius: 24px; font-weight: 600; font-size: 14px;
+    text-decoration: none; color: #0a0a0f; background: var(--accent-electric);
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,212,255,0.3); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 9999; }
+  .hamburger span { width: 24px; height: 2px; background: var(--text-primary); transition: all 0.3s; border-radius: 2px; }
+
+  /* HERO */
+  .hero {
+    padding: 140px 40px 80px;
+    max-width: 900px; margin: 0 auto;
+  }
+
+  .hero-label {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 3px;
+    color: var(--accent-electric); font-weight: 600; margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: 56px; font-weight: 800; letter-spacing: -3px; line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .hero-sub {
+    font-size: 18px; color: var(--text-secondary); max-width: 600px;
+    line-height: 1.8; margin-bottom: 32px;
+  }
+
+  .hero-credentials {
+    display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 40px;
+  }
+  .credential {
+    font-size: 13px; color: var(--text-secondary); font-weight: 500;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .credential::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent-electric);
+  }
+  .credential strong { color: var(--text-primary); }
+
+  /* CONTENT */
+  .content { max-width: 900px; margin: 0 auto; padding: 0 40px 100px; }
+
+  .section-label {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 3px;
+    color: var(--accent-electric); font-weight: 600; margin-bottom: 12px;
+  }
+
+  /* BIO */
+  .bio-text {
+    font-size: 16px; color: var(--text-secondary); line-height: 1.8;
+    margin-bottom: 60px; max-width: 700px;
+  }
+  .bio-text strong { color: var(--text-primary); }
+
+  /* SKILLS GRID */
+  .skills-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    margin-bottom: 60px;
+  }
+  .skill-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.3s;
+  }
+  .skill-card:hover {
+    border-color: rgba(0,212,255,0.15);
+    transform: translateY(-2px);
+  }
+  .skill-card h3 {
+    font-size: 14px; font-weight: 700; margin-bottom: 12px;
+    color: var(--accent-electric);
+  }
+  .skill-card p {
+    font-size: 13px; color: var(--text-secondary); line-height: 1.6;
+  }
+
+  /* VENTURES */
+  .ventures-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    margin-bottom: 60px;
+  }
+  .venture-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 28px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.4s;
+    display: block;
+  }
+  .venture-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+  }
+  .venture-name {
+    font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.3px;
+  }
+  .venture-desc {
+    font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px;
+  }
+  .venture-arrow {
+    font-size: 13px; font-weight: 600; color: var(--accent-electric);
+    transition: transform 0.3s; display: inline-block;
+  }
+  .venture-card:hover .venture-arrow { transform: translateX(6px); }
+
+  .venture-card.amber:hover { border-color: var(--accent-amber); }
+  .venture-card.amber .venture-arrow { color: var(--accent-amber); }
+  .venture-card.lime:hover { border-color: var(--accent-lime); }
+  .venture-card.lime .venture-arrow { color: var(--accent-lime); }
+  .venture-card.electric:hover { border-color: var(--accent-electric); }
+
+  /* CTA */
+  .cta-section {
+    text-align: center; padding: 80px 40px;
+    background: linear-gradient(180deg, transparent, rgba(0,212,255,0.03));
+  }
+  .cta-title { font-size: 40px; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; }
+  .cta-desc { font-size: 16px; color: var(--text-secondary); max-width: 500px; margin: 0 auto 32px; }
+  .cta-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .cta-link {
+    padding: 14px 28px; border-radius: 28px; font-weight: 600; font-size: 15px;
+    text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .cta-link.primary { color: #0a0a0f; background: var(--accent-electric); }
+  .cta-link.primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,212,255,0.3); }
+  .cta-link.secondary { color: var(--text-primary); border: 1px solid var(--border-subtle); }
+  .cta-link.secondary:hover { border-color: var(--accent-electric); color: var(--accent-electric); }
+
+  /* FOOTER */
+  .footer-bottom {
+    padding: 24px 40px;
+    border-top: 1px solid var(--border-subtle);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--text-muted);
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom a { color: var(--text-muted); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--accent-electric); }
+
+  /* ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; flex-wrap: wrap; }
+    .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; gap: 20px; margin: 0; padding: 20px 0 10px; order: 99; }
+    .nav-links.open { display: flex !important; }
+    nav.menu-open {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15,15,20,0.92); backdrop-filter: blur(40px);
+      align-content: center; z-index: 9998; overflow-y: auto;
+    }
+    .hamburger { display: flex; }
+    .nav-cta { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
+    .hero-sub { font-size: 16px; }
+    .hero-credentials { gap: 16px; }
+    .content { padding: 0 24px 80px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .ventures-grid { grid-template-columns: 1fr; }
+    .cta-title { font-size: 32px; }
+    .cta-links { flex-direction: column; align-items: center; }
+    .footer-bottom { flex-direction: column; text-align: center; padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon"><span>C</span></div>
+    <div class="logo-text">Creator<em>Port</em></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html"><span data-lang-en>Home</span><span data-lang-de>Startseite</span></a></li>
+    <li><a href="juniors.html"><span data-lang-en>Juniors</span><span data-lang-de>Jugend</span></a></li>
+    <li><a href="adults.html"><span data-lang-en>Adults</span><span data-lang-de>Erwachsene</span></a></li>
+    <li>
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('de')">DE</button>
+      </div>
+    </li>
+  </ul>
+  <a href="https://wa.me/85265427963" target="_blank" class="nav-cta" data-lang-en>Get in Touch</a>
+  <a href="https://wa.me/85265427963" target="_blank" class="nav-cta" data-lang-de>Kontakt</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label reveal" data-lang-en>About the Founder</div>
+  <div class="hero-label reveal" data-lang-de>&Uuml;ber den Gr&uuml;nder</div>
+  <h1 class="reveal">Daniel Kurth</h1>
+  <p class="hero-sub reveal" data-lang-en>Engineer, maker, educator. I build things that connect software with the physical world &mdash; and teach others how to do the same.</p>
+  <p class="hero-sub reveal" data-lang-de>Ingenieur, Maker, P&auml;dagoge. Ich baue Dinge, die Software mit der physischen Welt verbinden &mdash; und bringe anderen bei, dasselbe zu tun.</p>
+
+  <div class="hero-credentials reveal">
+    <div class="credential"><strong>B.Sc. RWTH Aachen</strong></div>
+    <div class="credential" data-lang-en>Mechanical Engineering + Business</div>
+    <div class="credential" data-lang-de>Maschinenbau + BWL</div>
+    <div class="credential" data-lang-en>Based in Hong Kong</div>
+    <div class="credential" data-lang-de>Standort Hong Kong</div>
+    <div class="credential" data-lang-en>Bilingual EN / DE</div>
+    <div class="credential" data-lang-de>Zweisprachig EN / DE</div>
+  </div>
+</div>
+
+<!-- BIO -->
+<div class="content">
+  <div class="section-label reveal" data-lang-en>Background</div>
+  <div class="section-label reveal" data-lang-de>Hintergrund</div>
+  <div class="bio-text reveal" data-lang-en>
+    <p style="margin-bottom: 20px;">I studied <strong>Mechanical Engineering and Business</strong> at <strong>RWTH Aachen University</strong> &mdash; one of Europe&rsquo;s top technical universities. That&rsquo;s where I learned to think in systems: how production processes, manufacturing tolerances, and business logic all connect.</p>
+    <p style="margin-bottom: 20px;">Now I&rsquo;m based in <strong>Hong Kong</strong>, 30 minutes from Shenzhen &mdash; the world&rsquo;s hardware capital. I source components directly from factories, prototype electronics in-house, and ship products internationally. I understand both the German engineering mindset and the speed of the Chinese supply chain.</p>
+    <p>I use <strong>AI as my primary development tool</strong>. I don&rsquo;t write code line by line &mdash; I describe systems, and AI builds them. This lets me move at the speed of a full team while staying solo. I design hardware, write firmware, build web apps, and automate business processes &mdash; all with the same approach: <strong>understand the problem, describe the solution, build it fast, ship it.</strong></p>
+  </div>
+  <div class="bio-text reveal" data-lang-de>
+    <p style="margin-bottom: 20px;">Ich habe <strong>Maschinenbau und BWL</strong> an der <strong>RWTH Aachen</strong> studiert &mdash; einer der f&uuml;hrenden technischen Universit&auml;ten Europas. Dort habe ich gelernt, in Systemen zu denken: wie Produktionsprozesse, Fertigungstoleranzen und Gesch&auml;ftslogik zusammenh&auml;ngen.</p>
+    <p style="margin-bottom: 20px;">Jetzt lebe ich in <strong>Hong Kong</strong>, 30 Minuten von Shenzhen &mdash; der Hardware-Hauptstadt der Welt. Ich beschaffe Bauteile direkt von Fabriken, prototypiere Elektronik vor Ort und versende Produkte international. Ich verstehe sowohl die deutsche Ingenieursmentalit&auml;t als auch die Geschwindigkeit der chinesischen Lieferkette.</p>
+    <p>Ich nutze <strong>KI als mein prim&auml;res Entwicklungstool</strong>. Ich schreibe keinen Code Zeile f&uuml;r Zeile &mdash; ich beschreibe Systeme, und KI baut sie. Das erm&ouml;glicht mir, mit der Geschwindigkeit eines ganzen Teams zu arbeiten. Ich entwerfe Hardware, schreibe Firmware, baue Web-Apps und automatisiere Gesch&auml;ftsprozesse &mdash; alles mit dem gleichen Ansatz: <strong>Problem verstehen, L&ouml;sung beschreiben, schnell bauen, ausliefern.</strong></p>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section-label reveal" data-lang-en>What I Do</div>
+  <div class="section-label reveal" data-lang-de>Was ich mache</div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <h3 data-lang-en>Hardware &amp; Electronics</h3>
+      <h3 data-lang-de>Hardware &amp; Elektronik</h3>
+      <p data-lang-en>IoT sensors, ESP32, PCB design, 3D printing, electronics prototyping. From concept to working prototype in 24 hours. Components sourced directly from Shenzhen.</p>
+      <p data-lang-de>IoT-Sensoren, ESP32, PCB-Design, 3D-Druck, Elektronik-Prototyping. Vom Konzept zum funktionierenden Prototyp in 24 Stunden. Bauteile direkt aus Shenzhen.</p>
+    </div>
+    <div class="skill-card reveal">
+      <h3 data-lang-en>Software &amp; Automation</h3>
+      <h3 data-lang-de>Software &amp; Automatisierung</h3>
+      <p data-lang-en>Python, SQLite, chat API integrations, web apps. I connect WhatsApp, WeChat, Telegram, payment systems, and sensor networks into unified business systems.</p>
+      <p data-lang-de>Python, SQLite, Chat-API-Integrationen, Web-Apps. Ich verbinde WhatsApp, WeChat, Telegram, Zahlungssysteme und Sensornetzwerke zu einheitlichen Business-Systemen.</p>
+    </div>
+    <div class="skill-card reveal">
+      <h3 data-lang-en>AI-Powered Development</h3>
+      <h3 data-lang-de>KI-gest&uuml;tzte Entwicklung</h3>
+      <p data-lang-en>I build with Claude and other AI tools. Not prompting for fun &mdash; engineering real products. AI writes the code, I design the systems. This is how I ship solo at team speed.</p>
+      <p data-lang-de>Ich baue mit Claude und anderen KI-Tools. Kein Prompting zum Spa&szlig; &mdash; echte Produkte entwickeln. KI schreibt den Code, ich entwerfe die Systeme. So liefere ich allein mit Team-Geschwindigkeit.</p>
+    </div>
+    <div class="skill-card reveal">
+      <h3 data-lang-en>Education &amp; Teaching</h3>
+      <h3 data-lang-de>Bildung &amp; Unterricht</h3>
+      <p data-lang-en>I teach robotics and AI to kids (9&ndash;15) and adults. Hands-on, project-based, no lectures. I design curricula aligned with the HK Maths Curriculum and WEF skills frameworks.</p>
+      <p data-lang-de>Ich unterrichte Robotik und KI f&uuml;r Kinder (9&ndash;15) und Erwachsene. Praxisnah, projektbasiert, keine Vortr&auml;ge. Ich entwerfe Lehrpl&auml;ne, abgestimmt auf den HK-Mathe-Lehrplan und WEF-Skills-Rahmenwerke.</p>
+    </div>
+  </div>
+
+  <!-- VENTURES -->
+  <div class="section-label reveal" data-lang-en>Ventures</div>
+  <div class="section-label reveal" data-lang-de>Projekte</div>
+  <div class="ventures-grid">
+    <a href="index.html" class="venture-card electric reveal">
+      <div class="venture-name">Creator<em style="color: var(--accent-electric);">Port</em></div>
+      <p class="venture-desc" data-lang-en>AI &amp; robotics education for kids, adults, and institutions. Workshops, courses, and hands-on experiences in Hong Kong.</p>
+      <p class="venture-desc" data-lang-de>KI- &amp; Robotik-Bildung f&uuml;r Kinder, Erwachsene und Institutionen. Workshops, Kurse und Hands-on-Erlebnisse in Hong Kong.</p>
+      <span class="venture-arrow" data-lang-en>Explore &rarr;</span>
+      <span class="venture-arrow" data-lang-de>Entdecken &rarr;</span>
+    </a>
+    <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" class="venture-card amber reveal">
+      <div class="venture-name" style="color: var(--accent-amber);">KurthTechnik</div>
+      <p class="venture-desc" data-lang-en>German-engineered robotics kits. Gripper Drone for kids, OrbBot for universities. Designed in Hong Kong, open-source firmware.</p>
+      <p class="venture-desc" data-lang-de>German-engineered Robotik-Baus&auml;tze. Greifer-Drohne f&uuml;r Kinder, OrbBot f&uuml;r Universit&auml;ten. Designed in Hong Kong, Open-Source-Firmware.</p>
+      <span class="venture-arrow" data-lang-en>Visit &rarr;</span>
+      <span class="venture-arrow" data-lang-de>Besuchen &rarr;</span>
+    </a>
+    <a href="https://dankur94.github.io/chatbridge/" target="_blank" class="venture-card lime reveal">
+      <div class="venture-name" style="color: var(--accent-lime);">ChatBridge</div>
+      <p class="venture-desc" data-lang-en>Business automation platform. Connects chat, payments, sensors, and software into one system. AI-built integrations.</p>
+      <p class="venture-desc" data-lang-de>Business-Automatisierungsplattform. Verbindet Chat, Zahlungen, Sensoren und Software in ein System. KI-gebaute Integrationen.</p>
+      <span class="venture-arrow" data-lang-en>Visit &rarr;</span>
+      <span class="venture-arrow" data-lang-de>Besuchen &rarr;</span>
+    </a>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="cta-title reveal" data-lang-en>Let's build<br><span class="gradient-text">something together.</span></h2>
+  <h2 class="cta-title reveal" data-lang-de>Lass uns<br><span class="gradient-text">etwas zusammen bauen.</span></h2>
+  <p class="cta-desc reveal" data-lang-en>Whether you want to learn, build, or automate &mdash; I'd love to hear from you.</p>
+  <p class="cta-desc reveal" data-lang-de>Ob du lernen, bauen oder automatisieren willst &mdash; ich freue mich von dir zu h&ouml;ren.</p>
+  <div class="cta-links reveal">
+    <a href="https://wa.me/85265427963" target="_blank" class="cta-link primary">WhatsApp</a>
+    <a href="mailto:contact@spaceop.education" class="cta-link secondary">contact@spaceop.education</a>
+    <a href="https://github.com/Dankur94" target="_blank" class="cta-link secondary">GitHub</a>
+  </div>
+</section>
+
+<div class="footer-bottom">
+  <span>&copy; CreatorPort is a brand operated by &copy; Space of Possibilities Limited &middot; Hong Kong</span>
+  <span>
+    <a href="privacy.html" style="margin-right: 20px;">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </span>
+</div>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('lang-de', lang === 'de');
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+    });
+    localStorage.setItem('creatorport-lang', lang);
+  }
+
+  const savedLang = localStorage.getItem('creatorport-lang');
+  if (savedLang) setLang(savedLang);
+
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('open');
+    document.querySelector('nav').classList.toggle('menu-open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+      document.querySelector('nav').classList.remove('menu-open');
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
