@@ -784,14 +784,16 @@
 
   /* ===== PRICING ===== */
   .pricing-grid {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     margin-top: 64px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .pricing-grid .price-card {
-    max-width: 480px;
-    width: 100%;
+  @media (max-width: 768px) {
+    .pricing-grid { grid-template-columns: 1fr; }
   }
 
   .price-card {
@@ -1046,55 +1048,7 @@
     .rwth-stats { justify-content: center; }
   }
 
-  /* ===== PRICING PROGRAM TABS ===== */
-  .pricing-tabs {
-    display: flex;
-    gap: 12px;
-    margin-top: 40px;
-    margin-bottom: 48px;
-    flex-wrap: wrap;
-  }
-
-  .pricing-tab {
-    padding: 14px 28px;
-    border-radius: 100px;
-    border: 1px solid var(--border-subtle);
-    background: var(--bg-card);
-    color: var(--text-secondary);
-    font-family: 'Sora', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .pricing-tab:hover {
-    border-color: var(--accent-electric);
-    background: rgba(0,212,255,0.05);
-  }
-
-  .pricing-tab.active {
-    background: var(--accent-electric);
-    color: var(--bg-primary);
-    border-color: var(--accent-electric);
-  }
-
-  .pricing-tab .tab-emoji {
-    font-size: 18px;
-  }
-
-  .pricing-tab .tab-age {
-    font-size: 11px;
-    opacity: 0.7;
-    font-weight: 400;
-  }
-
-  .pricing-program-group {
-    display: none;
-  }
+  /* Pricing tabs removed — both cards shown side by side */
 
   .pricing-program-group.active {
     display: block;
@@ -1258,7 +1212,7 @@
   @media (max-width: 1024px) {
     .hero-visual { display: none; }
     .programs-grid, .pricing-grid { grid-template-columns: 1fr; max-width: 500px; }
-    .pricing-tabs { justify-content: center; }
+    /* pricing tabs removed */
     .steps-grid { grid-template-columns: repeat(2, 1fr); }
     .stats-bar { grid-template-columns: repeat(2, 1fr); }
     .bilingual-grid, .format-grid { grid-template-columns: 1fr; max-width: 600px; }
@@ -1355,8 +1309,7 @@
     .section-title { font-size: 32px; letter-spacing: -1px; }
     .steps-grid { grid-template-columns: 1fr; }
     .stats-bar { grid-template-columns: 1fr; }
-    .pricing-tabs { flex-direction: column; align-items: stretch; }
-    .pricing-tab { justify-content: center; }
+    /* pricing tabs removed */
     .about-grid { grid-template-columns: 1fr; }
     .about-name { font-size: 20px; }
     .rwth-banner { flex-direction: column; text-align: center; padding: 24px 20px; gap: 20px; }
@@ -1920,79 +1873,62 @@
   <p class="section-desc reveal" data-lang-en>All prices in HKD. Small groups of max 4 students. Explorer & Builder level same price.</p>
   <p class="section-desc reveal" data-lang-de>Alle Preise in HKD. Kleine Gruppen mit max. 4 Schülern. Explorer & Builder Level gleicher Preis.</p>
 
-  <div class="pricing-tabs reveal">
-    <button class="pricing-tab active" onclick="switchPricing('robot', this)">
-      <span class="tab-emoji">🚁</span>
-      <span>
-        Robotics & AI
-        <br><span class="tab-age">Ages 9–15</span>
-      </span>
-    </button>
-    <button class="pricing-tab" onclick="switchPricing('tlp', this)">
-      <span class="tab-emoji">🎤</span>
-      <span>
-        Think. Learn. Present.
-        <br><span class="tab-age">Ages 14+ · Online</span>
-      </span>
-    </button>
-  </div>
+  <div class="pricing-grid">
 
-  <!-- Robotics & AI Pricing -->
-  <div class="pricing-program-group active" id="pricing-robot" style="display: block;">
-    <div class="pricing-grid" style="justify-content: center;">
-      <div class="price-card featured reveal">
-        <div class="price-name"><span data-lang-en>Robotics & AI Course</span><span data-lang-de>Robotik & KI Kurs</span></div>
-        <div class="price-amount">$350 <span>HKD / session</span></div>
-        <div class="price-period"><span data-lang-en>12 sessions × 90 min · $4,200 HKD per term</span><span data-lang-de>12 Sitzungen × 90 Min. · $4.200 HKD pro Semester</span></div>
-        <div class="price-features">
-          <div class="price-feature" data-lang-en><span class="price-check">✓</span> Small groups · max 4 students</div>
-          <div class="price-feature" data-lang-de><span class="price-check">✓</span> Kleine Gruppen · max. 4 Schüler</div>
-          <div class="price-feature" data-lang-en><span class="price-check">✓</span> In-person (HK Island) or online</div>
-          <div class="price-feature" data-lang-de><span class="price-check">✓</span> Präsenz (HK Island) oder online</div>
-          <div class="price-feature" data-lang-en><span class="price-check">✓</span> Explorer (9–11) or Builder (12–15) level</div>
-          <div class="price-feature" data-lang-de><span class="price-check">✓</span> Explorer (9–11) oder Builder (12–15) Level</div>
-          <div class="price-feature" data-lang-en><span class="price-check">✓</span> AI-powered vibe coding — no programming needed</div>
-          <div class="price-feature" data-lang-de><span class="price-check">✓</span> KI-gestütztes Vibe Coding — keine Programmierung nötig</div>
-          <div class="price-feature" data-lang-en><span class="price-check">✓</span> 10 missions with increasing difficulty</div>
-          <div class="price-feature" data-lang-de><span class="price-check">✓</span> 10 Missionen mit steigendem Schwierigkeitsgrad</div>
-          <div class="price-feature" data-lang-en><span class="price-check">✓</span> Demo Day & certificate of completion</div>
-          <div class="price-feature" data-lang-de><span class="price-check">✓</span> Demo Day & Abschlusszertifikat</div>
-        </div>
-        <div style="margin-top: 20px; padding: 16px 20px; border-radius: 12px; background: rgba(168,255,60,0.06); border: 1px solid rgba(168,255,60,0.15);">
-          <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 700; margin-bottom: 6px;" data-lang-en>+ Gripper Drone Kit · $1,500 HKD</div>
-          <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 700; margin-bottom: 6px;" data-lang-de>+ Greifer-Drohne Kit · $1.500 HKD</div>
-          <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
-            <span data-lang-en>Sold separately via <a href="https://kurthtechnik.com" target="_blank" style="color: var(--accent-lime); text-decoration: underline;">KurthTechnik</a>. Your child keeps the drone after the course.</span>
-            <span data-lang-de>Separat erhältlich über <a href="https://kurthtechnik.com" target="_blank" style="color: var(--accent-lime); text-decoration: underline;">KurthTechnik</a>. Dein Kind behält die Drohne nach dem Kurs.</span>
-          </div>
-        </div>
-        <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20CreatorPort.%0A-%20Track%3A%20Robotics%20%26%20AI%0A-%20Plan%3A%20%24350%2Fsession%20%28%244%2C200%20HKD%2Fterm%29%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Level%20%28Explorer%209-11%20%2F%20Builder%2012-15%29%3A%0A-%20Preferred%20language%20%28EN%2FDE%29%3A%0A-%20Format%20%28In-person%20HK%20%2F%20Online%29%3A%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="price-btn"><span data-lang-en>Pre-Register</span><span data-lang-de>Voranmelden</span></a>
+    <!-- Robotics & AI -->
+    <div class="price-card featured reveal">
+      <div style="font-size: 28px; margin-bottom: 12px;">🚁</div>
+      <div class="price-name"><span data-lang-en>Robotics & AI</span><span data-lang-de>Robotik & KI</span></div>
+      <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-electric); font-weight: 600; margin-bottom: 16px;" data-lang-en>Ages 9–15 · In-person & Online</div>
+      <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-electric); font-weight: 600; margin-bottom: 16px;" data-lang-de>Alter 9–15 · Präsenz & Online</div>
+      <div class="price-amount">$350 <span>HKD / session</span></div>
+      <div class="price-period"><span data-lang-en>12 sessions × 90 min · $4,200 HKD per term</span><span data-lang-de>12 Sitzungen × 90 Min. · $4.200 HKD pro Semester</span></div>
+      <div class="price-features">
+        <div class="price-feature" data-lang-en><span class="price-check">✓</span> Small groups · max 4 students</div>
+        <div class="price-feature" data-lang-de><span class="price-check">✓</span> Kleine Gruppen · max. 4 Schüler</div>
+        <div class="price-feature" data-lang-en><span class="price-check">✓</span> Explorer (9–11) or Builder (12–15)</div>
+        <div class="price-feature" data-lang-de><span class="price-check">✓</span> Explorer (9–11) oder Builder (12–15)</div>
+        <div class="price-feature" data-lang-en><span class="price-check">✓</span> AI-powered vibe coding</div>
+        <div class="price-feature" data-lang-de><span class="price-check">✓</span> KI-gestütztes Vibe Coding</div>
+        <div class="price-feature" data-lang-en><span class="price-check">✓</span> 10 missions with increasing difficulty</div>
+        <div class="price-feature" data-lang-de><span class="price-check">✓</span> 10 Missionen mit steigendem Schwierigkeitsgrad</div>
+        <div class="price-feature" data-lang-en><span class="price-check">✓</span> Demo Day & certificate</div>
+        <div class="price-feature" data-lang-de><span class="price-check">✓</span> Demo Day & Zertifikat</div>
       </div>
+      <div style="margin-top: 20px; padding: 16px 20px; border-radius: 12px; background: rgba(168,255,60,0.06); border: 1px solid rgba(168,255,60,0.15);">
+        <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 700; margin-bottom: 6px;" data-lang-en>+ Gripper Drone Kit · $1,500 HKD</div>
+        <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 700; margin-bottom: 6px;" data-lang-de>+ Greifer-Drohne Kit · $1.500 HKD</div>
+        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+          <span data-lang-en>Sold separately via <a href="https://kurthtechnik.com" target="_blank" style="color: var(--accent-lime); text-decoration: underline;">KurthTechnik</a>. Your child keeps the drone.</span>
+          <span data-lang-de>Separat über <a href="https://kurthtechnik.com" target="_blank" style="color: var(--accent-lime); text-decoration: underline;">KurthTechnik</a>. Dein Kind behält die Drohne.</span>
+        </div>
+      </div>
+      <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20CreatorPort.%0A-%20Track%3A%20Robotics%20%26%20AI%0A-%20Plan%3A%20%24350%2Fsession%20%28%244%2C200%20HKD%2Fterm%29%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Level%20%28Explorer%209-11%20%2F%20Builder%2012-15%29%3A%0A-%20Preferred%20language%20%28EN%2FDE%29%3A%0A-%20Format%20%28In-person%20HK%20%2F%20Online%29%3A%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="price-btn"><span data-lang-en>Pre-Register</span><span data-lang-de>Voranmelden</span></a>
     </div>
-  </div>
 
-  <!-- Think. Learn. Present. Pricing -->
-  <div class="pricing-program-group" id="pricing-tlp" style="display: none;">
-    <div class="pricing-grid" style="justify-content: center;">
-      <div class="price-card featured reveal">
-        <div class="price-name"><span data-lang-en>Think. Learn. Present.</span><span data-lang-de>Think. Learn. Present.</span></div>
-        <div class="price-amount">$300 <span>HKD / session</span></div>
-        <div class="price-period"><span data-lang-en>12 sessions × 90 min · $3,600 HKD per term · Online only</span><span data-lang-de>12 Sitzungen × 90 Min. · $3.600 HKD pro Semester · Nur online</span></div>
-        <div class="price-features">
-          <div class="price-feature" data-lang-en><span class="price-check">✓</span> Small groups · max 4 students</div>
-          <div class="price-feature" data-lang-de><span class="price-check">✓</span> Kleine Gruppen · max. 4 Schüler</div>
-          <div class="price-feature" data-lang-en><span class="price-check">✓</span> Memory techniques & learning science</div>
-          <div class="price-feature" data-lang-de><span class="price-check">✓</span> Gedächtnistechniken & Lernwissenschaft</div>
-          <div class="price-feature" data-lang-en><span class="price-check">✓</span> Presentation coaching & feedback</div>
-          <div class="price-feature" data-lang-de><span class="price-check">✓</span> Präsentations-Coaching & Feedback</div>
-          <div class="price-feature" data-lang-en><span class="price-check">✓</span> Recorded practice sessions</div>
-          <div class="price-feature" data-lang-de><span class="price-check">✓</span> Aufgezeichnete Übungssitzungen</div>
-          <div class="price-feature" data-lang-en><span class="price-check">✓</span> Demo Day & certificate of completion</div>
-          <div class="price-feature" data-lang-de><span class="price-check">✓</span> Demo Day & Abschlusszertifikat</div>
-        </div>
-        <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20CreatorPort.%0A-%20Track%3A%20Think.Learn.Present.%0A-%20Plan%3A%20%24300%2Fsession%20%28%243%2C600%20HKD%2Fterm%29%0A-%20Name%3A%0A-%20Age%3A%0A-%20Preferred%20language%20%28EN%2FDE%29%3A%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="price-btn"><span data-lang-en>Pre-Register</span><span data-lang-de>Voranmelden</span></a>
+    <!-- Think. Learn. Present. -->
+    <div class="price-card reveal">
+      <div style="font-size: 28px; margin-bottom: 12px;">🎤</div>
+      <div class="price-name"><span data-lang-en>Think. Learn. Present.</span><span data-lang-de>Think. Learn. Present.</span></div>
+      <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-magenta); font-weight: 600; margin-bottom: 16px;" data-lang-en>Ages 14+ · Online only</div>
+      <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-magenta); font-weight: 600; margin-bottom: 16px;" data-lang-de>Ab 14 · Nur online</div>
+      <div class="price-amount">$300 <span>HKD / session</span></div>
+      <div class="price-period"><span data-lang-en>12 sessions × 90 min · $3,600 HKD per term</span><span data-lang-de>12 Sitzungen × 90 Min. · $3.600 HKD pro Semester</span></div>
+      <div class="price-features">
+        <div class="price-feature" data-lang-en><span class="price-check">✓</span> Small groups · max 4 students</div>
+        <div class="price-feature" data-lang-de><span class="price-check">✓</span> Kleine Gruppen · max. 4 Schüler</div>
+        <div class="price-feature" data-lang-en><span class="price-check">✓</span> Memory techniques & learning science</div>
+        <div class="price-feature" data-lang-de><span class="price-check">✓</span> Gedächtnistechniken & Lernwissenschaft</div>
+        <div class="price-feature" data-lang-en><span class="price-check">✓</span> Presentation coaching & feedback</div>
+        <div class="price-feature" data-lang-de><span class="price-check">✓</span> Präsentations-Coaching & Feedback</div>
+        <div class="price-feature" data-lang-en><span class="price-check">✓</span> Recorded practice sessions</div>
+        <div class="price-feature" data-lang-de><span class="price-check">✓</span> Aufgezeichnete Übungssitzungen</div>
+        <div class="price-feature" data-lang-en><span class="price-check">✓</span> Demo Day & certificate</div>
+        <div class="price-feature" data-lang-de><span class="price-check">✓</span> Demo Day & Zertifikat</div>
       </div>
+      <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20CreatorPort.%0A-%20Track%3A%20Think.Learn.Present.%0A-%20Plan%3A%20%24300%2Fsession%20%28%243%2C600%20HKD%2Fterm%29%0A-%20Name%3A%0A-%20Age%3A%0A-%20Preferred%20language%20%28EN%2FDE%29%3A%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="price-btn"><span data-lang-en>Pre-Register</span><span data-lang-de>Voranmelden</span></a>
     </div>
+
   </div>
 </section>
 
@@ -2220,24 +2156,7 @@
     });
   });
 
-  // Pricing Tab Switch
-  function switchPricing(program, btn) {
-    // Hide all program groups
-    document.querySelectorAll('.pricing-program-group').forEach(function(g) {
-      g.style.display = 'none';
-      g.classList.remove('active');
-    });
-    // Deactivate all tabs
-    document.querySelectorAll('.pricing-tab').forEach(function(t) {
-      t.classList.remove('active');
-    });
-    // Show selected program group
-    var selected = document.getElementById('pricing-' + program);
-    selected.style.display = 'block';
-    selected.classList.add('active');
-    // Activate clicked tab
-    btn.classList.add('active');
-  }
+  // Pricing tabs removed — both cards shown side by side
 
   // Language Toggle
   function setLang(lang) {
