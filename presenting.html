@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CreatorPort — The Art of Presenting</title>
+<meta name="description" content="Master storytelling, slide design, and stage presence. Private 1-on-1 coaching by Ananya Singh. Online worldwide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0a0a0f;
+    --bg-card: #111118;
+    --text-primary: #f0f0f0;
+    --text-secondary: #a0a0b0;
+    --text-muted: #666680;
+    --accent-electric: #00d4ff;
+    --accent-lime: #a8ff3c;
+    --accent-amber: #ffb347;
+    --accent-magenta: #ff3cac;
+    --border-subtle: rgba(255,255,255,0.06);
+    --gradient-main: linear-gradient(135deg, #00d4ff, #a8ff3c);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #ff3cac, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* LANG */
+  [data-lang-de] { display: none !important; }
+  body.lang-de [data-lang-en] { display: none !important; }
+  body.lang-de [data-lang-de] { display: block !important; }
+  body.lang-de span[data-lang-de],
+  body.lang-de a[data-lang-de] { display: inline-block !important; }
+  body.lang-de div[data-lang-de],
+  body.lang-de p[data-lang-de],
+  body.lang-de h1[data-lang-de],
+  body.lang-de h2[data-lang-de],
+  body.lang-de h3[data-lang-de] { display: block !important; }
+
+  .lang-toggle {
+    display: flex; gap: 4px; background: rgba(255,60,172,0.1);
+    border-radius: 20px; padding: 3px;
+  }
+  .lang-btn {
+    padding: 5px 14px; border-radius: 18px; border: none;
+    font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600;
+    cursor: pointer; transition: all 0.3s;
+    background: transparent; color: var(--text-muted);
+  }
+  .lang-btn.active {
+    background: var(--accent-magenta); color: #fff;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 9000;
+    padding: 20px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(20px);
+    background: rgba(10,10,15,0.7);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--gradient-main);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px; color: #0a0a0f;
+  }
+  .logo-text { font-weight: 700; font-size: 18px; color: var(--text-primary); letter-spacing: -0.5px; }
+  .logo-text em { font-style: normal; color: var(--accent-electric); }
+
+  .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+  .nav-links a { color: var(--text-secondary); text-decoration: none !important; font-size: 14px; font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--accent-magenta); }
+
+  .nav-cta {
+    padding: 10px 24px; border-radius: 24px; font-weight: 600; font-size: 14px;
+    text-decoration: none; color: #fff; background: var(--accent-magenta);
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,60,172,0.3); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 9999; }
+  .hamburger span { width: 24px; height: 2px; background: var(--text-primary); transition: all 0.3s; border-radius: 2px; }
+
+  /* HERO */
+  .hero {
+    min-height: 80vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    padding: 120px 40px 80px;
+    position: relative;
+  }
+
+  .hero-tag {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 3px;
+    color: var(--accent-magenta); font-weight: 600; margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: 64px; font-weight: 800; letter-spacing: -3px; line-height: 1.05;
+    margin-bottom: 24px; max-width: 800px;
+  }
+
+  .hero-sub {
+    font-size: 20px; color: var(--text-secondary); max-width: 600px;
+    line-height: 1.7; margin-bottom: 40px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+  .btn-primary {
+    padding: 16px 36px; border-radius: 30px; font-weight: 700; font-size: 16px;
+    text-decoration: none; color: #fff; background: var(--accent-magenta);
+    transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(255,60,172,0.3); }
+
+  .btn-secondary {
+    padding: 16px 36px; border-radius: 30px; font-weight: 600; font-size: 16px;
+    text-decoration: none; color: var(--text-primary);
+    border: 1px solid var(--border-subtle); background: transparent;
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover { border-color: var(--accent-magenta); color: var(--accent-magenta); }
+
+  /* CONTENT */
+  .content { max-width: 700px; margin: 0 auto; padding: 0 40px 100px; }
+
+  .detail-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,60,172,0.12);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 32px;
+  }
+
+  .detail-card h2 {
+    font-size: 24px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px;
+  }
+
+  .detail-list {
+    list-style: none; padding: 0;
+  }
+  .detail-list li {
+    font-size: 14px; color: var(--text-secondary); line-height: 1.5;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .detail-list li::before { content: '\2013'; color: var(--accent-magenta); font-weight: 700; }
+
+  .price-box {
+    text-align: center; padding: 32px;
+    background: linear-gradient(135deg, rgba(255,60,172,0.06), rgba(0,212,255,0.03));
+    border: 1px solid rgba(255,60,172,0.2);
+    border-radius: 20px;
+    margin-bottom: 32px;
+  }
+  .price-big {
+    font-size: 48px; font-weight: 800; color: var(--accent-magenta);
+  }
+  .price-big span { font-size: 16px; font-weight: 400; color: var(--text-muted); }
+  .price-note { font-size: 13px; color: var(--text-muted); margin-top: 8px; }
+
+  /* CRASH COURSE */
+  .crash-course {
+    padding: 28px;
+    background: rgba(255,60,172,0.06);
+    border: 1px dashed rgba(255,60,172,0.25);
+    border-radius: 16px;
+    margin-bottom: 32px;
+  }
+  .crash-course h3 {
+    font-size: 18px; font-weight: 700; color: var(--accent-magenta); margin-bottom: 12px;
+  }
+  .crash-course p {
+    font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 8px;
+  }
+  .crash-course .crash-meta {
+    font-size: 13px; color: var(--text-muted); margin-top: 12px;
+  }
+
+  /* ABOUT */
+  .about-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .about-card h3 { font-size: 18px; margin-bottom: 12px; }
+  .about-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px; }
+  .about-card a { color: var(--accent-magenta); text-decoration: underline; font-weight: 600; }
+
+  /* CTA */
+  .cta-section {
+    text-align: center; padding: 80px 40px;
+    background: linear-gradient(180deg, transparent, rgba(255,60,172,0.03));
+  }
+  .cta-title { font-size: 40px; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; }
+  .cta-desc { font-size: 16px; color: var(--text-secondary); max-width: 500px; margin: 0 auto 40px; }
+
+  /* FOOTER */
+  .footer-bottom {
+    padding: 24px 40px;
+    border-top: 1px solid var(--border-subtle);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--text-muted);
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom a { color: var(--text-muted); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--accent-magenta); }
+
+  /* ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; flex-wrap: wrap; }
+    .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; gap: 20px; margin: 0; padding: 20px 0 10px; order: 99; }
+    .nav-links.open { display: flex !important; }
+    nav.menu-open {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15,15,20,0.92); backdrop-filter: blur(40px);
+      align-content: center; z-index: 9998; overflow-y: auto;
+    }
+    .hamburger { display: flex; }
+    .nav-cta { display: none; }
+    .hero { padding: 100px 24px 60px; min-height: auto; }
+    .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
+    .hero-sub { font-size: 16px; }
+    .hero-actions { flex-direction: column; }
+    .btn-primary, .btn-secondary { width: 100%; text-align: center; justify-content: center; }
+    .content { padding: 0 24px 80px; }
+    .detail-card { padding: 28px 20px; }
+    .cta-title { font-size: 32px; }
+    .footer-bottom { flex-direction: column; text-align: center; padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon"><span>C</span></div>
+    <div class="logo-text">Creator<em>Port</em></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="adults.html"><span data-lang-en>&larr; All Workshops</span><span data-lang-de>&larr; Alle Workshops</span></a></li>
+    <li>
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('de')">DE</button>
+      </div>
+    </li>
+  </ul>
+  <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20the%20Art%20of%20Presenting%20course.%0A-%20Name%3A%0A-%20Full%20course%20or%20Crash%20Course%3F%0A-%20Goal%20%28conference%2C%20pitch%2C%20general%29%3A%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="nav-cta" data-lang-en>Get Started</a>
+  <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20den%20Kurs%20%22Die%20Kunst%20des%20Pr%C3%A4sentierens%22.%0A-%20Name%3A%0A-%20Voller%20Kurs%20oder%20Crash%20Course%3F%0A-%20Ziel%20%28Konferenz%2C%20Pitch%2C%20allgemein%29%3A%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="nav-cta" data-lang-de>Jetzt starten</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag reveal">Course #05 &middot; Communication &middot; 1-on-1 Online</div>
+  <h1 class="reveal">The Art of<br><span class="gradient-text">Presenting</span></h1>
+  <p class="hero-sub reveal">The skill that separates good professionals from great ones. Master storytelling, slide design, stage presence, and confident Q&A handling.</p>
+  <div class="hero-actions reveal">
+    <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20the%20Art%20of%20Presenting%20course.%0A-%20Name%3A%0A-%20Full%20course%20or%20Crash%20Course%3F%0A-%20Goal%20%28conference%2C%20pitch%2C%20general%29%3A%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary">Get Started via WhatsApp</a>
+    <a href="https://dankur94.github.io/science-communication/" target="_blank" class="btn-secondary">About your instructor &rarr;</a>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<div class="content">
+  <div class="detail-card reveal">
+    <h2>Full course</h2>
+    <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px;">Whether you pitch to investors, present to your team, or speak at a conference &mdash; you'll leave knowing how to own the room. Taught by <a href="https://dankur94.github.io/science-communication/" target="_blank" style="color: var(--accent-magenta);">Ananya Singh</a>, award-winning educator and physicist at RWTH Aachen.</p>
+    <ul class="detail-list">
+      <li>12 sessions &times; 60 min</li>
+      <li>Private 1-on-1 coaching &mdash; fully personalised</li>
+      <li>Online only &mdash; join from anywhere</li>
+      <li>Story structure, slide design, stage presence, Q&A mastery</li>
+      <li>Recorded practice sessions for self-review</li>
+      <li>Certificate of completion</li>
+    </ul>
+  </div>
+
+  <div class="price-box reveal">
+    <div class="price-big">$500 <span>HKD / session</span></div>
+    <p class="price-note">$6,000 HKD per term (12 sessions)</p>
+  </div>
+
+  <!-- CRASH COURSE -->
+  <div class="crash-course reveal">
+    <h3>Crash Course available</h3>
+    <p>Big talk coming up? Get presentation-ready fast with 4 focused 1-on-1 sessions. We refine your specific talk &mdash; structure, slides, delivery, nerves. Perfect before a conference, pitch, or interview.</p>
+    <p class="crash-meta">4 &times; 60 min &middot; $500/session &middot; $2,000 HKD total</p>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="about-card reveal">
+    <h3>Your instructor</h3>
+    <p><strong>Ananya Singh</strong> &mdash; Award-winning educator and physicist at RWTH Aachen. Ananya has coached hundreds of professionals and students to present with confidence, clarity, and impact.</p>
+    <a href="https://dankur94.github.io/science-communication/" target="_blank">Learn more about Ananya &rarr;</a>
+  </div>
+
+  <p style="text-align: center; font-size: 13px; color: var(--text-muted);" class="reveal">Powered by <a href="https://dankur94.github.io/science-communication/" target="_blank" style="color: var(--accent-magenta); text-decoration: underline;">ScienceCommunication.com</a></p>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="cta-title reveal">Own the room.<br><span class="gradient-text">Start now.</span></h2>
+  <p class="cta-desc reveal">Private 1-on-1 coaching. Online from anywhere. No commitment beyond the first session.</p>
+  <div class="reveal">
+    <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20the%20Art%20of%20Presenting%20course.%0A-%20Name%3A%0A-%20Full%20course%20or%20Crash%20Course%3F%0A-%20Goal%20%28conference%2C%20pitch%2C%20general%29%3A%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary">Get Started via WhatsApp</a>
+  </div>
+</section>
+
+<div class="footer-bottom">
+  <span>&copy; CreatorPort is a brand operated by &copy; Space of Possibilities Limited &middot; Hong Kong</span>
+  <span>Instructor: <a href="https://dankur94.github.io/science-communication/" target="_blank" style="color: var(--accent-magenta);">Ananya Singh</a></span>
+  <span>
+    <a href="privacy.html" style="margin-right: 20px;">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </span>
+</div>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('lang-de', lang === 'de');
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+    });
+    localStorage.setItem('creatorport-lang', lang);
+  }
+
+  const savedLang = localStorage.getItem('creatorport-lang');
+  if (savedLang) setLang(savedLang);
+
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('open');
+    document.querySelector('nav').classList.toggle('menu-open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+      document.querySelector('nav').classList.remove('menu-open');
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

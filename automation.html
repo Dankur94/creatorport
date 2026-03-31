@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CreatorPort — Business Automation</title>
+<meta name="description" content="Connect your business tools. Chat, payments, sensors, software — all talking to each other, automatically. Free consultation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0a0a0f;
+    --bg-card: #111118;
+    --text-primary: #f0f0f0;
+    --text-secondary: #a0a0b0;
+    --text-muted: #666680;
+    --accent-electric: #00d4ff;
+    --accent-lime: #a8ff3c;
+    --accent-amber: #ffb347;
+    --accent-magenta: #ff3cac;
+    --border-subtle: rgba(255,255,255,0.06);
+    --gradient-main: linear-gradient(135deg, #00d4ff, #a8ff3c);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .gradient-text {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* LANG */
+  [data-lang-de] { display: none !important; }
+  body.lang-de [data-lang-en] { display: none !important; }
+  body.lang-de [data-lang-de] { display: block !important; }
+  body.lang-de span[data-lang-de],
+  body.lang-de a[data-lang-de] { display: inline-block !important; }
+  body.lang-de div[data-lang-de],
+  body.lang-de p[data-lang-de],
+  body.lang-de h1[data-lang-de],
+  body.lang-de h2[data-lang-de],
+  body.lang-de h3[data-lang-de] { display: block !important; }
+
+  .lang-toggle {
+    display: flex; gap: 4px; background: rgba(168,255,60,0.1);
+    border-radius: 20px; padding: 3px;
+  }
+  .lang-btn {
+    padding: 5px 14px; border-radius: 18px; border: none;
+    font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600;
+    cursor: pointer; transition: all 0.3s;
+    background: transparent; color: var(--text-muted);
+  }
+  .lang-btn.active {
+    background: var(--accent-lime); color: var(--bg-primary);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 9000;
+    padding: 20px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(20px);
+    background: rgba(10,10,15,0.7);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--gradient-main);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px; color: #0a0a0f;
+  }
+  .logo-text { font-weight: 700; font-size: 18px; color: var(--text-primary); letter-spacing: -0.5px; }
+  .logo-text em { font-style: normal; color: var(--accent-electric); }
+
+  .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+  .nav-links a { color: var(--text-secondary); text-decoration: none !important; font-size: 14px; font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--accent-lime); }
+
+  .nav-cta {
+    padding: 10px 24px; border-radius: 24px; font-weight: 600; font-size: 14px;
+    text-decoration: none; color: #0a0a0f; background: var(--accent-lime);
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(168,255,60,0.3); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 9999; }
+  .hamburger span { width: 24px; height: 2px; background: var(--text-primary); transition: all 0.3s; border-radius: 2px; }
+
+  /* HERO */
+  .hero {
+    min-height: 80vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    padding: 120px 40px 80px;
+    position: relative;
+  }
+
+  .hero-tag {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 3px;
+    color: var(--accent-lime); font-weight: 600; margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: 56px; font-weight: 800; letter-spacing: -3px; line-height: 1.1;
+    margin-bottom: 24px; max-width: 800px;
+  }
+
+  .hero-sub {
+    font-size: 18px; color: var(--text-secondary); max-width: 650px;
+    line-height: 1.7; margin-bottom: 40px;
+  }
+
+  .btn-primary {
+    padding: 16px 36px; border-radius: 30px; font-weight: 700; font-size: 16px;
+    text-decoration: none; color: #0a0a0f; background: var(--accent-lime);
+    transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(168,255,60,0.3); }
+
+  /* CONTENT */
+  .content { max-width: 800px; margin: 0 auto; padding: 0 40px 100px; }
+
+  .section-label {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 3px;
+    color: var(--accent-lime); font-weight: 600; text-align: center; margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 36px; font-weight: 800; letter-spacing: -1.5px;
+    text-align: center; margin-bottom: 40px; line-height: 1.1;
+  }
+
+  /* INTEGRATIONS GRID */
+  .integrations-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-bottom: 48px;
+  }
+  .integration-box {
+    padding: 20px;
+    background: rgba(168,255,60,0.04);
+    border-radius: 14px;
+    border: 1px solid rgba(168,255,60,0.08);
+  }
+  .integration-box h3 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--accent-lime); font-weight: 600; margin-bottom: 8px;
+  }
+  .integration-box p {
+    font-size: 13px; color: var(--text-secondary); line-height: 1.6;
+  }
+
+  /* PRICING TIERS */
+  .pricing-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    margin-bottom: 48px;
+  }
+  .tier-card {
+    padding: 28px;
+    border-radius: 16px;
+  }
+  .tier-card h3 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--accent-lime); font-weight: 600; margin-bottom: 12px;
+  }
+  .tier-card .tier-price {
+    font-size: 28px; font-weight: 800; color: var(--accent-lime); margin-bottom: 4px;
+  }
+  .tier-card .tier-note {
+    font-size: 13px; color: var(--text-muted); margin-bottom: 16px;
+  }
+  .tier-detail {
+    font-size: 13px; color: var(--text-secondary); line-height: 1.6; padding: 4px 0;
+  }
+
+  .tier-primary {
+    background: rgba(168,255,60,0.05);
+    border: 1px solid rgba(168,255,60,0.15);
+  }
+  .tier-secondary {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .powered-by {
+    text-align: center; font-size: 13px; color: var(--text-muted); margin-top: 32px;
+  }
+  .powered-by a { color: var(--accent-lime); text-decoration: underline; }
+
+  /* CTA */
+  .cta-section {
+    text-align: center; padding: 80px 40px;
+    background: linear-gradient(180deg, transparent, rgba(168,255,60,0.03));
+  }
+  .cta-title { font-size: 40px; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; }
+  .cta-desc { font-size: 16px; color: var(--text-secondary); max-width: 500px; margin: 0 auto 40px; }
+
+  /* FOOTER */
+  .footer-bottom {
+    padding: 24px 40px;
+    border-top: 1px solid var(--border-subtle);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--text-muted);
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom a { color: var(--text-muted); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--accent-lime); }
+
+  /* ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; flex-wrap: wrap; }
+    .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; gap: 20px; margin: 0; padding: 20px 0 10px; order: 99; }
+    .nav-links.open { display: flex !important; }
+    nav.menu-open {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15,15,20,0.92); backdrop-filter: blur(40px);
+      align-content: center; z-index: 9998; overflow-y: auto;
+    }
+    .hamburger { display: flex; }
+    .nav-cta { display: none; }
+    .hero { padding: 100px 24px 60px; min-height: auto; }
+    .hero h1 { font-size: 32px; letter-spacing: -1.5px; }
+    .hero-sub { font-size: 16px; }
+    .content { padding: 0 24px 80px; }
+    .integrations-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 28px; }
+    .cta-title { font-size: 32px; }
+    .footer-bottom { flex-direction: column; text-align: center; padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon"><span>C</span></div>
+    <div class="logo-text">Creator<em>Port</em></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="adults.html"><span data-lang-en>&larr; All Workshops</span><span data-lang-de>&larr; Alle Workshops</span></a></li>
+    <li>
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('de')">DE</button>
+      </div>
+    </li>
+  </ul>
+  <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20business%20automation.%0A-%20Name%3A%0A-%20Business%20type%3A%0A-%20What%20tools%20do%20you%20currently%20use%3F%0A-%20Biggest%20pain%20point%3F%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="nav-cta" data-lang-en>Free Consultation</a>
+  <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20Business-Automatisierung.%0A-%20Name%3A%0A-%20Branche%3A%0A-%20Welche%20Tools%20nutzt%20du%3F%0A-%20Gr%C3%B6%C3%9Fter%20Pain%20Point%3F%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="nav-cta" data-lang-de>Erstgespr&auml;ch</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag reveal" data-lang-en>Service #04 &middot; Software + Hardware</div>
+  <div class="hero-tag reveal" data-lang-de>Service #04 &middot; Software + Hardware</div>
+  <h1 class="reveal" data-lang-en>Your Tools Don't<br><span class="gradient-text">Talk to Each Other</span></h1>
+  <h1 class="reveal" data-lang-de>Deine Tools reden<br><span class="gradient-text">nicht miteinander</span></h1>
+  <p class="hero-sub reveal" data-lang-en>Customer messages on WhatsApp and WeChat. Sales in your POS. Inventory in Excel. Cameras recording but not alerting. Your data is scattered across apps that were never designed to work together.</p>
+  <p class="hero-sub reveal" data-lang-de>Kundennachrichten auf WhatsApp und WeChat. Verk&auml;ufe im Kassensystem. Lagerbestand in Excel. Kameras die aufnehmen aber nicht warnen. Deine Daten sind &uuml;ber Apps verstreut, die nie daf&uuml;r gemacht waren, zusammenzuarbeiten.</p>
+  <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20business%20automation.%0A-%20Name%3A%0A-%20Business%20type%3A%0A-%20What%20tools%20do%20you%20currently%20use%3F%0A-%20Biggest%20pain%20point%3F%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary reveal" data-lang-en>Free Consultation via WhatsApp</a>
+  <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20Business-Automatisierung.%0A-%20Name%3A%0A-%20Branche%3A%0A-%20Welche%20Tools%20nutzt%20du%3F%0A-%20Gr%C3%B6%C3%9Fter%20Pain%20Point%3F%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary reveal" data-lang-de>Kostenloses Erstgespr&auml;ch per WhatsApp</a>
+</section>
+
+<!-- WHAT WE CONNECT -->
+<div class="content">
+  <div class="section-label reveal" data-lang-en>What We Connect</div>
+  <div class="section-label reveal" data-lang-de>Was wir verbinden</div>
+  <h2 class="section-title reveal" data-lang-en>We connect everything<br>into one system.</h2>
+  <h2 class="section-title reveal" data-lang-de>Wir verbinden alles<br>in ein System.</h2>
+
+  <div class="integrations-grid">
+    <div class="integration-box reveal">
+      <h3 data-lang-en>Chat &amp; Communication</h3>
+      <h3 data-lang-de>Chat &amp; Kommunikation</h3>
+      <p>WhatsApp &middot; WeChat &middot; Telegram &middot; LINE &middot; E-Mail</p>
+    </div>
+    <div class="integration-box reveal">
+      <h3 data-lang-en>Payments</h3>
+      <h3 data-lang-de>Zahlungen</h3>
+      <p>Octopus &middot; Alipay HK &middot; WeChat Pay &middot; FPS &middot; Stripe</p>
+    </div>
+    <div class="integration-box reveal">
+      <h3 data-lang-en>Hardware &amp; Sensors</h3>
+      <h3 data-lang-de>Hardware &amp; Sensoren</h3>
+      <p data-lang-en>Security cameras &middot; Temperature &middot; Air quality &middot; Access control &middot; Motion sensors</p>
+      <p data-lang-de>Sicherheitskameras &middot; Temperatur &middot; Luftqualit&auml;t &middot; Zugang &middot; Bewegungsmelder</p>
+    </div>
+    <div class="integration-box reveal">
+      <h3 data-lang-en>Business Software</h3>
+      <h3 data-lang-de>Business-Software</h3>
+      <p data-lang-en>Inventory &middot; Bookkeeping &middot; POS &middot; CRM &middot; Excel &middot; Google Sheets</p>
+      <p data-lang-de>Lager &middot; Buchhaltung &middot; Kasse &middot; CRM &middot; Excel &middot; Google Sheets</p>
+    </div>
+  </div>
+
+  <!-- TWO TIERS -->
+  <div class="section-label reveal" data-lang-en>Two Options</div>
+  <div class="section-label reveal" data-lang-de>Zwei Optionen</div>
+  <h2 class="section-title reveal" data-lang-en>Pick your path.</h2>
+  <h2 class="section-title reveal" data-lang-de>W&auml;hle deinen Weg.</h2>
+
+  <div class="pricing-grid">
+    <div class="tier-card tier-primary reveal">
+      <h3 data-lang-en>Done for You</h3>
+      <h3 data-lang-de>Komplett-Service</h3>
+      <p style="font-size: 15px; font-weight: 600; color: var(--text-secondary); margin-bottom: 16px;" data-lang-en>Free consultation &rarr; fixed-price project</p>
+      <p style="font-size: 15px; font-weight: 600; color: var(--text-secondary); margin-bottom: 16px;" data-lang-de>Kostenloses Erstgespr&auml;ch &rarr; Festpreis-Projekt</p>
+      <div class="tier-detail" data-lang-en>&ndash; We analyse your workflow (free, 1&ndash;2h)</div>
+      <div class="tier-detail" data-lang-de>&ndash; Wir analysieren deinen Workflow (kostenlos, 1&ndash;2h)</div>
+      <div class="tier-detail" data-lang-en>&ndash; Custom solution &mdash; software, hardware, or both</div>
+      <div class="tier-detail" data-lang-de>&ndash; Ma&szlig;geschneiderte L&ouml;sung &mdash; Software, Hardware oder beides</div>
+      <div class="tier-detail" data-lang-en>&ndash; AI builds the integrations &mdash; faster and cheaper than an agency</div>
+      <div class="tier-detail" data-lang-de>&ndash; KI baut die Integrationen &mdash; schneller und g&uuml;nstiger als eine Agentur</div>
+      <div class="tier-detail" data-lang-en>&ndash; Hardware sourced directly from Shenzhen</div>
+      <div class="tier-detail" data-lang-de>&ndash; Hardware direkt aus Shenzhen</div>
+      <div class="tier-detail" data-lang-en>&ndash; Support included after launch</div>
+      <div class="tier-detail" data-lang-de>&ndash; Support nach Launch inklusive</div>
+    </div>
+
+    <div class="tier-card tier-secondary reveal">
+      <h3 data-lang-en>DIY Workshop</h3>
+      <h3 data-lang-de>DIY-Workshop</h3>
+      <div class="tier-price">$2,000 <span style="font-size: 14px; font-weight: 400; color: var(--text-muted);">HKD</span></div>
+      <p class="tier-note" data-lang-en>one-time &middot; no recurring fees</p>
+      <p class="tier-note" data-lang-de>einmalig &middot; keine laufenden Kosten</p>
+      <div class="tier-detail" data-lang-en>&ndash; 4-hour hands-on session</div>
+      <div class="tier-detail" data-lang-de>&ndash; 4-Stunden Hands-on Session</div>
+      <div class="tier-detail" data-lang-en>&ndash; Build your own automation with guidance</div>
+      <div class="tier-detail" data-lang-de>&ndash; Eigene Automation mit Anleitung bauen</div>
+      <div class="tier-detail" data-lang-en>&ndash; Bring your laptop &mdash; leave with a working system</div>
+      <div class="tier-detail" data-lang-de>&ndash; Laptop mitbringen &mdash; mit fertigem System gehen</div>
+      <div class="tier-detail" data-lang-en>&ndash; Full ownership &mdash; $0/month to run</div>
+      <div class="tier-detail" data-lang-de>&ndash; Volle Kontrolle &mdash; 0 $/Monat Betrieb</div>
+    </div>
+  </div>
+
+  <div class="powered-by reveal">
+    Powered by <a href="https://dankur94.github.io/chatbridge/" target="_blank">ChatBridge</a>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="cta-title reveal" data-lang-en>Every manual step<br><span class="gradient-text">costs you money.</span></h2>
+  <h2 class="cta-title reveal" data-lang-de>Jeder manuelle Schritt<br><span class="gradient-text">kostet dich Geld.</span></h2>
+  <p class="cta-desc reveal" data-lang-en>AI builds the integrations. You tell us what you need. Free consultation &mdash; no commitment.</p>
+  <p class="cta-desc reveal" data-lang-de>KI baut die Integrationen. Du sagst uns was du brauchst. Kostenloses Erstgespr&auml;ch &mdash; keine Verpflichtung.</p>
+  <div class="reveal">
+    <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20business%20automation.%0A-%20Name%3A%0A-%20Business%20type%3A%0A-%20What%20tools%20do%20you%20currently%20use%3F%0A-%20Biggest%20pain%20point%3F%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary" data-lang-en>Free Consultation via WhatsApp</a>
+    <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20Business-Automatisierung.%0A-%20Name%3A%0A-%20Branche%3A%0A-%20Welche%20Tools%20nutzt%20du%3F%0A-%20Gr%C3%B6%C3%9Fter%20Pain%20Point%3F%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary" data-lang-de>Kostenloses Erstgespr&auml;ch per WhatsApp</a>
+  </div>
+</section>
+
+<div class="footer-bottom">
+  <span>&copy; CreatorPort is a brand operated by &copy; Space of Possibilities Limited &middot; Hong Kong</span>
+  <span>Powered by <a href="https://dankur94.github.io/chatbridge/" target="_blank" style="color: var(--accent-lime);">ChatBridge</a></span>
+  <span>
+    <a href="privacy.html" style="margin-right: 20px;">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </span>
+</div>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('lang-de', lang === 'de');
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+    });
+    localStorage.setItem('creatorport-lang', lang);
+  }
+
+  const savedLang = localStorage.getItem('creatorport-lang');
+  if (savedLang) setLang(savedLang);
+
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('open');
+    document.querySelector('nav').classList.toggle('menu-open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+      document.querySelector('nav').classList.remove('menu-open');
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

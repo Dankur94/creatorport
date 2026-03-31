@@ -101,24 +101,6 @@
   .nav-links a:hover { color: var(--accent-electric); }
   a[class] { text-decoration: none; }
 
-  /* DROPDOWN */
-  .nav-dropdown { position: relative; }
-  .nav-dropdown > a { cursor: pointer; }
-  .nav-dropdown-menu {
-    display: none; position: absolute; top: 100%; left: 0;
-    padding-top: 8px; min-width: 180px;
-    background: rgba(17,17,24,0.95); backdrop-filter: blur(20px);
-    border: 1px solid var(--border-subtle); border-radius: 12px;
-    padding: 8px 0; z-index: 100;
-  }
-  .nav-dropdown:hover .nav-dropdown-menu { display: block; }
-  .nav-dropdown-menu a {
-    display: block !important; padding: 10px 20px; font-size: 13px !important;
-    text-transform: none !important; letter-spacing: 0 !important;
-    color: var(--text-secondary); transition: all 0.2s;
-  }
-  .nav-dropdown-menu a:hover { color: var(--text-primary); background: rgba(255,255,255,0.04); }
-
   .nav-badge { font-size: 11px; padding: 4px 10px; border-radius: 20px; background: rgba(255,179,71,0.15); color: var(--accent-amber); font-weight: 600; border: 1px solid rgba(255,179,71,0.3); }
 
   .nav-cta {
@@ -133,10 +115,10 @@
 
   /* HERO */
   .hero {
-    min-height: 100vh;
+    min-height: 70vh;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     text-align: center;
-    padding: 120px 40px 80px;
+    padding: 120px 40px 60px;
     position: relative;
   }
 
@@ -172,23 +154,6 @@
     line-height: 1.7; margin-bottom: 40px;
   }
 
-  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
-
-  .btn-primary {
-    padding: 16px 36px; border-radius: 30px; font-weight: 700; font-size: 16px;
-    text-decoration: none; color: #0a0a0f; background: var(--accent-amber);
-    transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
-  }
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(255,179,71,0.3); }
-
-  .btn-secondary {
-    padding: 16px 36px; border-radius: 30px; font-weight: 600; font-size: 16px;
-    text-decoration: none; color: var(--text-primary);
-    border: 1px solid var(--border-subtle); background: transparent;
-    transition: all 0.3s;
-  }
-  .btn-secondary:hover { border-color: var(--accent-amber); color: var(--accent-amber); }
-
   /* SECTIONS */
   section { padding: 100px 40px; }
   .section-label {
@@ -204,65 +169,94 @@
     max-width: 600px; margin: 0 auto 60px; line-height: 1.7;
   }
 
-  /* WORKSHOPS GRID */
+  /* WORKSHOP CARDS GRID */
   .workshops-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 24px; max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; max-width: 1100px; margin: 0 auto;
   }
 
-  .workshop-card {
+  .workshop-link {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: 20px;
-    padding: 36px;
-    transition: all 0.4s;
+    padding: 32px 24px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    display: block;
   }
-  .workshop-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent-amber);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  .workshop-link::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 20px 20px 0 0;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .workshop-link:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  }
+  .workshop-link:hover::before { opacity: 1; }
+
+  .workshop-link.color-amber::before { background: var(--accent-amber); }
+  .workshop-link.color-amber:hover { border-color: var(--accent-amber); }
+  .workshop-link.color-electric::before { background: var(--accent-electric); }
+  .workshop-link.color-electric:hover { border-color: var(--accent-electric); }
+  .workshop-link.color-lime::before { background: var(--accent-lime); }
+  .workshop-link.color-lime:hover { border-color: var(--accent-lime); }
+  .workshop-link.color-magenta::before { background: var(--accent-magenta); }
+  .workshop-link.color-magenta:hover { border-color: var(--accent-magenta); }
+
+  .ws-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700;
+    letter-spacing: -1px;
+  }
+  .color-amber .ws-icon { background: rgba(255,179,71,0.1); color: var(--accent-amber); }
+  .color-electric .ws-icon { background: rgba(0,212,255,0.1); color: var(--accent-electric); }
+  .color-lime .ws-icon { background: rgba(168,255,60,0.1); color: var(--accent-lime); }
+  .color-magenta .ws-icon { background: rgba(255,60,172,0.1); color: var(--accent-magenta); }
+
+  .ws-num {
+    font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .color-amber .ws-num { color: var(--accent-amber); }
+  .color-electric .ws-num { color: var(--accent-electric); }
+  .color-lime .ws-num { color: var(--accent-lime); }
+  .color-magenta .ws-num { color: var(--accent-magenta); }
+
+  .ws-title {
+    font-size: 20px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px;
+  }
+  .ws-meta {
+    font-size: 13px; margin-bottom: 14px; line-height: 1.5;
+  }
+  .color-amber .ws-meta { color: var(--accent-amber); }
+  .color-electric .ws-meta { color: var(--accent-electric); }
+  .color-lime .ws-meta { color: var(--accent-lime); }
+  .color-magenta .ws-meta { color: var(--accent-magenta); }
+
+  .ws-desc {
+    font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px;
   }
 
-  .workshop-num {
-    font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700;
-    color: var(--accent-amber); letter-spacing: 1px; margin-bottom: 16px;
+  .ws-arrow {
+    font-size: 14px; font-weight: 600; transition: transform 0.3s; display: inline-block;
   }
-  .workshop-badge {
-    display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
-    padding: 4px 12px; border-radius: 20px; font-weight: 600; margin-bottom: 16px;
-  }
-  .workshop-title { font-size: 22px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px; }
-  .workshop-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; }
-  .workshop-details { margin-bottom: 20px; }
-  .workshop-detail {
-    font-size: 13px; color: var(--text-secondary); line-height: 1.5;
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .workshop-detail::before { content: '\2013'; color: var(--text-muted); font-weight: 700; }
-  .workshop-price { font-size: 28px; font-weight: 800; color: var(--accent-amber); }
-  .workshop-price span { font-size: 14px; font-weight: 400; color: var(--text-muted); }
+  .color-amber .ws-arrow { color: var(--accent-amber); }
+  .color-electric .ws-arrow { color: var(--accent-electric); }
+  .color-lime .ws-arrow { color: var(--accent-lime); }
+  .color-magenta .ws-arrow { color: var(--accent-magenta); }
 
-  /* SPECIAL EVENT */
-  .special-card {
-    background: linear-gradient(135deg, rgba(255,179,71,0.08), rgba(255,60,172,0.05));
-    border: 1px solid rgba(255,179,71,0.2);
-  }
-  .special-card .workshop-badge {
-    background: rgba(255,179,71,0.15); color: var(--accent-amber);
-    border: 1px solid rgba(255,179,71,0.3);
-  }
-
-  /* COMING SOON */
-  .coming-soon-badge {
-    display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
-    padding: 4px 12px; border-radius: 20px; font-weight: 600; margin-bottom: 16px;
-    background: rgba(255,179,71,0.1); color: var(--accent-amber);
-    border: 1px dashed rgba(255,179,71,0.4);
-  }
+  .workshop-link:hover .ws-arrow { transform: translateX(6px); }
 
   /* HOW IT WORKS */
   .steps { display: flex; gap: 40px; max-width: 900px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
@@ -293,6 +287,13 @@
   .cta-title { font-size: 48px; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; }
   .cta-desc { font-size: 16px; color: var(--text-secondary); max-width: 500px; margin: 0 auto 40px; }
 
+  .btn-primary {
+    padding: 16px 36px; border-radius: 30px; font-weight: 700; font-size: 16px;
+    text-decoration: none; color: #0a0a0f; background: var(--accent-amber);
+    transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(255,179,71,0.3); }
+
   /* FOOTER */
   .footer-bottom {
     padding: 24px 40px;
@@ -315,7 +316,6 @@
     .nav-links.open { display: flex !important; }
     .nav-links li { text-align: center; width: 100%; }
     .nav-links li a { font-size: 18px; display: block; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .nav-dropdown-menu { position: static; margin-top: 0; background: transparent; border: none; backdrop-filter: none; }
     nav.menu-open {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(15,15,20,0.92); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
@@ -324,17 +324,14 @@
     .hamburger { display: flex; }
     .nav-cta { display: none; }
     .nav-links .lang-toggle { margin-top: 10px; }
-    .hero { padding: 100px 24px 60px; }
+    .hero { padding: 100px 24px 40px; min-height: auto; }
     .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
     .hero-sub { font-size: 16px; }
-    .hero-actions { flex-direction: column; }
-    .btn-primary, .btn-secondary { width: 100%; text-align: center; justify-content: center; }
     section { padding: 80px 24px; }
     .section-title { font-size: 32px; letter-spacing: -1px; }
-    .workshops-grid { grid-template-columns: 1fr; }
+    .workshops-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
     .steps { flex-direction: column; }
     .footer-bottom { flex-direction: column; text-align: center; padding: 20px 24px; }
-    .pricing-options { grid-template-columns: 1fr !important; }
   }
 </style>
 </head>
@@ -348,13 +345,6 @@
   <ul class="nav-links">
     <li><a href="#workshops"><span data-lang-en>Workshops</span><span data-lang-de>Workshops</span></a></li>
     <li><a href="#how"><span data-lang-en>How It Works</span><span data-lang-de>So funktioniert's</span></a></li>
-    <li class="nav-dropdown">
-      <a href="#"><span data-lang-en>Products</span><span data-lang-de>Produkte</span></a>
-      <div class="nav-dropdown-menu">
-        <a href="https://dankur94.github.io/kurthtechnik/" target="_blank">OrbBot</a>
-        <a href="roaster.html">CloudRoast Mini</a>
-      </div>
-    </li>
     <li>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('en')">EN</button>
@@ -362,8 +352,8 @@
       </div>
     </li>
   </ul>
-  <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20book%20a%20CreatorPort%20workshop.%0A-%20Name%3A%0A-%20Workshop%20%28Coffee%20Roaster%20/%20OrbBot%20/%20Beer%20Tap%29%3A%0A-%20Number%20of%20participants%3A%0A-%20Preferred%20date%20%26%20time%3A%0A-%20Experience%20level%20%28Beginner%20/%20Some%20/%20Advanced%29%3A%0A-%20Language%20preference%20%28EN%20/%20DE%29%3A%0A-%20Any%20questions%3A%0A%0ACreatorPort%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="nav-cta" data-lang-en>Book Now</a>
-  <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20m%C3%B6chte%20einen%20CreatorPort%20Workshop%20buchen.%0A-%20Name%3A%0A-%20Workshop%20%28Kaffeer%C3%B6ster%20/%20OrbBot%20/%20Zapfanlage%29%3A%0A-%20Anzahl%20Teilnehmer%3A%0A-%20Wunschdatum%20%26%20Uhrzeit%3A%0A-%20Erfahrungslevel%20%28Anf%C3%A4nger%20/%20Etwas%20/%20Fortgeschritten%29%3A%0A-%20Sprache%20%28EN%20/%20DE%29%3A%0A-%20Fragen%3A%0A%0ACreatorPort%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="nav-cta" data-lang-de>Jetzt buchen</a>
+  <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20book%20a%20CreatorPort%20workshop.%0A-%20Name%3A%0A-%20Workshop%3A%0A-%20Number%20of%20participants%3A%0A-%20Preferred%20date%3A%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="nav-cta" data-lang-en>Book Now</a>
+  <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20m%C3%B6chte%20einen%20CreatorPort%20Workshop%20buchen.%0A-%20Name%3A%0A-%20Workshop%3A%0A-%20Anzahl%20Teilnehmer%3A%0A-%20Wunschdatum%3A%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="nav-cta" data-lang-de>Jetzt buchen</a>
   <div class="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
@@ -371,26 +361,20 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge reveal" data-lang-en>Launching 23 May 2026 &middot; Hong Kong Island, Central &mdash; Limited spots &middot; Pre-Register Now</div>
-  <div class="hero-badge reveal" data-lang-de>Start am 23. Mai 2026 &middot; Hong Kong Island, Central &mdash; Begrenzte Pl&auml;tze &middot; Jetzt voranmelden</div>
-  <div class="hero-tag reveal" data-lang-en>Workshops for Adults &middot; Hong Kong Island, Central</div>
-  <div class="hero-tag reveal" data-lang-de>Workshops f&uuml;r Erwachsene &middot; Hong Kong Island, Central</div>
+  <div class="hero-badge reveal" data-lang-en>Launching 23 May 2026 &middot; Hong Kong Island, Central</div>
+  <div class="hero-badge reveal" data-lang-de>Start am 23. Mai 2026 &middot; Hong Kong Island, Central</div>
+  <div class="hero-tag reveal" data-lang-en>Workshops for Adults</div>
+  <div class="hero-tag reveal" data-lang-de>Workshops f&uuml;r Erwachsene</div>
   <h1 class="reveal" data-lang-en>Build it.<br><span class="gradient-text">Understand it.</span></h1>
   <h1 class="reveal" data-lang-de>Baue es.<br><span class="gradient-text">Verstehe es.</span></h1>
-  <p class="hero-sub reveal" data-lang-en>Unforgettable experiences with friends &mdash; while learning the basics of robotics and AI. Taste, build, laugh, and take home something you made yourself.</p>
-  <p class="hero-sub reveal" data-lang-de>Unvergessliche Erlebnisse mit Freunden &mdash; und dabei die Grundlagen von Robotik und KI lernen. Probieren, bauen, lachen und etwas Selbstgemachtes mit nach Hause nehmen.</p>
-  <div class="hero-actions reveal">
-    <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20book%20a%20CreatorPort%20workshop.%0A-%20Name%3A%0A-%20Workshop%20%28Coffee%20Roaster%20/%20OrbBot%20/%20Beer%20Tap%29%3A%0A-%20Number%20of%20participants%3A%0A-%20Preferred%20date%20%26%20time%3A%0A-%20Experience%20level%20%28Beginner%20/%20Some%20/%20Advanced%29%3A%0A-%20Language%20preference%20%28EN%20/%20DE%29%3A%0A-%20Any%20questions%3A%0A%0ACreatorPort%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary" data-lang-en>Book a Workshop</a>
-    <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20m%C3%B6chte%20einen%20CreatorPort%20Workshop%20buchen.%0A-%20Name%3A%0A-%20Workshop%20%28Kaffeer%C3%B6ster%20/%20OrbBot%20/%20Zapfanlage%29%3A%0A-%20Anzahl%20Teilnehmer%3A%0A-%20Wunschdatum%20%26%20Uhrzeit%3A%0A-%20Erfahrungslevel%20%28Anf%C3%A4nger%20/%20Etwas%20/%20Fortgeschritten%29%3A%0A-%20Sprache%20%28EN%20/%20DE%29%3A%0A-%20Fragen%3A%0A%0ACreatorPort%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary" data-lang-de>Workshop buchen</a>
-    <a href="#workshops" class="btn-secondary" data-lang-en>See Workshops</a>
-    <a href="#workshops" class="btn-secondary" data-lang-de>Workshops ansehen</a>
-  </div>
+  <p class="hero-sub reveal" data-lang-en>Unforgettable experiences with friends &mdash; while learning the basics of robotics and AI.</p>
+  <p class="hero-sub reveal" data-lang-de>Unvergessliche Erlebnisse mit Freunden &mdash; und dabei die Grundlagen von Robotik und KI lernen.</p>
 </section>
 
 <!-- WORKSHOPS -->
 <section id="workshops">
-  <div class="section-label reveal" data-lang-en>Workshops</div>
-  <div class="section-label reveal" data-lang-de>Workshops</div>
+  <div class="section-label reveal" data-lang-en>Workshops &amp; Services</div>
+  <div class="section-label reveal" data-lang-de>Workshops &amp; Services</div>
   <h2 class="section-title reveal" data-lang-en>Pick your<br>next adventure.</h2>
   <h2 class="section-title reveal" data-lang-de>W&auml;hle dein<br>n&auml;chstes Abenteuer.</h2>
   <p class="section-desc reveal" data-lang-en>Hands-on sessions. Small groups. Everything provided. Walk in curious, walk out building.</p>
@@ -398,209 +382,80 @@
 
   <div class="workshops-grid">
 
-    <!-- BEER TAP — COMING SOON -->
-    <div class="workshop-card special-card reveal">
-      <div class="workshop-num">01</div>
-      <div class="coming-soon-badge" data-lang-en>Coming Soon</div>
-      <div class="coming-soon-badge" data-lang-de>In Vorbereitung</div>
-      <div class="workshop-badge" data-lang-en>DIY Robotics &middot; Social Experience</div>
-      <div class="workshop-badge" data-lang-de>DIY Robotik &middot; Gesellschaftserlebnis</div>
-      <h3 class="workshop-title" data-lang-en>Build a Beer Tap System</h3>
-      <h3 class="workshop-title" data-lang-de>Baue ein Bierzapfsystem</h3>
-      <p class="workshop-desc" data-lang-en>The perfect group experience &mdash; build your own automated beer tap together while tasting different beer styles along the way. Learn the DIY robotics fundamentals behind temperature sensors, flow meters, and Arduino-controlled valves. The 4-litre capacity makes it ideal for your next small party with freshly tapped beer. A great gift idea for friends and family too.</p>
-      <p class="workshop-desc" data-lang-de>Das perfekte Gruppenerlebnis &mdash; baut zusammen eure eigene automatische Zapfanlage und probiert dabei verschiedene Biersorten. Lernt die DIY-Robotik-Grundlagen hinter Temperatursensoren, Durchflussmessern und Arduino-gesteuerten Ventilen. Mit 4 Liter Fassungsverm&ouml;gen ideal f&uuml;r die n&auml;chste kleine Party mit frisch gezapftem Bier. Auch eine tolle Geschenkidee f&uuml;r Freunde und Familie.</p>
-      <div class="workshop-details" data-lang-en>
-        <span class="workshop-detail">3 hours</span>
-        <span class="workshop-detail">Max 6 people &mdash; bring your friends!</span>
-        <span class="workshop-detail">Flexible scheduling</span>
-        <span class="workshop-detail">Beer tasting with different styles included</span>
-        <span class="workshop-detail">4-litre tap &mdash; perfect for your next party</span>
-        <span class="workshop-detail">All build kits provided for use during the workshop</span>
-      </div>
-      <div class="workshop-details" data-lang-de>
-        <span class="workshop-detail">3 Stunden</span>
-        <span class="workshop-detail">Max. 6 Personen &mdash; bring deine Freunde mit!</span>
-        <span class="workshop-detail">Flexible Terminwahl</span>
-        <span class="workshop-detail">Bierverkostung mit verschiedenen Sorten inklusive</span>
-        <span class="workshop-detail">4-Liter-Zapfanlage &mdash; perfekt f&uuml;r die n&auml;chste Party</span>
-        <span class="workshop-detail">Alle Baus&auml;tze werden f&uuml;r den Workshop bereitgestellt</span>
-      </div>
-      <p style="font-size: 14px; color: var(--accent-amber); font-weight: 600; margin-top: 16px;" data-lang-en>This workshop is currently being finalised. Interested? Send us <strong>#zapfsystem</strong> on WhatsApp and we'll prioritise you.</p>
-      <p style="font-size: 14px; color: var(--accent-amber); font-weight: 600; margin-top: 16px;" data-lang-de>Dieser Workshop wird gerade fertiggestellt. Interesse? Schick uns <strong>#zapfsystem</strong> per WhatsApp und wir informieren dich zuerst.</p>
-      <div style="margin-top: 16px;">
-        <a href="https://wa.me/85265427963?text=%23zapfsystem" target="_blank" class="btn-primary" style="font-size: 13px; padding: 10px 24px;" data-lang-en>Send #zapfsystem</a>
-        <a href="https://wa.me/85265427963?text=%23zapfsystem" target="_blank" class="btn-primary" style="font-size: 13px; padding: 10px 24px;" data-lang-de>#zapfsystem senden</a>
-      </div>
-    </div>
+    <!-- 01 BEER TAP -->
+    <a href="beertap.html" class="workshop-link color-amber reveal">
+      <div class="ws-icon">&#x1F37A;</div>
+      <div class="ws-num">#01</div>
+      <div class="ws-title" data-lang-en>Build a Beer Tap</div>
+      <div class="ws-title" data-lang-de>Baue ein Zapfsystem</div>
+      <div class="ws-meta" data-lang-en>Group experience &middot; Coming Soon</div>
+      <div class="ws-meta" data-lang-de>Gruppenerlebnis &middot; In Vorbereitung</div>
+      <p class="ws-desc" data-lang-en>Build your own automated beer tap together while tasting different beer styles. DIY robotics meets social fun.</p>
+      <p class="ws-desc" data-lang-de>Baut zusammen eure eigene automatische Zapfanlage und probiert dabei verschiedene Biersorten. DIY-Robotik trifft Geselligkeit.</p>
+      <span class="ws-arrow" data-lang-en>Learn more &rarr;</span>
+      <span class="ws-arrow" data-lang-de>Mehr erfahren &rarr;</span>
+    </a>
 
-    <!-- COFFEE ROASTER -->
-    <div class="workshop-card special-card reveal">
-      <div class="workshop-num">02</div>
-      <div class="workshop-badge" data-lang-en>DIY Robotics &middot; Coffee Experience</div>
-      <div class="workshop-badge" data-lang-de>DIY Robotik &middot; Kaffee-Erlebnis</div>
-      <h3 class="workshop-title" data-lang-en>Build a Coffee Roaster</h3>
-      <h3 class="workshop-title" data-lang-de>Baue einen Kaffeer&ouml;ster</h3>
-      <p class="workshop-desc" data-lang-en>A hands-on experience you won&rsquo;t forget &mdash; build your own <a href="roaster.html" style="color: var(--accent-amber);">&copy; CloudRoast Mini</a> coffee roaster and taste the difference between light, medium, and dark roasts from beans you roasted yourself. Along the way, you&rsquo;ll learn DIY robotics fundamentals: Arduino, temperature sensors, fan control, and PID tuning. Makes a perfect gift for the coffee lover in your life.</p>
-      <p class="workshop-desc" data-lang-de>Ein Erlebnis, das du nicht vergisst &mdash; baue deinen eigenen <a href="roaster.html" style="color: var(--accent-amber);">&copy; CloudRoast Mini</a> Kaffeer&ouml;ster und schmecke den Unterschied zwischen heller, mittlerer und dunkler R&ouml;stung aus Bohnen, die du selbst ger&ouml;stet hast. Nebenbei lernst du DIY-Robotik-Grundlagen: Arduino, Temperatursensoren, L&uuml;ftersteuerung und PID-Regelung. Ein perfektes Geschenk f&uuml;r Kaffeeliebhaber.</p>
-      <div class="workshop-details" data-lang-en>
-        <span class="workshop-detail">3 hours</span>
-        <span class="workshop-detail">Max 6 people</span>
-        <span class="workshop-detail">Flexible scheduling</span>
-        <span class="workshop-detail">Taste different roast levels from your own beans</span>
-        <span class="workshop-detail">Specialty coffee tasting included</span>
-        <span class="workshop-detail">Great gift for friends &amp; family</span>
-        <span class="workshop-detail">All build kits provided for use during the workshop</span>
-      </div>
-      <div class="workshop-details" data-lang-de>
-        <span class="workshop-detail">3 Stunden</span>
-        <span class="workshop-detail">Max. 6 Personen</span>
-        <span class="workshop-detail">Flexible Terminwahl</span>
-        <span class="workshop-detail">Verschiedene R&ouml;stgrade aus eigenen Bohnen probieren</span>
-        <span class="workshop-detail">Spezialit&auml;tenkaffee-Verkostung inklusive</span>
-        <span class="workshop-detail">Tolles Geschenk f&uuml;r Freunde &amp; Familie</span>
-        <span class="workshop-detail">Alle Baus&auml;tze werden f&uuml;r den Workshop bereitgestellt</span>
-      </div>
-      <div class="workshop-price">$600 <span>HKD / <span data-lang-en>person (workshop only)</span><span data-lang-de>Person (nur Workshop)</span></span></div>
-      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;" data-lang-en>Want to keep roasting at home? <a href="roaster.html" style="color: var(--accent-amber);">Take the &copy; CloudRoast Mini with you &mdash; $289 USD</a></p>
-      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;" data-lang-de>Zuhause weiterr&ouml;sten? <a href="roaster.html" style="color: var(--accent-amber);">&copy; CloudRoast Mini mitnehmen &mdash; $289 USD</a></p>
-    </div>
+    <!-- 02 COFFEE ROASTER -->
+    <a href="roaster.html" class="workshop-link color-amber reveal">
+      <div class="ws-icon">&#x2615;</div>
+      <div class="ws-num">#02</div>
+      <div class="ws-title" data-lang-en>Build a Coffee Roaster</div>
+      <div class="ws-title" data-lang-de>Baue einen Kaffeer&ouml;ster</div>
+      <div class="ws-meta" data-lang-en>Group experience &middot; 3h &middot; $600/person</div>
+      <div class="ws-meta" data-lang-de>Gruppenerlebnis &middot; 3h &middot; $600/Person</div>
+      <p class="ws-desc" data-lang-en>Build your own CloudRoast Mini and taste the difference between roast levels from beans you roasted yourself.</p>
+      <p class="ws-desc" data-lang-de>Baue deinen eigenen CloudRoast Mini und schmecke den Unterschied zwischen R&ouml;stgraden aus selbst ger&ouml;steten Bohnen.</p>
+      <span class="ws-arrow" data-lang-en>Learn more &rarr;</span>
+      <span class="ws-arrow" data-lang-de>Mehr erfahren &rarr;</span>
+    </a>
 
-    <!-- ORBBOT -->
-    <div class="workshop-card reveal" style="border-color: rgba(0,212,255,0.2); background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(168,255,60,0.03));">
-      <div class="workshop-num">03</div>
-      <div class="workshop-badge" style="background: rgba(0,212,255,0.1); color: var(--accent-electric); border: 1px solid rgba(0,212,255,0.2);" data-lang-en>Flagship &middot; Advanced Robotics</div>
-      <div class="workshop-badge" style="background: rgba(0,212,255,0.1); color: var(--accent-electric); border: 1px solid rgba(0,212,255,0.2);" data-lang-de>Flaggschiff &middot; Fortgeschrittene Robotik</div>
-      <h3 class="workshop-title" data-lang-en>Build an OrbBot</h3>
-      <h3 class="workshop-title" data-lang-de>Baue einen OrbBot</h3>
-      <p class="workshop-desc" data-lang-en>Our flagship robotics experience. Assemble a self-balancing robot that stays upright on a ball &mdash; designed by <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-electric);">&copy; KurthTechnik</a>. You&rsquo;ll learn advanced robotics fundamentals: IMU sensors, LQR control theory, and 3-axis motor coordination. German-engineered hardware, open-source firmware. An unforgettable challenge &mdash; and you take your robot home.</p>
-      <p class="workshop-desc" data-lang-de>Unser Flaggschiff-Robotik-Erlebnis. Baue einen selbstbalancierenden Roboter, der auf einer Kugel aufrecht steht &mdash; entwickelt von <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-electric);">&copy; KurthTechnik</a>. Du lernst fortgeschrittene Robotik-Grundlagen: IMU-Sensoren, LQR-Regelungstechnik und 3-Achsen-Motorsteuerung. German-engineered Hardware, Open-Source-Firmware. Eine unvergessliche Herausforderung &mdash; und du nimmst deinen Roboter mit nach Hause.</p>
-      <div class="workshop-details" data-lang-en>
-        <span class="workshop-detail">4 hours</span>
-        <span class="workshop-detail">Max 6 people</span>
-        <span class="workshop-detail">Flexible scheduling</span>
-        <span class="workshop-detail">All build kits provided for use during the workshop</span>
-        <span class="workshop-detail">Assembly + coding + LQR tuning</span>
-      </div>
-      <div class="workshop-details" data-lang-de>
-        <span class="workshop-detail">4 Stunden</span>
-        <span class="workshop-detail">Max. 6 Personen</span>
-        <span class="workshop-detail">Flexible Terminwahl</span>
-        <span class="workshop-detail">Alle Baus&auml;tze werden f&uuml;r den Workshop bereitgestellt</span>
-        <span class="workshop-detail">Zusammenbau + Programmierung + LQR-Tuning</span>
-      </div>
-      <div class="workshop-price">$800 <span>HKD / <span data-lang-en>person (workshop only)</span><span data-lang-de>Person (nur Workshop)</span></span></div>
-      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;" data-lang-en>Want to keep building at home? <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-electric);">Take the &copy; OrbBot with you &mdash; $150 USD</a></p>
-      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;" data-lang-de>Zuhause weiterbauen? <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" style="color: var(--accent-electric);">&copy; OrbBot mitnehmen &mdash; $150 USD</a></p>
-    </div>
+    <!-- 03 ORBBOT -->
+    <a href="orbbot-workshop.html" class="workshop-link color-electric reveal">
+      <div class="ws-icon">&#x2299;</div>
+      <div class="ws-num">#03</div>
+      <div class="ws-title" data-lang-en>Build an OrbBot</div>
+      <div class="ws-title" data-lang-de>Baue einen OrbBot</div>
+      <div class="ws-meta" data-lang-en>Advanced robotics &middot; 4h &middot; $800/person</div>
+      <div class="ws-meta" data-lang-de>Fortgeschrittene Robotik &middot; 4h &middot; $800/Person</div>
+      <p class="ws-desc" data-lang-en>Our flagship experience. Assemble a self-balancing robot that stays upright on a ball. You take it home.</p>
+      <p class="ws-desc" data-lang-de>Unser Flaggschiff-Erlebnis. Baue einen selbstbalancierenden Roboter, der auf einer Kugel steht. Du nimmst ihn mit.</p>
+      <span class="ws-arrow" data-lang-en>Learn more &rarr;</span>
+      <span class="ws-arrow" data-lang-de>Mehr erfahren &rarr;</span>
+    </a>
 
-    <!-- BUSINESS AUTOMATION -->
-    <div class="workshop-card reveal" style="border-color: rgba(168,255,60,0.2); background: linear-gradient(135deg, rgba(168,255,60,0.06), rgba(0,212,255,0.03));">
-      <div class="workshop-num">04</div>
-      <div class="workshop-badge" style="background: rgba(168,255,60,0.1); color: var(--accent-lime); border: 1px solid rgba(168,255,60,0.2);" data-lang-en>Business Automation &middot; Software + Hardware</div>
-      <div class="workshop-badge" style="background: rgba(168,255,60,0.1); color: var(--accent-lime); border: 1px solid rgba(168,255,60,0.2);" data-lang-de>Business-Automatisierung &middot; Software + Hardware</div>
-      <h3 class="workshop-title" data-lang-en>Your Tools Don&rsquo;t Talk to Each Other</h3>
-      <h3 class="workshop-title" data-lang-de>Deine Tools reden nicht miteinander</h3>
-      <p class="workshop-desc" data-lang-en>Customer messages on WhatsApp and WeChat. Sales in your POS. Inventory in Excel. Cameras recording but not alerting. Bookkeeping done by hand. Your data is scattered across apps that were never designed to work together &mdash; and every manual step costs you time, money, and customers. We connect everything into one system. Chat, payments, sensors, stock, accounting &mdash; all talking to each other, automatically. AI builds the integrations. You tell us what you need.</p>
-      <p class="workshop-desc" data-lang-de>Kundennachrichten auf WhatsApp und WeChat. Verk&auml;ufe im Kassensystem. Lagerbestand in Excel. Kameras die aufnehmen aber nicht warnen. Buchhaltung per Hand. Deine Daten sind &uuml;ber Apps verstreut, die nie daf&uuml;r gemacht waren, zusammenzuarbeiten &mdash; und jeder manuelle Schritt kostet Zeit, Geld und Kunden. Wir verbinden alles in ein System. Chat, Zahlungen, Sensoren, Lager, Buchhaltung &mdash; alles kommuniziert automatisch. KI baut die Integrationen. Du sagst uns was du brauchst.</p>
+    <!-- 04 BUSINESS AUTOMATION -->
+    <a href="automation.html" class="workshop-link color-lime reveal">
+      <div class="ws-icon">&#x26A1;</div>
+      <div class="ws-num">#04</div>
+      <div class="ws-title" data-lang-en>Business Automation</div>
+      <div class="ws-title" data-lang-de>Business-Automatisierung</div>
+      <div class="ws-meta" data-lang-en>Connect your tools &middot; Free consultation</div>
+      <div class="ws-meta" data-lang-de>Verbinde deine Tools &middot; Kostenloses Erstgespr&auml;ch</div>
+      <p class="ws-desc" data-lang-en>Your data is scattered across apps. We connect chat, payments, sensors, and software into one system.</p>
+      <p class="ws-desc" data-lang-de>Deine Daten sind &uuml;ber Apps verstreut. Wir verbinden Chat, Zahlungen, Sensoren und Software in ein System.</p>
+      <span class="ws-arrow" data-lang-en>Learn more &rarr;</span>
+      <span class="ws-arrow" data-lang-de>Mehr erfahren &rarr;</span>
+    </a>
 
-      <!-- WHAT WE CONNECT -->
-      <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-        <div style="padding: 12px 16px; background: rgba(168,255,60,0.04); border-radius: 10px; border: 1px solid rgba(168,255,60,0.08);">
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 600; margin-bottom: 6px;" data-lang-en>Chat &amp; Communication</p>
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 600; margin-bottom: 6px;" data-lang-de>Chat &amp; Kommunikation</p>
-          <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">WhatsApp &middot; WeChat &middot; Telegram &middot; LINE &middot; E-Mail</p>
-        </div>
-        <div style="padding: 12px 16px; background: rgba(168,255,60,0.04); border-radius: 10px; border: 1px solid rgba(168,255,60,0.08);">
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 600; margin-bottom: 6px;" data-lang-en>Payments</p>
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 600; margin-bottom: 6px;" data-lang-de>Zahlungen</p>
-          <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Octopus &middot; Alipay HK &middot; WeChat Pay &middot; FPS &middot; Stripe</p>
-        </div>
-        <div style="padding: 12px 16px; background: rgba(168,255,60,0.04); border-radius: 10px; border: 1px solid rgba(168,255,60,0.08);">
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 600; margin-bottom: 6px;" data-lang-en>Hardware &amp; Sensors</p>
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 600; margin-bottom: 6px;" data-lang-de>Hardware &amp; Sensoren</p>
-          <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;" data-lang-en>Security cameras &middot; Temperature &middot; Air quality &middot; Access control &middot; Motion sensors</p>
-          <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;" data-lang-de>Sicherheitskameras &middot; Temperatur &middot; Luftqualit&auml;t &middot; Zugang &middot; Bewegungsmelder</p>
-        </div>
-        <div style="padding: 12px 16px; background: rgba(168,255,60,0.04); border-radius: 10px; border: 1px solid rgba(168,255,60,0.08);">
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 600; margin-bottom: 6px;" data-lang-en>Business Software</p>
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 600; margin-bottom: 6px;" data-lang-de>Business-Software</p>
-          <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;" data-lang-en>Inventory &middot; Bookkeeping &middot; POS &middot; CRM &middot; Excel &middot; Google Sheets</p>
-          <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;" data-lang-de>Lager &middot; Buchhaltung &middot; Kasse &middot; CRM &middot; Excel &middot; Google Sheets</p>
-        </div>
-      </div>
-
-      <!-- TWO TIERS -->
-      <div class="pricing-options" style="margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-        <div style="padding: 20px; background: rgba(168,255,60,0.05); border: 1px solid rgba(168,255,60,0.15); border-radius: 12px;">
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 600; margin-bottom: 8px;" data-lang-en>Done for You</p>
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 600; margin-bottom: 8px;" data-lang-de>Komplett-Service</p>
-          <p style="font-size: 14px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px;" data-lang-en>Free consultation &rarr; fixed-price project</p>
-          <p style="font-size: 14px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px;" data-lang-de>Kostenloses Erstgespr&auml;ch &rarr; Festpreis-Projekt</p>
-          <div style="margin-top: 12px; font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
-            <div style="padding: 4px 0;" data-lang-en>&ndash; We analyse your workflow (free, 1&ndash;2h)</div>
-            <div style="padding: 4px 0;" data-lang-de>&ndash; Wir analysieren deinen Workflow (kostenlos, 1&ndash;2h)</div>
-            <div style="padding: 4px 0;" data-lang-en>&ndash; Custom solution &mdash; software, hardware, or both</div>
-            <div style="padding: 4px 0;" data-lang-de>&ndash; Ma&szlig;geschneiderte L&ouml;sung &mdash; Software, Hardware oder beides</div>
-            <div style="padding: 4px 0;" data-lang-en>&ndash; AI builds the integrations &mdash; faster and cheaper than an agency</div>
-            <div style="padding: 4px 0;" data-lang-de>&ndash; KI baut die Integrationen &mdash; schneller und g&uuml;nstiger als eine Agentur</div>
-            <div style="padding: 4px 0;" data-lang-en>&ndash; Hardware sourced directly from Shenzhen</div>
-            <div style="padding: 4px 0;" data-lang-de>&ndash; Hardware direkt aus Shenzhen</div>
-            <div style="padding: 4px 0;" data-lang-en>&ndash; Support included after launch</div>
-            <div style="padding: 4px 0;" data-lang-de>&ndash; Support nach Launch inklusive</div>
-          </div>
-        </div>
-        <div style="padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: 12px;">
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 600; margin-bottom: 8px;" data-lang-en>DIY Workshop</p>
-          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-lime); font-weight: 600; margin-bottom: 8px;" data-lang-de>DIY-Workshop</p>
-          <p style="font-size: 24px; font-weight: 800; color: var(--accent-lime);">$2,000 <span style="font-size: 13px; font-weight: 400; color: var(--text-muted);">HKD</span></p>
-          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;" data-lang-en>one-time &middot; no recurring fees</p>
-          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;" data-lang-de>einmalig &middot; keine laufenden Kosten</p>
-          <div style="margin-top: 12px; font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
-            <div style="padding: 4px 0;" data-lang-en>&ndash; 4-hour hands-on session</div>
-            <div style="padding: 4px 0;" data-lang-de>&ndash; 4-Stunden Hands-on Session</div>
-            <div style="padding: 4px 0;" data-lang-en>&ndash; Build your own automation with guidance</div>
-            <div style="padding: 4px 0;" data-lang-de>&ndash; Eigene Automation mit Anleitung bauen</div>
-            <div style="padding: 4px 0;" data-lang-en>&ndash; Bring your laptop &mdash; leave with a working system</div>
-            <div style="padding: 4px 0;" data-lang-de>&ndash; Laptop mitbringen &mdash; mit fertigem System gehen</div>
-            <div style="padding: 4px 0;" data-lang-en>&ndash; Full ownership &mdash; $0/month to run</div>
-            <div style="padding: 4px 0;" data-lang-de>&ndash; Volle Kontrolle &mdash; 0 $/Monat Betrieb</div>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top: 20px;">
-        <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20business%20automation.%0A-%20Name%3A%0A-%20Business%20type%3A%0A-%20What%20tools%20%2F%20systems%20do%20you%20currently%20use%3F%0A-%20What%27s%20your%20biggest%20pain%20point%3F%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary" style="font-size: 13px; padding: 10px 24px; background: var(--accent-lime);" data-lang-en>Free Consultation via WhatsApp</a>
-        <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20Business-Automatisierung.%0A-%20Name%3A%0A-%20Branche%3A%0A-%20Welche%20Tools%20%2F%20Systeme%20nutzt%20du%20aktuell%3F%0A-%20Was%20ist%20dein%20gr%C3%B6%C3%9Fter%20Pain%20Point%3F%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary" style="font-size: 13px; padding: 10px 24px; background: var(--accent-lime);" data-lang-de>Kostenloses Erstgespr&auml;ch per WhatsApp</a>
-      </div>
-      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;">Powered by <a href="https://dankur94.github.io/chatbridge/" target="_blank" style="color: var(--accent-lime); text-decoration: underline;">ChatBridge</a></p>
-    </div>
-
-    <!-- PRESENTATION SKILLS — FULL COURSE -->
-    <div class="workshop-card reveal" style="border-color: rgba(255,60,172,0.2); background: linear-gradient(135deg, rgba(255,60,172,0.05), rgba(0,212,255,0.03));">
-      <div class="workshop-num">05</div>
-      <div class="workshop-badge" style="background: rgba(255,60,172,0.1); color: var(--accent-magenta); border: 1px solid rgba(255,60,172,0.2);">Communication &middot; 1-on-1 Online</div>
-      <h3 class="workshop-title">The Art of Presenting</h3>
-      <p class="workshop-desc">The skill that separates good professionals from great ones. Master storytelling, slide design, stage presence, and confident Q&A handling. Whether you pitch to investors, present to your team, or speak at a conference &mdash; you&rsquo;ll leave knowing how to own the room. Taught by <a href="https://dankur94.github.io/science-communication/" target="_blank" style="color: var(--accent-magenta);">Ananya Singh</a>, award-winning educator and physicist at RWTH Aachen.</p>
-      <div class="workshop-details">
-        <span class="workshop-detail">12 sessions &times; 60 min</span>
-        <span class="workshop-detail">Private 1-on-1 coaching &mdash; fully personalised</span>
-        <span class="workshop-detail">Online only &mdash; join from anywhere</span>
-        <span class="workshop-detail">Story structure, slide design, stage presence, Q&A mastery</span>
-        <span class="workshop-detail">Recorded practice sessions for self-review</span>
-        <span class="workshop-detail">Certificate of completion</span>
-      </div>
-      <div class="workshop-price" style="color: var(--accent-magenta);">$500 <span>HKD / session</span></div>
-      <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">$6,000 HKD per term (12 sessions) &middot; <a href="https://dankur94.github.io/science-communication/" target="_blank" style="color: var(--accent-magenta);">About your instructor &rarr;</a></p>
-      <div style="margin-top: 20px; padding: 16px 20px; background: rgba(255,60,172,0.06); border: 1px dashed rgba(255,60,172,0.25); border-radius: 12px;">
-        <p style="font-size: 14px; font-weight: 700; color: var(--accent-magenta); margin-bottom: 6px;">Crash Course available</p>
-        <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">Big talk coming up? Get presentation-ready fast with 4 focused 1-on-1 sessions. We refine your specific talk &mdash; structure, slides, delivery, nerves. Perfect before a conference, pitch, or interview.</p>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">4 &times; 60 min &middot; $500/session &middot; $2,000 HKD total</p>
-      </div>
-    </div>
+    <!-- 05 PRESENTING -->
+    <a href="presenting.html" class="workshop-link color-magenta reveal">
+      <div class="ws-icon">&#x1F3A4;</div>
+      <div class="ws-num">#05</div>
+      <div class="ws-title" data-lang-en>The Art of Presenting</div>
+      <div class="ws-title" data-lang-de>Die Kunst des Pr&auml;sentierens</div>
+      <div class="ws-meta" data-lang-en>1-on-1 online coaching &middot; by Ananya Singh</div>
+      <div class="ws-meta" data-lang-de>1-on-1 Online-Coaching &middot; von Ananya Singh</div>
+      <p class="ws-desc" data-lang-en>Master storytelling, slide design, and stage presence. Private coaching by an award-winning educator.</p>
+      <p class="ws-desc" data-lang-de>Meistere Storytelling, Foliendesign und B&uuml;hnenpr&auml;senz. Privates Coaching von einer preisgekr&ouml;nten P&auml;dagogin.</p>
+      <span class="ws-arrow" data-lang-en>Learn more &rarr;</span>
+      <span class="ws-arrow" data-lang-de>Mehr erfahren &rarr;</span>
+    </a>
 
   </div>
 </section>
 
+<!-- HOW IT WORKS -->
 <section id="how" style="background: rgba(255,255,255,0.01);">
   <div class="section-label reveal" data-lang-en>How It Works</div>
   <div class="section-label reveal" data-lang-de>So funktioniert's</div>
@@ -660,8 +515,8 @@
   <p class="cta-desc reveal" data-lang-en>Limited spots per session. Book via WhatsApp.</p>
   <p class="cta-desc reveal" data-lang-de>Begrenzte Pl&auml;tze pro Session. Buche per WhatsApp.</p>
   <div class="reveal">
-    <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20book%20a%20CreatorPort%20workshop.%0A-%20Name%3A%0A-%20Workshop%20%28Coffee%20Roaster%20/%20OrbBot%20/%20Beer%20Tap%29%3A%0A-%20Number%20of%20participants%3A%0A-%20Preferred%20date%20%26%20time%3A%0A-%20Experience%20level%20%28Beginner%20/%20Some%20/%20Advanced%29%3A%0A-%20Language%20preference%20%28EN%20/%20DE%29%3A%0A-%20Any%20questions%3A%0A%0ACreatorPort%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary" data-lang-en>Book via WhatsApp</a>
-    <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20m%C3%B6chte%20einen%20CreatorPort%20Workshop%20buchen.%0A-%20Name%3A%0A-%20Workshop%20%28Kaffeer%C3%B6ster%20/%20OrbBot%20/%20Zapfanlage%29%3A%0A-%20Anzahl%20Teilnehmer%3A%0A-%20Wunschdatum%20%26%20Uhrzeit%3A%0A-%20Erfahrungslevel%20%28Anf%C3%A4nger%20/%20Etwas%20/%20Fortgeschritten%29%3A%0A-%20Sprache%20%28EN%20/%20DE%29%3A%0A-%20Fragen%3A%0A%0ACreatorPort%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary" data-lang-de>Per WhatsApp buchen</a>
+    <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20book%20a%20CreatorPort%20workshop.%0A-%20Name%3A%0A-%20Workshop%3A%0A-%20Number%20of%20participants%3A%0A-%20Preferred%20date%3A%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary" data-lang-en>Book via WhatsApp</a>
+    <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20m%C3%B6chte%20einen%20CreatorPort%20Workshop%20buchen.%0A-%20Name%3A%0A-%20Workshop%3A%0A-%20Anzahl%20Teilnehmer%3A%0A-%20Wunschdatum%3A%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary" data-lang-de>Per WhatsApp buchen</a>
   </div>
 </section>
 
