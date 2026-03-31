@@ -1405,6 +1405,62 @@
     }
   }
 
+  /* ===== STICKY BOTTOM CTA ===== */
+  .sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9000;
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border-subtle);
+    padding: 12px 24px;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .sticky-cta.visible {
+    transform: translateY(0);
+  }
+  .sticky-cta-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .sticky-cta-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  .sticky-cta-text strong {
+    color: var(--accent-lime);
+    font-weight: 700;
+  }
+  .sticky-cta-btn {
+    padding: 10px 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    color: #0a0a0f;
+    background: var(--accent-lime);
+    white-space: nowrap;
+    transition: all 0.3s;
+  }
+  .sticky-cta-btn:hover {
+    background: #c4ff6e;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(168,255,60,0.3);
+  }
+  @media (max-width: 768px) {
+    .sticky-cta-text { font-size: 12px; }
+    .sticky-cta-btn { padding: 10px 20px; font-size: 13px; }
+    body { padding-bottom: 60px; }
+  }
+
   /* LANG SWITCHING — !important needed to override display set by button/link classes */
   [data-lang-de] { display: none !important; }
 
@@ -1456,10 +1512,10 @@
 
   <div class="hero-content">
     <div class="hero-badge" data-lang-en>
-      Launching 23 May 2026 · Hong Kong Island, Central — Limited spots · Pre-Register Now
+      First term: 23 May 2026 · Only 16 spots (4 groups × 4 students) · Pre-Register Now
     </div>
     <div class="hero-badge" data-lang-de>
-      Start am 23. Mai 2026 — Begrenzte Plätze · Jetzt auf die Voranmeldung
+      Erster Term: 23. Mai 2026 · Nur 16 Plätze (4 Gruppen × 4 Schüler) · Jetzt voranmelden
     </div>
 
     <h1 data-lang-en>
@@ -2099,15 +2155,26 @@
   <div class="cta-content">
     <h2 class="cta-title reveal" data-lang-en>Ready to build<br><span class="gradient-text">the future?</span></h2>
     <h2 class="cta-title reveal" data-lang-de>Bereit,<br><span class="gradient-text">die Zukunft zu bauen?</span></h2>
-    <p class="cta-desc reveal" data-lang-en>Reserve your spot with a $500 HKD deposit and get an exclusive free discovery session before launch. Changed your mind? Full refund, no questions asked.</p>
-    <p class="cta-desc reveal" data-lang-de>Sichere deinen Platz mit einer $500 HKD Anzahlung und erhalte eine exklusive kostenlose Schnupperstunde vor dem Start. Meinung geändert? Volle Rückerstattung, ohne Fragen.</p>
+    <p class="cta-desc reveal" data-lang-en>Only 16 spots per term — first come, first served. Send us a WhatsApp to reserve your child's spot. No payment needed, no commitment. We'll notify you before launch.</p>
+    <p class="cta-desc reveal" data-lang-de>Nur 16 Plätze pro Term — wer zuerst kommt, mahlt zuerst. Schick uns eine WhatsApp um den Platz deines Kindes zu sichern. Keine Zahlung, keine Verpflichtung. Wir melden uns vor dem Start.</p>
     <div class="hero-actions reveal" style="justify-content: center; flex-wrap: wrap;">
-      <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20CreatorPort.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%20interest%20%28AI%20Track%20/%20Robotics%20%26%20AI%20/%20Think.Learn.Present.%29%3A%0A-%20Level%20%28Explorer%209-12%20/%20Builder%2013-17%29%3A%0A-%20Preferred%20language%20%28EN/DE%29%3A%0A-%20Format%20%28In-person%20HK%20/%20Online%29%3A%0A%0ACreatorPort-Junior%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary" data-lang-en>💬 Pre-Register on WhatsApp</a>
-      <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20CreatorPort.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%20interest%20%28AI%20Track%20/%20Robotics%20%26%20AI%20/%20Think.Learn.Present.%29%3A%0A-%20Level%20%28Explorer%209-12%20/%20Builder%2013-17%29%3A%0A-%20Preferred%20language%20%28EN/DE%29%3A%0A-%20Format%20%28In-person%20HK%20/%20Online%29%3A%0A%0ACreatorPort-Junior%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary" data-lang-de>💬 Voranmeldung auf WhatsApp</a>
-      <a href="https://wa.me/85265427963?text=Hi%21%20I%27ve%20paid%20the%20%24500%20HKD%20deposit%20to%20reserve%20a%20spot.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%20%28AI%20Track%20/%20Robotics%20%26%20AI%20/%20Think.Learn.Present.%29%3A%0A-%20Level%20%28Explorer%209-12%20/%20Builder%2013-17%29%3A%0A-%20Preferred%20language%20%28EN/DE%29%3A%0A-%20Format%20%28In-person%20HK%20/%20Online%29%3A%0A-%20FPS%20reference%20number%3A%0A%0ACreatorPort-Junior%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-secondary" data-lang-en>✅ I've paid — confirm deposit</a>
+      <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20CreatorPort.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%3A%20Robotics%20%26%20AI%20%2F%20Think.Learn.Present.%0A-%20Level%3A%20Explorer%20%289-11%29%20%2F%20Builder%20%2812-15%29%0A-%20Language%3A%20EN%20%2F%20DE%0A-%20Format%3A%20In-person%20HK%20%2F%20Online%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary" data-lang-en>Pre-Register on WhatsApp</a>
+      <a href="https://wa.me/85265427963?text=Hi%21%20Ich%20m%C3%B6chte%20mein%20Kind%20f%C3%BCr%20CreatorPort%20voranmelden.%0A-%20Name%20des%20Kindes%3A%0A-%20Alter%3A%0A-%20Track%3A%20Robotik%20%26%20KI%20%2F%20Think.Learn.Present.%0A-%20Level%3A%20Explorer%20%289-11%29%20%2F%20Builder%20%2812-15%29%0A-%20Sprache%3A%20EN%20%2F%20DE%0A-%20Format%3A%20Pr%C3%A4senz%20HK%20%2F%20Online%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-primary" data-lang-de>Voranmeldung auf WhatsApp</a>
     </div>
   </div>
 </section>
+
+<!-- ===== STICKY BOTTOM CTA ===== -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-inner">
+    <div class="sticky-cta-text">
+      <span data-lang-en><strong>16 spots</strong> · First term starts 23 May</span>
+      <span data-lang-de><strong>16 Plätze</strong> · Erster Term ab 23. Mai</span>
+    </div>
+    <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20CreatorPort.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%3A%20Robotics%20%26%20AI%20%2F%20Think.Learn.Present.%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="sticky-cta-btn" data-lang-en>Pre-Register</a>
+    <a href="https://wa.me/85265427963?text=Hi%21%20Ich%20m%C3%B6chte%20mein%20Kind%20f%C3%BCr%20CreatorPort%20voranmelden.%0A-%20Name%3A%0A-%20Alter%3A%0A-%20Track%3A%20Robotik%20%26%20KI%20%2F%20Think.Learn.Present.%0A%0ACreatorPort%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="sticky-cta-btn" data-lang-de>Voranmelden</a>
+  </div>
+</div>
 
 <!-- ===== FOOTER ===== -->
 <footer>
@@ -2199,6 +2266,19 @@
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
   }
+
+  // Sticky CTA — show after scrolling past hero
+  (function() {
+    var sticky = document.getElementById('stickyCta');
+    if (!sticky) return;
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 600) {
+        sticky.classList.add('visible');
+      } else {
+        sticky.classList.remove('visible');
+      }
+    });
+  })();
 
   // Scroll Reveal
   if ('IntersectionObserver' in window) {
