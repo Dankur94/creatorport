@@ -64,8 +64,7 @@
   .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .logo-icon {
     width: 32px; height: 32px; border-radius: 8px;
-    background: var(--accent); display: flex; align-items: center; justify-content: center;
-    font-weight: 800; font-size: 16px; color: #fff; font-family: 'Inter', sans-serif;
+    object-fit: contain;
   }
   .logo-text { font-weight: 700; font-size: 16px; color: var(--text); letter-spacing: -0.3px; }
   .logo-sub { font-size: 12px; color: var(--text-muted); margin-left: 12px; font-weight: 400; }
@@ -239,7 +238,7 @@
 <nav>
   <div style="display: flex; align-items: center;">
     <a href="index.html" class="logo">
-      <div class="logo-icon">C</div>
+      <img class="logo-icon" src="logo.png" alt="CreatorPort HK Logo">
       <div class="logo-text">Creator<em>Port</em> HK</div>
     </a>
     <span class="logo-sub" data-lang-en>for Institutions</span>
