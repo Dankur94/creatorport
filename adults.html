@@ -405,8 +405,20 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge reveal" data-lang-en>Launching 23 May 2026 &middot; Hong Kong Island, Central</div>
-  <div class="hero-badge reveal" data-lang-de>Start am 23. Mai 2026 &middot; Hong Kong Island, Central</div>
+  <div class="hero-badge reveal" data-lang-en>
+    <span>Gauging demand &middot; We launch at <strong>20</strong> sign-ups &middot; <strong id="countEn"></strong> to go &middot; HK Island, Central</span>
+  </div>
+  <div class="hero-badge reveal" data-lang-de>
+    <span>Nachfrage testen &middot; Wir starten ab <strong>20</strong> Anmeldungen &middot; noch <strong id="countDe"></strong> &middot; HK Island, Central</span>
+  </div>
+  <div class="demand-bar reveal" style="max-width:280px;margin:0 auto 24px;">
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);margin-bottom:6px;">
+      <span id="demandLabel"></span><span id="demandPct"></span>
+    </div>
+    <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;">
+      <div id="demandFill" style="height:100%;border-radius:3px;background:var(--accent-amber);transition:width 1s ease;"></div>
+    </div>
+  </div>
   <div class="hero-tag reveal" data-lang-en>Workshops for Adults</div>
   <div class="hero-tag reveal" data-lang-de>Workshops f&uuml;r Erwachsene</div>
   <h1 class="reveal" data-lang-en>Build it.<br><span class="gradient-text">Understand it.</span></h1>
@@ -644,6 +656,17 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ---- DEMAND COUNTER (update this number as sign-ups come in) ----
+  var SIGNED_UP = 0;
+  var GOAL = 20;
+  var remaining = GOAL - SIGNED_UP;
+  var pct = Math.round((SIGNED_UP / GOAL) * 100);
+  document.getElementById('countEn').textContent = remaining;
+  document.getElementById('countDe').textContent = remaining;
+  document.getElementById('demandLabel').textContent = SIGNED_UP + ' / ' + GOAL;
+  document.getElementById('demandPct').textContent = pct + '%';
+  document.getElementById('demandFill').style.width = pct + '%';
 </script>
 </body>
 </html>

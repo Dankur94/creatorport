@@ -1414,10 +1414,18 @@
 
   <div class="hero-content">
     <div class="hero-badge" data-lang-en>
-      First term: 23 May 2026 · Only 16 spots (4 groups × 4 students) · Pre-Register Now
+      Gauging demand &middot; We launch at <strong>20</strong> sign-ups &middot; <strong id="countEn"></strong> to go &middot; HK Island, Central
     </div>
     <div class="hero-badge" data-lang-de>
-      Erster Term: 23. Mai 2026 · Nur 16 Plätze (4 Gruppen × 4 Schüler) · Jetzt voranmelden
+      Nachfrage testen &middot; Wir starten ab <strong>20</strong> Anmeldungen &middot; noch <strong id="countDe"></strong> &middot; HK Island, Central
+    </div>
+    <div class="demand-bar" style="max-width:280px;margin:0 auto 24px;">
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);margin-bottom:6px;">
+        <span id="demandLabel"></span><span id="demandPct"></span>
+      </div>
+      <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;">
+        <div id="demandFill" style="height:100%;border-radius:3px;background:var(--accent-electric);transition:width 1s ease;"></div>
+      </div>
     </div>
 
     <h1 data-lang-en>
@@ -2071,8 +2079,8 @@
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-cta-inner">
     <div class="sticky-cta-text">
-      <span data-lang-en><strong>16 spots</strong> · First term starts 23 May</span>
-      <span data-lang-de><strong>16 Plätze</strong> · Erster Term ab 23. Mai</span>
+      <span data-lang-en><strong id="stickyCountEn"></strong> more sign-ups to launch</span>
+      <span data-lang-de>Noch <strong id="stickyCountDe"></strong> Anmeldungen bis zum Start</span>
     </div>
     <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20CreatorPort HK.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%3A%20Robotics%20%26%20AI%20%2F%20Think.Learn.Present.%0A%0ACreatorPort HK%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="sticky-cta-btn" data-lang-en>Pre-Register</a>
     <a href="https://wa.me/85265427963?text=Hi%21%20Ich%20m%C3%B6chte%20mein%20Kind%20f%C3%BCr%20CreatorPort HK%20voranmelden.%0A-%20Name%3A%0A-%20Alter%3A%0A-%20Track%3A%20Robotik%20%26%20KI%20%2F%20Think.Learn.Present.%0A%0ACreatorPort HK%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="sticky-cta-btn" data-lang-de>Voranmelden</a>
@@ -2176,6 +2184,19 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   }
+
+  // ---- DEMAND COUNTER (update this number as sign-ups come in) ----
+  var SIGNED_UP = 0;
+  var GOAL = 20;
+  var remaining = GOAL - SIGNED_UP;
+  var pct = Math.round((SIGNED_UP / GOAL) * 100);
+  document.getElementById('countEn').textContent = remaining;
+  document.getElementById('countDe').textContent = remaining;
+  document.getElementById('demandLabel').textContent = SIGNED_UP + ' / ' + GOAL;
+  document.getElementById('demandPct').textContent = pct + '%';
+  document.getElementById('demandFill').style.width = pct + '%';
+  document.getElementById('stickyCountEn').textContent = remaining;
+  document.getElementById('stickyCountDe').textContent = remaining;
 </script>
 </body>
 </html>

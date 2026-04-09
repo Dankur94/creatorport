@@ -262,6 +262,20 @@
 
 <!-- HERO -->
 <div class="hero">
+  <div style="display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.2);border-radius:100px;font-size:13px;font-weight:500;color:var(--accent-blue);margin-bottom:16px;" data-lang-en>
+    Gauging demand &middot; We launch at <strong>20</strong> sign-ups &middot; <strong id="countEn"></strong> to go &middot; HK Island
+  </div>
+  <div style="display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.2);border-radius:100px;font-size:13px;font-weight:500;color:var(--accent-blue);margin-bottom:16px;" data-lang-de>
+    Nachfrage testen &middot; Wir starten ab <strong>20</strong> Anmeldungen &middot; noch <strong id="countDe"></strong> &middot; HK Island
+  </div>
+  <div style="max-width:280px;margin-bottom:20px;">
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted,#666);margin-bottom:6px;">
+      <span id="demandLabel"></span><span id="demandPct"></span>
+    </div>
+    <div style="height:6px;background:rgba(0,0,0,0.08);border-radius:3px;overflow:hidden;">
+      <div id="demandFill" style="height:100%;border-radius:3px;background:var(--accent-blue);transition:width 1s ease;"></div>
+    </div>
+  </div>
   <div class="hero-label" data-lang-en>For Schools &middot; Universities &middot; Organisations</div>
   <div class="hero-label" data-lang-de>F&uuml;r Schulen &middot; Universit&auml;ten &middot; Organisationen</div>
   <h1 data-lang-en>Bring robotics &amp; AI into your classroom.</h1>
@@ -465,6 +479,17 @@ function setLang(lang) {
     setLang('de');
   }
 })();
+
+// ---- DEMAND COUNTER (update this number as sign-ups come in) ----
+var SIGNED_UP = 0;
+var GOAL = 20;
+var remaining = GOAL - SIGNED_UP;
+var pct = Math.round((SIGNED_UP / GOAL) * 100);
+document.getElementById('countEn').textContent = remaining;
+document.getElementById('countDe').textContent = remaining;
+document.getElementById('demandLabel').textContent = SIGNED_UP + ' / ' + GOAL;
+document.getElementById('demandPct').textContent = pct + '%';
+document.getElementById('demandFill').style.width = pct + '%';
 </script>
 
 </body>
