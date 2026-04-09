@@ -87,12 +87,11 @@
   }
 
   .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .logo-icon {
-    width: 36px; height: 36px;
+  .logo-wordmark {
+    height: 94px;
+    width: auto;
     object-fit: contain;
   }
-  .logo-text { font-weight: 700; font-size: 18px; color: var(--text-primary); letter-spacing: -0.5px; }
-  .logo-text em { font-style: normal; color: var(--accent-electric); }
 
   .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
   .nav-links a { color: var(--text-secondary); text-decoration: none !important; font-size: 14px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.3s; }
@@ -337,8 +336,7 @@
 
 <nav>
   <a href="index.html" class="logo">
-    <img class="logo-icon" src="logo.svg" alt="CreatorPort HK Logo">
-    <div class="logo-text">Creator<em>Port</em> HK</div>
+    <img class="logo-wordmark" src="creatorport-logo.svg" alt="CreatorPort HK">
   </a>
   <ul class="nav-links">
     <li><a href="#workshops"><span data-lang-en>Workshops</span><span data-lang-de>Workshops</span></a></li>
