@@ -96,15 +96,16 @@
 
   /* LOGO */
   .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    margin-bottom: 48px;
+    position: absolute;
+    top: 40px;
+    left: 24px;
+    z-index: 10;
     text-decoration: none;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0s forwards;
   }
   .logo-wordmark {
-    height: 80px;
+    height: 120px;
     width: auto;
     object-fit: contain;
   }
