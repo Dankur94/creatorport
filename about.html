@@ -114,6 +114,21 @@
     max-width: 900px; margin: 0 auto;
   }
 
+  .hero-photo-wrap {
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  .hero-photo {
+    width: 100%;
+    max-width: 700px;
+    height: 340px;
+    object-fit: cover;
+    object-position: center 60%;
+    border-radius: 20px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
   .hero-label {
     font-size: 13px; text-transform: uppercase; letter-spacing: 3px;
     color: var(--accent-electric); font-weight: 600; margin-bottom: 24px;
@@ -263,6 +278,7 @@
     .hamburger { display: flex; }
     .nav-cta { display: none; }
     .hero { padding: 100px 24px 60px; }
+    .hero-photo { height: 220px; border-radius: 16px; }
     .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
     .hero-sub { font-size: 16px; }
     .hero-credentials { gap: 16px; }
@@ -304,8 +320,8 @@
 <div class="hero">
   <div class="hero-label reveal" data-lang-en>About the Founder</div>
   <div class="hero-label reveal" data-lang-de>&Uuml;ber den Gr&uuml;nder</div>
-  <div class="reveal" style="margin-bottom: 24px; text-align: center;">
-    <img src="img/daniel-kurth.jpg" alt="Daniel Kurth" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover;">
+  <div class="reveal hero-photo-wrap">
+    <img src="img/about-hero.jpg" alt="Daniel Kurth" class="hero-photo">
   </div>
   <h1 class="reveal">Daniel Kurth</h1>
   <p class="hero-sub reveal" data-lang-en>Engineer, maker, educator. I build things that connect software with the physical world &mdash; and teach others how to do the same.</p>
