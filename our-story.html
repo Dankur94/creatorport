@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CreatorPort HK &mdash; Our Story</title>
+<meta name="description" content="The story behind CreatorPort &mdash; how a friendship forged through maths and physics became the foundation of something bigger.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0a0a0f;
+    --bg-card: #111118;
+    --text-primary: #f0f0f0;
+    --text-secondary: #a0a0b0;
+    --text-muted: #666680;
+    --accent-electric: #00d4ff;
+    --accent-lime: #a8ff3c;
+    --accent-amber: #ffb347;
+    --accent-magenta: #ff3cac;
+    --border-subtle: rgba(255,255,255,0.06);
+    --gradient-main: linear-gradient(135deg, #00d4ff, #a8ff3c);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .gradient-text {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* LANG */
+  [data-lang-de] { display: none !important; }
+  body.lang-de [data-lang-en] { display: none !important; }
+  body.lang-de [data-lang-de] { display: block !important; }
+  body.lang-de span[data-lang-de],
+  body.lang-de a[data-lang-de] { display: inline-block !important; }
+  body.lang-de div[data-lang-de],
+  body.lang-de p[data-lang-de],
+  body.lang-de h1[data-lang-de],
+  body.lang-de h2[data-lang-de],
+  body.lang-de h3[data-lang-de] { display: block !important; }
+
+  .lang-toggle {
+    display: flex; gap: 4px; background: rgba(0,212,255,0.1);
+    border-radius: 20px; padding: 3px;
+  }
+  .lang-btn {
+    padding: 5px 14px; border-radius: 18px; border: none;
+    font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600;
+    cursor: pointer; transition: all 0.3s;
+    background: transparent; color: var(--text-muted);
+  }
+  .lang-btn.active {
+    background: var(--accent-electric); color: var(--bg-primary);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 9000;
+    padding: 20px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(20px);
+    background: rgba(10,10,15,0.7);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-wordmark {
+    height: 94px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+  .nav-links a { color: var(--text-secondary); text-decoration: none !important; font-size: 14px; font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--accent-electric); }
+
+  .nav-cta {
+    padding: 10px 24px; border-radius: 24px; font-weight: 600; font-size: 14px;
+    text-decoration: none; color: #0a0a0f; background: var(--accent-electric);
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,212,255,0.3); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 9999; }
+  .hamburger span { width: 24px; height: 2px; background: var(--text-primary); transition: all 0.3s; border-radius: 2px; }
+
+  /* HERO */
+  .hero {
+    padding: 160px 40px 60px;
+    max-width: 900px; margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-label {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 3px;
+    color: var(--accent-electric); font-weight: 600; margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: 56px; font-weight: 800; letter-spacing: -3px; line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .hero-sub {
+    font-size: 18px; color: var(--text-secondary); max-width: 600px;
+    line-height: 1.8; margin: 0 auto 40px;
+  }
+
+  /* STORY CONTENT */
+  .story { max-width: 800px; margin: 0 auto; padding: 0 40px 80px; }
+
+  .story-block {
+    margin-bottom: 80px;
+  }
+
+  .story-photo {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    object-fit: cover;
+    max-height: 500px;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .story-text {
+    font-size: 17px; color: var(--text-secondary); line-height: 1.9;
+  }
+  .story-text strong { color: var(--text-primary); }
+  .story-text p { margin-bottom: 20px; }
+
+  .story-pull-quote {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.4;
+    color: var(--text-primary);
+    padding: 40px 0;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    margin: 48px 0;
+    text-align: center;
+  }
+
+  .story-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-main);
+    margin: 60px auto;
+    border-radius: 2px;
+  }
+
+  /* PHOTO GRID */
+  .photo-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .photo-duo img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
+  }
+
+  /* CTA */
+  .cta-section {
+    text-align: center; padding: 80px 40px;
+    background: linear-gradient(180deg, transparent, rgba(0,212,255,0.03));
+  }
+  .cta-title { font-size: 40px; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; }
+  .cta-desc { font-size: 16px; color: var(--text-secondary); max-width: 500px; margin: 0 auto 32px; }
+  .cta-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .cta-link {
+    padding: 14px 28px; border-radius: 28px; font-weight: 600; font-size: 15px;
+    text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .cta-link.primary { color: #0a0a0f; background: var(--accent-electric); }
+  .cta-link.primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,212,255,0.3); }
+  .cta-link.secondary { color: var(--text-primary); border: 1px solid var(--border-subtle); }
+  .cta-link.secondary:hover { border-color: var(--accent-electric); color: var(--accent-electric); }
+
+  /* FOOTER */
+  .footer-bottom {
+    padding: 24px 40px;
+    border-top: 1px solid var(--border-subtle);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--text-muted);
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom a { color: var(--text-muted); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--accent-electric); }
+
+  /* ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; flex-wrap: wrap; }
+    .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; gap: 20px; margin: 0; padding: 20px 0 10px; order: 99; }
+    .nav-links.open { display: flex !important; }
+    nav.menu-open {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15,15,20,0.92); backdrop-filter: blur(40px);
+      align-content: center; z-index: 9998; overflow-y: auto;
+    }
+    .hamburger { display: flex; }
+    .nav-cta { display: none; }
+    .hero { padding: 110px 24px 40px; }
+    .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
+    .hero-sub { font-size: 16px; }
+    .story { padding: 0 24px 60px; }
+    .story-text { font-size: 16px; }
+    .story-pull-quote { font-size: 22px; padding: 28px 0; }
+    .photo-duo { grid-template-columns: 1fr; }
+    .photo-duo img { height: 260px; }
+    .story-photo { max-height: 360px; }
+    .cta-title { font-size: 32px; }
+    .cta-links { flex-direction: column; align-items: center; }
+    .footer-bottom { flex-direction: column; text-align: center; padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <img class="logo-wordmark" src="creatorport-logo.svg" alt="CreatorPort HK">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html"><span data-lang-en>Home</span><span data-lang-de>Startseite</span></a></li>
+    <li><a href="about.html"><span data-lang-en>About</span><span data-lang-de>&Uuml;ber</span></a></li>
+    <li><a href="juniors.html"><span data-lang-en>Juniors</span><span data-lang-de>Jugend</span></a></li>
+    <li><a href="adults.html"><span data-lang-en>Adults</span><span data-lang-de>Erwachsene</span></a></li>
+    <li>
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('de')">DE</button>
+      </div>
+    </li>
+  </ul>
+  <a href="https://wa.me/85265427963" target="_blank" class="nav-cta" data-lang-en>Get in Touch</a>
+  <a href="https://wa.me/85265427963" target="_blank" class="nav-cta" data-lang-de>Kontakt</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label reveal" data-lang-en>Our Story</div>
+  <div class="hero-label reveal" data-lang-de>Unsere Geschichte</div>
+  <h1 class="reveal" data-lang-en>From <span class="gradient-text">Equations</span><br>to Education</h1>
+  <h1 class="reveal" data-lang-de>Von <span class="gradient-text">Gleichungen</span><br>zu Bildung</h1>
+  <p class="hero-sub reveal" data-lang-en>Some friendships begin at a blackboard. Ours became a company.</p>
+  <p class="hero-sub reveal" data-lang-de>Manche Freundschaften beginnen an einer Tafel. Unsere wurde ein Unternehmen.</p>
+</div>
+
+<!-- STORY -->
+<div class="story">
+
+  <!-- CHAPTER 1 -->
+  <div class="story-block reveal">
+    <img src="img/story-skyline.jpg" alt="Daniel and Ananya in Hong Kong" class="story-photo">
+    <div class="story-text" data-lang-en>
+      <p>It started the way the best things do &mdash; by accident.</p>
+      <p>I was deep in my engineering degree at RWTH Aachen, drowning in the kind of maths and physics that makes you question every life decision that led you to that lecture hall. The formulas blurred. The problem sets piled up. I needed help &mdash; not the textbook kind, but the kind that makes you <strong>see</strong> the problem differently.</p>
+      <p>That&rsquo;s when I found <strong>Ananya</strong>.</p>
+    </div>
+    <div class="story-text" data-lang-de>
+      <p>Es begann so, wie die besten Dinge beginnen &mdash; zuf&auml;llig.</p>
+      <p>Ich steckte mitten in meinem Ingenieurstudium an der RWTH Aachen, versunken in der Art von Mathe und Physik, bei der man jede Lebensentscheidung hinterfragt, die einen in diesen H&ouml;rsaal gef&uuml;hrt hat. Die Formeln verschwammen. Die Aufgaben t&uuml;rmten sich. Ich brauchte Hilfe &mdash; nicht die Lehrbuch-Sorte, sondern die, die einen das Problem <strong>anders sehen</strong> l&auml;sst.</p>
+      <p>Dann fand ich <strong>Ananya</strong>.</p>
+    </div>
+  </div>
+
+  <div class="story-pull-quote reveal" data-lang-en>
+    &ldquo;He didn&rsquo;t give me the answers.<br>He taught me how to <span class="gradient-text">think</span>.&rdquo;
+  </div>
+  <div class="story-pull-quote reveal" data-lang-de>
+    &ldquo;Er gab mir nicht die Antworten.<br>Er brachte mir bei, wie man <span class="gradient-text">denkt</span>.&rdquo;
+  </div>
+
+  <!-- CHAPTER 2 -->
+  <div class="story-block reveal">
+    <div class="story-text" data-lang-en>
+      <p>Ananya was a physicist at RWTH &mdash; the kind of person who could take a concept that had defeated you for weeks and, in twenty minutes over coffee, make it feel obvious. He never just solved the equation for me. He <strong>dismantled the way I was thinking about it</strong>, rebuilt it from scratch, and handed it back clearer than before.</p>
+      <p>Session after session, something shifted. It wasn&rsquo;t just maths anymore. He became my mentor. Then one of my closest friends. The line between tutor and friend dissolved somewhere between thermodynamics and late-night conversations about what we wanted to build with our lives.</p>
+    </div>
+    <div class="story-text" data-lang-de>
+      <p>Ananya war Physiker an der RWTH &mdash; die Art Mensch, der ein Konzept, an dem man wochenlang gescheitert ist, in zwanzig Minuten bei einem Kaffee selbstverst&auml;ndlich erscheinen l&auml;sst. Er l&ouml;ste nie einfach die Gleichung f&uuml;r mich. Er <strong>zerlegte meine Denkweise</strong>, baute sie von Grund auf neu auf und gab sie mir klarer zur&uuml;ck als zuvor.</p>
+      <p>Sitzung f&uuml;r Sitzung ver&auml;nderte sich etwas. Es ging nicht mehr nur um Mathe. Er wurde mein Mentor. Dann einer meiner engsten Freunde. Die Grenze zwischen Tutor und Freund l&ouml;ste sich irgendwo zwischen Thermodynamik und n&auml;chtlichen Gespr&auml;chen dar&uuml;ber auf, was wir mit unserem Leben aufbauen wollten.</p>
+    </div>
+  </div>
+
+  <div class="story-divider"></div>
+
+  <!-- CHAPTER 3 -->
+  <div class="story-block reveal">
+    <div class="photo-duo">
+      <img src="img/story-market.jpg" alt="Daniel and Ananya at a night market">
+      <img src="img/story-yogurt.jpg" alt="Daniel and Ananya enjoying frozen yogurt">
+    </div>
+    <div class="story-text" data-lang-en>
+      <p>What Ananya gave me wasn&rsquo;t a grade. It was a <strong>belief</strong> &mdash; that the right teacher doesn&rsquo;t just transfer knowledge, they transform the person receiving it. He showed me that teaching, done right, is the most powerful form of engineering there is. You&rsquo;re not building a machine. You&rsquo;re building a mind.</p>
+      <p>That idea stayed with me long after the exams were over. It followed me from Aachen to Hong Kong, from lecture halls to maker spaces. It whispered every time I watched a student&rsquo;s face light up the way mine once did across a coffee table from Ananya.</p>
+    </div>
+    <div class="story-text" data-lang-de>
+      <p>Was Ananya mir gab, war keine Note. Es war eine <strong>&Uuml;berzeugung</strong> &mdash; dass der richtige Lehrer nicht nur Wissen weitergibt, sondern den Menschen ver&auml;ndert, der es empf&auml;ngt. Er zeigte mir, dass Lehren, richtig gemacht, die m&auml;chtigste Form des Ingenieurwesens ist. Man baut keine Maschine. Man baut einen <strong>Geist</strong>.</p>
+      <p>Diese Idee blieb, lange nachdem die Pr&uuml;fungen vorbei waren. Sie folgte mir von Aachen nach Hong Kong, von H&ouml;rs&auml;len zu Maker Spaces. Sie fl&uuml;sterte jedes Mal, wenn ich das Gesicht eines Sch&uuml;lers aufleuchten sah &mdash; so wie meines einst gegen&uuml;ber von Ananya am Kaffeetisch.</p>
+    </div>
+  </div>
+
+  <div class="story-pull-quote reveal" data-lang-en>
+    &ldquo;The best teachers don&rsquo;t fill your head.<br>They <span class="gradient-text">rewire</span> it.&rdquo;
+  </div>
+  <div class="story-pull-quote reveal" data-lang-de>
+    &ldquo;Die besten Lehrer f&uuml;llen nicht deinen Kopf.<br>Sie <span class="gradient-text">verkabeln</span> ihn neu.&rdquo;
+  </div>
+
+  <!-- CHAPTER 4 -->
+  <div class="story-block reveal">
+    <div class="story-text" data-lang-en>
+      <p>That&rsquo;s why I founded <strong>CreatorPort</strong>.</p>
+      <p>Not because I had a business plan. Not because the market research checked out. But because I&rsquo;d experienced firsthand what happens when someone teaches you to think &mdash; <em>really</em> think &mdash; and I wanted to give that to as many people as possible.</p>
+      <p>CreatorPort exists because of a friendship that started at a blackboard. Because a physicist in Aachen took the time to see a struggling student not as a problem to solve, but as a mind worth investing in. Every workshop we run, every student we teach, every robot we build together &mdash; it all traces back to those sessions.</p>
+      <p>To Ananya. To the belief that <strong>the right mentor changes everything.</strong></p>
+    </div>
+    <div class="story-text" data-lang-de>
+      <p>Deshalb habe ich <strong>CreatorPort</strong> gegr&uuml;ndet.</p>
+      <p>Nicht weil ich einen Businessplan hatte. Nicht weil die Marktforschung stimmte. Sondern weil ich am eigenen Leib erfahren hatte, was passiert, wenn jemand dir beibringt zu denken &mdash; <em>wirklich</em> zu denken &mdash; und ich wollte das so vielen Menschen wie m&ouml;glich weitergeben.</p>
+      <p>CreatorPort existiert wegen einer Freundschaft, die an einer Tafel begann. Weil ein Physiker in Aachen sich die Zeit nahm, einen k&auml;mpfenden Studenten nicht als Problem zu sehen, sondern als einen Geist, in den es sich lohnt zu investieren. Jeder Workshop, den wir durchf&uuml;hren, jeder Sch&uuml;ler, den wir unterrichten, jeder Roboter, den wir gemeinsam bauen &mdash; alles f&uuml;hrt zur&uuml;ck zu diesen Sitzungen.</p>
+      <p>Zu Ananya. Zu der &Uuml;berzeugung, dass <strong>der richtige Mentor alles ver&auml;ndert.</strong></p>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="cta-title reveal" data-lang-en>Ready to<br><span class="gradient-text">start learning?</span></h2>
+  <h2 class="cta-title reveal" data-lang-de>Bereit<br><span class="gradient-text">zu lernen?</span></h2>
+  <p class="cta-desc reveal" data-lang-en>Every great journey starts with a single conversation.</p>
+  <p class="cta-desc reveal" data-lang-de>Jede gro&szlig;e Reise beginnt mit einem einzigen Gespr&auml;ch.</p>
+  <div class="cta-links reveal">
+    <a href="https://wa.me/85265427963" target="_blank" class="cta-link primary">WhatsApp</a>
+    <a href="mailto:hello@creatorport.com.hk" class="cta-link secondary">hello@creatorport.com.hk</a>
+  </div>
+</section>
+
+<div class="footer-bottom">
+  <span>&copy; CreatorPort HK is a brand operated by &copy; Space of Possibilities Limited &middot; Hong Kong</span>
+  <span>
+    <a href="privacy.html" style="margin-right: 20px;">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </span>
+</div>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('lang-de', lang === 'de');
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+    });
+    localStorage.setItem('creatorport-lang', lang);
+  }
+
+  const savedLang = localStorage.getItem('creatorport-lang');
+  if (savedLang) setLang(savedLang);
+
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('open');
+    document.querySelector('nav').classList.toggle('menu-open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+      document.querySelector('nav').classList.remove('menu-open');
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
