@@ -10,14 +10,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0f;
-    --text: #f0f0f0;
-    --text-sub: #888899;
-    --accent: #00d4ff;
-    --lime: #a8ff3c;
-    --amber: #ffb347;
-    --magenta: #ff3cac;
-    --border: rgba(255,255,255,0.06);
+    --bg: #FAF6EE;
+    --text: #2C2C2A;
+    --text-sub: #5A5A58;
+    --accent: #0F6E56;
+    --lime: #EF9F27;
+    --amber: #EF9F27;
+    --magenta: #D85A30;
+    --border: rgba(44,44,42,0.06);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,7 +38,7 @@
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 0;
   }
@@ -86,13 +86,13 @@
     transition: all 0.3s;
   }
   .lang-toggle button.active {
-    background: rgba(255,255,255,0.08);
+    background: rgba(44,44,42,0.06);
     color: var(--text);
-    border-color: rgba(255,255,255,0.15);
+    border-color: rgba(44,44,42,0.1);
   }
   .lang-toggle button:hover {
     color: var(--text);
-    border-color: rgba(255,255,255,0.15);
+    border-color: rgba(44,44,42,0.1);
   }
 
   /* LOGO */
@@ -112,7 +112,7 @@
   }
   .brand-script {
     font-family: 'Sacramento', cursive; font-size: 1.1rem; font-weight: 400;
-    color: rgba(255,255,255,0.35); margin-left: 0.5rem;
+    color: rgba(44,44,42,0.35); margin-left: 0.5rem;
   }
 
   /* HEADLINE */
@@ -124,7 +124,7 @@
     margin-bottom: 16px;
   }
   .gradient-text {
-    background: linear-gradient(135deg, #00d4ff, #a8ff3c);
+    background: linear-gradient(135deg, #0F6E56, #D85A30);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -155,7 +155,7 @@
   }
 
   .card {
-    background: rgba(17,17,24,0.8);
+    background: rgba(255,255,255,0.9);
     border: 1px solid var(--border);
     border-radius: 20px;
     padding: 36px 24px;
@@ -177,7 +177,7 @@
   }
   .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 24px rgba(44,44,42,0.1);
   }
   .card:hover::before { opacity: 1; }
 
@@ -197,9 +197,9 @@
     font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700;
     letter-spacing: -1px;
   }
-  .card-junior .card-icon { background: rgba(0,212,255,0.1); color: var(--accent); }
-  .card-adults .card-icon { background: rgba(255,179,71,0.1); color: var(--amber); }
-  .card-institutions .card-icon { background: rgba(255,60,172,0.1); color: var(--magenta); }
+  .card-junior .card-icon { background: rgba(15,110,86,0.1); color: var(--accent); }
+  .card-adults .card-icon { background: rgba(239,159,39,0.1); color: var(--amber); }
+  .card-institutions .card-icon { background: rgba(216,90,48,0.1); color: var(--magenta); }
   .card-title {
     font-size: 20px;
     font-weight: 700;
@@ -238,11 +238,11 @@
   /* FOOTER */
   .footer {
     font-size: 11px;
-    color: #444;
+    color: #8A8A88;
     text-align: center;
     line-height: 1.6;
   }
-  .footer a { color: #555; text-decoration: none; }
+  .footer a { color: #5A5A58; text-decoration: none; }
   .footer a:hover { color: var(--accent); }
   .footer a { text-decoration: underline; text-underline-offset: 3px; }
 

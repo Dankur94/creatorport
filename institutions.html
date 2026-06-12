@@ -10,14 +10,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #fafafa;
-    --bg-card: #ffffff;
-    --text: #1a1a2e;
-    --text-sub: #555566;
-    --text-muted: #999;
-    --accent: #1a1a2e;
-    --accent-blue: #2563eb;
-    --border: #e8e8f0;
+    --bg: #FAF6EE;
+    --bg-card: #FFFFFF;
+    --text: #2C2C2A;
+    --text-sub: #5A5A58;
+    --text-muted: #8A8A88;
+    --accent: #0F6E56;
+    --accent-blue: #0F6E56;
+    --border: rgba(44,44,42,0.08);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -59,7 +59,7 @@
     padding: 20px 60px;
     display: flex; justify-content: space-between; align-items: center;
     border-bottom: 1px solid var(--border);
-    background: #fff;
+    background: #FAF6EE;
     position: sticky; top: 0; z-index: 100;
   }
   .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
@@ -79,7 +79,7 @@
     text-decoration: none; color: #fff; background: var(--accent);
     transition: all 0.3s;
   }
-  .nav-cta:hover { background: #2a2a4e; }
+  .nav-cta:hover { background: #0A5A45; }
 
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
   .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
@@ -106,10 +106,10 @@
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
   .btn-dark {
     padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 15px;
-    text-decoration: none; color: #fff; background: var(--accent);
+    text-decoration: none; color: #fff; background: #D85A30;
     transition: all 0.3s; display: inline-block;
   }
-  .btn-dark:hover { background: #2a2a4e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+  .btn-dark:hover { background: #C04A22; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(216,90,48,0.2); }
   .btn-outline {
     padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 15px;
     text-decoration: none; color: var(--text); background: transparent;
@@ -147,7 +147,7 @@
     margin-bottom: 80px;
   }
   .offering-img {
-    background: #f0f0f5; border-radius: 16px; height: 360px;
+    background: #F2EDE4; border-radius: 16px; height: 360px;
     display: flex; align-items: center; justify-content: center;
     border: 1px solid var(--border);
     font-family: 'Space Mono', monospace; font-size: 64px; font-weight: 700;
@@ -188,14 +188,14 @@
   .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
   .btn-white {
     padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 15px;
-    text-decoration: none; color: var(--accent); background: #fff;
+    text-decoration: none; color: var(--accent); background: #FAF6EE;
     transition: all 0.3s; display: inline-block;
   }
   .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
   .btn-white-outline {
     padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 15px;
     text-decoration: none; color: #fff; background: transparent;
-    border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s; display: inline-block;
+    border: 1px solid rgba(44,44,42,0.15); transition: all 0.3s; display: inline-block;
   }
   .btn-white-outline:hover { border-color: #fff; transform: translateY(-2px); }
 
@@ -316,14 +316,14 @@
     <p class="section-desc" data-lang-de>Alle unsere Workshops verwenden Baus&auml;tze von KurthTechnik &mdash; Open-Source-Hardware, gebaut 30 Minuten von Shenzhen entfernt. Sch&uuml;ler bauen echte Roboter, programmieren sie und nehmen sie mit nach Hause.</p>
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; text-align: left;">
-      <div style="padding: 28px; background: #fff; border-radius: 16px; border: 1px solid var(--border);">
+      <div style="padding: 28px; background: #FAF6EE; border-radius: 16px; border: 1px solid var(--border);">
         <div style="font-size: 36px; margin-bottom: 12px;">&#x1F681;&#x1F9BE;</div>
         <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 6px;">Gripper Drone Kit</h3>
         <p style="font-size: 13px; color: var(--text-sub); line-height: 1.6; margin-bottom: 8px;" data-lang-en>Indoor drone with a mechanical gripper arm. 10 missions, 5 3D-printed parts, AI-assisted coding. Ages 9&ndash;15.</p>
         <p style="font-size: 13px; color: var(--text-sub); line-height: 1.6; margin-bottom: 8px;" data-lang-de>Indoor-Drohne mit mechanischem Greifer. 10 Missionen, 5 3D-Druckteile, KI-gest&uuml;tztes Coding. 9&ndash;15 Jahre.</p>
         <div style="font-size: 13px; font-weight: 600; color: var(--accent-blue);">$150 USD</div>
       </div>
-      <div style="padding: 28px; background: #fff; border-radius: 16px; border: 1px solid var(--border);">
+      <div style="padding: 28px; background: #FAF6EE; border-radius: 16px; border: 1px solid var(--border);">
         <div style="font-size: 36px; margin-bottom: 12px;">&#8857;</div>
         <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 6px;">OrbBot</h3>
         <p style="font-size: 13px; color: var(--text-sub); line-height: 1.6; margin-bottom: 8px;" data-lang-en>Self-balancing robot on a ball. Three-axis control, LQR, 6-DOF IMU. For secondary &amp; university students.</p>
@@ -333,7 +333,7 @@
       </div>
     </div>
 
-    <div style="padding: 24px 32px; background: #fff; border-radius: 16px; border: 1px solid var(--border); display: inline-flex; align-items: center; gap: 16px;">
+    <div style="padding: 24px 32px; background: #FAF6EE; border-radius: 16px; border: 1px solid var(--border); display: inline-flex; align-items: center; gap: 16px;">
       <span style="font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; letter-spacing: -0.5px;">Kurth<span style="color: var(--accent-blue);">Technik</span></span>
       <span style="font-size: 13px; color: var(--text-sub);" data-lang-en>Designed in Hong Kong. Open-source.</span>
       <span style="font-size: 13px; color: var(--text-sub);" data-lang-de>Designed in Hong Kong. Open Source.</span>
