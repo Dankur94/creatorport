@@ -4,7 +4,6 @@ import DemandCounter from '../components/DemandCounter.astro';
 
 const navLinks = [
   { href: '#programs', en: 'Programs', de: 'Programme' },
-  { href: '#how', en: 'How It Works', de: "So funktioniert's" },
   { href: '#pricing', en: 'Pricing', de: 'Preise' },
   { href: '#about', en: 'About', de: '\u00DCber uns' },
   { href: '#faq', en: 'FAQ', de: 'FAQ' },
@@ -70,7 +69,7 @@ const navCta = { href: 'https://wa.me/85265427963', en: 'Enroll Now', de: 'Jetzt
 <!-- ===== STATS BAR ===== -->
 <div class="stats-bar">
   <div class="stat-item reveal">
-    <div class="stat-number">9&ndash;15 &amp; Uni</div>
+    <div class="stat-number">9&ndash;15</div>
     <div class="stat-label" data-lang-en>Age Range</div>
     <div class="stat-label" data-lang-de>Altersgruppe</div>
   </div>
@@ -95,10 +94,10 @@ const navCta = { href: 'https://wa.me/85265427963', en: 'Enroll Now', de: 'Jetzt
 <section id="programs">
   <div class="section-label reveal" data-lang-en>Program</div>
   <div class="section-label reveal" data-lang-de>Programm</div>
-  <h2 class="section-title reveal" data-lang-en>Three programs.<br /><span class="gradient-text">Your choice.</span></h2>
-  <h2 class="section-title reveal" data-lang-de>Drei Programme.<br /><span class="gradient-text">Deine Wahl.</span></h2>
-  <p class="section-desc reveal" data-lang-en>Build drones with AI (ages 9&ndash;15), master a self-balancing robot (university students), or learn the art of presenting. Three tracks, three levels.</p>
-  <p class="section-desc reveal" data-lang-de>Baue Drohnen mit KI (9&ndash;15 Jahre), meistere einen selbstbalancierenden Roboter (Uni-Studenten), oder lerne die Kunst des Pr&auml;sentierens. Drei Tracks, drei Levels.</p>
+  <h2 class="section-title reveal" data-lang-en>Two programs.<br /><span class="gradient-text">Your choice.</span></h2>
+  <h2 class="section-title reveal" data-lang-de>Zwei Programme.<br /><span class="gradient-text">Deine Wahl.</span></h2>
+  <p class="section-desc reveal" data-lang-en>Build drones with AI (ages 9&ndash;15) or learn the art of presenting. Two tracks, multiple levels.</p>
+  <p class="section-desc reveal" data-lang-de>Baue Drohnen mit KI (9&ndash;15 Jahre) oder lerne die Kunst des Pr&auml;sentierens. Zwei Tracks, mehrere Levels.</p>
   <p class="section-desc reveal" style="font-size: 13px; color: var(--text-muted); margin-top: -8px;" data-lang-en>Ages are guidelines &mdash; we place each student based on their experience, not just their age.</p>
   <p class="section-desc reveal" style="font-size: 13px; color: var(--text-muted); margin-top: -8px;" data-lang-de>Altersangaben sind Richtwerte &mdash; wir stufen jedes Kind nach Erfahrung ein, nicht nur nach Alter.</p>
 
@@ -143,61 +142,9 @@ const navCta = { href: 'https://wa.me/85265427963', en: 'Enroll Now', de: 'Jetzt
       <div style="margin-top: 12px; font-size: 12px; color: var(--accent-magenta);"><span data-lang-en>&#x2713; Certificate of completion &mdash; great for CVs &amp; applications</span><span data-lang-de>&#x2713; Abschlusszertifikat &mdash; ideal f&uuml;r Lebensl&auml;ufe &amp; Bewerbungen</span></div>
     </div>
 
-    <!-- ORBBOT -->
-    <div class="program-card reveal" style="--card-accent: var(--accent-amber); --card-accent-bg: rgba(239,159,39,0.08); --card-accent-border: rgba(239,159,39,0.2);">
-      <div class="card-icon">&#9878;&#65039;</div>
-      <div class="card-age" data-lang-en>University Students</div>
-      <div class="card-age" data-lang-de>Universit&auml;tsstudierende</div>
-      <h3 class="card-title">OrbBot</h3>
-      <p class="card-desc" data-lang-en>Build a self-balancing robot on a ball. Three-axis stabilisation, LQR control, real control theory. A full-stack engineering project &mdash; mechanical, electrical, software.</p>
-      <p class="card-desc" data-lang-de>Baue einen selbstbalancierenden Roboter auf einer Kugel. Drei-Achsen-Stabilisierung, LQR-Regelung, echte Regelungstechnik. Ein Full-Stack Engineering Projekt &mdash; mechanisch, elektrisch, Software.</p>
-      <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-subtle);"><div class="card-tags"><span class="card-tag">LQR Control</span><span class="card-tag">6-DOF IMU</span><span class="card-tag">3 Motors</span><span class="card-tag">PID Tuning</span><span class="card-tag">Python</span><span class="card-tag">CAD Files</span><span class="card-tag">Open Source</span></div></div>
-      <div style="margin-top: 16px; font-size: 12px; color: var(--text-muted);" data-lang-en>Taught by Daniel Kurth &middot; B.Sc. RWTH &middot; Kit by <a href="https://dankur94.github.io/kurthtechnik/#orbbot" target="_blank" style="color: var(--accent-amber); text-decoration: underline;">KurthTechnik</a></div>
-      <div style="margin-top: 16px; font-size: 12px; color: var(--text-muted);" data-lang-de>Unterrichtet von Daniel Kurth &middot; B.Sc. RWTH &middot; Kit von <a href="https://dankur94.github.io/kurthtechnik/#orbbot" target="_blank" style="color: var(--accent-amber); text-decoration: underline;">KurthTechnik</a></div>
-      <div style="margin-top: 12px; font-size: 12px; color: var(--accent-amber);"><span data-lang-en>&#x2713; $150 USD &middot; Full kit included &middot; Open source</span><span data-lang-de>&#x2713; $150 USD &middot; Komplettes Kit inklusive &middot; Open Source</span></div>
-    </div>
   </div>
 </section>
 
-<!-- ===== HOW IT WORKS ===== -->
-<section id="how" class="how-section">
-  <div class="section-label reveal" data-lang-en>How It Works</div>
-  <div class="section-label reveal" data-lang-de>So funktioniert's</div>
-  <h2 class="section-title reveal" data-lang-en>From curious to<br />confident creator.</h2>
-  <h2 class="section-title reveal" data-lang-de>Von neugierig zum<br />selbstbewussten Gestalter.</h2>
-  <div class="steps-grid">
-    <div class="step reveal"><div class="step-num">01</div><div class="step-content"><h3 class="step-title" data-lang-en>Discover &amp; Explore</h3><h3 class="step-title" data-lang-de>Entdecken &amp; Erkunden</h3><p class="step-desc" data-lang-en>Start with play. Experiment with AI tools, robots, and creative challenges in a safe, supportive environment.</p><p class="step-desc" data-lang-de>Beginne mit Spiel. Experimentiere mit KI-Tools, Robotern und kreativen Herausforderungen in einer sicheren Umgebung.</p></div></div>
-    <div class="step reveal"><div class="step-num">02</div><div class="step-content"><h3 class="step-title" data-lang-en>Learn &amp; Build</h3><h3 class="step-title" data-lang-de>Lernen &amp; Bauen</h3><p class="step-desc" data-lang-en>Develop real skills through hands-on projects. Each session builds on the last, with expert mentors guiding the way.</p><p class="step-desc" data-lang-de>Entwickle echte F&auml;higkeiten durch praktische Projekte. Jede Sitzung baut auf der letzten auf, begleitet von Experten-Mentoren.</p></div></div>
-    <div class="step reveal"><div class="step-num">03</div><div class="step-content"><h3 class="step-title" data-lang-en>Create &amp; Express</h3><h3 class="step-title" data-lang-de>Gestalten &amp; Ausdr&uuml;cken</h3><p class="step-desc" data-lang-en>Channel new skills into a personal project that reflects your ideas, passions, and personality.</p><p class="step-desc" data-lang-de>Kanalisiere neue F&auml;higkeiten in ein pers&ouml;nliches Projekt, das deine Ideen und Pers&ouml;nlichkeit widerspiegelt.</p></div></div>
-    <div class="step reveal"><div class="step-num">04</div><div class="step-content"><h3 class="step-title" data-lang-en>Showcase &amp; Inspire</h3><h3 class="step-title" data-lang-de>Pr&auml;sentieren &amp; Inspirieren</h3><p class="step-desc" data-lang-en>Present your creation at our Demo Day. Share with families, friends, and the community.</p><p class="step-desc" data-lang-de>Pr&auml;sentiere dein Werk am Demo Day. Teile es mit Familien, Freunden und der Community.</p></div></div>
-  </div>
-</section>
-
-<!-- ===== BILINGUAL ===== -->
-<section id="bilingual" class="bilingual-section">
-  <div class="section-label reveal" data-lang-en>Bilingual by Design</div>
-  <div class="section-label reveal" data-lang-de>Zweisprachig konzipiert</div>
-  <h2 class="section-title reveal" data-lang-en>Learn in the language<br />you think in.</h2>
-  <h2 class="section-title reveal" data-lang-de>Lerne in der Sprache,<br />in der du denkst.</h2>
-  <p class="section-desc reveal" data-lang-en>All programs available in both English and German.</p>
-  <p class="section-desc reveal" data-lang-de>Alle Programme auf Englisch und Deutsch verf&uuml;gbar.</p>
-  <div class="bilingual-grid">
-    <div class="bilingual-card en reveal"><div class="bilingual-flag">&#x1F1EC;&#x1F1E7;</div><h3 class="bilingual-title">English Track</h3><p class="bilingual-desc" data-lang-en>Perfect for international school students and English-speaking families in Hong Kong. All materials, instruction, and mentorship in English.</p><p class="bilingual-desc" data-lang-de>Perfekt f&uuml;r Sch&uuml;ler internationaler Schulen und englischsprachige Familien in Hongkong. Alle Materialien und Betreuung auf Englisch.</p></div>
-    <div class="bilingual-card de reveal"><div class="bilingual-flag">&#x1F1E9;&#x1F1EA;</div><h3 class="bilingual-title">Deutscher Kurs</h3><p class="bilingual-desc" data-lang-en>Tailored for German-speaking families. Learn cutting-edge tech while strengthening German language skills.</p><p class="bilingual-desc" data-lang-de>Speziell f&uuml;r deutschsprachige Familien. Lerne modernste Technologie und st&auml;rke gleichzeitig deine Deutschkenntnisse.</p></div>
-  </div>
-</section>
-
-<!-- ===== FORMAT ===== -->
-<section id="format">
-  <div class="section-label reveal" data-lang-en>Hybrid Learning</div>
-  <div class="section-label reveal" data-lang-de>Hybrides Lernen</div>
-  <h2 class="section-title reveal" data-lang-en>Your classroom,<br />your way.</h2>
-  <h2 class="section-title reveal" data-lang-de>Dein Klassenzimmer,<br />dein Weg.</h2>
-  <div class="format-grid">
-    <div class="format-card reveal"><div class="format-icon">&#x1F3D9;&#xFE0F;</div><h3 class="format-title" data-lang-en>In-Person &middot; Hong Kong</h3><h3 class="format-title" data-lang-de>Vor Ort &middot; Hongkong</h3><p class="format-desc" data-lang-en>Hands-on workshops in our fully equipped makerspace. Build real robots, use professional tools, and collaborate face-to-face.</p><p class="format-desc" data-lang-de>Praxisworkshops in unserem voll ausgestatteten Makerspace. Baue echte Roboter, nutze professionelle Tools und arbeite pers&ouml;nlich zusammen.</p><div class="format-features"><div class="format-feature" data-lang-en>Small groups (max 5 students)</div><div class="format-feature" data-lang-de>Kleine Gruppen (max. 5 Sch&uuml;ler)</div><div class="format-feature" data-lang-en>Weekend &amp; after-school sessions</div><div class="format-feature" data-lang-de>Wochenend- &amp; Nachmittagskurse</div><div class="format-feature" data-lang-en>Holiday camps? Talk to us</div><div class="format-feature" data-lang-de>Feriencamps? Sprich uns an</div></div></div>
-    <div class="format-card reveal"><div class="format-icon">&#x1F310;</div><h3 class="format-title" data-lang-en>Online &middot; Worldwide</h3><h3 class="format-title" data-lang-de>Online &middot; Weltweit</h3><p class="format-desc" data-lang-en>Live interactive sessions with screen sharing, collaborative coding, and shipped robotics kits. Same quality, from anywhere.</p><p class="format-desc" data-lang-de>Live interaktive Sitzungen mit Bildschirmfreigabe, kollaborativem Coding und zugesandten Robotik-Kits. Gleiche Qualit&auml;t, von &uuml;berall.</p><div class="format-features"><div class="format-feature" data-lang-en>Robotics kits shipped to your door</div><div class="format-feature" data-lang-de>Robotik-Kits direkt nach Hause geliefert</div><div class="format-feature" data-lang-en>Live mentorship &amp; feedback</div><div class="format-feature" data-lang-de>Live-Mentoring &amp; Feedback</div><div class="format-feature" data-lang-en>Flexible scheduling for global timezones</div><div class="format-feature" data-lang-de>Flexible Zeiten f&uuml;r globale Zeitzonen</div></div></div>
-  </div>
-</section>
 
 <!-- ===== ABOUT US ===== -->
 <section id="about" class="about-section">
@@ -316,17 +263,6 @@ const navCta = { href: 'https://wa.me/85265427963', en: 'Enroll Now', de: 'Jetzt
   </div>
 </section>
 
-<!-- ===== CTA ===== -->
-<section id="cta" class="cta-section">
-  <div class="cta-content">
-    <h2 class="cta-title reveal" data-lang-en>Ready to build<br /><span class="gradient-text">the future?</span></h2><h2 class="cta-title reveal" data-lang-de>Bereit,<br /><span class="gradient-text">die Zukunft zu bauen?</span></h2>
-    <p class="cta-desc reveal" data-lang-en>Only 16 spots per term &mdash; first come, first served. Send us a WhatsApp to reserve your child's spot. No payment needed, no commitment.</p><p class="cta-desc reveal" data-lang-de>Nur 16 Pl&auml;tze pro Term &mdash; wer zuerst kommt, mahlt zuerst. Schick uns eine WhatsApp um den Platz deines Kindes zu sichern. Keine Zahlung, keine Verpflichtung.</p>
-    <div class="hero-actions reveal" style="justify-content: center; flex-wrap: wrap;">
-      <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20CreatorPort%20HK.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Track%3A%20Robotics%20%26%20AI%20%2F%20Think.Learn.Present.%0A-%20Level%3A%20Explorer%20%2F%20Builder%0A-%20Language%3A%20EN%20%2F%20DE%0A-%20Format%3A%20In-person%20%2F%20Online" target="_blank" class="btn-primary" data-lang-en>Pre-Register on WhatsApp</a>
-      <a href="https://wa.me/85265427963?text=Hi%21%20Ich%20m%C3%B6chte%20mein%20Kind%20f%C3%BCr%20CreatorPort%20HK%20voranmelden.%0A-%20Name%3A%0A-%20Alter%3A%0A-%20Track%3A%20Robotik%20%26%20KI%20%2F%20Think.Learn.Present.%0A-%20Level%3A%20Explorer%20%2F%20Builder%0A-%20Sprache%3A%20EN%20%2F%20DE%0A-%20Format%3A%20Pr%C3%A4senz%20%2F%20Online" target="_blank" class="btn-primary" data-lang-de>Voranmeldung auf WhatsApp</a>
-    </div>
-  </div>
-</section>
 
 <!-- ===== STICKY BOTTOM CTA ===== -->
 <div class="sticky-cta" id="stickyCta">
@@ -389,7 +325,7 @@ const navCta = { href: 'https://wa.me/85265427963', en: 'Enroll Now', de: 'Jetzt
   .stat-number{font-family:'Space Mono',monospace;font-size:36px;font-weight:700;color:var(--accent-electric);margin-bottom:8px}
   .stat-label{font-size:13px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:500}
   section{padding:120px 60px}
-  .programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:64px}
+  .programs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:64px}
   .program-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:24px;padding:40px 32px;position:relative;overflow:hidden;transition:all .4s cubic-bezier(.16,1,.3,1);cursor:default;box-shadow:0 1px 4px rgba(44,44,42,.04),0 2px 12px rgba(44,44,42,.04)}
   .program-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent);opacity:0;transition:opacity .4s}
   .program-card:hover{transform:translateY(-8px);border-color:var(--card-accent);background:#F5F0E8}
