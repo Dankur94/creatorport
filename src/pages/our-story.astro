@@ -1,0 +1,193 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { Image } from 'astro:assets';
+import storySkyline from '../assets/img/story-skyline.jpg';
+import storyMarket from '../assets/img/story-market.jpg';
+import storyYogurt from '../assets/img/story-yogurt.jpg';
+
+const navLinks = [
+  { href: '/', en: 'Home', de: 'Startseite' },
+  { href: '/about', en: 'About', de: '\u00DCber' },
+  { href: '/juniors', en: 'Juniors', de: 'Jugend' },
+  { href: '/adults', en: 'Adults', de: 'Erwachsene' },
+];
+---
+
+<PageLayout
+  title="CreatorPort HK — Our Story"
+  description="The story behind CreatorPort — how a friendship forged through maths and physics became the foundation of something bigger."
+  navLinks={navLinks}
+>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label reveal" data-lang-en>Our Story</div>
+    <div class="hero-label reveal" data-lang-de>Unsere Geschichte</div>
+    <h1 class="reveal" data-lang-en>From <span class="gradient-text">Equations</span><br />to Education</h1>
+    <h1 class="reveal" data-lang-de>Von <span class="gradient-text">Gleichungen</span><br />zu Bildung</h1>
+    <p class="hero-sub reveal" data-lang-en>Some friendships begin at a blackboard. Ours became a company.</p>
+    <p class="hero-sub reveal" data-lang-de>Manche Freundschaften beginnen an einer Tafel. Unsere wurde ein Unternehmen.</p>
+  </div>
+
+  <!-- STORY -->
+  <div class="story">
+    <!-- CHAPTER 1 -->
+    <div class="story-block reveal">
+      <Image src={storySkyline} alt="Daniel and Ananya in Hong Kong" class="story-photo" widths={[400, 800]} sizes="(max-width: 768px) 100vw, 800px" loading="eager" />
+      <div class="story-text" data-lang-en>
+        <p>It started the way the best things do &mdash; by accident.</p>
+        <p>I was deep in my engineering degree at RWTH Aachen, drowning in the kind of maths and physics that makes you question every life decision that led you to that lecture hall. The formulas blurred. The problem sets piled up. I needed help &mdash; not the textbook kind, but the kind that makes you <strong>see</strong> the problem differently.</p>
+        <p>That&rsquo;s when I found <strong>Ananya</strong>.</p>
+      </div>
+      <div class="story-text" data-lang-de>
+        <p>Es begann so, wie die besten Dinge beginnen &mdash; zuf&auml;llig.</p>
+        <p>Ich steckte mitten in meinem Ingenieurstudium an der RWTH Aachen, versunken in der Art von Mathe und Physik, bei der man jede Lebensentscheidung hinterfragt, die einen in diesen H&ouml;rsaal gef&uuml;hrt hat. Die Formeln verschwammen. Die Aufgaben t&uuml;rmten sich. Ich brauchte Hilfe &mdash; nicht die Lehrbuch-Sorte, sondern die, die einen das Problem <strong>anders sehen</strong> l&auml;sst.</p>
+        <p>Dann fand ich <strong>Ananya</strong>.</p>
+      </div>
+    </div>
+
+    <div class="story-pull-quote reveal" data-lang-en>
+      &ldquo;He didn&rsquo;t give me the answers.<br />He taught me how to <span class="gradient-text">think</span>.&rdquo;
+    </div>
+    <div class="story-pull-quote reveal" data-lang-de>
+      &ldquo;Er gab mir nicht die Antworten.<br />Er brachte mir bei, wie man <span class="gradient-text">denkt</span>.&rdquo;
+    </div>
+
+    <!-- CHAPTER 2 -->
+    <div class="story-block reveal">
+      <div class="story-text" data-lang-en>
+        <p>Ananya was a physicist at RWTH &mdash; the kind of person who could take a concept that had defeated you for weeks and, in twenty minutes over coffee, make it feel obvious. He never just solved the equation for me. He <strong>dismantled the way I was thinking about it</strong>, rebuilt it from scratch, and handed it back clearer than before.</p>
+        <p>Session after session, something shifted. It wasn&rsquo;t just maths anymore. He became my mentor. Then one of my closest friends. The line between tutor and friend dissolved somewhere between thermodynamics and late-night conversations about what we wanted to build with our lives.</p>
+      </div>
+      <div class="story-text" data-lang-de>
+        <p>Ananya war Physiker an der RWTH &mdash; die Art Mensch, der ein Konzept, an dem man wochenlang gescheitert ist, in zwanzig Minuten bei einem Kaffee selbstverst&auml;ndlich erscheinen l&auml;sst. Er l&ouml;ste nie einfach die Gleichung f&uuml;r mich. Er <strong>zerlegte meine Denkweise</strong>, baute sie von Grund auf neu auf und gab sie mir klarer zur&uuml;ck als zuvor.</p>
+        <p>Sitzung f&uuml;r Sitzung ver&auml;nderte sich etwas. Es ging nicht mehr nur um Mathe. Er wurde mein Mentor. Dann einer meiner engsten Freunde. Die Grenze zwischen Tutor und Freund l&ouml;ste sich irgendwo zwischen Thermodynamik und n&auml;chtlichen Gespr&auml;chen dar&uuml;ber auf, was wir mit unserem Leben aufbauen wollten.</p>
+      </div>
+    </div>
+
+    <div class="story-divider"></div>
+
+    <!-- CHAPTER 3 -->
+    <div class="story-block reveal">
+      <div class="photo-duo">
+        <Image src={storyMarket} alt="Daniel and Ananya at a night market" widths={[400, 600]} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" />
+        <Image src={storyYogurt} alt="Daniel and Ananya enjoying frozen yogurt" widths={[400, 600]} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" />
+      </div>
+      <div class="story-text" data-lang-en>
+        <p>What Ananya gave me wasn&rsquo;t a grade. It was a <strong>belief</strong> &mdash; that the right teacher doesn&rsquo;t just transfer knowledge, they transform the person receiving it. He showed me that teaching, done right, is the most powerful form of engineering there is. You&rsquo;re not building a machine. You&rsquo;re building a mind.</p>
+        <p>That idea stayed with me long after the exams were over. It followed me from Aachen to Hong Kong, from lecture halls to maker spaces. It whispered every time I watched a student&rsquo;s face light up the way mine once did across a coffee table from Ananya.</p>
+      </div>
+      <div class="story-text" data-lang-de>
+        <p>Was Ananya mir gab, war keine Note. Es war eine <strong>&Uuml;berzeugung</strong> &mdash; dass der richtige Lehrer nicht nur Wissen weitergibt, sondern den Menschen ver&auml;ndert, der es empf&auml;ngt. Er zeigte mir, dass Lehren, richtig gemacht, die m&auml;chtigste Form des Ingenieurwesens ist. Man baut keine Maschine. Man baut einen <strong>Geist</strong>.</p>
+        <p>Diese Idee blieb, lange nachdem die Pr&uuml;fungen vorbei waren. Sie folgte mir von Aachen nach Hong Kong, von H&ouml;rs&auml;len zu Maker Spaces. Sie fl&uuml;sterte jedes Mal, wenn ich das Gesicht eines Sch&uuml;lers aufleuchten sah &mdash; so wie meines einst gegen&uuml;ber von Ananya am Kaffeetisch.</p>
+      </div>
+    </div>
+
+    <div class="story-pull-quote reveal" data-lang-en>
+      &ldquo;The best teachers don&rsquo;t fill your head.<br />They <span class="gradient-text">rewire</span> it.&rdquo;
+    </div>
+    <div class="story-pull-quote reveal" data-lang-de>
+      &ldquo;Die besten Lehrer f&uuml;llen nicht deinen Kopf.<br />Sie <span class="gradient-text">verkabeln</span> ihn neu.&rdquo;
+    </div>
+
+    <!-- CHAPTER 4 -->
+    <div class="story-block reveal">
+      <div class="story-text" data-lang-en>
+        <p>That&rsquo;s why I founded <strong>CreatorPort</strong>.</p>
+        <p>Not because I had a business plan. Not because the market research checked out. But because I&rsquo;d experienced firsthand what happens when someone teaches you to think &mdash; <em>really</em> think &mdash; and I wanted to give that to as many people as possible.</p>
+        <p>CreatorPort exists because of a friendship that started at a blackboard. Because a physicist in Aachen took the time to see a struggling student not as a problem to solve, but as a mind worth investing in. Every workshop we run, every student we teach, every robot we build together &mdash; it all traces back to those sessions.</p>
+        <p>To Ananya. To the belief that <strong>the right mentor changes everything.</strong></p>
+      </div>
+      <div class="story-text" data-lang-de>
+        <p>Deshalb habe ich <strong>CreatorPort</strong> gegr&uuml;ndet.</p>
+        <p>Nicht weil ich einen Businessplan hatte. Nicht weil die Marktforschung stimmte. Sondern weil ich am eigenen Leib erfahren hatte, was passiert, wenn jemand dir beibringt zu denken &mdash; <em>wirklich</em> zu denken &mdash; und ich wollte das so vielen Menschen wie m&ouml;glich weitergeben.</p>
+        <p>CreatorPort existiert wegen einer Freundschaft, die an einer Tafel begann. Weil ein Physiker in Aachen sich die Zeit nahm, einen k&auml;mpfenden Studenten nicht als Problem zu sehen, sondern als einen Geist, in den es sich lohnt zu investieren. Jeder Workshop, den wir durchf&uuml;hren, jeder Sch&uuml;ler, den wir unterrichten, jeder Roboter, den wir gemeinsam bauen &mdash; alles f&uuml;hrt zur&uuml;ck zu diesen Sitzungen.</p>
+        <p>Zu Ananya. Zu der &Uuml;berzeugung, dass <strong>der richtige Mentor alles ver&auml;ndert.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2 class="cta-title reveal" data-lang-en>Ready to<br /><span class="gradient-text">start learning?</span></h2>
+    <h2 class="cta-title reveal" data-lang-de>Bereit<br /><span class="gradient-text">zu lernen?</span></h2>
+    <p class="cta-desc reveal" data-lang-en>Every great journey starts with a single conversation.</p>
+    <p class="cta-desc reveal" data-lang-de>Jede gro&szlig;e Reise beginnt mit einem einzigen Gespr&auml;ch.</p>
+    <div class="cta-links reveal">
+      <a href="https://wa.me/85265427963" target="_blank" class="cta-link primary">WhatsApp</a>
+      <a href="mailto:hello@creatorport.com.hk" class="cta-link secondary">hello@creatorport.com.hk</a>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .hero {
+    padding: 160px 40px 60px;
+    max-width: 900px; margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-label {
+    font-size: 14px; text-transform: uppercase; letter-spacing: 3px;
+    color: var(--accent-electric); font-weight: 600; margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: 56px; font-weight: 800; letter-spacing: -3px; line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .hero-sub {
+    font-size: 18px; color: var(--text-secondary); max-width: 600px;
+    line-height: 1.8; margin: 0 auto 40px;
+  }
+
+  .story { max-width: 800px; margin: 0 auto; padding: 0 40px 80px; }
+  .story-block { margin-bottom: 80px; }
+
+  .story-photo {
+    width: 100%; border-radius: 16px; margin-bottom: 32px;
+    object-fit: cover; max-height: 500px;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .story-text { font-size: 17px; color: var(--text-secondary); line-height: 1.9; }
+  .story-text strong { color: var(--text-primary); }
+  .story-text p { margin-bottom: 20px; }
+
+  .story-pull-quote {
+    font-size: 28px; font-weight: 700; letter-spacing: -1px; line-height: 1.4;
+    color: var(--text-primary); padding: 40px 0;
+    border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);
+    margin: 48px 0; text-align: center;
+  }
+
+  .story-divider {
+    width: 60px; height: 3px; background: var(--gradient-main);
+    margin: 60px auto; border-radius: 2px;
+  }
+
+  .photo-duo {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px;
+  }
+
+  .photo-duo :global(img) {
+    width: 100%; height: 320px; object-fit: cover;
+    border-radius: 16px; border: 1px solid var(--border-subtle);
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 110px 24px 40px; }
+    .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
+    .hero-sub { font-size: 16px; }
+    .story { padding: 0 24px 60px; }
+    .story-text { font-size: 16px; }
+    .story-pull-quote { font-size: 22px; padding: 28px 0; }
+    .photo-duo { grid-template-columns: 1fr; }
+    .photo-duo :global(img) { height: 260px; }
+    .story-photo { max-height: 360px; }
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .hero h1 { font-size: 48px; }
+  }
+</style>

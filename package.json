@@ -1,0 +1,19 @@
+{
+  "name": "creatorport",
+  "version": "2.0.0",
+  "description": "CreatorPort HK — AI & Robotics Education",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dankur94/creatorport.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "astro": "^6.4.7"
+  }
+}

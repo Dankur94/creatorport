@@ -1,0 +1,312 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="CreatorPort HK — AI & Robotics Education · Hong Kong"
+  description="German-engineered AI and robotics education for kids, adults, and institutions. Tsuen Wan, Riviera Gardens & online worldwide."
+  extraFonts={['Sacramento', 'Space+Mono:wght@400;700']}
+>
+  <div class="container">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+    </div>
+
+    <div class="logo">
+      <img class="logo-wordmark" src="/creatorport-logo.svg" alt="CreatorPort HK" />
+    </div>
+
+    <h1>
+      <span data-lang-en>AI &amp; Robotics<br /><span class="gradient-text">for everyone.</span></span>
+      <span data-lang-de>KI &amp; Robotik<br /><span class="gradient-text">f&uuml;r alle.</span></span>
+    </h1>
+    <p class="subtitle" data-lang-en>Build it. Understand it. Unforgettable experiences with friends &amp; family &mdash; while learning the basics of robotics and AI.<br /><span style="font-size: 14px; opacity: 0.7;">German-engineered education in Tsuen Wan, Riviera Gardens &amp; online worldwide.</span></p>
+    <p class="subtitle" data-lang-de>Baue es. Verstehe es. Unvergessliche Erlebnisse mit Freunden &amp; Familie &mdash; und dabei die Grundlagen von Robotik und KI lernen.<br /><span style="font-size: 14px; opacity: 0.7;">Deutsche Ingenieurskunst in Tsuen Wan, Riviera Gardens &amp; online weltweit.</span></p>
+
+    <div class="choose-label" data-lang-en>I'm looking for</div>
+    <div class="choose-label" data-lang-de>Ich suche</div>
+
+    <div class="cards">
+      <a href="/adults" class="card card-adults fade-in">
+        <div class="card-icon">{'{ }'}</div>
+        <div class="card-title" data-lang-en>Senior Workshops</div>
+        <div class="card-title" data-lang-de>Senior Workshops</div>
+        <div class="card-age" data-lang-en>&ge; 18</div>
+        <div class="card-age" data-lang-de>&ge; 18</div>
+        <p class="card-desc" data-lang-en>Single-session hands-on workshops. Build a beer tap, a coffee roaster, or boost your productivity with AI.</p>
+        <p class="card-desc" data-lang-de>Einmalige Hands-on-Workshops. Baue ein Zapfsystem, einen Kaffeer&ouml;ster oder steigere deine Produktivit&auml;t mit KI.</p>
+        <span class="card-arrow" data-lang-en>See Workshops &rarr;</span>
+        <span class="card-arrow" data-lang-de>Workshops ansehen &rarr;</span>
+      </a>
+
+      <a href="/juniors" class="card card-junior fade-in">
+        <div class="card-icon">&lt;/&gt;</div>
+        <div class="card-title" data-lang-en>Junior Programs</div>
+        <div class="card-title" data-lang-de>Jugendprogramme</div>
+        <div class="card-age" data-lang-en>Ages 9&ndash;15 &amp; University Students</div>
+        <div class="card-age" data-lang-de>9&ndash;15 Jahre &amp; Uni-Studenten</div>
+        <p class="card-desc" data-lang-en>Term-based AI and robotics tracks. Explorer &amp; Builder levels. Small groups, big projects. In-person &amp; online.</p>
+        <p class="card-desc" data-lang-de>Semesterbasierte KI- und Robotik-Kurse. Explorer- &amp; Builder-Level. Kleine Gruppen, gro&szlig;e Projekte. Vor Ort &amp; online.</p>
+        <span class="card-arrow" data-lang-en>Explore Programs &rarr;</span>
+        <span class="card-arrow" data-lang-de>Programme entdecken &rarr;</span>
+      </a>
+
+      <a href="/institutions" class="card card-institutions fade-in">
+        <div class="card-icon">[ ]</div>
+        <div class="card-title" data-lang-en>Schools &amp; Institutions</div>
+        <div class="card-title" data-lang-de>Schulen &amp; Institutionen</div>
+        <div class="card-age" data-lang-en>Custom Programs</div>
+        <div class="card-age" data-lang-de>Individuelle Programme</div>
+        <p class="card-desc" data-lang-en>OrbBot workshops and in-house teaching for international schools, universities, and organisations. On-site or at our studio. English or German.</p>
+        <p class="card-desc" data-lang-de>OrbBot-Workshops und Unterricht vor Ort f&uuml;r internationale Schulen, Universit&auml;ten und Organisationen. Bei Ihnen oder in unserem Studio. Englisch oder Deutsch.</p>
+        <span class="card-arrow" data-lang-en>Get in Touch &rarr;</span>
+        <span class="card-arrow" data-lang-de>Kontakt aufnehmen &rarr;</span>
+      </a>
+    </div>
+
+    <div class="footer">
+      &copy; CreatorPort HK is a brand operated by &copy; Space of Possibilities Limited &middot; Hong Kong &middot; hello@creatorport.com.hk<br />
+      <a href="/privacy" data-lang-en>Privacy Policy</a><a href="/privacy" data-lang-de>Datenschutz</a> &middot; <a href="/terms" data-lang-en>Terms of Service</a><a href="/terms" data-lang-de>AGB</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import { setLang, initLang } from '../scripts/language';
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = (btn as HTMLElement).dataset.lang as 'en' | 'de';
+      setLang(lang);
+    });
+  });
+
+  initLang();
+</script>
+
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px 24px;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  /* Language toggle — index-specific position */
+  .lang-toggle {
+    position: absolute;
+    top: 40px;
+    right: 24px;
+    display: flex;
+    gap: 4px;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0s forwards;
+    background: transparent;
+    padding: 0;
+  }
+
+  .lang-btn {
+    font-family: 'Sora', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 10px 14px;
+    border: 1px solid rgba(44, 44, 42, 0.06);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s;
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lang-btn.active {
+    background: rgba(44, 44, 42, 0.06);
+    color: var(--text-primary);
+    border-color: rgba(44, 44, 42, 0.1);
+  }
+
+  .lang-btn:hover {
+    color: var(--text-primary);
+    border-color: rgba(44, 44, 42, 0.1);
+  }
+
+  /* Logo */
+  .logo {
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0s forwards;
+    margin-bottom: 16px;
+  }
+
+  .logo-wordmark {
+    height: 94px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .brand-script {
+    font-family: 'Sacramento', cursive;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: rgba(44, 44, 42, 0.35);
+    margin-left: 0.5rem;
+  }
+
+  /* Headline */
+  h1 {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -2.5px;
+    line-height: 1.05;
+    margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.1s forwards;
+  }
+
+  .subtitle {
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin-bottom: 56px;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  /* Label */
+  .choose-label {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.3s forwards;
+  }
+
+  /* Cards Grid */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 36px 24px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 20px 20px 0 0;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 4px 24px rgba(44, 44, 42, 0.1);
+  }
+
+  .card:hover::before { opacity: 1; }
+
+  .card-junior::before { background: var(--accent-electric); }
+  .card-junior:hover { border-color: var(--accent-electric); }
+  .card-adults::before { background: var(--accent-amber); }
+  .card-adults:hover { border-color: var(--accent-amber); }
+  .card-institutions::before { background: var(--accent-magenta); }
+  .card-institutions:hover { border-color: var(--accent-magenta); }
+
+  .card-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700;
+    letter-spacing: -1px;
+  }
+
+  .card-junior .card-icon { background: rgba(15, 110, 86, 0.1); color: var(--accent-electric); }
+  .card-adults .card-icon { background: rgba(239, 159, 39, 0.1); color: var(--accent-amber); }
+  .card-institutions .card-icon { background: rgba(216, 90, 48, 0.1); color: var(--accent-magenta); }
+
+  .card-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+
+  .card-age { font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-bottom: 14px; }
+  .card-junior .card-age { color: var(--accent-electric); }
+  .card-adults .card-age { color: var(--accent-amber); }
+  .card-institutions .card-age { color: var(--accent-magenta); }
+
+  .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; }
+
+  .card-arrow { font-size: 14px; font-weight: 600; transition: transform 0.3s; display: inline-block; }
+  .card-junior .card-arrow { color: var(--accent-electric); }
+  .card-adults .card-arrow { color: var(--accent-amber); }
+  .card-institutions .card-arrow { color: var(--accent-magenta); }
+  .card:hover .card-arrow { transform: translateX(6px); }
+
+  /* Footer */
+  .footer {
+    font-size: 14px;
+    color: #8A8A88;
+    text-align: center;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .footer a { color: #5A5A58; text-decoration: underline; text-underline-offset: 3px; }
+  .footer a:hover { color: var(--accent-electric); }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .logo-wordmark { height: 60px; }
+    h1 { font-size: 32px; letter-spacing: -1.5px; }
+    .subtitle { font-size: 15px; }
+    .cards { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto 48px; }
+    .card { padding: 28px 20px; }
+    .card-icon { width: 40px; height: 40px; font-size: 14px; margin-bottom: 14px; }
+    .lang-toggle { top: 16px; right: 16px; }
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    h1 { font-size: 44px; }
+    .cards { grid-template-columns: repeat(2, 1fr); max-width: 600px; margin: 0 auto 48px; }
+  }
+</style>

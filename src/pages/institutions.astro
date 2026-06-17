@@ -1,0 +1,754 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import DemandCounter from '../components/DemandCounter.astro';
+
+const navLinks = [
+  { href: '#kits', en: 'Kits', de: 'Baus\u00e4tze' },
+  { href: '#formats', en: 'Formats', de: 'Formate' },
+  { href: '/our-story', en: 'Our Story', de: 'Unsere Geschichte' },
+];
+
+const navCta = { href: '#contact', en: 'Get in Touch', de: 'Kontakt aufnehmen' };
+
+const whatsappEn = "https://wa.me/85265427963?text=Hi%21%20I%27m%20inquiring%20about%20CreatorPort HK%20for%20our%20institution.%0A-%20Organisation%3A%0A-%20Type%20%28School%20/%20University%20/%20Other%29%3A%0A-%20Number%20of%20students%3A%0A-%20What%20we%27re%20looking%20for%3A%0A%0ACreatorPort HK%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29";
+const whatsappDe = "https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20CreatorPort HK%20f%C3%BCr%20unsere%20Institution.%0A-%20Organisation%3A%0A-%20Typ%20%28Schule%20/%20Universit%C3%A4t%20/%20Andere%29%3A%0A-%20Anzahl%20der%20Sch%C3%BCler%3A%0A-%20Was%20wir%20suchen%3A%0A%0ACreatorPort HK%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29";
+---
+
+<PageLayout
+  title="CreatorPort HK for Institutions — AI & Robotics Workshops for Schools & Universities"
+  description="Bring AI and robotics education to your school, university, or organisation. German-engineered workshops led by an RWTH Aachen University engineer."
+  navLinks={navLinks}
+  navCta={navCta}
+  navAccent="electric"
+  footerExtra=""
+>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-demand-badge" data-lang-en>
+      Gauging demand &middot; We launch at <strong>20</strong> sign-ups &middot; <strong class="demand-count-en"></strong> to go &middot; Tsuen Wan
+    </div>
+    <div class="hero-demand-badge" data-lang-de>
+      Nachfrage testen &middot; Wir starten ab <strong>20</strong> Anmeldungen &middot; noch <strong class="demand-count-de"></strong> &middot; Tsuen Wan
+    </div>
+
+    <DemandCounter signedUp={0} goal={20} />
+
+    <div class="hero-label" data-lang-en>For Schools &middot; Universities &middot; Organisations</div>
+    <div class="hero-label" data-lang-de>F&uuml;r Schulen &middot; Universit&auml;ten &middot; Organisationen</div>
+    <h1 data-lang-en>Bring robotics &amp; AI into your classroom.</h1>
+    <h1 data-lang-de>Bringen Sie Robotik &amp; KI in Ihr Klassenzimmer.</h1>
+    <p class="hero-sub" data-lang-en>Hands-on workshops led by an RWTH Aachen University engineer. On-site at your institution or at our studio in Tsuen Wan, Riviera Gardens.</p>
+    <p class="hero-sub" data-lang-de>Praxisnahe Workshops geleitet von einem Ingenieur der RWTH Aachen. Vor Ort in Ihrer Institution oder in unserem Studio in Tsuen Wan, Riviera Gardens.</p>
+    <div class="hero-actions" data-lang-en>
+      <a href="#contact" class="btn-dark">Request a Proposal</a>
+      <a href="#kits" class="btn-outline">Learn More</a>
+    </div>
+    <div class="hero-actions" data-lang-de>
+      <a href="#contact" class="btn-dark">Angebot anfordern</a>
+      <a href="#kits" class="btn-outline">Mehr erfahren</a>
+    </div>
+  </div>
+
+  <!-- INSTRUCTOR TRUST BAR -->
+  <div class="trust" data-lang-en>
+    <div class="trust-item"><strong>Daniel Kurth</strong> &mdash; Founder &amp; Lead Instructor</div>
+    <div class="trust-item"><strong>B.Sc.</strong> RWTH Aachen</div>
+    <div class="trust-item">Mechanical Eng. &middot; Business &middot; Manufacturing</div>
+    <div class="trust-item"><strong>Bilingual</strong> EN / DE</div>
+  </div>
+  <div class="trust" data-lang-de>
+    <div class="trust-item"><strong>Daniel Kurth</strong> &mdash; Gr&uuml;nder &amp; Kursleiter</div>
+    <div class="trust-item"><strong>B.Sc.</strong> RWTH Aachen</div>
+    <div class="trust-item">Maschinenbau &middot; BWL &middot; Fertigungstechnik</div>
+    <div class="trust-item"><strong>Zweisprachig</strong> EN / DE</div>
+  </div>
+
+  <!-- ROBOTICS KITS -->
+  <section id="kits" class="kits-section">
+    <div class="kits-inner">
+      <div class="section-label" data-lang-en>Hardware</div>
+      <div class="section-label" data-lang-de>Hardware</div>
+      <h2 class="section-title" data-lang-en>German-engineered robotics kits.</h2>
+      <h2 class="section-title" data-lang-de>German-engineered Robotik-Baus&auml;tze.</h2>
+      <p class="section-desc" data-lang-en>All our workshops use kits designed and manufactured by KurthTechnik &mdash; open-source hardware built 30 minutes from Shenzhen. Students assemble real robots, program them, and take them home.</p>
+      <p class="section-desc" data-lang-de>Alle unsere Workshops verwenden Baus&auml;tze von KurthTechnik &mdash; Open-Source-Hardware, gebaut 30 Minuten von Shenzhen entfernt. Sch&uuml;ler bauen echte Roboter, programmieren sie und nehmen sie mit nach Hause.</p>
+
+      <div class="kits-grid">
+        <div class="kit-card">
+          <div class="kit-emoji">&#x1F681;&#x1F9BE;</div>
+          <h3 class="kit-title">Gripper Drone Kit</h3>
+          <p class="kit-desc" data-lang-en>Indoor drone with a mechanical gripper arm. 10 missions, 5 3D-printed parts, AI-assisted coding. Ages 9&ndash;15.</p>
+          <p class="kit-desc" data-lang-de>Indoor-Drohne mit mechanischem Greifer. 10 Missionen, 5 3D-Druckteile, KI-gest&uuml;tztes Coding. 9&ndash;15 Jahre.</p>
+          <div class="kit-price">$150 USD</div>
+        </div>
+        <div class="kit-card">
+          <div class="kit-emoji">&#8857;</div>
+          <h3 class="kit-title">OrbBot</h3>
+          <p class="kit-desc" data-lang-en>Self-balancing robot on a ball. Three-axis control, LQR, 6-DOF IMU. For secondary &amp; university students.</p>
+          <p class="kit-desc" data-lang-de>Selbstbalancierender Roboter auf einer Kugel. Drei-Achsen-Steuerung, LQR, 6-DOF IMU. F&uuml;r Sekundar- &amp; Uni-Studenten.</p>
+          <div class="kit-status" data-lang-en>Coming Soon</div>
+          <div class="kit-status" data-lang-de>In Vorbereitung</div>
+        </div>
+      </div>
+
+      <div class="kurthtechnik-badge">
+        <span class="kt-name">Kurth<span class="kt-accent">Technik</span></span>
+        <span class="kt-desc" data-lang-en>Designed in Hong Kong. Open-source.</span>
+        <span class="kt-desc" data-lang-de>Designed in Hong Kong. Open Source.</span>
+        <a href="https://dankur94.github.io/kurthtechnik/" target="_blank" class="kt-link">View Kits &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI LITERACY -->
+  <section class="ai-section">
+    <div class="section-label" data-lang-en>New Workshop</div>
+    <div class="section-label" data-lang-de>Neuer Workshop</div>
+    <div class="offering">
+      <div class="offering-content">
+        <h3 data-lang-en>AI Literacy &amp; Critical Thinking</h3>
+        <h3 data-lang-de>KI-Kompetenz &amp; Kritisches Denken</h3>
+        <p class="offering-desc" data-lang-en>Students who don&rsquo;t understand AI won&rsquo;t just fall behind &mdash; they&rsquo;ll be vulnerable. They&rsquo;ll trust AI-generated misinformation, lose jobs to candidates who can use AI effectively, and lack the ability to question the systems making decisions about their lives. This workshop gives them the tools to stay ahead.</p>
+        <p class="offering-desc" data-lang-de>Sch&uuml;ler, die KI nicht verstehen, werden nicht nur zur&uuml;ckfallen &mdash; sie werden verwundbar. Sie werden KI-generierter Desinformation vertrauen, Jobs an Kandidaten verlieren, die KI effektiv einsetzen k&ouml;nnen, und nicht in der Lage sein, die Systeme zu hinterfragen, die &uuml;ber ihr Leben entscheiden. Dieser Workshop gibt ihnen die Werkzeuge, um vorne zu bleiben.</p>
+        <ul class="offering-features">
+          <li data-lang-en>Spot AI-generated text, images &amp; deepfakes</li>
+          <li data-lang-de>KI-generierte Texte, Bilder &amp; Deepfakes erkennen</li>
+          <li data-lang-en>Understand how algorithms shape what you see</li>
+          <li data-lang-de>Verstehen, wie Algorithmen bestimmen, was man sieht</li>
+          <li data-lang-en>Use AI as a tool &mdash; not be used by it</li>
+          <li data-lang-de>KI als Werkzeug nutzen &mdash; nicht von ihr genutzt werden</li>
+          <li data-lang-en>AI ethics: bias, privacy &amp; responsible use</li>
+          <li data-lang-de>KI-Ethik: Vorurteile, Datenschutz &amp; verantwortungsvoller Umgang</li>
+          <li data-lang-en>Prepare for an AI-transformed job market</li>
+          <li data-lang-de>Vorbereitung auf einen KI-gepr&auml;gten Arbeitsmarkt</li>
+          <li data-lang-en>No kits needed &mdash; low cost per student</li>
+          <li data-lang-de>Keine Baus&auml;tze n&ouml;tig &mdash; geringe Kosten pro Sch&uuml;ler</li>
+          <li data-lang-en>Suitable for ages 12+ &mdash; scalable to 30+ students</li>
+          <li data-lang-de>Geeignet ab 12 Jahren &mdash; skalierbar auf 30+ Sch&uuml;ler</li>
+        </ul>
+      </div>
+      <div class="offering-img">AI</div>
+    </div>
+  </section>
+
+  <!-- FORMATS -->
+  <section id="formats" class="formats-section">
+    <div class="section-label" data-lang-en>Delivery Formats</div>
+    <div class="section-label" data-lang-de>Durchf&uuml;hrungsformate</div>
+    <h2 class="section-title" data-lang-en>Flexible to fit your schedule.</h2>
+    <h2 class="section-title" data-lang-de>Flexibel anpassbar an Ihren Zeitplan.</h2>
+    <p class="section-desc" data-lang-en>We come to you, or you come to us. All workshops delivered in English or German.</p>
+    <p class="section-desc" data-lang-de>Wir kommen zu Ihnen oder Sie kommen zu uns. Alle Workshops auf Englisch oder Deutsch.</p>
+
+    <div class="formats" data-lang-en>
+      <div class="format-card">
+        <div class="format-num">01</div>
+        <h3 class="format-title">On-Site at Your Institution</h3>
+        <p class="format-desc">We bring everything to your school &mdash; kits, tools, laptops. All we need is a classroom with tables and power. Minimum 6 students.</p>
+      </div>
+      <div class="format-card">
+        <div class="format-num">02</div>
+        <h3 class="format-title">At Our Studio</h3>
+        <p class="format-desc">Bring your students to our fully equipped makerspace in Tsuen Wan, Riviera Gardens. Ideal for field trips and enrichment days. Max 12 students per session.</p>
+      </div>
+      <div class="format-card">
+        <div class="format-num">03</div>
+        <h3 class="format-title">In-House Teaching</h3>
+        <p class="format-desc">Embed our instructor into your school for a term or full year. We teach robotics and AI as part of your regular curriculum, using your classrooms and schedule.</p>
+      </div>
+      <div class="format-card">
+        <div class="format-num">04</div>
+        <h3 class="format-title">Multi-Session Program</h3>
+        <p class="format-desc">Co-design a syllabus with your teachers over weeks or a full term. Weekly sessions, assessed projects, progress reports.</p>
+      </div>
+    </div>
+
+    <div class="formats" data-lang-de>
+      <div class="format-card">
+        <div class="format-num">01</div>
+        <h3 class="format-title">Vor Ort in Ihrer Institution</h3>
+        <p class="format-desc">Wir bringen alles mit &mdash; Baus&auml;tze, Werkzeuge, Laptops. Wir brauchen nur einen Raum mit Tischen und Strom. Mindestens 6 Sch&uuml;ler.</p>
+      </div>
+      <div class="format-card">
+        <div class="format-num">02</div>
+        <h3 class="format-title">In unserem Studio</h3>
+        <p class="format-desc">Bringen Sie Ihre Sch&uuml;ler in unseren voll ausgestatteten Makerspace in Tsuen Wan, Riviera Gardens. Ideal f&uuml;r Exkursionen und Projekttage. Max. 12 Sch&uuml;ler pro Sitzung.</p>
+      </div>
+      <div class="format-card">
+        <div class="format-num">03</div>
+        <h3 class="format-title">Integrierter Unterricht</h3>
+        <p class="format-desc">Integrieren Sie unseren Kursleiter f&uuml;r ein Semester oder ein ganzes Jahr. Wir unterrichten Robotik und KI als Teil Ihres regul&auml;ren Lehrplans, in Ihren R&auml;umen und nach Ihrem Zeitplan.</p>
+      </div>
+      <div class="format-card">
+        <div class="format-num">04</div>
+        <h3 class="format-title">Mehrteiliges Programm</h3>
+        <p class="format-desc">Gestalten Sie gemeinsam mit Ihren Lehrkr&auml;ften einen Lehrplan &uuml;ber Wochen oder ein ganzes Semester. W&ouml;chentliche Sitzungen, bewertete Projekte, Fortschrittsberichte.</p>
+      </div>
+    </div>
+
+    <div class="formats-note" data-lang-en>
+      <p class="formats-note-sub">All workshops and programs delivered in</p>
+      <p class="formats-note-main">English or German</p>
+      <p class="formats-note-credit">OrbBot kits designed and manufactured by <a href="https://dankur94.github.io/kurthtechnik/" target="_blank">KurthTechnik</a></p>
+    </div>
+    <div class="formats-note" data-lang-de>
+      <p class="formats-note-sub">Alle Workshops und Programme verf&uuml;gbar auf</p>
+      <p class="formats-note-main">Englisch oder Deutsch</p>
+      <p class="formats-note-credit">OrbBot-Baus&auml;tze entworfen und hergestellt von <a href="https://dankur94.github.io/kurthtechnik/" target="_blank">KurthTechnik</a></p>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA BANNER -->
+  <div class="cta-banner" id="contact">
+    <h2 data-lang-en>Let's design a program for your students.</h2>
+    <h2 data-lang-de>Lassen Sie uns ein Programm f&uuml;r Ihre Sch&uuml;ler gestalten.</h2>
+    <p data-lang-en>Tell us about your institution and we'll create a tailored proposal &mdash; format, group size, pricing, and schedule.</p>
+    <p data-lang-de>Erz&auml;hlen Sie uns von Ihrer Institution und wir erstellen ein ma&szlig;geschneidertes Angebot &mdash; Format, Gruppengr&ouml;&szlig;e, Preise und Zeitplan.</p>
+    <div class="cta-actions">
+      <a href="mailto:hello@creatorport.com.hk" class="btn-white" data-lang-en>hello@creatorport.com.hk</a>
+      <a href="mailto:hello@creatorport.com.hk" class="btn-white" data-lang-de>hello@creatorport.com.hk</a>
+      <a href={whatsappEn} target="_blank" class="btn-white-outline" data-lang-en>WhatsApp</a>
+      <a href={whatsappDe} target="_blank" class="btn-white-outline" data-lang-de>WhatsApp</a>
+    </div>
+  </div>
+</PageLayout>
+
+<style is:global>
+  @import '../styles/components.css';
+
+  /* Layout-preserving overrides for institutions page */
+  body.lang-de .trust[data-lang-de] { display: flex !important; }
+  body.lang-de .formats[data-lang-de] { display: grid !important; }
+  body.lang-de li[data-lang-de] { display: flex !important; }
+
+  /* Left-align the demand bar in the hero (component defaults to center) */
+  .hero .demand-bar { margin-left: 0; margin-right: auto; }
+</style>
+
+<style>
+  /* HERO */
+  .hero {
+    padding: 140px 60px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-demand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(37,99,235,0.08);
+    border: 1px solid rgba(37,99,235,0.2);
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent-electric);
+    margin-bottom: 16px;
+  }
+
+  .hero-label {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-electric);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: 700px;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-dark {
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    color: #fff;
+    background: #D85A30;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-dark:hover {
+    background: #C04A22;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(216,90,48,0.2);
+  }
+
+  .btn-outline {
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--text-primary);
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent-electric);
+  }
+
+  /* TRUST BAR */
+  .trust {
+    padding: 40px 60px;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .trust-item strong {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  /* KITS SECTION */
+  .kits-section {
+    background: #f5f5fa;
+    margin: 0;
+    max-width: none;
+    padding: 80px 60px;
+  }
+
+  .kits-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .kits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+
+  .kit-card {
+    padding: 28px;
+    background: var(--bg-primary);
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .kit-emoji {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .kit-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .kit-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  .kit-price {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-electric);
+  }
+
+  .kit-status {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .kurthtechnik-badge {
+    padding: 24px 32px;
+    background: var(--bg-primary);
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .kt-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  .kt-accent {
+    color: var(--accent-electric);
+  }
+
+  .kt-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .kt-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-electric);
+    text-decoration: none;
+  }
+
+  /* AI LITERACY SECTION */
+  .ai-section {
+    padding: 80px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .offering {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .offering-content h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .offering-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .offering-features {
+    list-style: none;
+  }
+
+  .offering-features li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .offering-features li::before {
+    content: '\2713';
+    color: var(--accent-electric);
+    font-weight: 700;
+  }
+
+  .offering-img {
+    background: #F2EDE4;
+    border-radius: 16px;
+    height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-subtle);
+    font-family: 'Space Mono', monospace;
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--accent-electric);
+    letter-spacing: -2px;
+    opacity: 0.15;
+  }
+
+  /* FORMATS SECTION */
+  .formats-section {
+    padding: 80px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .formats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .format-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 32px;
+    transition: all 0.3s;
+  }
+
+  .format-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    transform: translateY(-3px);
+  }
+
+  .format-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent-electric);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .format-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .format-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .formats-note {
+    text-align: center;
+    margin-top: 40px;
+    padding: 24px;
+    background: #f5f5fa;
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .formats-note-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+
+  .formats-note-main {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .formats-note-credit {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  .formats-note-credit a {
+    color: var(--accent-electric);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* CTA BANNER */
+  .cta-banner {
+    background: var(--accent-electric);
+    color: #fff;
+    border-radius: 16px;
+    padding: 60px;
+    text-align: center;
+    margin: 40px 60px 0;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-banner h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+    color: #fff;
+  }
+
+  .cta-banner p {
+    font-size: 16px;
+    opacity: 0.8;
+    margin-bottom: 28px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-white {
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--accent-electric);
+    background: var(--bg-primary);
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+
+  .btn-white-outline {
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    color: #fff;
+    background: transparent;
+    border: 1px solid rgba(44,44,42,0.15);
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-white-outline:hover {
+    border-color: #fff;
+    transform: translateY(-2px);
+  }
+
+  /* RESPONSIVE — MOBILE */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 110px 24px 60px;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+    }
+
+    .hero-demand-badge {
+      font-size: 14px;
+    }
+
+    .trust {
+      padding: 24px;
+      gap: 24px;
+    }
+
+    .kits-section {
+      padding: 60px 24px;
+    }
+
+    .kits-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .kurthtechnik-badge {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .ai-section {
+      padding: 60px 24px;
+    }
+
+    .offering {
+      grid-template-columns: 1fr;
+    }
+
+    .offering-img {
+      height: 240px;
+    }
+
+    .formats-section {
+      padding: 60px 24px;
+    }
+
+    .formats {
+      grid-template-columns: 1fr;
+    }
+
+    body.lang-de .formats[data-lang-de] {
+      grid-template-columns: 1fr !important;
+    }
+
+    .cta-banner {
+      margin: 40px 24px 0;
+      padding: 40px 24px;
+    }
+
+    .cta-banner h2 {
+      font-size: 24px;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .kit-desc {
+      font-size: 14px;
+    }
+
+    .format-desc {
+      font-size: 14px;
+    }
+
+    .formats-note-credit {
+      font-size: 14px;
+    }
+  }
+
+  /* RESPONSIVE — TABLET */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .hero h1 {
+      font-size: 42px;
+    }
+
+    .formats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .offering {
+      grid-template-columns: 1fr;
+    }
+
+    .kits-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,137 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const navLinks = [{ href: '/adults', en: '\u2190 All Workshops', de: '\u2190 Alle Workshops' }];
+---
+
+<PageLayout
+  title="CreatorPort HK — Build a Coffee Roaster Workshop"
+  description="Build your own CloudRoast Mini coffee roaster. 3-hour group workshop in Hong Kong. $600/person."
+  navLinks={navLinks}
+  navCta={{ href: 'https://wa.me/85265427963?text=%23roaster', en: 'Book Now', de: 'Jetzt buchen' }}
+  navAccent="amber"
+  footerExtra={'Kit by <a href="https://dankur94.github.io/kurth-kaffee-technik/" target="_blank" style="color: var(--accent-amber);">Kurth &ndash; Kaffee &amp; Technik</a>'}
+>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge reveal" data-lang-en>Group Experience &middot; 3 Hours &middot; Tsuen Wan, Riviera Gardens</div>
+    <div class="hero-badge reveal" data-lang-de>Gruppenerlebnis &middot; 3 Stunden &middot; Tsuen Wan, Riviera Gardens</div>
+    <div class="hero-tag reveal" data-lang-en>Workshop #02 &middot; DIY Robotics &middot; Coffee Experience</div>
+    <div class="hero-tag reveal" data-lang-de>Workshop #02 &middot; DIY-Robotik &middot; Kaffee-Erlebnis</div>
+    <h1 class="reveal" data-lang-en>Build a<br><span class="gradient-text">Coffee Roaster</span></h1>
+    <h1 class="reveal" data-lang-de>Baue einen<br><span class="gradient-text">Kaffeer&ouml;ster</span></h1>
+    <p class="hero-sub reveal" data-lang-en>Build a real CloudRoast Mini from scratch &mdash; and roast your first batch of specialty coffee before you leave.</p>
+    <p class="hero-sub reveal" data-lang-de>Baue einen echten CloudRoast Mini von Grund auf &mdash; und r&ouml;ste deine erste Charge Spezialit&auml;tenkaffee, bevor du gehst.</p>
+    <div class="hero-actions reveal" data-lang-en>
+      <a href="https://wa.me/85265427963?text=%23roaster" target="_blank" class="btn-primary">Book Workshop &rarr;</a>
+      <a href="https://dankur94.github.io/kurth-kaffee-technik/" target="_blank" class="btn-secondary">About the CloudRoast Mini</a>
+    </div>
+    <div class="hero-actions reveal" data-lang-de>
+      <a href="https://wa.me/85265427963?text=%23roaster" target="_blank" class="btn-primary">Workshop buchen &rarr;</a>
+      <a href="https://dankur94.github.io/kurth-kaffee-technik/" target="_blank" class="btn-secondary">&Uuml;ber den CloudRoast Mini</a>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <!-- Detail Card 1 -->
+    <div class="detail-card reveal">
+      <h2 data-lang-en>What you&rsquo;ll build</h2>
+      <h2 data-lang-de>Was du baust</h2>
+      <ul class="detail-list">
+        <li data-lang-en>CloudRoast Mini &mdash; a compact hot-air coffee roaster</li>
+        <li data-lang-de>CloudRoast Mini &mdash; ein kompakter Hei&szlig;luft-Kaffeer&ouml;ster</li>
+        <li data-lang-en>PID temperature control for precise roast profiles</li>
+        <li data-lang-de>PID-Temperaturregelung f&uuml;r pr&auml;zise R&ouml;stprofile</li>
+        <li data-lang-en>Adjustable airflow system for even roasting</li>
+        <li data-lang-de>Einstellbares Luftstromsystem f&uuml;r gleichm&auml;&szlig;iges R&ouml;sten</li>
+        <li data-lang-en>Roast profiling &mdash; learn to read first crack and control development</li>
+        <li data-lang-de>R&ouml;stprofilierung &mdash; lerne den First Crack zu erkennen und die Entwicklung zu steuern</li>
+        <li data-lang-en>Roast your own beans and taste the result</li>
+        <li data-lang-de>R&ouml;ste deine eigenen Bohnen und probiere das Ergebnis</li>
+      </ul>
+    </div>
+
+    <!-- Detail Card 2 -->
+    <div class="detail-card reveal">
+      <h2 data-lang-en>Workshop details</h2>
+      <h2 data-lang-de>Workshop-Details</h2>
+      <ul class="detail-list">
+        <li data-lang-en>Duration: ~3 hours</li>
+        <li data-lang-de>Dauer: ~3 Stunden</li>
+        <li data-lang-en>Group size: max 6 people</li>
+        <li data-lang-de>Gruppengr&ouml;&szlig;e: max. 6 Personen</li>
+        <li data-lang-en>Flexible scheduling &mdash; book a date that works for your group</li>
+        <li data-lang-de>Flexible Terminplanung &mdash; buche ein Datum, das f&uuml;r deine Gruppe passt</li>
+        <li data-lang-en>Includes coffee tasting with freshly roasted beans</li>
+        <li data-lang-de>Inklusive Kaffeeverkostung mit frisch ger&ouml;steten Bohnen</li>
+        <li data-lang-en>Location: Tsuen Wan, Riviera Gardens</li>
+        <li data-lang-de>Ort: Tsuen Wan, Riviera Gardens</li>
+      </ul>
+    </div>
+
+    <!-- Price Box -->
+    <div class="price-box reveal">
+      <div class="price-big">$600 <span>HKD / person</span></div>
+      <p class="price-note" data-lang-en>All materials included. You build it, you roast with it, you take the experience home.</p>
+      <p class="price-note" data-lang-de>Alle Materialien inklusive. Du baust es, r&ouml;stest damit und nimmst das Erlebnis mit nach Hause.</p>
+    </div>
+
+    <!-- Kit Box -->
+    <div class="kit-box reveal">
+      <p data-lang-en>Want your own CloudRoast Mini?</p>
+      <p data-lang-de>Willst du deinen eigenen CloudRoast Mini?</p>
+      <a href="https://dankur94.github.io/kurth-kaffee-technik/" target="_blank" data-lang-en>Get the CloudRoast Mini Kit &mdash; $289 USD &rarr;</a>
+      <a href="https://dankur94.github.io/kurth-kaffee-technik/" target="_blank" data-lang-de>CloudRoast Mini Kit holen &mdash; $289 USD &rarr;</a>
+    </div>
+  </div>
+</PageLayout>
+
+<style is:global>
+  @import '../styles/components.css';
+</style>
+
+<style>
+  .hero {
+    min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 120px 40px 80px; position: relative;
+  }
+  .hero-tag { font-size: 14px; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; margin-bottom: 24px; color: var(--accent-amber); }
+  .hero h1 { font-size: 64px; font-weight: 800; letter-spacing: -3px; line-height: 1.05; margin-bottom: 24px; max-width: 800px; }
+  .hero-sub { font-size: 20px; color: var(--text-secondary); max-width: 600px; line-height: 1.7; margin-bottom: 40px; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+  .btn-secondary { padding: 16px 36px; border-radius: 30px; font-weight: 600; font-size: 16px; text-decoration: none; color: var(--text-primary); border: 1px solid var(--border-subtle); background: transparent; transition: all 0.3s; }
+  .btn-secondary:hover { border-color: var(--accent-amber); color: var(--accent-amber); }
+  .content { max-width: 700px; margin: 0 auto; padding: 0 40px 100px; }
+  .price-box { text-align: center; padding: 32px; border-radius: 20px; margin-bottom: 32px; background: linear-gradient(135deg, rgba(239,159,39,0.08), rgba(239,159,39,0.03)); }
+  .price-big { font-size: 48px; font-weight: 800; color: var(--accent-amber); }
+  .price-big span { font-size: 16px; font-weight: 400; color: var(--text-muted); }
+  .price-note { font-size: 14px; color: var(--text-muted); margin-top: 8px; }
+  .kit-box { margin-top: 32px; padding: 24px; border-radius: 16px; text-align: center; background: rgba(239,159,39,0.04); border: 1px solid rgba(239,159,39,0.15); }
+  .kit-box p { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; }
+  .kit-box a { text-decoration: underline; font-weight: 600; color: var(--accent-amber); }
+
+  .hero-badge {
+    background: rgba(239, 159, 39, 0.08);
+    border-color: rgba(239, 159, 39, 0.2);
+    color: var(--accent-amber);
+  }
+  .hero-badge::before { background: var(--accent-amber); }
+
+  .detail-card { border: 1px solid rgba(239, 159, 39, 0.15); }
+  .detail-list li::before { color: var(--accent-amber); }
+
+  .lang-btn.active { background: var(--accent-amber); }
+
+  @media (max-width: 768px) {
+    .hero { padding: 100px 24px 60px; min-height: auto; }
+    .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
+    .hero-sub { font-size: 16px; }
+    .hero-actions { flex-direction: column; }
+    .btn-primary, .btn-secondary { width: 100%; text-align: center; justify-content: center; }
+    .content { padding: 0 24px 80px; }
+  }
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .hero h1 { font-size: 52px; }
+  }
+</style>

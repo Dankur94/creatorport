@@ -1,0 +1,19 @@
+---
+interface Props {
+  /** Extra middle content like "Kits by KurthTechnik" */
+  extra?: string;
+}
+
+const { extra } = Astro.props;
+---
+
+<div class="footer-bottom">
+  <span>&copy; CreatorPort HK is a brand operated by &copy; Space of Possibilities Limited &middot; Hong Kong &middot; hello@creatorport.com.hk</span>
+  {extra && <span set:html={extra} />}
+  <span>
+    <a href="/privacy" style="margin-right: 20px;" data-lang-en>Privacy Policy</a>
+    <a href="/privacy" style="margin-right: 20px;" data-lang-de>Datenschutz</a>
+    <a href="/terms" data-lang-en>Terms of Service</a>
+    <a href="/terms" data-lang-de>AGB</a>
+  </span>
+</div>

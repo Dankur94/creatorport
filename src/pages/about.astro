@@ -1,0 +1,226 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { Image } from 'astro:assets';
+import aboutHero from '../assets/img/about-hero.jpg';
+---
+
+<PageLayout
+  title="CreatorPort HK — About Daniel Kurth"
+  description="Meet Daniel Kurth — RWTH Aachen engineer, founder of CreatorPort HK, KurthTechnik, and BitsBridge. Based in Hong Kong."
+>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label reveal" data-lang-en>About the Founder</div>
+    <div class="hero-label reveal" data-lang-de>&Uuml;ber den Gr&uuml;nder</div>
+    <div class="reveal hero-photo-wrap">
+      <Image src={aboutHero} alt="Daniel Kurth" class="hero-photo" widths={[400, 700, 1000]} sizes="(max-width: 768px) 100vw, 700px" loading="eager" />
+    </div>
+    <h1 class="reveal">Daniel Kurth</h1>
+    <p class="hero-sub reveal" data-lang-en>Engineer, maker, educator. I build things that connect software with the physical world &mdash; and teach others how to do the same.</p>
+    <p class="hero-sub reveal" data-lang-de>Ingenieur, Maker, P&auml;dagoge. Ich baue Dinge, die Software mit der physischen Welt verbinden &mdash; und bringe anderen bei, dasselbe zu tun.</p>
+
+    <div class="hero-credentials reveal">
+      <div class="credential"><strong>B.Sc. RWTH Aachen</strong></div>
+      <div class="credential" data-lang-en>Mechanical Engineering + Business</div>
+      <div class="credential" data-lang-de>Maschinenbau + BWL</div>
+      <div class="credential" data-lang-en>Based in Hong Kong</div>
+      <div class="credential" data-lang-de>Standort Hong Kong</div>
+      <div class="credential" data-lang-en>Bilingual EN / DE</div>
+      <div class="credential" data-lang-de>Zweisprachig EN / DE</div>
+      <div class="credential"><a href="mailto:d.kurth@creatorport.com.hk" style="color: inherit; text-decoration: none;">d.kurth@creatorport.com.hk</a></div>
+    </div>
+  </div>
+
+  <!-- BIO -->
+  <div class="content">
+    <div class="section-label reveal" data-lang-en>Background</div>
+    <div class="section-label reveal" data-lang-de>Hintergrund</div>
+    <div class="bio-text reveal" data-lang-en>
+      <p style="margin-bottom: 20px;">I studied <strong>Mechanical Engineering and Business</strong> at <strong>RWTH Aachen University</strong> &mdash; one of Europe&rsquo;s top technical universities. That&rsquo;s where I learned to think in systems: how production processes, manufacturing tolerances, and business logic all connect.</p>
+      <p style="margin-bottom: 20px;">Now I&rsquo;m based in <strong>Hong Kong</strong>, 30 minutes from Shenzhen &mdash; the world&rsquo;s hardware capital. I source components directly from factories, prototype electronics in-house, and ship products internationally. I understand both the German engineering mindset and the speed of the Chinese supply chain.</p>
+      <p>I use <strong>AI as my primary development tool</strong>. I don&rsquo;t write code line by line &mdash; I describe systems, and AI builds them. This lets me move at the speed of a full team while staying solo. I design hardware, write firmware, build web apps, and automate business processes &mdash; all with the same approach: <strong>understand the problem, describe the solution, build it fast, ship it.</strong></p>
+    </div>
+    <div class="bio-text reveal" data-lang-de>
+      <p style="margin-bottom: 20px;">Ich habe <strong>Maschinenbau und BWL</strong> an der <strong>RWTH Aachen</strong> studiert &mdash; einer der f&uuml;hrenden technischen Universit&auml;ten Europas. Dort habe ich gelernt, in Systemen zu denken: wie Produktionsprozesse, Fertigungstoleranzen und Gesch&auml;ftslogik zusammenh&auml;ngen.</p>
+      <p style="margin-bottom: 20px;">Jetzt lebe ich in <strong>Hong Kong</strong>, 30 Minuten von Shenzhen &mdash; der Hardware-Hauptstadt der Welt. Ich beschaffe Bauteile direkt von Fabriken, prototypiere Elektronik vor Ort und versende Produkte international. Ich verstehe sowohl die deutsche Ingenieursmentalit&auml;t als auch die Geschwindigkeit der chinesischen Lieferkette.</p>
+      <p>Ich nutze <strong>KI als mein prim&auml;res Entwicklungstool</strong>. Ich schreibe keinen Code Zeile f&uuml;r Zeile &mdash; ich beschreibe Systeme, und KI baut sie. Das erm&ouml;glicht mir, mit der Geschwindigkeit eines ganzen Teams zu arbeiten. Ich entwerfe Hardware, schreibe Firmware, baue Web-Apps und automatisiere Gesch&auml;ftsprozesse &mdash; alles mit dem gleichen Ansatz: <strong>Problem verstehen, L&ouml;sung beschreiben, schnell bauen, ausliefern.</strong></p>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section-label reveal" data-lang-en>What I Do</div>
+    <div class="section-label reveal" data-lang-de>Was ich mache</div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <h3 data-lang-en>Hardware &amp; Electronics</h3>
+        <h3 data-lang-de>Hardware &amp; Elektronik</h3>
+        <p data-lang-en>IoT sensors, ESP32, PCB design, 3D printing, electronics prototyping. From concept to working prototype in 24 hours. Components sourced directly from Shenzhen.</p>
+        <p data-lang-de>IoT-Sensoren, ESP32, PCB-Design, 3D-Druck, Elektronik-Prototyping. Vom Konzept zum funktionierenden Prototyp in 24 Stunden. Bauteile direkt aus Shenzhen.</p>
+      </div>
+      <div class="skill-card reveal">
+        <h3 data-lang-en>Software &amp; Automation</h3>
+        <h3 data-lang-de>Software &amp; Automatisierung</h3>
+        <p data-lang-en>Python, SQLite, chat API integrations, web apps. I connect WhatsApp, WeChat, Telegram, payment systems, and sensor networks into unified business systems.</p>
+        <p data-lang-de>Python, SQLite, Chat-API-Integrationen, Web-Apps. Ich verbinde WhatsApp, WeChat, Telegram, Zahlungssysteme und Sensornetzwerke zu einheitlichen Business-Systemen.</p>
+      </div>
+      <div class="skill-card reveal">
+        <h3 data-lang-en>AI-Powered Development</h3>
+        <h3 data-lang-de>KI-gest&uuml;tzte Entwicklung</h3>
+        <p data-lang-en>I build with Claude and other AI tools. Not prompting for fun &mdash; engineering real products. AI writes the code, I design the systems. This is how I ship solo at team speed.</p>
+        <p data-lang-de>Ich baue mit Claude und anderen KI-Tools. Kein Prompting zum Spa&szlig; &mdash; echte Produkte entwickeln. KI schreibt den Code, ich entwerfe die Systeme. So liefere ich allein mit Team-Geschwindigkeit.</p>
+      </div>
+      <div class="skill-card reveal">
+        <h3 data-lang-en>Education &amp; Teaching</h3>
+        <h3 data-lang-de>Bildung &amp; Unterricht</h3>
+        <p data-lang-en>I teach robotics and AI to kids (9&ndash;15) and adults. Hands-on, project-based, no lectures. I design curricula aligned with the HK Maths Curriculum and WEF skills frameworks.</p>
+        <p data-lang-de>Ich unterrichte Robotik und KI f&uuml;r Kinder (9&ndash;15) und Erwachsene. Praxisnah, projektbasiert, keine Vortr&auml;ge. Ich entwerfe Lehrpl&auml;ne, abgestimmt auf den HK-Mathe-Lehrplan und WEF-Skills-Rahmenwerke.</p>
+      </div>
+    </div>
+
+    <!-- VENTURES -->
+    <div class="section-label reveal" data-lang-en>Ventures</div>
+    <div class="section-label reveal" data-lang-de>Projekte</div>
+    <div class="ventures-grid">
+      <a href="/" class="venture-card electric reveal">
+        <div class="venture-name">Creator<em style="color: var(--accent-electric);">Port</em></div>
+        <p class="venture-desc" data-lang-en>AI &amp; robotics education for kids, adults, and institutions. Workshops, courses, and hands-on experiences in Hong Kong.</p>
+        <p class="venture-desc" data-lang-de>KI- &amp; Robotik-Bildung f&uuml;r Kinder, Erwachsene und Institutionen. Workshops, Kurse und Hands-on-Erlebnisse in Hong Kong.</p>
+        <span class="venture-arrow" data-lang-en>Explore &rarr;</span>
+        <span class="venture-arrow" data-lang-de>Entdecken &rarr;</span>
+      </a>
+      <a href="https://kurthtechnik.de" target="_blank" class="venture-card amber reveal">
+        <div class="venture-name" style="color: var(--accent-amber);">KurthTechnik</div>
+        <p class="venture-desc" data-lang-en>German-engineered robotics kits. Gripper Drone for kids, OrbBot for universities. Designed in Hong Kong, open-source firmware.</p>
+        <p class="venture-desc" data-lang-de>German-engineered Robotik-Baus&auml;tze. Greifer-Drohne f&uuml;r Kinder, OrbBot f&uuml;r Universit&auml;ten. Designed in Hong Kong, Open-Source-Firmware.</p>
+        <span class="venture-arrow" data-lang-en>Visit &rarr;</span>
+        <span class="venture-arrow" data-lang-de>Besuchen &rarr;</span>
+      </a>
+      <a href="https://www.bitsbridge.net" target="_blank" class="venture-card lime reveal">
+        <div class="venture-name" style="color: var(--accent-amber);">BitsBridge</div>
+        <p class="venture-desc" data-lang-en>Business automation platform. Connects chat, payments, sensors, and software into one system. AI-built integrations.</p>
+        <p class="venture-desc" data-lang-de>Business-Automatisierungsplattform. Verbindet Chat, Zahlungen, Sensoren und Software in ein System. KI-gebaute Integrationen.</p>
+        <span class="venture-arrow" data-lang-en>Visit &rarr;</span>
+        <span class="venture-arrow" data-lang-de>Besuchen &rarr;</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2 class="cta-title reveal" data-lang-en>Let's build<br /><span class="gradient-text">something together.</span></h2>
+    <h2 class="cta-title reveal" data-lang-de>Lass uns<br /><span class="gradient-text">etwas zusammen bauen.</span></h2>
+    <p class="cta-desc reveal" data-lang-en>Whether you want to learn, build, or automate &mdash; I'd love to hear from you.</p>
+    <p class="cta-desc reveal" data-lang-de>Ob du lernen, bauen oder automatisieren willst &mdash; ich freue mich von dir zu h&ouml;ren.</p>
+    <div class="cta-links reveal">
+      <a href="https://wa.me/85265427963" target="_blank" class="cta-link primary">WhatsApp</a>
+      <a href="mailto:hello@creatorport.com.hk" class="cta-link secondary">hello@creatorport.com.hk</a>
+      <a href="https://github.com/Dankur94" target="_blank" class="cta-link secondary">GitHub</a>
+    </div>
+  </section>
+</PageLayout>
+
+<style is:global>
+  @import '../styles/components.css';
+</style>
+
+<style>
+  /* HERO */
+  .hero {
+    padding: 140px 40px 80px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-photo-wrap {
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .hero-photo {
+    width: 100%;
+    max-width: 700px;
+    height: 340px;
+    object-fit: cover;
+    object-position: center 60%;
+    border-radius: 20px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 4px 24px rgba(44, 44, 42, 0.1);
+  }
+
+  .hero-label {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-electric);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: -3px;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  .hero-credentials {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .credential {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .credential::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-electric);
+  }
+
+  .credential strong { color: var(--text-primary); }
+
+  /* CONTENT */
+  .content { max-width: 900px; margin: 0 auto; padding: 0 40px 100px; }
+
+  .bio-text {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 60px;
+    max-width: 700px;
+  }
+
+  .bio-text strong { color: var(--text-primary); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero { padding: 100px 24px 60px; }
+    .hero-photo { height: 220px; border-radius: 16px; }
+    .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
+    .hero-sub { font-size: 16px; }
+    .hero-credentials { gap: 16px; }
+    .content { padding: 0 24px 80px; }
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .hero h1 { font-size: 48px; }
+  }
+</style>

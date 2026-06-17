@@ -1,0 +1,44 @@
+---
+/**
+ * PageLayout — Standard page with Nav + Footer + reveal animations.
+ * Used by all pages except index (which has unique centered layout).
+ */
+import BaseLayout from './BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  extraFonts?: string[];
+  navLinks?: Array<{ href: string; en: string; de: string }>;
+  navCta?: { href: string; en: string; de: string };
+  navAccent?: 'electric' | 'amber' | 'magenta';
+  footerExtra?: string;
+}
+
+const {
+  title,
+  description,
+  extraFonts,
+  navLinks,
+  navCta,
+  navAccent = 'electric',
+  footerExtra,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} extraFonts={extraFonts}>
+  <Nav links={navLinks} cta={navCta} accent={navAccent} />
+  <slot />
+  <Footer extra={footerExtra} />
+</BaseLayout>
+
+<style is:global>
+  @import '../styles/nav.css';
+</style>
+
+<script>
+  import { initReveal } from '../scripts/reveal';
+  initReveal();
+</script>

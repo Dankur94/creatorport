@@ -1,0 +1,74 @@
+---
+interface Props {
+  /** Nav link items */
+  links?: Array<{ href: string; en: string; de: string }>;
+  /** CTA button config */
+  cta?: { href: string; en: string; de: string };
+  /** Accent color for lang toggle and hover (electric | amber | magenta) */
+  accent?: 'electric' | 'amber' | 'magenta';
+}
+
+const {
+  links = [
+    { href: '/juniors', en: 'Juniors', de: 'Jugend' },
+    { href: '/adults', en: 'Adults', de: 'Erwachsene' },
+    { href: '/our-story', en: 'Our Story', de: 'Unsere Geschichte' },
+  ],
+  cta = { href: 'https://wa.me/85265427963', en: 'Get in Touch', de: 'Kontakt' },
+  accent = 'electric',
+} = Astro.props;
+
+const accentColors: Record<string, string> = {
+  electric: 'rgba(15,110,86,0.1)',
+  amber: 'rgba(239,159,39,0.1)',
+  magenta: 'rgba(216,90,48,0.1)',
+};
+
+const accentBg = accentColors[accent];
+---
+
+<nav>
+  <a href="/" class="logo">
+    <img class="logo-wordmark" src="/creatorport-logo.svg" alt="CreatorPort HK" />
+  </a>
+  <ul class="nav-links">
+    {links.map(link => (
+      <li>
+        <a href={link.href}>
+          <span data-lang-en>{link.en}</span>
+          <span data-lang-de>{link.de}</span>
+        </a>
+      </li>
+    ))}
+    <li>
+      <div class="lang-toggle" style={`background: ${accentBg};`}>
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="de">DE</button>
+      </div>
+    </li>
+  </ul>
+  <a href={cta.href} target="_blank" class="nav-cta" data-lang-en>{cta.en}</a>
+  <a href={cta.href} target="_blank" class="nav-cta" data-lang-de>{cta.de}</a>
+  <div class="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<script>
+  import { setLang, initLang } from '../scripts/language';
+  import { toggleMenu, initMenuCloseOnNav } from '../scripts/menu';
+
+  // Language buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = (btn as HTMLElement).dataset.lang as 'en' | 'de';
+      setLang(lang);
+    });
+  });
+
+  // Hamburger
+  document.querySelector('.hamburger')?.addEventListener('click', toggleMenu);
+
+  initLang();
+  initMenuCloseOnNav();
+</script>

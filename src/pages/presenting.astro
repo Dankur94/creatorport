@@ -1,0 +1,416 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const navLinks = [
+  { href: '/adults', en: '\u2190 All Workshops', de: '\u2190 Alle Workshops' },
+];
+
+const whatsappEn = "https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20the%20Art%20of%20Presenting%20course.%0A-%20Name%3A%0A-%20Full%20course%20or%20Crash%20Course%3F%0A-%20Goal%20%28conference%2C%20pitch%2C%20general%29%3A%0A%0ACreatorPort HK%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29";
+const whatsappDe = "https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20den%20Kurs%20%22Die%20Kunst%20des%20Pr%C3%A4sentierens%22.%0A-%20Name%3A%0A-%20Voller%20Kurs%20oder%20Crash%20Course%3F%0A-%20Ziel%20%28Konferenz%2C%20Pitch%2C%20allgemein%29%3A%0A%0ACreatorPort HK%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29";
+
+const navCta = { href: whatsappEn, en: 'Get Started', de: 'Jetzt starten' };
+---
+
+<PageLayout
+  title="CreatorPort HK — The Art of Presenting"
+  description="Master storytelling, slide design, and stage presence. Private 1-on-1 coaching by Ananya Singh. Online worldwide."
+  navLinks={navLinks}
+  navCta={navCta}
+  navAccent="magenta"
+  footerExtra={`Instructor: <a href="https://dankur94.github.io/science-communication/" target="_blank" style="color: var(--accent-magenta);">Ananya Singh</a>`}
+>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag reveal">Course #05 &middot; Communication &middot; 1-on-1 Online</div>
+    <h1 class="reveal">The Art of<br /><span class="gradient-text-magenta">Presenting</span></h1>
+    <p class="hero-sub reveal">The skill that separates good professionals from great ones. Master storytelling, slide design, stage presence, and confident Q&amp;A handling.</p>
+    <div class="hero-actions reveal">
+      <a href={whatsappEn} target="_blank" class="btn-primary-magenta">Get Started via WhatsApp</a>
+      <a href="https://dankur94.github.io/science-communication/" target="_blank" class="btn-secondary-magenta">About your instructor &rarr;</a>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <div class="content">
+    <div class="detail-card-magenta reveal">
+      <h2>Full course</h2>
+      <p class="detail-intro">Whether you pitch to investors, present to your team, or speak at a conference &mdash; you'll leave knowing how to own the room. Taught by <a href="https://dankur94.github.io/science-communication/" target="_blank" class="magenta-link">Ananya Singh</a>, award-winning educator and physicist at RWTH Aachen.</p>
+      <ul class="detail-list-magenta">
+        <li>12 sessions &times; 60 min</li>
+        <li>Private 1-on-1 coaching &mdash; fully personalised</li>
+        <li>Online only &mdash; join from anywhere</li>
+        <li>Story structure, slide design, stage presence, Q&amp;A mastery</li>
+        <li>Recorded practice sessions for self-review</li>
+        <li>Certificate of completion</li>
+      </ul>
+    </div>
+
+    <div class="price-box reveal">
+      <div class="price-big">$500 <span>HKD / session</span></div>
+      <p class="price-note">$6,000 HKD per term (12 sessions)</p>
+    </div>
+
+    <!-- CRASH COURSE -->
+    <div class="crash-course reveal">
+      <h3>Crash Course available</h3>
+      <p>Big talk coming up? Get presentation-ready fast with 4 focused 1-on-1 sessions. We refine your specific talk &mdash; structure, slides, delivery, nerves. Perfect before a conference, pitch, or interview.</p>
+      <p class="crash-meta">4 &times; 60 min &middot; $500/session &middot; $2,000 HKD total</p>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="about-card reveal">
+      <h3>Your instructor</h3>
+      <p><strong>Ananya Singh</strong> &mdash; Award-winning educator and physicist at RWTH Aachen. Ananya has coached hundreds of professionals and students to present with confidence, clarity, and impact.</p>
+      <a href="https://dankur94.github.io/science-communication/" target="_blank">Learn more about Ananya &rarr;</a>
+    </div>
+
+    <p class="powered-by reveal">Powered by <a href="https://dankur94.github.io/science-communication/" target="_blank" class="magenta-link-underline">ScienceCommunication.com</a></p>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section-magenta">
+    <h2 class="cta-title reveal">Own the room.<br /><span class="gradient-text-magenta">Start now.</span></h2>
+    <p class="cta-desc reveal">Private 1-on-1 coaching. Online from anywhere. No commitment beyond the first session.</p>
+    <div class="reveal">
+      <a href={whatsappEn} target="_blank" class="btn-primary-magenta">Get Started via WhatsApp</a>
+    </div>
+  </section>
+</PageLayout>
+
+<style is:global>
+  @import '../styles/components.css';
+</style>
+
+<style>
+  /* GRADIENT TEXT — REVERSED: magenta to electric */
+  .gradient-text-magenta {
+    background: linear-gradient(135deg, #D85A30, #0F6E56);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 140px 40px 80px;
+    position: relative;
+  }
+
+  .hero-tag {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-magenta);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: -3px;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    max-width: 800px;
+  }
+
+  .hero-sub {
+    font-size: 20px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* BUTTONS — MAGENTA ACCENT */
+  .btn-primary-magenta {
+    padding: 16px 36px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    background: #D85A30;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary-magenta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(216,90,48,0.3);
+  }
+
+  .btn-secondary-magenta {
+    padding: 16px 36px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+    background: transparent;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary-magenta:hover {
+    border-color: var(--accent-magenta);
+    color: var(--accent-magenta);
+  }
+
+  /* CONTENT */
+  .content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 40px 100px;
+  }
+
+  .detail-card-magenta {
+    background: var(--bg-card);
+    border: 1px solid rgba(216,90,48,0.12);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 32px;
+  }
+
+  .detail-card-magenta h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+
+  .detail-intro {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .magenta-link {
+    color: var(--accent-magenta);
+    text-decoration: none;
+  }
+
+  .magenta-link:hover {
+    text-decoration: underline;
+  }
+
+  .detail-list-magenta {
+    list-style: none;
+    padding: 0;
+  }
+
+  .detail-list-magenta li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(44,44,42,0.04);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .detail-list-magenta li::before {
+    content: '\2013';
+    color: var(--accent-magenta);
+    font-weight: 700;
+  }
+
+  /* PRICE BOX */
+  .price-box {
+    text-align: center;
+    padding: 32px;
+    background: linear-gradient(135deg, rgba(216,90,48,0.06), rgba(15,110,86,0.03));
+    border: 1px solid rgba(216,90,48,0.2);
+    border-radius: 20px;
+    margin-bottom: 32px;
+  }
+
+  .price-big {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--accent-magenta);
+  }
+
+  .price-big span {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+
+  .price-note {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  /* CRASH COURSE */
+  .crash-course {
+    padding: 28px;
+    background: rgba(216,90,48,0.06);
+    border: 1px dashed rgba(216,90,48,0.25);
+    border-radius: 16px;
+    margin-bottom: 32px;
+  }
+
+  .crash-course h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-magenta);
+    margin-bottom: 12px;
+  }
+
+  .crash-course p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+
+  .crash-meta {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 12px;
+  }
+
+  /* ABOUT CARD */
+  .about-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .about-card h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .about-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .about-card a {
+    color: var(--accent-magenta);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  /* POWERED BY */
+  .powered-by {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .magenta-link-underline {
+    color: var(--accent-magenta);
+    text-decoration: underline;
+  }
+
+  /* CTA SECTION — MAGENTA */
+  .cta-section-magenta {
+    text-align: center;
+    padding: 80px 40px;
+    background: linear-gradient(180deg, transparent, rgba(216,90,48,0.03));
+  }
+
+  .cta-title {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+  }
+
+  .cta-desc {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto 40px;
+  }
+
+  /* RESPONSIVE — MOBILE */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 110px 24px 60px;
+      min-height: auto;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero-tag {
+      font-size: 14px;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .btn-primary-magenta,
+    .btn-secondary-magenta {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .content {
+      padding: 0 24px 80px;
+    }
+
+    .detail-card-magenta {
+      padding: 28px 20px;
+    }
+
+    .cta-title {
+      font-size: 32px;
+    }
+
+    .price-big {
+      font-size: 36px;
+    }
+
+    .crash-course p,
+    .crash-meta {
+      font-size: 14px;
+    }
+  }
+
+  /* RESPONSIVE — TABLET */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .hero h1 {
+      font-size: 52px;
+    }
+
+    .cta-title {
+      font-size: 36px;
+    }
+  }
+</style>
