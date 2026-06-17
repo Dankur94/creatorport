@@ -1,0 +1,930 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const spotsLeft = 8;
+const campPrice = 4800;
+const campDates = 'July 14 – August 8, 2026';
+const campAge = '7 – 12';
+const campLocation = 'Tsuen Wan, Riviera Gardens';
+const waNumber = '85265427963';
+---
+
+<PageLayout
+  title="CreatorPort HK — Summer Camp 2026"
+  description="4-week kids engineering summer camp in Hong Kong. Robotics, AI coding, 3D printing — ages 7-12. Limited spots available."
+>
+
+<!-- ===== HERO ===== -->
+<section class="sc-hero">
+  <div class="sc-hero-inner">
+    <div class="sc-hero-content">
+      <div class="sc-badge reveal">
+        Summer 2026 &middot; {spotsLeft} spots left
+      </div>
+      <h1 class="reveal">Build. Code.<br /><span class="gradient-text">Launch.</span></h1>
+      <p class="sc-hero-sub reveal">A 4-week engineering adventure where your child builds a real drone, codes with AI, and presents their creation on Demo Day.</p>
+      <div class="sc-hero-actions reveal">
+        <a href="#booking" class="btn-primary">Reserve a Spot &rarr;</a>
+        <a href="#activities" class="sc-btn-ghost">What they'll do</a>
+      </div>
+      <div class="sc-hero-meta reveal">
+        <span>{campDates}</span>
+        <span>&middot;</span>
+        <span>Ages {campAge}</span>
+        <span>&middot;</span>
+        <span>{campLocation}</span>
+      </div>
+    </div>
+    <div class="sc-hero-visual reveal">
+      <div class="sc-hero-img-wrap">
+        <!-- Replace with actual camp photo -->
+        <div class="sc-hero-placeholder">
+          <span>Camp Photo</span>
+          <span style="font-size: 48px;">&#x1F680;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT YOUR CHILD DOES ===== -->
+<section id="activities" class="sc-activities">
+  <div class="section-label reveal">The Program</div>
+  <h2 class="section-title reveal">What your child<br /><span class="gradient-text">actually does.</span></h2>
+  <p class="section-desc reveal">No slides. No lectures. Every session is hands-on. They build, break, fix, and fly.</p>
+
+  <div class="sc-act-grid">
+    <div class="sc-act-card reveal">
+      <div class="sc-act-icon" style="background: rgba(239,159,39,0.08); border-color: rgba(239,159,39,0.2);">&#x1F681;</div>
+      <h3>Build a Gripper Drone</h3>
+      <p>From bare frame to flying machine. Soldering, wiring, calibrating — your child assembles a real drone from scratch and keeps it.</p>
+      <div class="sc-act-tags">
+        <span>Soldering</span><span>Wiring</span><span>Flight Testing</span><span>Keep the Drone</span>
+      </div>
+    </div>
+    <div class="sc-act-card reveal">
+      <div class="sc-act-icon" style="background: rgba(15,110,86,0.08); border-color: rgba(15,110,86,0.2);">&#x1F916;</div>
+      <h3>Code with AI</h3>
+      <p>No prior coding needed. Your child tells the AI what to build and it writes the code — vibe coding meets real engineering.</p>
+      <div class="sc-act-tags">
+        <span>AI Coding</span><span>Vibe Coding</span><span>Missions</span><span>Problem Solving</span>
+      </div>
+    </div>
+    <div class="sc-act-card reveal">
+      <div class="sc-act-icon" style="background: rgba(216,90,48,0.08); border-color: rgba(216,90,48,0.2);">&#x1F3A4;</div>
+      <h3>Present on Demo Day</h3>
+      <p>The camp ends with a real Demo Day. Your child presents their project to family and friends — confidence that lasts beyond summer.</p>
+      <div class="sc-act-tags">
+        <span>Public Speaking</span><span>Demo Day</span><span>Certificate</span><span>Portfolio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST ===== -->
+<section class="sc-trust">
+  <div class="sc-trust-inner reveal">
+    <div class="sc-trust-quote">
+      <div class="sc-trust-marks">&ldquo;</div>
+      <blockquote>My son couldn't stop talking about what he built. He came home wanting to take apart everything in the house. That's exactly the kind of curiosity we wanted to spark.</blockquote>
+      <div class="sc-trust-author">
+        <div class="sc-trust-avatar">P</div>
+        <div>
+          <div class="sc-trust-name">Parent, Discovery Session</div>
+          <div class="sc-trust-role">Tsuen Wan</div>
+        </div>
+      </div>
+    </div>
+    <div class="sc-trust-stats">
+      <div class="sc-trust-stat">
+        <div class="sc-trust-stat-num">6</div>
+        <div class="sc-trust-stat-label">Max group size</div>
+      </div>
+      <div class="sc-trust-stat">
+        <div class="sc-trust-stat-num">1:3</div>
+        <div class="sc-trust-stat-label">Instructor ratio</div>
+      </div>
+      <div class="sc-trust-stat">
+        <div class="sc-trust-stat-num">RWTH</div>
+        <div class="sc-trust-stat-label">Trained engineers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FACTS ===== -->
+<section class="sc-facts">
+  <div class="section-label reveal">The Details</div>
+  <h2 class="section-title reveal">Everything you need<br /><span class="gradient-text">to know.</span></h2>
+
+  <div class="sc-facts-table reveal">
+    <div class="sc-fact-row">
+      <div class="sc-fact-label">Dates</div>
+      <div class="sc-fact-value">{campDates}<br /><span class="sc-fact-sub">Mon – Fri, 4 weeks</span></div>
+    </div>
+    <div class="sc-fact-row">
+      <div class="sc-fact-label">Times</div>
+      <div class="sc-fact-value">10:00 AM – 12:30 PM<br /><span class="sc-fact-sub">2.5 hours per session</span></div>
+    </div>
+    <div class="sc-fact-row">
+      <div class="sc-fact-label">Ages</div>
+      <div class="sc-fact-value">{campAge} years<br /><span class="sc-fact-sub">Grouped by experience</span></div>
+    </div>
+    <div class="sc-fact-row">
+      <div class="sc-fact-label">Location</div>
+      <div class="sc-fact-value">{campLocation}<br /><span class="sc-fact-sub">In-person only</span></div>
+    </div>
+    <div class="sc-fact-row">
+      <div class="sc-fact-label">Group Size</div>
+      <div class="sc-fact-value">Max 6 students<br /><span class="sc-fact-sub">Small group, big impact</span></div>
+    </div>
+    <div class="sc-fact-row">
+      <div class="sc-fact-label">Language</div>
+      <div class="sc-fact-value">English &amp; German<br /><span class="sc-fact-sub">Bilingual instruction</span></div>
+    </div>
+    <div class="sc-fact-row">
+      <div class="sc-fact-label">Price</div>
+      <div class="sc-fact-value">${campPrice.toLocaleString()} HKD<br /><span class="sc-fact-sub">Includes all materials &middot; Drone kit separate ($1,200 HKD)</span></div>
+    </div>
+    <div class="sc-fact-row">
+      <div class="sc-fact-label">What's Included</div>
+      <div class="sc-fact-value">
+        All materials &middot; Snacks &middot; Certificate<br />
+        <span class="sc-fact-sub">Demo Day presentation &middot; Project portfolio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOOKING ===== -->
+<section id="booking" class="sc-booking">
+  <div class="sc-booking-inner">
+    <div class="sc-booking-info reveal">
+      <h2>Reserve your<br /><span class="gradient-text">child's spot.</span></h2>
+      <p>Only <strong>{spotsLeft} spots</strong> remaining. Fill in the details and we'll confirm via WhatsApp within 24 hours.</p>
+      <div class="sc-booking-guarantee">
+        <span>&#x1F512;</span>
+        <span>100% refund if you change your mind before camp starts. No questions asked.</span>
+      </div>
+      <div class="sc-booking-contact">
+        <div class="sc-booking-contact-item">
+          <span>&#x1F4AC;</span>
+          <a href={`https://wa.me/${waNumber}`} target="_blank">WhatsApp: +852 6542 7963</a>
+        </div>
+        <div class="sc-booking-contact-item">
+          <span>&#x2709;&#xFE0F;</span>
+          <a href="mailto:hello@creatorport.com.hk">hello@creatorport.com.hk</a>
+        </div>
+      </div>
+    </div>
+    <div class="sc-booking-form-wrap reveal">
+      <form id="campForm" class="sc-form">
+        <div class="sc-form-group">
+          <label for="parentName">Your Name</label>
+          <input type="text" id="parentName" placeholder="e.g. Sarah Chen" required />
+        </div>
+        <div class="sc-form-group">
+          <label for="childName">Child's Name</label>
+          <input type="text" id="childName" placeholder="e.g. Lucas" required />
+        </div>
+        <div class="sc-form-row">
+          <div class="sc-form-group">
+            <label for="childAge">Child's Age</label>
+            <input type="number" id="childAge" min="5" max="16" placeholder="e.g. 9" required />
+          </div>
+          <div class="sc-form-group">
+            <label for="lang">Preferred Language</label>
+            <select id="lang" required>
+              <option value="">Select...</option>
+              <option value="English">English</option>
+              <option value="German">German</option>
+              <option value="Both">Both</option>
+            </select>
+          </div>
+        </div>
+        <div class="sc-form-group">
+          <label for="notes">Anything we should know? <span style="color: var(--text-muted); font-weight: 400;">(optional)</span></label>
+          <textarea id="notes" rows="3" placeholder="Allergies, experience level, questions..."></textarea>
+        </div>
+        <button type="submit" class="sc-form-submit">
+          Send via WhatsApp &rarr;
+        </button>
+        <p class="sc-form-hint">Opens WhatsApp with your details pre-filled. We'll reply within 24h.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SPOTS COUNTER (floating) ===== -->
+<div class="sc-spots-float" id="spotsFloat">
+  <span class="sc-spots-dot"></span>
+  <span>{spotsLeft} spots left</span>
+  <a href="#booking">&rarr;</a>
+</div>
+
+</PageLayout>
+
+<style>
+  /* ============================================
+     Summer Camp — Hero
+     ============================================ */
+  .sc-hero {
+    padding: 140px 40px 80px;
+    overflow: hidden;
+  }
+
+  .sc-hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .sc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(216, 90, 48, 0.08);
+    border: 1px solid rgba(216, 90, 48, 0.2);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-magenta);
+    margin-bottom: 24px;
+  }
+
+  .sc-badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--accent-magenta);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .sc-hero h1 {
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -3px;
+    margin-bottom: 24px;
+  }
+
+  .sc-hero-sub {
+    font-size: 18px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+
+  .sc-hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .sc-btn-ghost {
+    padding: 16px 28px;
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .sc-btn-ghost:hover {
+    border-color: var(--accent-electric);
+    background: rgba(15, 110, 86, 0.05);
+  }
+
+  .sc-hero-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .sc-hero-visual {
+    position: relative;
+  }
+
+  .sc-hero-img-wrap {
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    aspect-ratio: 4 / 3;
+  }
+
+  .sc-hero-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .sc-hero-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    background: linear-gradient(135deg, rgba(216, 90, 48, 0.06), rgba(239, 159, 39, 0.06));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* ============================================
+     Summer Camp — Activities
+     ============================================ */
+  .sc-activities {
+    padding: 100px 40px;
+    background: #F2EDE4;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .sc-act-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 60px auto 0;
+  }
+
+  .sc-act-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 32px 24px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sc-act-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(44, 44, 42, 0.08);
+  }
+
+  .sc-act-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    border: 1px solid;
+  }
+
+  .sc-act-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .sc-act-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .sc-act-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .sc-act-tags span {
+    padding: 4px 12px;
+    background: rgba(44, 44, 42, 0.04);
+    border: 1px solid var(--border-subtle);
+    border-radius: 100px;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  /* ============================================
+     Summer Camp — Trust
+     ============================================ */
+  .sc-trust {
+    padding: 100px 40px;
+  }
+
+  .sc-trust-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .sc-trust-marks {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--accent-electric);
+    opacity: 0.2;
+    margin-bottom: -16px;
+  }
+
+  .sc-trust-quote blockquote {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .sc-trust-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sc-trust-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(15, 110, 86, 0.1);
+    color: var(--accent-electric);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .sc-trust-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .sc-trust-role {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .sc-trust-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .sc-trust-stat {
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    text-align: center;
+  }
+
+  .sc-trust-stat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent-electric);
+    margin-bottom: 4px;
+  }
+
+  .sc-trust-stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+  }
+
+  /* ============================================
+     Summer Camp — Facts
+     ============================================ */
+  .sc-facts {
+    padding: 100px 40px;
+    background: #F2EDE4;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .sc-facts-table {
+    max-width: 700px;
+    margin: 60px auto 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .sc-fact-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .sc-fact-row:last-child {
+    border-bottom: none;
+  }
+
+  .sc-fact-label {
+    padding: 20px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-electric);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(15, 110, 86, 0.03);
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .sc-fact-value {
+    padding: 20px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
+
+  .sc-fact-sub {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+
+  /* ============================================
+     Summer Camp — Booking
+     ============================================ */
+  .sc-booking {
+    padding: 100px 40px;
+  }
+
+  .sc-booking-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .sc-booking-info h2 {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .sc-booking-info p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .sc-booking-info p strong {
+    color: var(--accent-magenta);
+  }
+
+  .sc-booking-guarantee {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    background: rgba(15, 110, 86, 0.05);
+    border: 1px solid rgba(15, 110, 86, 0.12);
+    border-radius: 12px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  .sc-booking-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sc-booking-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .sc-booking-contact-item a {
+    color: var(--accent-electric);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .sc-booking-contact-item a:hover {
+    text-decoration: underline;
+  }
+
+  .sc-booking-form-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 36px 32px;
+  }
+
+  .sc-form-group {
+    margin-bottom: 20px;
+  }
+
+  .sc-form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .sc-form-group input,
+  .sc-form-group select,
+  .sc-form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    font-family: 'Sora', sans-serif;
+    font-size: 15px;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+  }
+
+  .sc-form-group input:focus,
+  .sc-form-group select:focus,
+  .sc-form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-electric);
+  }
+
+  .sc-form-group input::placeholder,
+  .sc-form-group textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  .sc-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .sc-form-submit {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 30px;
+    background: #D85A30;
+    color: #FFFFFF;
+    font-family: 'Sora', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 8px;
+  }
+
+  .sc-form-submit:hover {
+    background: #C04A22;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(216, 90, 48, 0.3);
+  }
+
+  .sc-form-hint {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 12px;
+  }
+
+  /* ============================================
+     Summer Camp — Floating Spots Counter
+     ============================================ */
+  .sc-spots-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 8000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: rgba(250, 246, 238, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(216, 90, 48, 0.2);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-magenta);
+    box-shadow: 0 4px 24px rgba(44, 44, 42, 0.1);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sc-spots-float.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .sc-spots-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-magenta);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .sc-spots-float a {
+    color: var(--accent-magenta);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  /* ============================================
+     Responsive — Tablet
+     ============================================ */
+  @media (max-width: 1024px) {
+    .sc-hero-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .sc-hero-visual {
+      max-width: 500px;
+    }
+
+    .sc-act-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+    }
+
+    .sc-trust-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .sc-trust-stats {
+      flex-direction: row;
+    }
+
+    .sc-trust-stat {
+      flex: 1;
+    }
+
+    .sc-booking-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  /* ============================================
+     Responsive — Mobile
+     ============================================ */
+  @media (max-width: 768px) {
+    .sc-hero {
+      padding: 110px 24px 60px;
+    }
+
+    .sc-hero h1 {
+      font-size: 36px;
+      letter-spacing: -1.5px;
+    }
+
+    .sc-hero-sub {
+      font-size: 16px;
+    }
+
+    .sc-hero-actions {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sc-hero-actions .btn-primary,
+    .sc-hero-actions .sc-btn-ghost {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .sc-hero-meta {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .sc-activities,
+    .sc-trust,
+    .sc-facts,
+    .sc-booking {
+      padding: 80px 24px;
+    }
+
+    .sc-act-grid {
+      margin-top: 40px;
+    }
+
+    .sc-trust-stats {
+      flex-direction: column;
+    }
+
+    .sc-trust-quote blockquote {
+      font-size: 18px;
+    }
+
+    .sc-fact-row {
+      grid-template-columns: 1fr;
+    }
+
+    .sc-fact-label {
+      padding: 16px 20px 4px;
+    }
+
+    .sc-fact-value {
+      padding: 4px 20px 16px;
+    }
+
+    .sc-booking-info h2 {
+      font-size: 32px;
+    }
+
+    .sc-booking-form-wrap {
+      padding: 28px 20px;
+    }
+
+    .sc-form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .sc-spots-float {
+      bottom: 16px;
+      right: 16px;
+      left: 16px;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script define:vars={{ waNumber }}>
+  // Form → WhatsApp
+  document.getElementById('campForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const parentName = document.getElementById('parentName').value.trim();
+    const childName = document.getElementById('childName').value.trim();
+    const childAge = document.getElementById('childAge').value.trim();
+    const lang = document.getElementById('lang').value;
+    const notes = document.getElementById('notes').value.trim();
+
+    if (!parentName || !childName || !childAge || !lang) return;
+
+    let msg = `Hi! I'd like to reserve a spot for the Summer Camp 2026.\n`;
+    msg += `- Parent: ${parentName}\n`;
+    msg += `- Child: ${childName}\n`;
+    msg += `- Age: ${childAge}\n`;
+    msg += `- Language: ${lang}\n`;
+    if (notes) msg += `- Notes: ${notes}\n`;
+
+    const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  });
+
+  // Floating spots counter — show after scrolling past hero
+  const spotsFloat = document.getElementById('spotsFloat');
+  const heroEl = document.querySelector('.sc-hero');
+  if (spotsFloat && heroEl) {
+    const obs = new IntersectionObserver(([entry]) => {
+      spotsFloat.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    obs.observe(heroEl);
+  }
+</script>

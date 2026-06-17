@@ -79,6 +79,21 @@ import DemandCounter from '../components/DemandCounter.astro';
   </div>
 </div>
 
+<!-- ===== SUMMER CAMP BANNER ===== -->
+<div class="camp-banner reveal">
+  <div class="camp-banner-inner">
+    <div class="camp-banner-icon">&#x2600;&#xFE0F;</div>
+    <div class="camp-banner-text">
+      <div class="camp-banner-title" data-lang-en><strong>Summer Camp 2026</strong> &mdash; 4 weeks of robotics, AI &amp; hands-on engineering</div>
+      <div class="camp-banner-title" data-lang-de><strong>Summer Camp 2026</strong> &mdash; 4 Wochen Robotik, KI &amp; Hands-on Engineering</div>
+      <div class="camp-banner-sub" data-lang-en>Ages 7&ndash;12 &middot; July 14 &ndash; Aug 8 &middot; Tsuen Wan &middot; Limited spots</div>
+      <div class="camp-banner-sub" data-lang-de>Alter 7&ndash;12 &middot; 14. Juli &ndash; 8. Aug &middot; Tsuen Wan &middot; Begrenzte Pl&auml;tze</div>
+    </div>
+    <a href="/summer-camp" class="camp-banner-btn" data-lang-en>Learn More &rarr;</a>
+    <a href="/summer-camp" class="camp-banner-btn" data-lang-de>Mehr erfahren &rarr;</a>
+  </div>
+</div>
+
 <!-- ===== PROGRAMS ===== -->
 <section id="programs">
   <div class="section-label reveal" data-lang-en>Program</div>
@@ -410,6 +425,17 @@ import DemandCounter from '../components/DemandCounter.astro';
   .sticky-cta-btn:hover{background:#C04A22;transform:translateY(-1px);box-shadow:0 8px 24px rgba(216,90,48,.3)}
   @media(max-width:1024px){.hero-visual{display:none}.programs-grid,.pricing-grid{grid-template-columns:1fr;max-width:500px}.steps-grid{grid-template-columns:repeat(2,1fr)}.stats-bar{grid-template-columns:repeat(2,1fr)}.bilingual-grid,.format-grid{grid-template-columns:1fr;max-width:600px}.about-grid{grid-template-columns:1fr;max-width:600px}.rwth-banner{flex-direction:column;text-align:center}.rwth-stats{justify-content:center;flex-wrap:wrap}.juniors-footer{grid-template-columns:1fr 1fr}}
   @media(max-width:768px){section{padding:80px 24px}.hero{padding:100px 24px 60px}.hero h1{font-size:36px;letter-spacing:-1.5px}.hero-sub{font-size:16px}.hero-actions{flex-direction:column;gap:12px}.btn-primary,.btn-secondary{width:100%;text-align:center;justify-content:center}.section-title{font-size:32px;letter-spacing:-1px}.steps-grid{grid-template-columns:1fr}.stats-bar{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.rwth-banner{flex-direction:column;text-align:center;padding:24px 20px;gap:20px}.rwth-stats{justify-content:center;flex-wrap:wrap;gap:20px}.cta-title{font-size:36px;letter-spacing:-1.5px}.juniors-footer{grid-template-columns:1fr;padding:40px 24px}.sticky-cta-text{font-size:14px}.sticky-cta-btn{padding:14px 28px;font-size:15px}body{padding-bottom:60px}.hero-badge{font-size:14px}.card-desc,.step-desc,.format-feature,.about-desc,.faq-answer-inner,.price-feature{font-size:14px}}
+  .camp-banner{padding:0 24px;margin:0 auto;max-width:900px}
+  .camp-banner-inner{display:flex;align-items:center;gap:20px;padding:20px 28px;background:linear-gradient(135deg,rgba(216,90,48,0.06),rgba(239,159,39,0.06));border:1px solid rgba(216,90,48,0.15);border-radius:16px;transition:all .3s}
+  .camp-banner-inner:hover{border-color:rgba(216,90,48,0.3);box-shadow:0 4px 20px rgba(216,90,48,0.08)}
+  .camp-banner-icon{font-size:32px;flex-shrink:0}
+  .camp-banner-text{flex:1}
+  .camp-banner-title{font-size:15px;font-weight:500;color:var(--text-primary);margin-bottom:4px}
+  .camp-banner-title strong{color:var(--accent-magenta);font-weight:700}
+  .camp-banner-sub{font-size:13px;color:var(--text-muted)}
+  .camp-banner-btn{padding:10px 20px;background:var(--accent-magenta);color:#fff;border-radius:100px;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;transition:all .3s;flex-shrink:0}
+  .camp-banner-btn:hover{background:#C04A22;transform:translateY(-1px);box-shadow:0 4px 16px rgba(216,90,48,0.3)}
+  @media(max-width:768px){.camp-banner-inner{flex-direction:column;text-align:center;gap:12px}.camp-banner-btn{width:100%;text-align:center;display:block;padding:14px 20px}}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}}
 </style>
 
