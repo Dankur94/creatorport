@@ -1,20 +1,15 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 ---
 
-<BaseLayout
+<PageLayout
   title="CreatorPort HK — AI & Robotics Education · Hong Kong"
   description="German-engineered AI and robotics education for kids, adults, and institutions. Tsuen Wan, Riviera Gardens & online worldwide."
-  extraFonts={['Sacramento', 'Space+Mono:wght@400;700']}
+  extraFonts={['Space+Mono:wght@400;700']}
 >
   <div class="container">
-    <div class="lang-toggle">
-      <button class="lang-btn active" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="de">DE</button>
-    </div>
-
-    <div class="logo">
-      <img class="logo-wordmark" src="/creatorport-logo.svg" alt="CreatorPort HK" />
+    <div class="logo-hero">
+      <img class="logo-wordmark-hero" src="/creatorport-logo.svg" alt="CreatorPort HK" />
     </div>
 
     <h1>
@@ -32,8 +27,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="card-icon">&lt;/&gt;</div>
         <div class="card-title" data-lang-en>Junior Programs</div>
         <div class="card-title" data-lang-de>Jugendprogramme</div>
-        <div class="card-age" data-lang-en>Ages 9&ndash;15 &amp; University Students</div>
-        <div class="card-age" data-lang-de>9&ndash;15 Jahre &amp; Uni-Studenten</div>
+        <div class="card-age" data-lang-en>Ages 9&ndash;15</div>
+        <div class="card-age" data-lang-de>9&ndash;15 Jahre</div>
         <p class="card-desc" data-lang-en>Term-based AI and robotics tracks. Explorer &amp; Builder levels. Small groups, big projects. In-person &amp; online.</p>
         <p class="card-desc" data-lang-de>Semesterbasierte KI- und Robotik-Kurse. Explorer- &amp; Builder-Level. Kleine Gruppen, gro&szlig;e Projekte. Vor Ort &amp; online.</p>
         <span class="card-arrow" data-lang-en>Explore Programs &rarr;</span>
@@ -46,114 +41,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="card-title" data-lang-de>Schulen &amp; Institutionen</div>
         <div class="card-age" data-lang-en>Custom Programs</div>
         <div class="card-age" data-lang-de>Individuelle Programme</div>
-        <p class="card-desc" data-lang-en>OrbBot workshops and in-house teaching for international schools, universities, and organisations. On-site or at our studio. English or German.</p>
-        <p class="card-desc" data-lang-de>OrbBot-Workshops und Unterricht vor Ort f&uuml;r internationale Schulen, Universit&auml;ten und Organisationen. Bei Ihnen oder in unserem Studio. Englisch oder Deutsch.</p>
+        <p class="card-desc" data-lang-en>Robotics workshops and in-house teaching for international schools, universities, and organisations. On-site or at our studio. English or German.</p>
+        <p class="card-desc" data-lang-de>Robotik-Workshops und Unterricht vor Ort f&uuml;r internationale Schulen, Universit&auml;ten und Organisationen. Bei Ihnen oder in unserem Studio. Englisch oder Deutsch.</p>
         <span class="card-arrow" data-lang-en>Get in Touch &rarr;</span>
         <span class="card-arrow" data-lang-de>Kontakt aufnehmen &rarr;</span>
       </a>
     </div>
-
-    <div class="footer">
-      &copy; CreatorPort HK is a brand operated by &copy; Space of Possibilities Limited &middot; Hong Kong &middot; hello@creatorport.com.hk<br />
-      <a href="/privacy" data-lang-en>Privacy Policy</a><a href="/privacy" data-lang-de>Datenschutz</a> &middot; <a href="/terms" data-lang-en>Terms of Service</a><a href="/terms" data-lang-de>AGB</a>
-    </div>
   </div>
-</BaseLayout>
-
-<script>
-  import { setLang, initLang } from '../scripts/language';
-
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = (btn as HTMLElement).dataset.lang as 'en' | 'de';
-      setLang(lang);
-    });
-  });
-
-  initLang();
-</script>
+</PageLayout>
 
 <style>
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-
   .container {
     position: relative;
     z-index: 1;
     text-align: center;
-    padding: 40px 24px;
+    padding: 160px 24px 60px;
     max-width: 900px;
     width: 100%;
-  }
-
-  /* Language toggle — index-specific position */
-  .lang-toggle {
-    position: absolute;
-    top: 40px;
-    right: 24px;
+    margin: 0 auto;
+    min-height: 100vh;
     display: flex;
-    gap: 4px;
-    z-index: 10;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0s forwards;
-    background: transparent;
-    padding: 0;
-  }
-
-  .lang-btn {
-    font-family: 'Sora', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    padding: 10px 14px;
-    border: 1px solid rgba(44, 44, 42, 0.06);
-    border-radius: 6px;
-    background: transparent;
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: all 0.3s;
-    min-height: 44px;
-    min-width: 44px;
-    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
-  .lang-btn.active {
-    background: rgba(44, 44, 42, 0.06);
-    color: var(--text-primary);
-    border-color: rgba(44, 44, 42, 0.1);
-  }
-
-  .lang-btn:hover {
-    color: var(--text-primary);
-    border-color: rgba(44, 44, 42, 0.1);
-  }
-
-  /* Logo */
-  .logo {
+  /* Hero Logo (larger than nav logo) */
+  .logo-hero {
     opacity: 0;
     animation: fadeUp 0.8s ease 0s forwards;
     margin-bottom: 16px;
   }
 
-  .logo-wordmark {
+  .logo-wordmark-hero {
     height: 94px;
     width: auto;
     object-fit: contain;
-  }
-
-  .brand-script {
-    font-family: 'Sacramento', cursive;
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: rgba(44, 44, 42, 0.35);
-    margin-left: 0.5rem;
   }
 
   /* Headline */
@@ -260,36 +183,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .card-institutions .card-arrow { color: var(--accent-magenta); }
   .card:hover .card-arrow { transform: translateX(6px); }
 
-  /* Footer */
-  .footer {
-    font-size: 14px;
-    color: #8A8A88;
-    text-align: center;
-    line-height: 1.6;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.6s forwards;
-  }
-
-  .footer a { color: #5A5A58; text-decoration: underline; text-underline-offset: 3px; }
-  .footer a:hover { color: var(--accent-electric); }
-
   @keyframes fadeUp {
     to { opacity: 1; transform: translateY(0); }
   }
 
   /* Responsive */
   @media (max-width: 768px) {
-    .logo-wordmark { height: 60px; }
+    .container { padding: 120px 24px 40px; }
+    .logo-wordmark-hero { height: 60px; }
     h1 { font-size: 32px; letter-spacing: -1.5px; }
     .subtitle { font-size: 15px; }
-    .cards { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto 48px; }
+    .cards { grid-template-columns: 1fr; max-width: 400px; }
     .card { padding: 28px 20px; }
     .card-icon { width: 40px; height: 40px; font-size: 14px; margin-bottom: 14px; }
-    .lang-toggle { top: 16px; right: 16px; }
   }
 
   @media (max-width: 1024px) and (min-width: 769px) {
     h1 { font-size: 44px; }
-    .cards { grid-template-columns: 1fr 1fr; max-width: 600px; margin: 0 auto 48px; }
+    .cards { max-width: 600px; }
   }
 </style>

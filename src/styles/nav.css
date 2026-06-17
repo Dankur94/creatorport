@@ -50,6 +50,11 @@ nav {
   color: var(--accent-electric);
 }
 
+.nav-links a.nav-active {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
 .nav-cta {
   padding: 10px 24px;
   border-radius: 24px;
