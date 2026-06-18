@@ -1,14 +1,12 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import DemandCounter from '../components/DemandCounter.astro';
 
 ---
 
 <PageLayout
   title="CreatorPort HK &mdash; AI &middot; Creativity &middot; Robotics"
-  description="German-engineered AI and robotics education for kids 9-15. Tsuen Wan, Riviera Gardens & online worldwide."
+  description="German-engineered AI and robotics education for kids aged 6-14. Hong Kong Island & online worldwide."
   extraFonts={['Noto+Sans+TC:wght@400;500;700']}
-  footerExtra={'Kits by <a href="https://kurthtechnik.de" target="_blank" style="color: var(--accent-amber);">&copy; KurthTechnik</a>'}
 >
 
 <!-- ===== HERO ===== -->
@@ -20,12 +18,11 @@ import DemandCounter from '../components/DemandCounter.astro';
 
   <div class="hero-content">
     <div class="hero-badge" data-lang-en>
-      Gauging demand &middot; We launch at <strong>20</strong> sign-ups &middot; <strong class="demand-count-en"></strong> to go &middot; Tsuen Wan, Riviera Gardens
+      Hong Kong Island &middot; Ages 6&ndash;14 &middot; English &amp; German
     </div>
     <div class="hero-badge" data-lang-de>
-      Nachfrage testen &middot; Wir starten ab <strong>20</strong> Anmeldungen &middot; noch <strong class="demand-count-de"></strong> &middot; Tsuen Wan, Riviera Gardens
+      Hong Kong Island &middot; Alter 6&ndash;14 &middot; Englisch &amp; Deutsch
     </div>
-    <DemandCounter signedUp={0} goal={20} />
 
     <h1 data-lang-en>Where <span class="gradient-text">Robotics<br />meets AI.</span></h1>
     <h1 data-lang-de>Wo <span class="gradient-text">Robotik<br />auf KI trifft.</span></h1>
@@ -58,7 +55,7 @@ import DemandCounter from '../components/DemandCounter.astro';
 <!-- ===== STATS BAR ===== -->
 <div class="stats-bar">
   <div class="stat-item reveal">
-    <div class="stat-number">9&ndash;15</div>
+    <div class="stat-number">6&ndash;14</div>
     <div class="stat-label" data-lang-en>Age Range</div>
     <div class="stat-label" data-lang-de>Altersgruppe</div>
   </div>
@@ -68,9 +65,9 @@ import DemandCounter from '../components/DemandCounter.astro';
     <div class="stat-label" data-lang-de>Unterricht in EN / DE</div>
   </div>
   <div class="stat-item reveal">
-    <div class="stat-number">Tsuen Wan</div>
+    <div class="stat-number">HK Island</div>
     <div class="stat-label" data-lang-en>Face to face &amp; online</div>
-    <div class="stat-label" data-lang-de>Face to face &amp; online</div>
+    <div class="stat-label" data-lang-de>Vor Ort &amp; online</div>
   </div>
   <div class="stat-item reveal">
     <div class="stat-number">&infin;</div>
@@ -83,37 +80,41 @@ import DemandCounter from '../components/DemandCounter.astro';
 <section id="programs">
   <div class="section-label reveal" data-lang-en>Program</div>
   <div class="section-label reveal" data-lang-de>Programm</div>
-  <h2 class="section-title reveal" data-lang-en>Two programs.<br /><span class="gradient-text">Your choice.</span></h2>
-  <h2 class="section-title reveal" data-lang-de>Zwei Programme.<br /><span class="gradient-text">Deine Wahl.</span></h2>
-  <p class="section-desc reveal" data-lang-en>Build drones with AI (ages 9&ndash;15) or learn the art of presenting. Two tracks, multiple levels.</p>
-  <p class="section-desc reveal" data-lang-de>Baue Drohnen mit KI (9&ndash;15 Jahre) oder lerne die Kunst des Pr&auml;sentierens. Zwei Tracks, mehrere Levels.</p>
+  <h2 class="section-title reveal" data-lang-en>Our programs.<br /><span class="gradient-text">Hands-on learning.</span></h2>
+  <h2 class="section-title reveal" data-lang-de>Unsere Programme.<br /><span class="gradient-text">Lernen durch Machen.</span></h2>
+  <p class="section-desc reveal" data-lang-en>Summer camps, workshops, and courses for ages 6&ndash;14. Small groups, bilingual, real engineering.</p>
+  <p class="section-desc reveal" data-lang-de>Feriencamps, Workshops und Kurse f&uuml;r 6&ndash;14 Jahre. Kleine Gruppen, zweisprachig, echtes Engineering.</p>
   <p class="section-desc reveal" style="font-size: 13px; color: var(--text-muted); margin-top: -8px;" data-lang-en>Ages are guidelines &mdash; we place each student based on their experience, not just their age.</p>
   <p class="section-desc reveal" style="font-size: 13px; color: var(--text-muted); margin-top: -8px;" data-lang-de>Altersangaben sind Richtwerte &mdash; wir stufen jedes Kind nach Erfahrung ein, nicht nur nach Alter.</p>
 
   <div class="programs-grid">
-    <!-- ROBOTICS & AI -->
+    <!-- MAKE MARS GREEN — SUMMER CAMP -->
     <div class="program-card reveal" style="--card-accent: var(--accent-amber); --card-accent-bg: rgba(239,159,39,0.08); --card-accent-border: rgba(239,159,39,0.2);">
-      <div class="card-icon">&#x1F681;</div>
-      <div class="card-age" data-lang-en>Ages 9&ndash;15</div>
-      <div class="card-age" data-lang-de>Alter 9&ndash;15</div>
-      <h3 class="card-title" data-lang-en>Robotics &amp; AI</h3>
-      <h3 class="card-title" data-lang-de>Robotik &amp; KI</h3>
-      <p class="card-desc" data-lang-en>Build a real gripper drone from scratch. No programming &mdash; you tell AI what to build and it writes the code for you (vibe coding). Robotics is the goal &mdash; AI is your superpower.</p>
-      <p class="card-desc" data-lang-de>Baue eine echte Greifer-Drohne von Grund auf. Keine Programmierung &mdash; du sagst der KI was du brauchst und sie schreibt den Code (Vibe Coding). Robotik ist das Ziel &mdash; KI ist deine Superkraft.</p>
+      <div class="card-icon">&#x1F33F;</div>
+      <div class="card-age" data-lang-en>Ages 6&ndash;8 &middot; 9&ndash;11 &middot; 12&ndash;14</div>
+      <div class="card-age" data-lang-de>Alter 6&ndash;8 &middot; 9&ndash;11 &middot; 12&ndash;14</div>
+      <h3 class="card-title" data-lang-en>Make Mars Green</h3>
+      <h3 class="card-title" data-lang-de>Make Mars Green</h3>
+      <p class="card-desc" data-lang-en>Plant life on Mars &mdash; by remote control. Over 5 days, kids plan and build a system to remotely plant on Mars using real engineering and science. They design, code, and pilot their own Mars device. Hands-on, with real components &mdash; kids keep what they build.</p>
+      <p class="card-desc" data-lang-de>Pflanzen auf dem Mars setzen &mdash; per Fernsteuerung. &Uuml;ber 5 Tage planen und bauen Kinder ein System, um aus der Ferne eine Pflanze auf dem Mars zu setzen. Sie konstruieren, programmieren und steuern ihr eigenes Mars-Ger&auml;t. Hands-on, mit echten Bauteilen &mdash; Kinder behalten, was sie bauen.</p>
       <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-subtle);">
-        <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-amber); font-weight: 600; margin-bottom: 12px;" data-lang-en>Explorer &middot; Ages 9&ndash;11</div>
-        <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-amber); font-weight: 600; margin-bottom: 12px;" data-lang-de>Explorer &middot; Alter 9&ndash;11</div>
-        <div class="card-tags"><span class="card-tag">Gripper Drone Kit</span><span class="card-tag">AI Coding Assistant</span><span class="card-tag">Missions</span><span class="card-tag">3D Printing</span></div>
+        <div class="card-tags">
+          <span class="card-tag" data-lang-en>5-day camp</span><span class="card-tag" data-lang-de>5-Tage-Camp</span>
+          <span class="card-tag" data-lang-en>3 hours / day</span><span class="card-tag" data-lang-de>3 Stunden / Tag</span>
+          <span class="card-tag" data-lang-en>Late July / early Aug 2026</span><span class="card-tag" data-lang-de>Ende Juli / Anfang Aug 2026</span>
+          <span class="card-tag" data-lang-en>Max 6 per class</span><span class="card-tag" data-lang-de>Max 6 pro Klasse</span>
+        </div>
       </div>
       <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-subtle);">
-        <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-amber); font-weight: 600; margin-bottom: 12px;" data-lang-en>Builder &middot; Ages 12&ndash;15</div>
-        <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-amber); font-weight: 600; margin-bottom: 12px;" data-lang-de>Builder &middot; Alter 12&ndash;15</div>
-        <div class="card-tags"><span class="card-tag">Flight Controller</span><span class="card-tag">Vibe Coding</span><span class="card-tag">Sensor Tuning</span><span class="card-tag">Custom Design</span></div>
+        <div class="card-tags">
+          <span class="card-tag" data-lang-en>English or German</span><span class="card-tag" data-lang-de>Englisch oder Deutsch</span>
+          <span class="card-tag" data-lang-en>HK Island &mdash; venue revealed soon</span><span class="card-tag" data-lang-de>HK Island &mdash; Ort folgt</span>
+          <span class="card-tag" data-lang-en>No experience needed</span><span class="card-tag" data-lang-de>Keine Vorkenntnisse n&ouml;tig</span>
+        </div>
       </div>
-      <div style="margin-top: 16px; font-size: 12px; color: var(--text-muted);" data-lang-en>Taught by Daniel Kurth &middot; B.Sc. RWTH &middot; Kits by <a href="https://kurthtechnik.de" target="_blank" style="color: var(--accent-amber); text-decoration: underline;">KurthTechnik</a></div>
-      <div style="margin-top: 16px; font-size: 12px; color: var(--text-muted);" data-lang-de>Unterrichtet von Daniel Kurth &middot; B.Sc. RWTH &middot; Kits von <a href="https://kurthtechnik.de" target="_blank" style="color: var(--accent-amber); text-decoration: underline;">KurthTechnik</a></div>
-      <div style="margin-top: 12px; font-size: 12px; color: var(--accent-amber);"><span data-lang-en>&#x2713; Gripper Drone Kit included &middot; &#x2713; Certificate of completion</span><span data-lang-de>&#x2713; Greifer-Drohne Kit inklusive &middot; &#x2713; Abschlusszertifikat</span></div>
-      <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-subtle);"><a href="https://dankur94.github.io/kurthtechnik/curriculum-pdf.html" target="_blank" style="display: block; padding: 12px 16px; background: rgba(239,159,39,0.06); border: 1px solid rgba(239,159,39,0.15); border-radius: 8px; text-decoration: none; transition: all 0.3s;"><div style="font-size: 13px; font-weight: 600; color: var(--accent-amber); margin-bottom: 2px;"><span data-lang-en>Aligned with HK Maths Curriculum P4&ndash;P6 &rarr;</span><span data-lang-de>Abgestimmt auf HK Mathe-Lehrplan P4&ndash;P6 &rarr;</span></div><div style="font-size: 11px; color: var(--text-secondary);"><span data-lang-en>20+ maths topics, systems thinking &amp; problem-solving &mdash; built into every mission</span><span data-lang-de>20+ Mathe-Themen, Systemdenken &amp; Probleml&ouml;sung &mdash; in jeder Mission integriert</span></div></a></div>
+      <div style="margin-top: 16px; font-size: 12px; color: var(--text-muted);" data-lang-en>Taught by Daniel Kurth &middot; B.Sc. RWTH Aachen</div>
+      <div style="margin-top: 16px; font-size: 12px; color: var(--text-muted);" data-lang-de>Unterrichtet von Daniel Kurth &middot; B.Sc. RWTH Aachen</div>
+      <div style="margin-top: 12px; font-size: 12px; color: var(--accent-amber);"><span data-lang-en>&#x2713; All materials included &middot; &#x2713; Kids keep what they build</span><span data-lang-de>&#x2713; Alle Materialien inklusive &middot; &#x2713; Kinder behalten, was sie bauen</span></div>
     </div>
 
     <!-- THINK. LEARN. PRESENT. -->
@@ -172,17 +173,16 @@ import DemandCounter from '../components/DemandCounter.astro';
 <section id="pricing">
   <div class="section-label reveal" data-lang-en>Pricing</div><div class="section-label reveal" data-lang-de>Preise</div>
   <h2 class="section-title reveal" data-lang-en>Invest in their future.</h2><h2 class="section-title reveal" data-lang-de>Investiere in ihre Zukunft.</h2>
-  <p class="section-desc reveal" data-lang-en>All prices in HKD. Small groups of max 6 students. Explorer &amp; Builder level same price.</p><p class="section-desc reveal" data-lang-de>Alle Preise in HKD. Kleine Gruppen mit max. 6 Sch&uuml;lern. Explorer &amp; Builder Level gleicher Preis.</p>
+  <p class="section-desc reveal" data-lang-en>All prices in HKD. Small groups of max 6 students.</p><p class="section-desc reveal" data-lang-de>Alle Preise in HKD. Kleine Gruppen mit max. 6 Sch&uuml;lern.</p>
   <div class="pricing-grid">
     <div class="price-card featured reveal">
-      <div style="font-size: 28px; margin-bottom: 12px;">&#x1F681;</div>
-      <div class="price-name"><span data-lang-en>Robotics &amp; AI</span><span data-lang-de>Robotik &amp; KI</span></div>
-      <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-electric); font-weight: 600; margin-bottom: 16px;" data-lang-en>Ages 9&ndash;15 &middot; In-person &amp; Online</div><div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-electric); font-weight: 600; margin-bottom: 16px;" data-lang-de>Alter 9&ndash;15 &middot; Pr&auml;senz &amp; Online</div>
-      <div class="price-amount">$3,600 <span>HKD / module</span></div>
-      <div class="price-period"><span data-lang-en>8 sessions &times; 60 min &middot; $450 HKD per session</span><span data-lang-de>8 Sitzungen &times; 60 Min. &middot; $450 HKD pro Sitzung</span></div>
-      <div class="price-features"><div class="price-feature" data-lang-en><span class="price-check">&#x2713;</span> Small groups &middot; max 6 students</div><div class="price-feature" data-lang-de><span class="price-check">&#x2713;</span> Kleine Gruppen &middot; max. 6 Sch&uuml;ler</div><div class="price-feature" data-lang-en><span class="price-check">&#x2713;</span> Explorer (9&ndash;11) or Builder (12&ndash;15)</div><div class="price-feature" data-lang-de><span class="price-check">&#x2713;</span> Explorer (9&ndash;11) oder Builder (12&ndash;15)</div><div class="price-feature" data-lang-en><span class="price-check">&#x2713;</span> AI-powered vibe coding</div><div class="price-feature" data-lang-de><span class="price-check">&#x2713;</span> KI-gest&uuml;tztes Vibe Coding</div><div class="price-feature" data-lang-en><span class="price-check">&#x2713;</span> 1&ndash;2 classes per week</div><div class="price-feature" data-lang-de><span class="price-check">&#x2713;</span> 1&ndash;2 Klassen pro Woche</div><div class="price-feature" data-lang-en><span class="price-check">&#x2713;</span> Demo Day &amp; certificate</div><div class="price-feature" data-lang-de><span class="price-check">&#x2713;</span> Demo Day &amp; Zertifikat</div></div>
-      <div style="margin-top: 20px; margin-bottom: 24px; padding: 16px 20px; border-radius: 12px; background: rgba(239,159,39,0.06); border: 1px solid rgba(239,159,39,0.15);"><div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-amber); font-weight: 700; margin-bottom: 6px;" data-lang-en>Additional $1,200 HKD &middot; Gripper Drone Kit</div><div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-amber); font-weight: 700; margin-bottom: 6px;" data-lang-de>Zus&auml;tzlich $1.200 HKD &middot; Greifer-Drohne Kit</div><div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;"><span data-lang-en>Sold separately via <a href="https://kurthtechnik.com" target="_blank" style="color: var(--accent-amber); text-decoration: underline;">KurthTechnik</a>. Your child keeps the drone.</span><span data-lang-de>Separat &uuml;ber <a href="https://kurthtechnik.com" target="_blank" style="color: var(--accent-amber); text-decoration: underline;">KurthTechnik</a>. Dein Kind beh&auml;lt die Drohne.</span></div></div>
-      <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20CreatorPort%20HK.%0A-%20Track%3A%20Robotics%20%26%20AI%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Level%20%28Explorer%209-11%20%2F%20Builder%2012-15%29%3A%0A-%20Preferred%20language%20%28EN%2FDE%29%3A%0A-%20Format%20%28In-person%20HK%20%2F%20Online%29%3A" target="_blank" class="price-btn"><span data-lang-en>Pre-Register</span><span data-lang-de>Voranmelden</span></a>
+      <div style="font-size: 28px; margin-bottom: 12px;">&#x1F33F;</div>
+      <div class="price-name"><span data-lang-en>Make Mars Green &mdash; Summer Camp</span><span data-lang-de>Make Mars Green &mdash; Sommercamp</span></div>
+      <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-electric); font-weight: 600; margin-bottom: 16px;" data-lang-en>Ages 6&ndash;14 &middot; Late July / early Aug 2026</div><div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-electric); font-weight: 600; margin-bottom: 16px;" data-lang-de>Alter 6&ndash;14 &middot; Ende Juli / Anfang Aug 2026</div>
+      <div class="price-amount">$3,000 <span>HKD</span></div>
+      <div class="price-period"><span data-lang-en>5 days &times; 3 hours &middot; all materials included</span><span data-lang-de>5 Tage &times; 3 Stunden &middot; alle Materialien inklusive</span></div>
+      <div class="price-features"><div class="price-feature" data-lang-en><span class="price-check">&#x2713;</span> Small groups &middot; max 6 children per class</div><div class="price-feature" data-lang-de><span class="price-check">&#x2713;</span> Kleine Gruppen &middot; max. 6 Kinder pro Klasse</div><div class="price-feature" data-lang-en><span class="price-check">&#x2713;</span> Groups by age: 6&ndash;8 &middot; 9&ndash;11 &middot; 12&ndash;14</div><div class="price-feature" data-lang-de><span class="price-check">&#x2713;</span> Gruppen nach Alter: 6&ndash;8 &middot; 9&ndash;11 &middot; 12&ndash;14</div><div class="price-feature" data-lang-en><span class="price-check">&#x2713;</span> English or German</div><div class="price-feature" data-lang-de><span class="price-check">&#x2713;</span> Englisch oder Deutsch</div><div class="price-feature" data-lang-en><span class="price-check">&#x2713;</span> Hong Kong Island &mdash; exact venue revealed soon</div><div class="price-feature" data-lang-de><span class="price-check">&#x2713;</span> Hong Kong Island &mdash; genauer Ort folgt</div><div class="price-feature" data-lang-en><span class="price-check">&#x2713;</span> Kids keep what they build</div><div class="price-feature" data-lang-de><span class="price-check">&#x2713;</span> Kinder behalten, was sie bauen</div></div>
+      <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20the%20Make%20Mars%20Green%20summer%20camp.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Preferred%20language%20%28EN%2FDE%29%3A" target="_blank" class="price-btn"><span data-lang-en>Register Interest</span><span data-lang-de>Interesse anmelden</span></a>
     </div>
     <div class="price-card reveal">
       <div style="font-size: 28px; margin-bottom: 12px;">&#x1F3A4;</div>
@@ -256,9 +256,9 @@ import DemandCounter from '../components/DemandCounter.astro';
 <!-- ===== STICKY BOTTOM CTA ===== -->
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-cta-inner">
-    <div class="sticky-cta-text"><span data-lang-en><strong class="demand-count-en"></strong> more sign-ups to launch</span><span data-lang-de>Noch <strong class="demand-count-de"></strong> Anmeldungen bis zum Start</span></div>
-    <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20CreatorPort%20HK." target="_blank" class="sticky-cta-btn" data-lang-en>Pre-Register</a>
-    <a href="https://wa.me/85265427963?text=Ich%20m%C3%B6chte%20mein%20Kind%20voranmelden." target="_blank" class="sticky-cta-btn" data-lang-de>Voranmelden</a>
+    <div class="sticky-cta-text"><span data-lang-en>Interested? Get in touch</span><span data-lang-de>Interesse? Kontaktiere uns</span></div>
+    <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20CreatorPort%20HK." target="_blank" class="sticky-cta-btn" data-lang-en>Get in Touch</a>
+    <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20interessiere%20mich%20f%C3%BCr%20CreatorPort%20HK." target="_blank" class="sticky-cta-btn" data-lang-de>Kontakt</a>
   </div>
 </div>
 
