@@ -1,7 +1,7 @@
 ---
 interface Props {
   /** Nav link items */
-  links?: Array<{ href: string; en: string; de: string }>;
+  links?: Array<{ href: string; en: string; de: string; children?: { href: string; en: string; de: string }[] }>;
   /** CTA button config */
   cta?: { href: string; en: string; de: string };
   /** Accent color for lang toggle and hover (electric | amber | magenta) */
@@ -12,6 +12,12 @@ const {
   links = [
     { href: '/institutions', en: 'For Schools', de: 'F\u00fcr Schulen' },
     { href: '/our-story', en: 'Our Story', de: 'Unsere Geschichte' },
+    { href: '/meet-the-team', en: 'Meet the Team', de: 'Unser Team',
+      children: [
+        { href: '/meet-the-team#daniel', en: 'Daniel', de: 'Daniel' },
+        { href: '/meet-the-team#anan', en: 'Anan', de: 'Anan' },
+      ]
+    },
   ],
   cta = { href: 'https://wa.me/85265427963', en: 'Get in Touch', de: 'Kontakt' },
   accent = 'electric',
@@ -33,7 +39,29 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   </a>
   <ul class="nav-links">
     {links.map(link => {
-      const isActive = currentPath === link.href.replace(/\/$/, '');
+      const isActive = currentPath === link.href.replace(/\/$/, '') ||
+        (link.children && link.children.some(c => currentPath === c.href.split('#')[0].replace(/\/$/, '')));
+      if (link.children) {
+        return (
+          <li class={`has-dropdown ${isActive ? 'active' : ''}`}>
+            <a href={link.href} class={isActive ? 'nav-active' : ''}>
+              <span data-lang-en>{link.en}</span>
+              <span data-lang-de>{link.de}</span>
+            </a>
+            <button class="dropdown-toggle" aria-label="Toggle submenu">
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="nav-dropdown">
+              {link.children.map(child => (
+                <a href={child.href}>
+                  <span data-lang-en>{child.en}</span>
+                  <span data-lang-de>{child.de}</span>
+                </a>
+              ))}
+            </div>
+          </li>
+        );
+      }
       return (
         <li>
           <a href={link.href} class={isActive ? 'nav-active' : ''}>
@@ -59,7 +87,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 <script>
   import { setLang, initLang } from '../scripts/language';
-  import { toggleMenu, initMenuCloseOnNav } from '../scripts/menu';
+  import { toggleMenu, initMenuCloseOnNav, initDropdown } from '../scripts/menu';
 
   // Language buttons
   document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -74,4 +102,5 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
   initLang();
   initMenuCloseOnNav();
+  initDropdown();
 </script>

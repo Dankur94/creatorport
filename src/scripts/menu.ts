@@ -14,3 +14,14 @@ export function initMenuCloseOnNav() {
     });
   });
 }
+
+/** Mobile dropdown toggle */
+export function initDropdown() {
+  document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const parent = (btn as HTMLElement).closest('.has-dropdown');
+      parent?.classList.toggle('dropdown-open');
+    });
+  });
+}
