@@ -1,0 +1,279 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { Image } from 'astro:assets';
+import ananImg from '../../assets/img/ananya-singh.jpg';
+---
+
+<PageLayout
+  title="CreatorPort HK — Ananya Singh"
+  description="Meet Ananya Singh — RWTH Aachen physicist, award-winning science communicator & co-founder of CreatorPort HK."
+>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label reveal" data-lang-en>Meet the Team</div>
+    <div class="hero-label reveal" data-lang-de>Unser Team</div>
+    <div class="hero-photo-wrap reveal">
+      <Image src={ananImg} alt="Ananya Singh" class="hero-photo" widths={[200, 400]} sizes="200px" loading="eager" />
+    </div>
+    <h1 class="reveal">Ananya Singh</h1>
+    <div class="hero-role reveal" data-lang-en>Physicist &amp; Co-Founder</div>
+    <div class="hero-role reveal" data-lang-de>Physiker &amp; Mitgr&uuml;nder</div>
+    <div class="hero-degree reveal">M.Sc. Experimental Physics &middot; RWTH Aachen</div>
+    <div class="hero-credentials reveal">
+      <div class="credential" data-lang-en>PhD Candidate, RWTH Aachen</div>
+      <div class="credential" data-lang-de>Doktorand, RWTH Aachen</div>
+      <div class="credential" data-lang-en>Available worldwide (online)</div>
+      <div class="credential" data-lang-de>Weltweit verf&uuml;gbar (online)</div>
+      <div class="credential"><a href="mailto:ananya@creatorport.com.hk" style="color: inherit; text-decoration: none;">ananya@creatorport.com.hk</a></div>
+    </div>
+  </div>
+
+  <!-- BIO -->
+  <div class="content">
+    <div class="section-label reveal" data-lang-en>Background</div>
+    <div class="section-label reveal" data-lang-de>Hintergrund</div>
+    <div class="bio-text reveal" data-lang-en>
+      <p>Ananya is a physicist at RWTH Aachen &mdash; the kind of teacher who can take a concept that has defeated you for weeks and, in twenty minutes over coffee, make it feel obvious. He doesn&rsquo;t just solve the equation. He dismantles the way you&rsquo;re thinking about it, rebuilds it from scratch, and hands it back clearer than before.</p>
+      <p>Currently a PhD candidate at the Chair of Experimental Physics &amp; II. Institute of Physics at RWTH Aachen, Ananya brings deep scientific understanding paired with a rare gift for making complex ideas accessible.</p>
+      <p>As a mentor and science communicator, Ananya teaches physics the way it should be taught: not as a collection of formulas to memorize, but as a way of seeing the world. Available for online sessions worldwide.</p>
+    </div>
+    <div class="bio-text reveal" data-lang-de>
+      <p>Ananya ist Physiker an der RWTH Aachen &mdash; die Art Lehrer, der ein Konzept, an dem man wochenlang gescheitert ist, in zwanzig Minuten bei einem Kaffee selbstverst&auml;ndlich erscheinen l&auml;sst. Er l&ouml;st nicht einfach die Gleichung. Er zerlegt die Denkweise, baut sie von Grund auf neu auf und gibt sie klarer zur&uuml;ck als zuvor.</p>
+      <p>Als Doktorand am Lehrstuhl f&uuml;r Experimentalphysik &amp; II. Physikalisches Institut der RWTH Aachen bringt Ananya tiefes wissenschaftliches Verst&auml;ndnis gepaart mit einer seltenen Gabe, komplexe Ideen zug&auml;nglich zu machen.</p>
+      <p>Als Mentor und Wissenschaftskommunikator unterrichtet Ananya Physik so, wie sie unterrichtet werden sollte: nicht als Sammlung auswendig zu lernender Formeln, sondern als eine Art, die Welt zu sehen. Verf&uuml;gbar f&uuml;r Online-Sitzungen weltweit.</p>
+    </div>
+
+    <!-- AWARDS -->
+    <div class="section-label reveal" data-lang-en>Awards &amp; Recognition</div>
+    <div class="section-label reveal" data-lang-de>Auszeichnungen</div>
+    <div class="awards-grid reveal">
+      <div class="award-card">
+        <div class="award-icon-large">&#9733;</div>
+        <h3 data-lang-en>Physics Teaching Award</h3>
+        <h3 data-lang-de>Physik-Lehrpreis</h3>
+        <p data-lang-en>&ldquo;Best Supportive Teaching&rdquo;<br />RWTH Aachen, 2021</p>
+        <p data-lang-de>&bdquo;Best Supportive Teaching&ldquo;<br />RWTH Aachen, 2021</p>
+      </div>
+      <div class="award-card">
+        <div class="award-icon-large">&#9733;</div>
+        <h3>Science Slam</h3>
+        <p data-lang-en>Winner, Cologne, 2025<br />&ldquo;The Dance of Electron Quantum&rdquo;</p>
+        <p data-lang-de>Gewinner, K&ouml;ln, 2025<br />&bdquo;The Dance of Electron Quantum&ldquo;</p>
+        <a href="https://www.youtube.com/watch?v=hxs4gLeBBbI" target="_blank" class="award-link" data-lang-en>Watch Talk &rarr;</a>
+        <a href="https://www.youtube.com/watch?v=hxs4gLeBBbI" target="_blank" class="award-link" data-lang-de>Talk ansehen &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2 class="cta-title reveal" data-lang-en>Want to<br /><span class="gradient-text">learn with Ananya?</span></h2>
+    <h2 class="cta-title reveal" data-lang-de>Willst du<br /><span class="gradient-text">mit Ananya lernen?</span></h2>
+    <p class="cta-desc reveal" data-lang-en>Online physics sessions available worldwide. Reach out to get started.</p>
+    <p class="cta-desc reveal" data-lang-de>Online-Physik-Sitzungen weltweit verf&uuml;gbar. Melde dich, um loszulegen.</p>
+    <div class="cta-links reveal">
+      <a href="https://wa.me/85265427963" target="_blank" class="cta-link primary">WhatsApp</a>
+      <a href="mailto:ananya@creatorport.com.hk" class="cta-link secondary">ananya@creatorport.com.hk</a>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  /* HERO */
+  .hero {
+    padding: 140px 40px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-label {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-electric);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .hero-photo-wrap {
+    margin-bottom: 32px;
+  }
+
+  .hero-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--border-subtle);
+  }
+
+  .hero h1 {
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: -3px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .hero-role {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-electric);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .hero-degree {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .hero-credentials {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .credential {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .credential::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-electric);
+  }
+
+  /* CONTENT */
+  .content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  .section-label {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-electric);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .bio-text {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 60px;
+    max-width: 700px;
+  }
+
+  .bio-text p {
+    margin-bottom: 20px;
+  }
+
+  .bio-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .bio-text strong {
+    color: var(--text-primary);
+  }
+
+  /* AWARDS */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 60px;
+  }
+
+  .award-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .award-card:hover {
+    border-color: rgba(239, 159, 39, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .award-icon-large {
+    font-size: 32px;
+    color: var(--accent-amber);
+    margin-bottom: 12px;
+  }
+
+  .award-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .award-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .award-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-electric);
+    text-decoration: none;
+    transition: transform 0.3s;
+    display: inline-block;
+  }
+
+  .award-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 100px 24px 40px;
+    }
+    .hero-photo {
+      width: 160px;
+      height: 160px;
+    }
+    .hero h1 {
+      font-size: 36px;
+      letter-spacing: -1.5px;
+    }
+    .hero-credentials {
+      gap: 16px;
+    }
+    .content {
+      padding: 0 24px 60px;
+    }
+    .awards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .hero h1 {
+      font-size: 48px;
+    }
+  }
+</style>
