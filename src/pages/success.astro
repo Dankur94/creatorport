@@ -1,0 +1,281 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Payment Confirmed — CreatorPort HK"
+  description="Your booking is confirmed. Welcome to CreatorPort HK!"
+  navCta={{ href: '/', en: 'Home', de: 'Startseite' }}
+>
+
+<section class="success-page">
+  <div class="success-container">
+
+    <!-- Success Animation -->
+    <div class="success-icon-wrap">
+      <div class="success-circle">
+        <svg class="success-check" viewBox="0 0 52 52" fill="none">
+          <circle cx="26" cy="26" r="25" stroke="currentColor" stroke-width="2" />
+          <path class="check-path" d="M14 27l8 8 16-16" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+    </div>
+
+    <h1 data-lang-en>You're in!</h1>
+    <h1 data-lang-de>Du bist dabei!</h1>
+
+    <p class="success-sub" data-lang-en>
+      Payment confirmed. A confirmation email is on its way to your inbox.
+    </p>
+    <p class="success-sub" data-lang-de>
+      Zahlung best&auml;tigt. Eine Best&auml;tigungs-E-Mail ist unterwegs.
+    </p>
+
+    <!-- Next Steps -->
+    <div class="success-steps">
+      <h2 data-lang-en>What happens next?</h2>
+      <h2 data-lang-de>Wie geht es weiter?</h2>
+
+      <div class="step-list">
+        <div class="success-step">
+          <div class="step-num">1</div>
+          <div>
+            <strong data-lang-en>Check your email</strong>
+            <strong data-lang-de>E-Mail pr&uuml;fen</strong>
+            <p data-lang-en>You'll receive a payment receipt from Stripe and a welcome email from us.</p>
+            <p data-lang-de>Du erh&auml;ltst eine Zahlungsbest&auml;tigung von Stripe und eine Willkommens-E-Mail von uns.</p>
+          </div>
+        </div>
+        <div class="success-step">
+          <div class="step-num">2</div>
+          <div>
+            <strong data-lang-en>We'll be in touch</strong>
+            <strong data-lang-de>Wir melden uns</strong>
+            <p data-lang-en>Daniel will reach out via WhatsApp or email within 24 hours with schedule details.</p>
+            <p data-lang-de>Daniel meldet sich innerhalb von 24 Stunden per WhatsApp oder E-Mail mit den Termindetails.</p>
+          </div>
+        </div>
+        <div class="success-step">
+          <div class="step-num">3</div>
+          <div>
+            <strong data-lang-en>Get ready to build!</strong>
+            <strong data-lang-de>Bereit zum Bauen!</strong>
+            <p data-lang-en>No preparation needed. We provide everything — just bring curiosity.</p>
+            <p data-lang-de>Keine Vorbereitung n&ouml;tig. Wir stellen alles bereit &mdash; einfach Neugier mitbringen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="success-actions">
+      <a href="https://wa.me/85265427963?text=Hi%21%20I%20just%20booked%20a%20spot%20at%20CreatorPort%20HK%21" target="_blank" class="success-btn whatsapp" data-lang-en>
+        Say hi on WhatsApp
+      </a>
+      <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20habe%20gerade%20einen%20Platz%20bei%20CreatorPort%20HK%20gebucht%21" target="_blank" class="success-btn whatsapp" data-lang-de>
+        Sag Hallo auf WhatsApp
+      </a>
+      <a href="/" class="success-btn home" data-lang-en>Back to Homepage</a>
+      <a href="/" class="success-btn home" data-lang-de>Zur&uuml;ck zur Startseite</a>
+    </div>
+
+  </div>
+</section>
+
+</PageLayout>
+
+<style>
+  .success-page {
+    padding: 120px 24px 80px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .success-container {
+    max-width: 560px;
+    text-align: center;
+  }
+
+  /* Check Icon Animation */
+  .success-icon-wrap {
+    margin-bottom: 32px;
+  }
+
+  .success-circle {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    color: var(--accent-electric);
+    animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .success-check {
+    width: 100%;
+    height: 100%;
+  }
+
+  .check-path {
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    animation: drawCheck 0.6s ease-out 0.3s forwards;
+  }
+
+  @keyframes scaleIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes drawCheck {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .success-container h1 {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 12px;
+    animation: fadeUp 0.6s ease-out 0.2s both;
+  }
+
+  .success-sub {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s ease-out 0.3s both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Next Steps */
+  .success-steps {
+    text-align: left;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s ease-out 0.4s both;
+  }
+
+  .success-steps h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  .step-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .success-step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(15, 110, 86, 0.08);
+    color: var(--accent-electric);
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .success-step strong {
+    font-size: 15px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .success-step p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Actions */
+  .success-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s ease-out 0.5s both;
+  }
+
+  .success-btn {
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.3s;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .success-btn.whatsapp {
+    background: #25D366;
+    color: #fff;
+  }
+
+  .success-btn.whatsapp:hover {
+    background: #1DA851;
+    transform: translateY(-2px);
+  }
+
+  .success-btn.home {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .success-btn.home:hover {
+    border-color: var(--accent-electric);
+    color: var(--accent-electric);
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .success-page {
+      padding: 100px 16px 60px;
+      align-items: flex-start;
+    }
+
+    .success-container h1 {
+      font-size: 32px;
+      letter-spacing: -1px;
+    }
+
+    .success-steps {
+      padding: 24px 20px;
+    }
+
+    .success-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .success-btn {
+      justify-content: center;
+    }
+  }
+</style>
