@@ -8,8 +8,11 @@ import PageLayout from '../layouts/PageLayout.astro';
  *  Replace the placeholder URLs below with your real Stripe
  *  Payment Link URLs. See /docs/STRIPE-SETUP.md for details.
  *
+ *  Stripe Payment Links support ?quantity=N parameter.
+ *  The JS below appends the total child count automatically.
+ *
  *  1. Create Payment Links in Stripe Dashboard
- *  2. Add custom fields: Child's Name, Age, Language (EN/DE)
+ *  2. Add custom fields: Child names, Ages, Language (EN/DE)
  *  3. Set success redirect to: https://creatorport.com.hk/success
  *  4. Paste URLs below
  * ============================================================
@@ -18,6 +21,9 @@ const STRIPE_LINKS = {
   camp: 'https://buy.stripe.com/REPLACE_WITH_CAMP_LINK',
   tlp:  'https://buy.stripe.com/REPLACE_WITH_TLP_LINK',
 };
+
+const CAMP_PRICE = 3000;
+const TLP_PRICE = 3600;
 ---
 
 <PageLayout
@@ -33,78 +39,148 @@ const STRIPE_LINKS = {
     <div class="checkout-header">
       <h1 data-lang-en>Book a Spot</h1>
       <h1 data-lang-de>Platz buchen</h1>
-      <p data-lang-en>Choose a program and pay securely. Apple&nbsp;Pay, credit&nbsp;card, or FPS.</p>
-      <p data-lang-de>Programm w&auml;hlen und sicher bezahlen. Apple&nbsp;Pay, Kreditkarte oder FPS.</p>
+      <p data-lang-en>Choose a program, select children, pay securely.</p>
+      <p data-lang-de>Programm w&auml;hlen, Kinder ausw&auml;hlen, sicher bezahlen.</p>
     </div>
 
-    <!-- Program Cards -->
-    <div class="checkout-programs">
+    <!-- Step 1: Program Tabs -->
+    <div class="step-section">
+      <div class="step-label"><span class="step-num">1</span> <span data-lang-en>Choose program</span><span data-lang-de>Programm w&auml;hlen</span></div>
+      <div class="program-tabs">
+        <button class="program-tab active" data-tab="camp" type="button">
+          <span class="tab-icon"></span>
+          <span class="tab-name">Make Mars Green</span>
+          <span class="tab-meta" data-lang-en>Summer Camp &middot; $3,000</span>
+          <span class="tab-meta" data-lang-de>Sommercamp &middot; $3.000</span>
+        </button>
+        <button class="program-tab" data-tab="tlp" type="button">
+          <span class="tab-icon"></span>
+          <span class="tab-name">Think. Learn. Present.</span>
+          <span class="tab-meta" data-lang-en>Online &middot; $3,600</span>
+          <span class="tab-meta" data-lang-de>Online &middot; $3.600</span>
+        </button>
+      </div>
+    </div>
 
-      <!-- Camp Card -->
-      <div class="checkout-card" id="card-camp" data-program="camp">
-        <div class="checkout-card-badge" data-lang-en>Most Popular</div>
-        <div class="checkout-card-badge" data-lang-de>Beliebtestes</div>
-        <div class="checkout-card-icon"></div>
-        <h2>Make Mars Green</h2>
-        <div class="checkout-card-sub" data-lang-en>3&ndash;7 Aug &middot; Mon&ndash;Fri &middot; 9:00&ndash;12:00</div>
-        <div class="checkout-card-sub" data-lang-de>3.&ndash;7. Aug &middot; Mo&ndash;Fr &middot; 9:00&ndash;12:00</div>
-        <div class="checkout-card-details">
-          <span data-lang-en>5 days &times; 3 hours &middot; Central, Hong Kong &middot; all materials included</span>
-          <span data-lang-de>5 Tage &times; 3 Std. &middot; Central, Hong Kong &middot; alle Materialien inklusive</span>
+    <!-- Step 2: Camp Details + Child Counter -->
+    <div class="step-section" id="step-details">
+
+      <!-- CAMP panel -->
+      <div class="program-panel active" id="panel-camp">
+        <div class="step-label"><span class="step-num">2</span> <span data-lang-en>How many children?</span><span data-lang-de>Wie viele Kinder?</span></div>
+        <div class="panel-info">
+          <div class="panel-info-row">
+            <span class="panel-info-icon"></span>
+            <span data-lang-en>3&ndash;7 Aug 2026 &middot; Mon&ndash;Fri &middot; 9:00&ndash;12:00</span>
+            <span data-lang-de>3.&ndash;7. Aug 2026 &middot; Mo&ndash;Fr &middot; 9:00&ndash;12:00</span>
+          </div>
+          <div class="panel-info-row">
+            <span class="panel-info-icon"></span>
+            <span>Central, Hong Kong</span>
+          </div>
+          <div class="panel-info-row">
+            <span class="panel-info-icon"></span>
+            <span data-lang-en>All materials included &middot; Kids keep what they build</span>
+            <span data-lang-de>Alle Materialien inklusive &middot; Kinder behalten, was sie bauen</span>
+          </div>
         </div>
-        <div class="checkout-card-price">
-          <span class="price-big">$3,000</span>
-          <span class="price-currency">HKD</span>
+
+        <!-- Age Group Counters -->
+        <div class="age-groups">
+          <div class="age-group">
+            <div class="age-group-info">
+              <div class="age-group-name" data-lang-en>Age 5&ndash;7</div>
+              <div class="age-group-name" data-lang-de>Alter 5&ndash;7</div>
+              <div class="age-group-price">$3,000 <span>HKD</span></div>
+            </div>
+            <div class="counter">
+              <button class="counter-btn minus" data-group="young" type="button" disabled>&minus;</button>
+              <span class="counter-value" id="count-young">0</span>
+              <button class="counter-btn plus" data-group="young" type="button">+</button>
+            </div>
+          </div>
+          <div class="age-group">
+            <div class="age-group-info">
+              <div class="age-group-name" data-lang-en>Age 8&ndash;12</div>
+              <div class="age-group-name" data-lang-de>Alter 8&ndash;12</div>
+              <div class="age-group-price">$3,000 <span>HKD</span></div>
+            </div>
+            <div class="counter">
+              <button class="counter-btn minus" data-group="older" type="button" disabled>&minus;</button>
+              <span class="counter-value" id="count-older">0</span>
+              <button class="counter-btn plus" data-group="older" type="button">+</button>
+            </div>
+          </div>
         </div>
-        <ul class="checkout-card-features">
-          <li data-lang-en>Age 5&ndash;7 &middot; Age 8&ndash;12</li>
-          <li data-lang-de>Alter 5&ndash;7 &middot; Alter 8&ndash;12</li>
-          <li data-lang-en>English or German</li>
-          <li data-lang-de>Englisch oder Deutsch</li>
-          <li data-lang-en>Central, Hong Kong</li>
-          <li data-lang-de>Central, Hong Kong</li>
-          <li data-lang-en>Kids keep what they build</li>
-          <li data-lang-de>Kinder behalten, was sie bauen</li>
-        </ul>
-        <a href={STRIPE_LINKS.camp} class="checkout-pay-btn" data-program="camp">
-          <span class="pay-icon" data-lang-en> Pay with Apple Pay / Card</span>
-          <span class="pay-icon" data-lang-de> Mit Apple Pay / Karte bezahlen</span>
-        </a>
-        <div class="checkout-card-trust" data-lang-en>Secure payment via Stripe. 256-bit encryption.</div>
-        <div class="checkout-card-trust" data-lang-de>Sichere Zahlung &uuml;ber Stripe. 256-Bit-Verschl&uuml;sselung.</div>
       </div>
 
-      <!-- TLP Card -->
-      <div class="checkout-card" id="card-tlp" data-program="tlp">
-        <div class="checkout-card-icon"></div>
-        <h2>Think. Learn. Present.</h2>
-        <div class="checkout-card-sub" data-lang-en>Online &middot; Ages 14+</div>
-        <div class="checkout-card-sub" data-lang-de>Online &middot; Ab 14 Jahre</div>
-        <div class="checkout-card-details">
-          <span data-lang-en>8 sessions &times; 60 min &middot; $450 HKD / session</span>
-          <span data-lang-de>8 Sitzungen &times; 60 Min. &middot; $450 HKD / Sitzung</span>
+      <!-- TLP panel -->
+      <div class="program-panel" id="panel-tlp">
+        <div class="step-label"><span class="step-num">2</span> <span data-lang-en>How many students?</span><span data-lang-de>Wie viele Sch&uuml;ler?</span></div>
+        <div class="panel-info">
+          <div class="panel-info-row">
+            <span class="panel-info-icon"></span>
+            <span data-lang-en>8 sessions &times; 60 min &middot; Online worldwide</span>
+            <span data-lang-de>8 Sitzungen &times; 60 Min. &middot; Online weltweit</span>
+          </div>
+          <div class="panel-info-row">
+            <span class="panel-info-icon"></span>
+            <span data-lang-en>Ages 14+ &middot; 1&ndash;2 classes per week</span>
+            <span data-lang-de>Ab 14 &middot; 1&ndash;2 Klassen pro Woche</span>
+          </div>
+          <div class="panel-info-row">
+            <span class="panel-info-icon"></span>
+            <span data-lang-en>Demo Day &amp; certificate</span>
+            <span data-lang-de>Demo Day &amp; Zertifikat</span>
+          </div>
         </div>
-        <div class="checkout-card-price">
-          <span class="price-big">$3,600</span>
-          <span class="price-currency">HKD / module</span>
+
+        <div class="age-groups">
+          <div class="age-group">
+            <div class="age-group-info">
+              <div class="age-group-name" data-lang-en>Student (14+)</div>
+              <div class="age-group-name" data-lang-de>Sch&uuml;ler (14+)</div>
+              <div class="age-group-price">$3,600 <span>HKD / module</span></div>
+            </div>
+            <div class="counter">
+              <button class="counter-btn minus" data-group="tlp" type="button" disabled>&minus;</button>
+              <span class="counter-value" id="count-tlp">0</span>
+              <button class="counter-btn plus" data-group="tlp" type="button">+</button>
+            </div>
+          </div>
         </div>
-        <ul class="checkout-card-features">
-          <li data-lang-en>Max 6 students</li>
-          <li data-lang-de>Max. 6 Sch&uuml;ler</li>
-          <li data-lang-en>Memory techniques &amp; learning science</li>
-          <li data-lang-de>Ged&auml;chtnistechniken &amp; Lernwissenschaft</li>
-          <li data-lang-en>Presentation coaching &amp; feedback</li>
-          <li data-lang-de>Pr&auml;sentations-Coaching &amp; Feedback</li>
-          <li data-lang-en>Demo Day &amp; certificate</li>
-          <li data-lang-de>Demo Day &amp; Zertifikat</li>
-        </ul>
-        <a href={STRIPE_LINKS.tlp} class="checkout-pay-btn secondary" data-program="tlp">
-          <span class="pay-icon" data-lang-en> Pay with Apple Pay / Card</span>
-          <span class="pay-icon" data-lang-de> Mit Apple Pay / Karte bezahlen</span>
-        </a>
-        <div class="checkout-card-trust" data-lang-en>Secure payment via Stripe. 256-bit encryption.</div>
-        <div class="checkout-card-trust" data-lang-de>Sichere Zahlung &uuml;ber Stripe. 256-Bit-Verschl&uuml;sselung.</div>
       </div>
+    </div>
+
+    <!-- Booking Summary (hidden until items selected) -->
+    <div class="summary-section" id="bookingSummary" style="display: none;">
+      <div class="step-label"><span class="step-num">3</span> <span data-lang-en>Booking summary</span><span data-lang-de>Buchungs&uuml;bersicht</span></div>
+      <div class="summary-card">
+        <div class="summary-lines" id="summaryLines">
+          <!-- filled by JS -->
+        </div>
+        <div class="summary-divider"></div>
+        <div class="summary-total">
+          <span data-lang-en>Total</span><span data-lang-de>Gesamt</span>
+          <span class="summary-total-amount" id="summaryTotal">$0 HKD</span>
+        </div>
+
+        <!-- Pay Button -->
+        <a href="#" class="checkout-pay-btn" id="payBtn">
+          <span data-lang-en>Pay <span id="payAmountEn">$0 HKD</span> &mdash; Apple Pay / Card</span>
+          <span data-lang-de><span id="payAmountDe">$0 HKD</span> bezahlen &mdash; Apple Pay / Karte</span>
+        </a>
+        <div class="summary-trust">
+          <span data-lang-en>Secure payment via Stripe &middot; 100% money-back guarantee</span>
+          <span data-lang-de>Sichere Zahlung via Stripe &middot; 100% Geld-zur&uuml;ck-Garantie</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty state hint -->
+    <div class="empty-hint" id="emptyHint">
+      <p data-lang-en>Select at least one child above to continue.</p>
+      <p data-lang-de>W&auml;hle oben mindestens ein Kind aus, um fortzufahren.</p>
     </div>
 
     <!-- FPS Alternative -->
@@ -116,47 +192,28 @@ const STRIPE_LINKS = {
       <div class="checkout-fps-card">
         <div class="checkout-fps-inner">
           <div class="checkout-fps-qr">
-            <img src="/img/fps-qr.jpg" alt="FPS QR Code" width="160" height="160" />
+            <img src="/img/fps-qr.jpg" alt="FPS QR Code" width="140" height="140" />
           </div>
           <div class="checkout-fps-info">
             <h3 data-lang-en>Scan with your banking app</h3>
             <h3 data-lang-de>Mit Banking-App scannen</h3>
-            <p data-lang-en>Pay via FPS using HSBC, Hang Seng, BOC, or any HK bank.</p>
-            <p data-lang-de>Per FPS bezahlen &uuml;ber HSBC, Hang Seng, BOC oder jede HK-Bank.</p>
+            <p data-lang-en>HSBC, Hang Seng, BOC, or any HK bank.</p>
+            <p data-lang-de>&Uuml;ber HSBC, Hang Seng, BOC oder jede HK-Bank.</p>
             <div class="fps-id-row">
               <span class="fps-label">FPS ID:</span>
-              <span class="fps-number" id="fpsNumber">126847250</span>
+              <span class="fps-number">126847250</span>
               <button class="fps-copy" id="fpsCopyBtn" type="button" data-lang-en>Copy</button>
               <button class="fps-copy" id="fpsCopyBtn2" type="button" data-lang-de>Kopieren</button>
               <span class="fps-copied" id="fpsCopied">&#x2713;</span>
             </div>
             <a href="https://wa.me/85265427963?text=Hi%21%20I%27ve%20paid%20via%20FPS.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Program%3A%0A-%20FPS%20reference%3A" target="_blank" class="fps-confirm-btn" data-lang-en>
-              Confirm payment on WhatsApp
+              Confirm on WhatsApp
             </a>
             <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20habe%20per%20FPS%20bezahlt.%0A-%20Name%20des%20Kindes%3A%0A-%20Alter%3A%0A-%20Programm%3A%0A-%20FPS-Referenz%3A" target="_blank" class="fps-confirm-btn" data-lang-de>
-              Zahlung per WhatsApp best&auml;tigen
+              Per WhatsApp best&auml;tigen
             </a>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Trust Signals -->
-    <div class="checkout-trust">
-      <div class="trust-item">
-        <span class="trust-icon"></span>
-        <span data-lang-en>100% money-back guarantee</span>
-        <span data-lang-de>100% Geld-zur&uuml;ck-Garantie</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon"></span>
-        <span data-lang-en>Secure payment</span>
-        <span data-lang-de>Sichere Zahlung</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon"></span>
-        <span data-lang-en>Instant confirmation</span>
-        <span data-lang-de>Sofortige Best&auml;tigung</span>
       </div>
     </div>
 
@@ -178,127 +235,304 @@ const STRIPE_LINKS = {
   }
 
   .checkout-container {
-    max-width: 800px;
+    max-width: 640px;
     margin: 0 auto;
   }
 
   /* Header */
   .checkout-header {
     text-align: center;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
   }
 
   .checkout-header h1 {
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 800;
     letter-spacing: -2px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .checkout-header p {
-    font-size: 16px;
+    font-size: 15px;
     color: var(--text-secondary);
-    max-width: 400px;
-    margin: 0 auto;
   }
 
-  /* Program Cards */
-  .checkout-programs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 48px;
+  /* Steps */
+  .step-section {
+    margin-bottom: 32px;
   }
 
-  .checkout-card {
-    background: var(--bg-card);
-    border: 2px solid var(--border-subtle);
-    border-radius: 20px;
-    padding: 32px 24px;
-    position: relative;
-    transition: all 0.3s;
+  .step-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
-  .checkout-card:first-child {
-    border-color: var(--accent-electric);
-  }
-
-  .checkout-card-badge {
-    position: absolute;
-    top: -12px;
-    left: 24px;
+  .step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
     background: var(--accent-electric);
     color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 4px 14px;
-    border-radius: 100px;
-  }
-
-  .checkout-card-icon {
-    font-size: 36px;
-    margin-bottom: 16px;
-  }
-
-  .checkout-card h2 {
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    margin-bottom: 4px;
-  }
-
-  .checkout-card-sub {
+    font-family: 'Space Mono', monospace;
     font-size: 13px;
-    color: var(--accent-electric);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
   }
 
-  .checkout-card-details {
-    font-size: 13px;
-    color: var(--text-secondary);
-    margin-bottom: 16px;
+  /* Program Tabs */
+  .program-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 
-  .checkout-card-price {
+  .program-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 20px 16px;
+    background: var(--bg-card);
+    border: 2px solid var(--border-subtle);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: 'Sora', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .program-tab:hover {
+    border-color: rgba(15, 110, 86, 0.3);
+  }
+
+  .program-tab.active {
+    border-color: var(--accent-electric);
+    background: rgba(15, 110, 86, 0.04);
+    box-shadow: 0 2px 16px rgba(15, 110, 86, 0.1);
+  }
+
+  .tab-icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .tab-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+  }
+
+  .tab-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* Program Panel */
+  .program-panel {
+    display: none;
+  }
+
+  .program-panel.active {
+    display: block;
+  }
+
+  .panel-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+    background: rgba(15, 110, 86, 0.04);
+    border: 1px solid rgba(15, 110, 86, 0.1);
+    border-radius: 14px;
     margin-bottom: 20px;
   }
 
-  .price-big {
-    font-size: 36px;
-    font-weight: 800;
-    letter-spacing: -1.5px;
+  .panel-info-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
   }
 
-  .price-currency {
+  .panel-info-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+  }
+
+  /* Age Group Counters */
+  .age-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .age-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    transition: border-color 0.2s;
+  }
+
+  .age-group.has-count {
+    border-color: var(--accent-electric);
+    background: rgba(15, 110, 86, 0.02);
+  }
+
+  .age-group-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .age-group-price {
     font-size: 14px;
     color: var(--text-muted);
-    font-weight: 400;
   }
 
-  .checkout-card-features {
-    list-style: none;
+  .age-group-price span {
+    font-size: 12px;
+  }
+
+  /* Counter */
+  .counter {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: rgba(44, 44, 42, 0.04);
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+  }
+
+  .counter-btn {
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'Sora', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .counter-btn:hover:not(:disabled) {
+    background: rgba(15, 110, 86, 0.08);
+    color: var(--accent-electric);
+  }
+
+  .counter-btn:active:not(:disabled) {
+    background: rgba(15, 110, 86, 0.15);
+  }
+
+  .counter-btn:disabled {
+    opacity: 0.25;
+    cursor: default;
+  }
+
+  .counter-value {
+    width: 40px;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    border-left: 1px solid var(--border-subtle);
+    border-right: 1px solid var(--border-subtle);
+    line-height: 44px;
+  }
+
+  /* Summary */
+  .summary-section {
+    margin-bottom: 32px;
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .summary-card {
+    background: var(--bg-card);
+    border: 2px solid var(--accent-electric);
+    border-radius: 20px;
+    padding: 24px;
+  }
+
+  .summary-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .summary-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+  }
+
+  .summary-line-label {
+    color: var(--text-secondary);
+  }
+
+  .summary-line-label strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .summary-line-price {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 15px;
+    white-space: nowrap;
+  }
+
+  .summary-divider {
+    height: 1px;
+    background: var(--border-subtle);
+    margin: 16px 0;
+  }
+
+  .summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
     margin-bottom: 24px;
   }
 
-  .checkout-card-features li {
-    font-size: 13px;
-    color: var(--text-secondary);
-    padding: 4px 0;
-    padding-left: 20px;
-    position: relative;
-  }
-
-  .checkout-card-features li::before {
-    content: '\2713';
-    position: absolute;
-    left: 0;
-    color: var(--accent-amber);
+  .summary-total-amount {
+    font-family: 'Space Mono', monospace;
+    font-size: 24px;
     font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--accent-electric);
   }
 
   /* Pay Button */
@@ -307,17 +541,17 @@ const STRIPE_LINKS = {
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 16px 24px;
+    padding: 18px 24px;
     border-radius: 14px;
     background: #000;
     color: #fff;
     font-family: 'Sora', sans-serif;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 17px;
     text-decoration: none;
     transition: all 0.3s;
     gap: 8px;
-    min-height: 54px;
+    min-height: 56px;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -330,31 +564,25 @@ const STRIPE_LINKS = {
     transform: translateY(0);
   }
 
-  .checkout-pay-btn.secondary {
-    background: var(--accent-electric);
-  }
-
-  .checkout-pay-btn.secondary:hover {
-    background: #0A5A45;
-    box-shadow: 0 8px 32px rgba(15, 110, 86, 0.3);
-  }
-
-  .pay-icon {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .checkout-card-trust {
-    font-size: 11px;
+  .summary-trust {
+    font-size: 12px;
     color: var(--text-muted);
     text-align: center;
     margin-top: 12px;
   }
 
+  /* Empty hint */
+  .empty-hint {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
   /* FPS Section */
   .checkout-fps-section {
-    margin-bottom: 48px;
+    margin-bottom: 40px;
   }
 
   .checkout-fps-divider {
@@ -388,12 +616,12 @@ const STRIPE_LINKS = {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: 20px;
-    padding: 32px;
+    padding: 28px;
   }
 
   .checkout-fps-inner {
     display: flex;
-    gap: 32px;
+    gap: 24px;
     align-items: center;
   }
 
@@ -401,7 +629,7 @@ const STRIPE_LINKS = {
     flex-shrink: 0;
     background: #fff;
     border-radius: 12px;
-    padding: 12px;
+    padding: 10px;
   }
 
   .checkout-fps-qr img {
@@ -410,47 +638,47 @@ const STRIPE_LINKS = {
   }
 
   .checkout-fps-info h3 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
-    margin-bottom: 8px;
-    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
   }
 
   .checkout-fps-info p {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-secondary);
-    margin-bottom: 16px;
-    line-height: 1.6;
+    margin-bottom: 14px;
+    line-height: 1.5;
   }
 
   .fps-id-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 16px;
+    gap: 8px;
+    margin-bottom: 14px;
     flex-wrap: wrap;
   }
 
   .fps-label {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--text-muted);
     font-weight: 600;
   }
 
   .fps-number {
     font-family: 'Space Mono', monospace;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 2px;
   }
 
   .fps-copy {
-    padding: 6px 14px;
+    padding: 5px 12px;
     border: 1px solid var(--border-subtle);
     border-radius: 8px;
     background: transparent;
     font-family: 'Sora', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     color: var(--accent-electric);
     cursor: pointer;
@@ -478,12 +706,12 @@ const STRIPE_LINKS = {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 24px;
+    padding: 10px 20px;
     background: #25D366;
     color: #fff;
     font-family: 'Sora', sans-serif;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13px;
     border-radius: 100px;
     text-decoration: none;
     transition: all 0.3s;
@@ -493,28 +721,6 @@ const STRIPE_LINKS = {
   .fps-confirm-btn:hover {
     background: #1DA851;
     transform: translateY(-1px);
-  }
-
-  /* Trust Signals */
-  .checkout-trust {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    margin-bottom: 32px;
-    flex-wrap: wrap;
-  }
-
-  .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--text-muted);
-    font-weight: 500;
-  }
-
-  .trust-icon {
-    font-size: 18px;
   }
 
   /* Help */
@@ -537,21 +743,32 @@ const STRIPE_LINKS = {
     }
 
     .checkout-header h1 {
-      font-size: 32px;
+      font-size: 28px;
       letter-spacing: -1px;
     }
 
-    .checkout-programs {
-      grid-template-columns: 1fr;
-      gap: 16px;
+    .program-tab {
+      padding: 16px 12px;
     }
 
-    .checkout-card {
-      padding: 28px 20px;
+    .tab-name {
+      font-size: 13px;
     }
 
-    .price-big {
-      font-size: 32px;
+    .age-group {
+      padding: 16px;
+    }
+
+    .age-group-name {
+      font-size: 15px;
+    }
+
+    .summary-card {
+      padding: 20px;
+    }
+
+    .summary-total-amount {
+      font-size: 20px;
     }
 
     .checkout-fps-inner {
@@ -562,32 +779,150 @@ const STRIPE_LINKS = {
     .fps-id-row {
       justify-content: center;
     }
-
-    .checkout-trust {
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-  }
-
-  /* Highlight on URL param */
-  .checkout-card.selected {
-    border-color: var(--accent-electric);
-    box-shadow: 0 4px 24px rgba(15, 110, 86, 0.12);
   }
 </style>
 
-<script>
-  // Auto-select program from URL param (?program=camp or ?program=tlp)
-  const params = new URLSearchParams(window.location.search);
-  const program = params.get('program');
+<script define:vars={{ STRIPE_LINKS, CAMP_PRICE, TLP_PRICE }}>
+  // State
+  const state = {
+    program: 'camp',
+    counts: { young: 0, older: 0, tlp: 0 },
+  };
 
-  if (program === 'camp' || program === 'tlp') {
-    const card = document.getElementById(`card-${program}`);
-    if (card) {
-      card.classList.add('selected');
-      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  // Elements
+  const tabs = document.querySelectorAll('.program-tab');
+  const panels = document.querySelectorAll('.program-panel');
+  const summaryEl = document.getElementById('bookingSummary');
+  const summaryLines = document.getElementById('summaryLines');
+  const summaryTotal = document.getElementById('summaryTotal');
+  const payBtn = document.getElementById('payBtn') as HTMLAnchorElement;
+  const payAmountEn = document.getElementById('payAmountEn');
+  const payAmountDe = document.getElementById('payAmountDe');
+  const emptyHint = document.getElementById('emptyHint');
+
+  // Tab switching
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = (tab as HTMLElement).dataset.tab!;
+      state.program = target;
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      panels.forEach(p => p.classList.remove('active'));
+      document.getElementById(`panel-${target}`)?.classList.add('active');
+      updateSummary();
+    });
+  });
+
+  // Counter buttons
+  document.querySelectorAll('.counter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = (btn as HTMLElement).dataset.group as keyof typeof state.counts;
+      const isPlus = btn.classList.contains('plus');
+
+      if (isPlus && state.counts[group] < 6) {
+        state.counts[group]++;
+      } else if (!isPlus && state.counts[group] > 0) {
+        state.counts[group]--;
+      }
+
+      // Update display
+      const countEl = document.getElementById(`count-${group}`);
+      if (countEl) countEl.textContent = String(state.counts[group]);
+
+      // Update button states
+      const parent = btn.closest('.counter')!;
+      const minus = parent.querySelector('.minus') as HTMLButtonElement;
+      const plus = parent.querySelector('.plus') as HTMLButtonElement;
+      minus.disabled = state.counts[group] === 0;
+      plus.disabled = state.counts[group] >= 6;
+
+      // Update age-group highlight
+      const ageGroup = btn.closest('.age-group');
+      if (ageGroup) {
+        ageGroup.classList.toggle('has-count', state.counts[group] > 0);
+      }
+
+      updateSummary();
+    });
+  });
+
+  function updateSummary() {
+    const lines: Array<{ label: string; labelDe: string; qty: number; price: number }> = [];
+
+    if (state.program === 'camp') {
+      if (state.counts.young > 0) {
+        lines.push({
+          label: `${state.counts.young}\u00d7 Camp \u2014 Age 5\u20137`,
+          labelDe: `${state.counts.young}\u00d7 Camp \u2014 Alter 5\u20137`,
+          qty: state.counts.young,
+          price: state.counts.young * CAMP_PRICE,
+        });
+      }
+      if (state.counts.older > 0) {
+        lines.push({
+          label: `${state.counts.older}\u00d7 Camp \u2014 Age 8\u201312`,
+          labelDe: `${state.counts.older}\u00d7 Camp \u2014 Alter 8\u201312`,
+          qty: state.counts.older,
+          price: state.counts.older * CAMP_PRICE,
+        });
+      }
+    } else {
+      if (state.counts.tlp > 0) {
+        lines.push({
+          label: `${state.counts.tlp}\u00d7 Think.Learn.Present.`,
+          labelDe: `${state.counts.tlp}\u00d7 Think.Learn.Present.`,
+          qty: state.counts.tlp,
+          price: state.counts.tlp * TLP_PRICE,
+        });
+      }
     }
+
+    const total = lines.reduce((sum, l) => sum + l.price, 0);
+    const totalQty = lines.reduce((sum, l) => sum + l.qty, 0);
+    const hasItems = lines.length > 0;
+
+    // Toggle visibility
+    if (summaryEl) summaryEl.style.display = hasItems ? 'block' : 'none';
+    if (emptyHint) emptyHint.style.display = hasItems ? 'none' : 'block';
+
+    // Build summary lines
+    if (summaryLines) {
+      summaryLines.innerHTML = lines.map(l => `
+        <div class="summary-line">
+          <span class="summary-line-label"><strong data-lang-en>${l.label}</strong><strong data-lang-de>${l.labelDe}</strong></span>
+          <span class="summary-line-price">$${l.price.toLocaleString()} HKD</span>
+        </div>
+      `).join('');
+
+      // Re-apply language state
+      const isDE = document.body.classList.contains('lang-de');
+      summaryLines.querySelectorAll('[data-lang-en]').forEach(el => {
+        (el as HTMLElement).style.display = isDE ? 'none' : '';
+      });
+      summaryLines.querySelectorAll('[data-lang-de]').forEach(el => {
+        (el as HTMLElement).style.display = isDE ? '' : 'none';
+      });
+    }
+
+    // Update total
+    const formatted = `$${total.toLocaleString()} HKD`;
+    if (summaryTotal) summaryTotal.textContent = formatted;
+    if (payAmountEn) payAmountEn.textContent = formatted;
+    if (payAmountDe) payAmountDe.textContent = formatted;
+
+    // Update pay button link
+    if (payBtn && hasItems) {
+      const baseLink = state.program === 'camp' ? STRIPE_LINKS.camp : STRIPE_LINKS.tlp;
+      const sep = baseLink.includes('?') ? '&' : '?';
+      payBtn.href = `${baseLink}${sep}quantity=${totalQty}`;
+    }
+  }
+
+  // Auto-select from URL param
+  const params = new URLSearchParams(window.location.search);
+  const urlProgram = params.get('program');
+  if (urlProgram === 'tlp') {
+    (document.querySelector('[data-tab="tlp"]') as HTMLElement)?.click();
   }
 
   // FPS Copy
