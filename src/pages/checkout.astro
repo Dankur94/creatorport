@@ -183,36 +183,31 @@ const TLP_PRICE = 3600;
       <p data-lang-de>W&auml;hle oben mindestens ein Kind aus, um fortzufahren.</p>
     </div>
 
-    <!-- FPS Alternative -->
-    <div class="checkout-fps-section">
-      <div class="checkout-fps-divider">
-        <span data-lang-en>or pay via FPS (no fees)</span>
-        <span data-lang-de>oder per FPS bezahlen (keine Geb&uuml;hren)</span>
-      </div>
-      <div class="checkout-fps-card">
-        <div class="checkout-fps-inner">
-          <div class="checkout-fps-qr">
-            <img src="/img/fps-qr.jpg" alt="FPS QR Code" width="140" height="140" />
+    <!-- FPS Alternative (collapsible) -->
+    <div class="fps-accordion">
+      <button class="fps-toggle" id="fpsToggle" type="button">
+        <span data-lang-en>Prefer bank transfer? Pay via FPS (no fees)</span>
+        <span data-lang-de>Lieber per Bank? Per FPS bezahlen (keine Geb&uuml;hren)</span>
+        <span class="fps-chevron">&#9662;</span>
+      </button>
+      <div class="fps-collapse" id="fpsCollapse">
+        <div class="fps-collapse-inner">
+          <div class="fps-qr-wrap">
+            <img src="/img/fps-qr.jpg" alt="FPS QR Code" width="120" height="120" />
           </div>
-          <div class="checkout-fps-info">
-            <h3 data-lang-en>Scan with your banking app</h3>
-            <h3 data-lang-de>Mit Banking-App scannen</h3>
-            <p data-lang-en>HSBC, Hang Seng, BOC, or any HK bank.</p>
-            <p data-lang-de>&Uuml;ber HSBC, Hang Seng, BOC oder jede HK-Bank.</p>
-            <div class="fps-id-row">
-              <span class="fps-label">FPS ID:</span>
-              <span class="fps-number">126847250</span>
-              <button class="fps-copy" id="fpsCopyBtn" type="button" data-lang-en>Copy</button>
-              <button class="fps-copy" id="fpsCopyBtn2" type="button" data-lang-de>Kopieren</button>
-              <span class="fps-copied" id="fpsCopied">&#x2713;</span>
-            </div>
-            <a href="https://wa.me/85265427963?text=Hi%21%20I%27ve%20paid%20via%20FPS.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Program%3A%0A-%20FPS%20reference%3A" target="_blank" class="fps-confirm-btn" data-lang-en>
-              Confirm on WhatsApp
-            </a>
-            <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20habe%20per%20FPS%20bezahlt.%0A-%20Name%20des%20Kindes%3A%0A-%20Alter%3A%0A-%20Programm%3A%0A-%20FPS-Referenz%3A" target="_blank" class="fps-confirm-btn" data-lang-de>
-              Per WhatsApp best&auml;tigen
-            </a>
+          <div class="fps-id-row">
+            <span class="fps-label">FPS ID:</span>
+            <span class="fps-number">126847250</span>
+            <button class="fps-copy" id="fpsCopyBtn" type="button" data-lang-en>Copy</button>
+            <button class="fps-copy" id="fpsCopyBtn2" type="button" data-lang-de>Kopieren</button>
+            <span class="fps-copied" id="fpsCopied">&#x2713;</span>
           </div>
+          <a href="https://wa.me/85265427963?text=Hi%21%20I%27ve%20paid%20via%20FPS.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Program%3A%0A-%20FPS%20reference%3A" target="_blank" class="fps-confirm-btn" data-lang-en>
+            Confirm on WhatsApp
+          </a>
+          <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20habe%20per%20FPS%20bezahlt.%0A-%20Name%20des%20Kindes%3A%0A-%20Alter%3A%0A-%20Programm%3A%0A-%20FPS-Referenz%3A" target="_blank" class="fps-confirm-btn" data-lang-de>
+            Per WhatsApp best&auml;tigen
+          </a>
         </div>
       </div>
     </div>
@@ -580,83 +575,81 @@ const TLP_PRICE = 3600;
     margin-bottom: 32px;
   }
 
-  /* FPS Section */
-  .checkout-fps-section {
+  /* FPS Accordion */
+  .fps-accordion {
     margin-bottom: 40px;
   }
 
-  .checkout-fps-divider {
-    text-align: center;
-    position: relative;
-    margin-bottom: 24px;
-  }
-
-  .checkout-fps-divider::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: var(--border-subtle);
-  }
-
-  .checkout-fps-divider span {
-    position: relative;
-    background: var(--bg-primary);
-    padding: 0 20px;
-    font-size: 13px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-  }
-
-  .checkout-fps-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 20px;
-    padding: 28px;
-  }
-
-  .checkout-fps-inner {
+  .fps-toggle {
+    width: 100%;
     display: flex;
-    gap: 24px;
     align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 20px;
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .checkout-fps-qr {
-    flex-shrink: 0;
+  .fps-toggle:hover {
+    border-color: rgba(15, 110, 86, 0.3);
+    color: var(--text-secondary);
+  }
+
+  .fps-chevron {
+    font-size: 10px;
+    transition: transform 0.3s;
+  }
+
+  .fps-accordion.open .fps-chevron {
+    transform: rotate(180deg);
+  }
+
+  .fps-collapse {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .fps-accordion.open .fps-collapse {
+    max-height: 400px;
+  }
+
+  .fps-collapse-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 20px 8px;
+    text-align: center;
+  }
+
+  .fps-qr-wrap {
     background: #fff;
     border-radius: 12px;
     padding: 10px;
+    border: 1px solid var(--border-subtle);
   }
 
-  .checkout-fps-qr img {
+  .fps-qr-wrap img {
     display: block;
     border-radius: 8px;
-  }
-
-  .checkout-fps-info h3 {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    letter-spacing: -0.3px;
-  }
-
-  .checkout-fps-info p {
-    font-size: 13px;
-    color: var(--text-secondary);
-    margin-bottom: 14px;
-    line-height: 1.5;
   }
 
   .fps-id-row {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 14px;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .fps-label {
@@ -771,14 +764,6 @@ const TLP_PRICE = 3600;
       font-size: 20px;
     }
 
-    .checkout-fps-inner {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .fps-id-row {
-      justify-content: center;
-    }
   }
 </style>
 
@@ -934,6 +919,15 @@ const TLP_PRICE = 3600;
   if (urlProgram === 'tlp') {
     var tlpTab = document.querySelector('[data-tab="tlp"]');
     if (tlpTab) tlpTab.click();
+  }
+
+  // FPS Accordion toggle
+  var fpsToggle = document.getElementById('fpsToggle');
+  var fpsAccordion = fpsToggle ? fpsToggle.closest('.fps-accordion') : null;
+  if (fpsToggle && fpsAccordion) {
+    fpsToggle.addEventListener('click', function() {
+      fpsAccordion.classList.toggle('open');
+    });
   }
 
   // FPS Copy
