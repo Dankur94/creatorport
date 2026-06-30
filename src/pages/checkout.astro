@@ -784,40 +784,41 @@ const TLP_PRICE = 3600;
 
 <script define:vars={{ STRIPE_LINKS, CAMP_PRICE, TLP_PRICE }}>
   // State
-  const state = {
+  var state = {
     program: 'camp',
     counts: { young: 0, older: 0, tlp: 0 },
   };
 
   // Elements
-  const tabs = document.querySelectorAll('.program-tab');
-  const panels = document.querySelectorAll('.program-panel');
-  const summaryEl = document.getElementById('bookingSummary');
-  const summaryLines = document.getElementById('summaryLines');
-  const summaryTotal = document.getElementById('summaryTotal');
-  const payBtn = document.getElementById('payBtn') as HTMLAnchorElement;
-  const payAmountEn = document.getElementById('payAmountEn');
-  const payAmountDe = document.getElementById('payAmountDe');
-  const emptyHint = document.getElementById('emptyHint');
+  var tabs = document.querySelectorAll('.program-tab');
+  var panels = document.querySelectorAll('.program-panel');
+  var summaryEl = document.getElementById('bookingSummary');
+  var summaryLines = document.getElementById('summaryLines');
+  var summaryTotal = document.getElementById('summaryTotal');
+  var payBtn = document.getElementById('payBtn');
+  var payAmountEn = document.getElementById('payAmountEn');
+  var payAmountDe = document.getElementById('payAmountDe');
+  var emptyHint = document.getElementById('emptyHint');
 
   // Tab switching
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = (tab as HTMLElement).dataset.tab!;
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var target = tab.dataset.tab;
       state.program = target;
-      tabs.forEach(t => t.classList.remove('active'));
+      tabs.forEach(function(t) { t.classList.remove('active'); });
       tab.classList.add('active');
-      panels.forEach(p => p.classList.remove('active'));
-      document.getElementById(`panel-${target}`)?.classList.add('active');
+      panels.forEach(function(p) { p.classList.remove('active'); });
+      var panel = document.getElementById('panel-' + target);
+      if (panel) panel.classList.add('active');
       updateSummary();
     });
   });
 
   // Counter buttons
-  document.querySelectorAll('.counter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const group = (btn as HTMLElement).dataset.group as keyof typeof state.counts;
-      const isPlus = btn.classList.contains('plus');
+  document.querySelectorAll('.counter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var group = btn.dataset.group;
+      var isPlus = btn.classList.contains('plus');
 
       if (isPlus && state.counts[group] < 6) {
         state.counts[group]++;
@@ -826,18 +827,20 @@ const TLP_PRICE = 3600;
       }
 
       // Update display
-      const countEl = document.getElementById(`count-${group}`);
+      var countEl = document.getElementById('count-' + group);
       if (countEl) countEl.textContent = String(state.counts[group]);
 
       // Update button states
-      const parent = btn.closest('.counter')!;
-      const minus = parent.querySelector('.minus') as HTMLButtonElement;
-      const plus = parent.querySelector('.plus') as HTMLButtonElement;
-      minus.disabled = state.counts[group] === 0;
-      plus.disabled = state.counts[group] >= 6;
+      var parent = btn.closest('.counter');
+      if (parent) {
+        var minus = parent.querySelector('.minus');
+        var plus = parent.querySelector('.plus');
+        if (minus) minus.disabled = state.counts[group] === 0;
+        if (plus) plus.disabled = state.counts[group] >= 6;
+      }
 
       // Update age-group highlight
-      const ageGroup = btn.closest('.age-group');
+      var ageGroup = btn.closest('.age-group');
       if (ageGroup) {
         ageGroup.classList.toggle('has-count', state.counts[group] > 0);
       }
@@ -847,21 +850,21 @@ const TLP_PRICE = 3600;
   });
 
   function updateSummary() {
-    const lines: Array<{ label: string; labelDe: string; qty: number; price: number }> = [];
+    var lines = [];
 
     if (state.program === 'camp') {
       if (state.counts.young > 0) {
         lines.push({
-          label: `${state.counts.young}\u00d7 Camp \u2014 Age 5\u20137`,
-          labelDe: `${state.counts.young}\u00d7 Camp \u2014 Alter 5\u20137`,
+          label: state.counts.young + '\u00d7 Camp \u2014 Age 5\u20137',
+          labelDe: state.counts.young + '\u00d7 Camp \u2014 Alter 5\u20137',
           qty: state.counts.young,
           price: state.counts.young * CAMP_PRICE,
         });
       }
       if (state.counts.older > 0) {
         lines.push({
-          label: `${state.counts.older}\u00d7 Camp \u2014 Age 8\u201312`,
-          labelDe: `${state.counts.older}\u00d7 Camp \u2014 Alter 8\u201312`,
+          label: state.counts.older + '\u00d7 Camp \u2014 Age 8\u201312',
+          labelDe: state.counts.older + '\u00d7 Camp \u2014 Alter 8\u201312',
           qty: state.counts.older,
           price: state.counts.older * CAMP_PRICE,
         });
@@ -869,17 +872,21 @@ const TLP_PRICE = 3600;
     } else {
       if (state.counts.tlp > 0) {
         lines.push({
-          label: `${state.counts.tlp}\u00d7 Think.Learn.Present.`,
-          labelDe: `${state.counts.tlp}\u00d7 Think.Learn.Present.`,
+          label: state.counts.tlp + '\u00d7 Think.Learn.Present.',
+          labelDe: state.counts.tlp + '\u00d7 Think.Learn.Present.',
           qty: state.counts.tlp,
           price: state.counts.tlp * TLP_PRICE,
         });
       }
     }
 
-    const total = lines.reduce((sum, l) => sum + l.price, 0);
-    const totalQty = lines.reduce((sum, l) => sum + l.qty, 0);
-    const hasItems = lines.length > 0;
+    var total = 0;
+    var totalQty = 0;
+    for (var i = 0; i < lines.length; i++) {
+      total += lines[i].price;
+      totalQty += lines[i].qty;
+    }
+    var hasItems = lines.length > 0;
 
     // Toggle visibility
     if (summaryEl) summaryEl.style.display = hasItems ? 'block' : 'none';
@@ -887,52 +894,56 @@ const TLP_PRICE = 3600;
 
     // Build summary lines
     if (summaryLines) {
-      summaryLines.innerHTML = lines.map(l => `
-        <div class="summary-line">
-          <span class="summary-line-label"><strong data-lang-en>${l.label}</strong><strong data-lang-de>${l.labelDe}</strong></span>
-          <span class="summary-line-price">$${l.price.toLocaleString()} HKD</span>
-        </div>
-      `).join('');
+      var html = '';
+      for (var j = 0; j < lines.length; j++) {
+        var l = lines[j];
+        html += '<div class="summary-line">' +
+          '<span class="summary-line-label"><strong data-lang-en>' + l.label + '</strong><strong data-lang-de>' + l.labelDe + '</strong></span>' +
+          '<span class="summary-line-price">$' + l.price.toLocaleString() + ' HKD</span>' +
+          '</div>';
+      }
+      summaryLines.innerHTML = html;
 
       // Re-apply language state
-      const isDE = document.body.classList.contains('lang-de');
-      summaryLines.querySelectorAll('[data-lang-en]').forEach(el => {
-        (el as HTMLElement).style.display = isDE ? 'none' : '';
+      var isDE = document.body.classList.contains('lang-de');
+      summaryLines.querySelectorAll('[data-lang-en]').forEach(function(el) {
+        el.style.display = isDE ? 'none' : '';
       });
-      summaryLines.querySelectorAll('[data-lang-de]').forEach(el => {
-        (el as HTMLElement).style.display = isDE ? '' : 'none';
+      summaryLines.querySelectorAll('[data-lang-de]').forEach(function(el) {
+        el.style.display = isDE ? '' : 'none';
       });
     }
 
     // Update total
-    const formatted = `$${total.toLocaleString()} HKD`;
+    var formatted = '$' + total.toLocaleString() + ' HKD';
     if (summaryTotal) summaryTotal.textContent = formatted;
     if (payAmountEn) payAmountEn.textContent = formatted;
     if (payAmountDe) payAmountDe.textContent = formatted;
 
     // Update pay button link
     if (payBtn && hasItems) {
-      const baseLink = state.program === 'camp' ? STRIPE_LINKS.camp : STRIPE_LINKS.tlp;
-      const sep = baseLink.includes('?') ? '&' : '?';
-      payBtn.href = `${baseLink}${sep}quantity=${totalQty}`;
+      var baseLink = state.program === 'camp' ? STRIPE_LINKS.camp : STRIPE_LINKS.tlp;
+      var sep = baseLink.includes('?') ? '&' : '?';
+      payBtn.href = baseLink + sep + 'quantity=' + totalQty;
     }
   }
 
   // Auto-select from URL param
-  const params = new URLSearchParams(window.location.search);
-  const urlProgram = params.get('program');
+  var params = new URLSearchParams(window.location.search);
+  var urlProgram = params.get('program');
   if (urlProgram === 'tlp') {
-    (document.querySelector('[data-tab="tlp"]') as HTMLElement)?.click();
+    var tlpTab = document.querySelector('[data-tab="tlp"]');
+    if (tlpTab) tlpTab.click();
   }
 
   // FPS Copy
-  document.querySelectorAll('#fpsCopyBtn, #fpsCopyBtn2').forEach(btn => {
-    btn.addEventListener('click', () => {
-      navigator.clipboard.writeText('126847250').then(() => {
-        const copied = document.getElementById('fpsCopied');
+  document.querySelectorAll('#fpsCopyBtn, #fpsCopyBtn2').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      navigator.clipboard.writeText('126847250').then(function() {
+        var copied = document.getElementById('fpsCopied');
         if (copied) {
           copied.classList.add('show');
-          setTimeout(() => copied.classList.remove('show'), 2000);
+          setTimeout(function() { copied.classList.remove('show'); }, 2000);
         }
       });
     });
