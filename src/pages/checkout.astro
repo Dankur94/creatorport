@@ -19,11 +19,9 @@ import PageLayout from '../layouts/PageLayout.astro';
  */
 const STRIPE_LINKS = {
   camp: 'https://buy.stripe.com/REPLACE_WITH_CAMP_LINK',
-  tlp:  'https://buy.stripe.com/REPLACE_WITH_TLP_LINK',
 };
 
-const CAMP_PRICE = 3000;
-const TLP_PRICE = 3600;
+const CAMP_PRICE = 3500;
 ---
 
 <PageLayout
@@ -43,21 +41,15 @@ const TLP_PRICE = 3600;
       <p data-lang-de>Programm w&auml;hlen, Kinder ausw&auml;hlen, sicher bezahlen.</p>
     </div>
 
-    <!-- Step 1: Program Tabs -->
+    <!-- Step 1: Program Info -->
     <div class="step-section">
-      <div class="step-label"><span class="step-num">1</span> <span data-lang-en>Choose program</span><span data-lang-de>Programm w&auml;hlen</span></div>
+      <div class="step-label"><span class="step-num">1</span> <span data-lang-en>Program</span><span data-lang-de>Programm</span></div>
       <div class="program-tabs">
         <button class="program-tab active" data-tab="camp" type="button">
           <span class="tab-icon"></span>
           <span class="tab-name">Make Mars Green</span>
-          <span class="tab-meta" data-lang-en>Summer Camp &middot; $3,000</span>
-          <span class="tab-meta" data-lang-de>Sommercamp &middot; $3.000</span>
-        </button>
-        <button class="program-tab" data-tab="tlp" type="button">
-          <span class="tab-icon"></span>
-          <span class="tab-name">Think. Learn. Present.</span>
-          <span class="tab-meta" data-lang-en>Online &middot; $3,600</span>
-          <span class="tab-meta" data-lang-de>Online &middot; $3.600</span>
+          <span class="tab-meta" data-lang-en>Summer Camp &middot; $3,500</span>
+          <span class="tab-meta" data-lang-de>Sommercamp &middot; $3.500</span>
         </button>
       </div>
     </div>
@@ -85,67 +77,18 @@ const TLP_PRICE = 3600;
           </div>
         </div>
 
-        <!-- Age Group Counters -->
+        <!-- Age Group Counter -->
         <div class="age-groups">
           <div class="age-group">
             <div class="age-group-info">
-              <div class="age-group-name" data-lang-en>Age 5&ndash;7</div>
-              <div class="age-group-name" data-lang-de>Alter 5&ndash;7</div>
-              <div class="age-group-price">$3,000 <span>HKD</span></div>
+              <div class="age-group-name" data-lang-en>Age 5&ndash;12</div>
+              <div class="age-group-name" data-lang-de>Alter 5&ndash;12</div>
+              <div class="age-group-price">$3,500 <span>HKD</span></div>
             </div>
             <div class="counter">
-              <button class="counter-btn minus" data-group="young" type="button" disabled>&minus;</button>
-              <span class="counter-value" id="count-young">0</span>
-              <button class="counter-btn plus" data-group="young" type="button">+</button>
-            </div>
-          </div>
-          <div class="age-group">
-            <div class="age-group-info">
-              <div class="age-group-name" data-lang-en>Age 8&ndash;12</div>
-              <div class="age-group-name" data-lang-de>Alter 8&ndash;12</div>
-              <div class="age-group-price">$3,000 <span>HKD</span></div>
-            </div>
-            <div class="counter">
-              <button class="counter-btn minus" data-group="older" type="button" disabled>&minus;</button>
-              <span class="counter-value" id="count-older">0</span>
-              <button class="counter-btn plus" data-group="older" type="button">+</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TLP panel -->
-      <div class="program-panel" id="panel-tlp">
-        <div class="step-label"><span class="step-num">2</span> <span data-lang-en>How many students?</span><span data-lang-de>Wie viele Sch&uuml;ler?</span></div>
-        <div class="panel-info">
-          <div class="panel-info-row">
-            <span class="panel-info-icon"></span>
-            <span data-lang-en>8 sessions &times; 60 min &middot; Online worldwide</span>
-            <span data-lang-de>8 Sitzungen &times; 60 Min. &middot; Online weltweit</span>
-          </div>
-          <div class="panel-info-row">
-            <span class="panel-info-icon"></span>
-            <span data-lang-en>Ages 14+ &middot; 1&ndash;2 classes per week</span>
-            <span data-lang-de>Ab 14 &middot; 1&ndash;2 Klassen pro Woche</span>
-          </div>
-          <div class="panel-info-row">
-            <span class="panel-info-icon"></span>
-            <span data-lang-en>Demo Day &amp; certificate</span>
-            <span data-lang-de>Demo Day &amp; Zertifikat</span>
-          </div>
-        </div>
-
-        <div class="age-groups">
-          <div class="age-group">
-            <div class="age-group-info">
-              <div class="age-group-name" data-lang-en>Student (14+)</div>
-              <div class="age-group-name" data-lang-de>Sch&uuml;ler (14+)</div>
-              <div class="age-group-price">$3,600 <span>HKD / module</span></div>
-            </div>
-            <div class="counter">
-              <button class="counter-btn minus" data-group="tlp" type="button" disabled>&minus;</button>
-              <span class="counter-value" id="count-tlp">0</span>
-              <button class="counter-btn plus" data-group="tlp" type="button">+</button>
+              <button class="counter-btn minus" data-group="camp" type="button" disabled>&minus;</button>
+              <span class="counter-value" id="count-camp">0</span>
+              <button class="counter-btn plus" data-group="camp" type="button">+</button>
             </div>
           </div>
         </div>
@@ -767,16 +710,13 @@ const TLP_PRICE = 3600;
   }
 </style>
 
-<script define:vars={{ STRIPE_LINKS, CAMP_PRICE, TLP_PRICE }}>
+<script define:vars={{ STRIPE_LINKS, CAMP_PRICE }}>
   // State
   var state = {
-    program: 'camp',
-    counts: { young: 0, older: 0, tlp: 0 },
+    count: 0,
   };
 
   // Elements
-  var tabs = document.querySelectorAll('.program-tab');
-  var panels = document.querySelectorAll('.program-panel');
   var summaryEl = document.getElementById('bookingSummary');
   var summaryLines = document.getElementById('summaryLines');
   var summaryTotal = document.getElementById('summaryTotal');
@@ -785,49 +725,34 @@ const TLP_PRICE = 3600;
   var payAmountDe = document.getElementById('payAmountDe');
   var emptyHint = document.getElementById('emptyHint');
 
-  // Tab switching
-  tabs.forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      var target = tab.dataset.tab;
-      state.program = target;
-      tabs.forEach(function(t) { t.classList.remove('active'); });
-      tab.classList.add('active');
-      panels.forEach(function(p) { p.classList.remove('active'); });
-      var panel = document.getElementById('panel-' + target);
-      if (panel) panel.classList.add('active');
-      updateSummary();
-    });
-  });
-
   // Counter buttons
   document.querySelectorAll('.counter-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
-      var group = btn.dataset.group;
       var isPlus = btn.classList.contains('plus');
 
-      if (isPlus && state.counts[group] < 6) {
-        state.counts[group]++;
-      } else if (!isPlus && state.counts[group] > 0) {
-        state.counts[group]--;
+      if (isPlus && state.count < 6) {
+        state.count++;
+      } else if (!isPlus && state.count > 0) {
+        state.count--;
       }
 
       // Update display
-      var countEl = document.getElementById('count-' + group);
-      if (countEl) countEl.textContent = String(state.counts[group]);
+      var countEl = document.getElementById('count-camp');
+      if (countEl) countEl.textContent = String(state.count);
 
       // Update button states
       var parent = btn.closest('.counter');
       if (parent) {
         var minus = parent.querySelector('.minus');
         var plus = parent.querySelector('.plus');
-        if (minus) minus.disabled = state.counts[group] === 0;
-        if (plus) plus.disabled = state.counts[group] >= 6;
+        if (minus) minus.disabled = state.count === 0;
+        if (plus) plus.disabled = state.count >= 6;
       }
 
       // Update age-group highlight
       var ageGroup = btn.closest('.age-group');
       if (ageGroup) {
-        ageGroup.classList.toggle('has-count', state.counts[group] > 0);
+        ageGroup.classList.toggle('has-count', state.count > 0);
       }
 
       updateSummary();
@@ -835,59 +760,21 @@ const TLP_PRICE = 3600;
   });
 
   function updateSummary() {
-    var lines = [];
-
-    if (state.program === 'camp') {
-      if (state.counts.young > 0) {
-        lines.push({
-          label: state.counts.young + '\u00d7 Camp \u2014 Age 5\u20137',
-          labelDe: state.counts.young + '\u00d7 Camp \u2014 Alter 5\u20137',
-          qty: state.counts.young,
-          price: state.counts.young * CAMP_PRICE,
-        });
-      }
-      if (state.counts.older > 0) {
-        lines.push({
-          label: state.counts.older + '\u00d7 Camp \u2014 Age 8\u201312',
-          labelDe: state.counts.older + '\u00d7 Camp \u2014 Alter 8\u201312',
-          qty: state.counts.older,
-          price: state.counts.older * CAMP_PRICE,
-        });
-      }
-    } else {
-      if (state.counts.tlp > 0) {
-        lines.push({
-          label: state.counts.tlp + '\u00d7 Think.Learn.Present.',
-          labelDe: state.counts.tlp + '\u00d7 Think.Learn.Present.',
-          qty: state.counts.tlp,
-          price: state.counts.tlp * TLP_PRICE,
-        });
-      }
-    }
-
-    var total = 0;
-    var totalQty = 0;
-    for (var i = 0; i < lines.length; i++) {
-      total += lines[i].price;
-      totalQty += lines[i].qty;
-    }
-    var hasItems = lines.length > 0;
+    var hasItems = state.count > 0;
+    var total = state.count * CAMP_PRICE;
 
     // Toggle visibility
     if (summaryEl) summaryEl.style.display = hasItems ? 'block' : 'none';
     if (emptyHint) emptyHint.style.display = hasItems ? 'none' : 'block';
 
     // Build summary lines
-    if (summaryLines) {
-      var html = '';
-      for (var j = 0; j < lines.length; j++) {
-        var l = lines[j];
-        html += '<div class="summary-line">' +
-          '<span class="summary-line-label"><strong data-lang-en>' + l.label + '</strong><strong data-lang-de>' + l.labelDe + '</strong></span>' +
-          '<span class="summary-line-price">$' + l.price.toLocaleString() + ' HKD</span>' +
-          '</div>';
-      }
-      summaryLines.innerHTML = html;
+    if (summaryLines && hasItems) {
+      var labelEn = state.count + '\u00d7 Make Mars Green \u2014 Age 5\u201312';
+      var labelDe = state.count + '\u00d7 Make Mars Green \u2014 Alter 5\u201312';
+      summaryLines.innerHTML = '<div class="summary-line">' +
+        '<span class="summary-line-label"><strong data-lang-en>' + labelEn + '</strong><strong data-lang-de>' + labelDe + '</strong></span>' +
+        '<span class="summary-line-price">$' + total.toLocaleString() + ' HKD</span>' +
+        '</div>';
 
       // Re-apply language state
       var isDE = document.body.classList.contains('lang-de');
@@ -907,18 +794,10 @@ const TLP_PRICE = 3600;
 
     // Update pay button link
     if (payBtn && hasItems) {
-      var baseLink = state.program === 'camp' ? STRIPE_LINKS.camp : STRIPE_LINKS.tlp;
+      var baseLink = STRIPE_LINKS.camp;
       var sep = baseLink.includes('?') ? '&' : '?';
-      payBtn.href = baseLink + sep + 'quantity=' + totalQty;
+      payBtn.href = baseLink + sep + 'quantity=' + state.count;
     }
-  }
-
-  // Auto-select from URL param
-  var params = new URLSearchParams(window.location.search);
-  var urlProgram = params.get('program');
-  if (urlProgram === 'tlp') {
-    var tlpTab = document.querySelector('[data-tab="tlp"]');
-    if (tlpTab) tlpTab.click();
   }
 
   // FPS Accordion toggle
