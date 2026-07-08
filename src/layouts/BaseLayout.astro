@@ -2,18 +2,14 @@
 interface Props {
   title: string;
   description?: string;
-  /** Additional fonts beyond Sora (e.g. 'Sacramento', 'Space+Mono') */
-  extraFonts?: string[];
 }
 
 const {
   title,
-  description = 'German-engineered AI and robotics education for kids and institutions. Hong Kong Island & online worldwide.',
-  extraFonts = ['Space+Mono:wght@400;700'],
+  description = 'AI & Robotics Summer Camp for kids 5–12 in Hong Kong. German-engineered education by CreatorPort HK.',
 } = Astro.props;
 
-const fontFamilies = ['Sora:wght@300;400;500;600;700;800', ...extraFonts];
-const fontUrl = `https://fonts.googleapis.com/css2?${fontFamilies.map(f => `family=${f}`).join('&')}&display=swap`;
+const fontUrl = 'https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap';
 ---
 
 <!DOCTYPE html>

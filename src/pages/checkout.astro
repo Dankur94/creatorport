@@ -27,11 +27,10 @@ const CAMP_PRICE = 3500;
 <PageLayout
   title="Book Now — CreatorPort HK"
   description="Book your child's spot in our AI & Robotics programs. Pay securely with Apple Pay, credit card, or FPS."
-  navCta={{ href: 'https://wa.me/85265427963', en: 'Help', de: 'Hilfe' }}
 >
 
 <section class="checkout-page">
-  <div class="checkout-container">
+  <div class="container">
 
     <!-- Header -->
     <div class="checkout-header">
@@ -44,53 +43,44 @@ const CAMP_PRICE = 3500;
     <!-- Step 1: Program Info -->
     <div class="step-section">
       <div class="step-label"><span class="step-num">1</span> <span data-lang-en>Program</span><span data-lang-de>Programm</span></div>
-      <div class="program-tabs">
-        <button class="program-tab active" data-tab="camp" type="button">
-          <span class="tab-icon"></span>
-          <span class="tab-name">Make Mars Green</span>
-          <span class="tab-meta" data-lang-en>Summer Camp &middot; $3,500</span>
-          <span class="tab-meta" data-lang-de>Sommercamp &middot; $3.500</span>
-        </button>
+      <div class="program-tab active">
+        <span class="tab-name">Make Mars Green</span>
+        <span class="tab-meta" data-lang-en>Summer Camp &middot; $3,500</span>
+        <span class="tab-meta" data-lang-de>Sommercamp &middot; $3.500</span>
       </div>
     </div>
 
     <!-- Step 2: Camp Details + Child Counter -->
     <div class="step-section" id="step-details">
-
-      <!-- CAMP panel -->
-      <div class="program-panel active" id="panel-camp">
-        <div class="step-label"><span class="step-num">2</span> <span data-lang-en>How many children?</span><span data-lang-de>Wie viele Kinder?</span></div>
-        <div class="panel-info">
-          <div class="panel-info-row">
-            <span class="panel-info-icon"></span>
-            <span data-lang-en>3&ndash;7 Aug 2026 &middot; Mon&ndash;Fri &middot; 9:00&ndash;12:00</span>
-            <span data-lang-de>3.&ndash;7. Aug 2026 &middot; Mo&ndash;Fr &middot; 9:00&ndash;12:00</span>
-          </div>
-          <div class="panel-info-row">
-            <span class="panel-info-icon"></span>
-            <span>Central, Hong Kong</span>
-          </div>
-          <div class="panel-info-row">
-            <span class="panel-info-icon"></span>
-            <span data-lang-en>All materials included &middot; Kids keep what they build</span>
-            <span data-lang-de>Alle Materialien inklusive &middot; Kinder behalten, was sie bauen</span>
-          </div>
+      <div class="step-label"><span class="step-num">2</span> <span data-lang-en>How many children?</span><span data-lang-de>Wie viele Kinder?</span></div>
+      <div class="panel-info">
+        <div class="panel-info-row">
+          <span>📅</span>
+          <span data-lang-en>3&ndash;7 Aug 2026 &middot; Mon&ndash;Fri &middot; 9:00&ndash;12:00</span>
+          <span data-lang-de>3.&ndash;7. Aug 2026 &middot; Mo&ndash;Fr &middot; 9:00&ndash;12:00</span>
         </div>
+        <div class="panel-info-row">
+          <span>📍</span>
+          <span>Central, Hong Kong</span>
+        </div>
+        <div class="panel-info-row">
+          <span>🤖</span>
+          <span data-lang-en>All materials included &middot; Kids keep what they build</span>
+          <span data-lang-de>Alle Materialien inklusive &middot; Kinder behalten, was sie bauen</span>
+        </div>
+      </div>
 
-        <!-- Age Group Counter -->
-        <div class="age-groups">
-          <div class="age-group">
-            <div class="age-group-info">
-              <div class="age-group-name" data-lang-en>Age 5&ndash;12</div>
-              <div class="age-group-name" data-lang-de>Alter 5&ndash;12</div>
-              <div class="age-group-price">$3,500 <span>HKD</span></div>
-            </div>
-            <div class="counter">
-              <button class="counter-btn minus" data-group="camp" type="button" disabled>&minus;</button>
-              <span class="counter-value" id="count-camp">0</span>
-              <button class="counter-btn plus" data-group="camp" type="button">+</button>
-            </div>
-          </div>
+      <!-- Age Group Counter -->
+      <div class="age-group">
+        <div class="age-group-info">
+          <div class="age-group-name" data-lang-en>Age 5&ndash;12</div>
+          <div class="age-group-name" data-lang-de>Alter 5&ndash;12</div>
+          <div class="age-group-price">$3,500 <span>HKD</span></div>
+        </div>
+        <div class="counter">
+          <button class="counter-btn minus" data-group="camp" type="button" disabled>&minus;</button>
+          <span class="counter-value" id="count-camp">0</span>
+          <button class="counter-btn plus" data-group="camp" type="button">+</button>
         </div>
       </div>
     </div>
@@ -99,19 +89,16 @@ const CAMP_PRICE = 3500;
     <div class="summary-section" id="bookingSummary" style="display: none;">
       <div class="step-label"><span class="step-num">3</span> <span data-lang-en>Booking summary</span><span data-lang-de>Buchungs&uuml;bersicht</span></div>
       <div class="summary-card">
-        <div class="summary-lines" id="summaryLines">
-          <!-- filled by JS -->
-        </div>
+        <div class="summary-lines" id="summaryLines"></div>
         <div class="summary-divider"></div>
         <div class="summary-total">
           <span data-lang-en>Total</span><span data-lang-de>Gesamt</span>
           <span class="summary-total-amount" id="summaryTotal">$0 HKD</span>
         </div>
 
-        <!-- Pay Button -->
         <a href="#" class="checkout-pay-btn" id="payBtn">
-          <span data-lang-en>Pay <span id="payAmountEn">$0 HKD</span> &mdash; Apple Pay / Card</span>
-          <span data-lang-de><span id="payAmountDe">$0 HKD</span> bezahlen &mdash; Apple Pay / Karte</span>
+          <span data-lang-en>Pay <span id="payAmountEn">$0 HKD</span> — Apple Pay / Card</span>
+          <span data-lang-de><span id="payAmountDe">$0 HKD</span> bezahlen — Apple Pay / Karte</span>
         </a>
         <div class="summary-trust">
           <span data-lang-en>Secure payment via Stripe &middot; 100% money-back guarantee</span>
@@ -168,58 +155,54 @@ const CAMP_PRICE = 3500;
 
 <style>
   .checkout-page {
-    padding: 120px 24px 80px;
+    padding: 80px 0 60px;
     min-height: 100vh;
-  }
-
-  .checkout-container {
-    max-width: 640px;
-    margin: 0 auto;
   }
 
   /* Header */
   .checkout-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
+    padding-top: 16px;
   }
 
   .checkout-header h1 {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 800;
-    letter-spacing: -2px;
-    margin-bottom: 8px;
+    letter-spacing: -1px;
+    margin-bottom: 6px;
   }
 
   .checkout-header p {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text-secondary);
   }
 
   /* Steps */
   .step-section {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .step-label {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 16px;
+    color: var(--text);
+    margin-bottom: 12px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
 
   .step-num {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
-    background: var(--accent-electric);
+    background: var(--accent);
     color: #fff;
     font-family: 'Space Mono', monospace;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     display: inline-flex;
     align-items: center;
@@ -227,110 +210,70 @@ const CAMP_PRICE = 3500;
     flex-shrink: 0;
   }
 
-  /* Program Tabs */
-  .program-tabs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
+  /* Program Tab */
   .program-tab {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    padding: 20px 16px;
-    background: var(--bg-card);
-    border: 2px solid var(--border-subtle);
-    border-radius: 16px;
-    cursor: pointer;
-    transition: all 0.25s;
-    font-family: 'Sora', sans-serif;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .program-tab:hover {
-    border-color: rgba(15, 110, 86, 0.3);
-  }
-
-  .program-tab.active {
-    border-color: var(--accent-electric);
+    padding: 20px;
+    background: var(--card-bg);
+    border: 2px solid var(--accent);
+    border-radius: var(--radius);
     background: rgba(15, 110, 86, 0.04);
-    box-shadow: 0 2px 16px rgba(15, 110, 86, 0.1);
-  }
-
-  .tab-icon {
-    font-size: 28px;
-    line-height: 1;
   }
 
   .tab-name {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
-    color: var(--text-primary);
-    letter-spacing: -0.3px;
+    color: var(--text);
   }
 
   .tab-meta {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--text-muted);
   }
 
-  /* Program Panel */
-  .program-panel {
-    display: none;
-  }
-
-  .program-panel.active {
-    display: block;
-  }
-
+  /* Panel Info */
   .panel-info {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding: 20px;
+    padding: 16px;
     background: rgba(15, 110, 86, 0.04);
     border: 1px solid rgba(15, 110, 86, 0.1);
-    border-radius: 14px;
-    margin-bottom: 20px;
+    border-radius: var(--radius);
+    margin-bottom: 16px;
   }
 
   .panel-info-row {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-secondary);
   }
 
-  .panel-info-icon {
-    font-size: 16px;
+  .panel-info-row > span:first-child {
     flex-shrink: 0;
     width: 20px;
     text-align: center;
   }
 
-  /* Age Group Counters */
-  .age-groups {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
+  /* Age Group Counter */
   .age-group {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     transition: border-color 0.2s;
   }
 
   .age-group.has-count {
-    border-color: var(--accent-electric);
+    border-color: var(--accent);
     background: rgba(15, 110, 86, 0.02);
   }
 
@@ -353,10 +296,9 @@ const CAMP_PRICE = 3500;
   .counter {
     display: flex;
     align-items: center;
-    gap: 0;
-    background: rgba(44, 44, 42, 0.04);
-    border-radius: 12px;
-    border: 1px solid var(--border-subtle);
+    background: var(--bg-subtle);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
     overflow: hidden;
   }
 
@@ -367,7 +309,7 @@ const CAMP_PRICE = 3500;
     background: transparent;
     font-size: 20px;
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--text);
     cursor: pointer;
     transition: all 0.15s;
     font-family: 'Sora', sans-serif;
@@ -379,11 +321,7 @@ const CAMP_PRICE = 3500;
 
   .counter-btn:hover:not(:disabled) {
     background: rgba(15, 110, 86, 0.08);
-    color: var(--accent-electric);
-  }
-
-  .counter-btn:active:not(:disabled) {
-    background: rgba(15, 110, 86, 0.15);
+    color: var(--accent);
   }
 
   .counter-btn:disabled {
@@ -397,15 +335,15 @@ const CAMP_PRICE = 3500;
     font-family: 'Space Mono', monospace;
     font-size: 18px;
     font-weight: 700;
-    color: var(--text-primary);
-    border-left: 1px solid var(--border-subtle);
-    border-right: 1px solid var(--border-subtle);
+    color: var(--text);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
     line-height: 44px;
   }
 
   /* Summary */
   .summary-section {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     animation: slideUp 0.3s ease-out;
   }
 
@@ -415,9 +353,9 @@ const CAMP_PRICE = 3500;
   }
 
   .summary-card {
-    background: var(--bg-card);
-    border: 2px solid var(--accent-electric);
-    border-radius: 20px;
+    background: var(--card-bg);
+    border: 2px solid var(--accent);
+    border-radius: 16px;
     padding: 24px;
   }
 
@@ -431,7 +369,7 @@ const CAMP_PRICE = 3500;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .summary-line-label {
@@ -439,20 +377,20 @@ const CAMP_PRICE = 3500;
   }
 
   .summary-line-label strong {
-    color: var(--text-primary);
+    color: var(--text);
     font-weight: 600;
   }
 
   .summary-line-price {
     font-family: 'Space Mono', monospace;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14px;
     white-space: nowrap;
   }
 
   .summary-divider {
     height: 1px;
-    background: var(--border-subtle);
+    background: var(--border);
     margin: 16px 0;
   }
 
@@ -462,15 +400,15 @@ const CAMP_PRICE = 3500;
     align-items: center;
     font-size: 16px;
     font-weight: 700;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
   .summary-total-amount {
     font-family: 'Space Mono', monospace;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     letter-spacing: -1px;
-    color: var(--accent-electric);
+    color: var(--accent);
   }
 
   /* Pay Button */
@@ -479,27 +417,23 @@ const CAMP_PRICE = 3500;
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 18px 24px;
-    border-radius: 14px;
-    background: #000;
+    padding: 16px 24px;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
     color: #fff;
     font-family: 'Sora', sans-serif;
     font-weight: 700;
-    font-size: 17px;
+    font-size: 16px;
     text-decoration: none;
-    transition: all 0.3s;
-    gap: 8px;
-    min-height: 56px;
+    transition: all 0.2s;
+    min-height: 52px;
     -webkit-tap-highlight-color: transparent;
   }
 
   .checkout-pay-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  }
-
-  .checkout-pay-btn:active {
-    transform: translateY(0);
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(15, 110, 86, 0.25);
   }
 
   .summary-trust {
@@ -512,15 +446,15 @@ const CAMP_PRICE = 3500;
   /* Empty hint */
   .empty-hint {
     text-align: center;
-    padding: 24px;
+    padding: 20px;
     color: var(--text-muted);
     font-size: 14px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   /* FPS Accordion */
   .fps-accordion {
-    margin-bottom: 40px;
+    margin-bottom: 32px;
   }
 
   .fps-toggle {
@@ -531,8 +465,8 @@ const CAMP_PRICE = 3500;
     gap: 8px;
     padding: 14px 20px;
     background: transparent;
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     font-family: 'Sora', sans-serif;
     font-size: 13px;
     font-weight: 600;
@@ -543,7 +477,7 @@ const CAMP_PRICE = 3500;
   }
 
   .fps-toggle:hover {
-    border-color: rgba(15, 110, 86, 0.3);
+    border-color: var(--accent);
     color: var(--text-secondary);
   }
 
@@ -577,9 +511,9 @@ const CAMP_PRICE = 3500;
 
   .fps-qr-wrap {
     background: #fff;
-    border-radius: 12px;
+    border-radius: var(--radius);
     padding: 10px;
-    border: 1px solid var(--border-subtle);
+    border: 1px solid var(--border);
   }
 
   .fps-qr-wrap img {
@@ -610,13 +544,13 @@ const CAMP_PRICE = 3500;
 
   .fps-copy {
     padding: 5px 12px;
-    border: 1px solid var(--border-subtle);
+    border: 1px solid var(--border);
     border-radius: 8px;
     background: transparent;
     font-family: 'Sora', sans-serif;
     font-size: 11px;
     font-weight: 600;
-    color: var(--accent-electric);
+    color: var(--accent);
     cursor: pointer;
     transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
@@ -624,12 +558,12 @@ const CAMP_PRICE = 3500;
 
   .fps-copy:hover {
     background: rgba(15, 110, 86, 0.05);
-    border-color: var(--accent-electric);
+    border-color: var(--accent);
   }
 
   .fps-copied {
     font-size: 14px;
-    color: var(--accent-electric);
+    color: var(--accent);
     opacity: 0;
     transition: opacity 0.3s;
   }
@@ -648,15 +582,14 @@ const CAMP_PRICE = 3500;
     font-family: 'Sora', sans-serif;
     font-weight: 700;
     font-size: 13px;
-    border-radius: 100px;
+    border-radius: var(--radius-pill);
     text-decoration: none;
-    transition: all 0.3s;
+    transition: all 0.2s;
     min-height: 44px;
   }
 
   .fps-confirm-btn:hover {
     background: #1DA851;
-    transform: translateY(-1px);
   }
 
   /* Help */
@@ -667,46 +600,9 @@ const CAMP_PRICE = 3500;
   }
 
   .checkout-help a {
-    color: var(--accent-electric);
+    color: var(--accent);
     text-decoration: underline;
     font-weight: 600;
-  }
-
-  /* ===== MOBILE ===== */
-  @media (max-width: 768px) {
-    .checkout-page {
-      padding: 100px 16px 60px;
-    }
-
-    .checkout-header h1 {
-      font-size: 28px;
-      letter-spacing: -1px;
-    }
-
-    .program-tab {
-      padding: 16px 12px;
-    }
-
-    .tab-name {
-      font-size: 13px;
-    }
-
-    .age-group {
-      padding: 16px;
-    }
-
-    .age-group-name {
-      font-size: 15px;
-    }
-
-    .summary-card {
-      padding: 20px;
-    }
-
-    .summary-total-amount {
-      font-size: 20px;
-    }
-
   }
 </style>
 

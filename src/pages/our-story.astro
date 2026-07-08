@@ -4,28 +4,29 @@ import { Image } from 'astro:assets';
 import storySkyline from '../assets/img/story-skyline.jpg';
 import storyMarket from '../assets/img/story-market.jpg';
 import storyYogurt from '../assets/img/story-yogurt.jpg';
-
 ---
 
 <PageLayout
-  title="CreatorPort HK — Our Story"
+  title="Our Story — CreatorPort HK"
   description="The story behind CreatorPort — how a friendship forged through maths and physics became the foundation of something bigger."
 >
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-label reveal" data-lang-en>Our Story</div>
-    <div class="hero-label reveal" data-lang-de>Unsere Geschichte</div>
-    <h1 class="reveal" data-lang-en>From <span class="gradient-text">Equations</span><br />to Education</h1>
-    <h1 class="reveal" data-lang-de>Von <span class="gradient-text">Gleichungen</span><br />zu Bildung</h1>
-    <p class="hero-sub reveal" data-lang-en>Some friendships begin at a blackboard. Ours became a company.</p>
-    <p class="hero-sub reveal" data-lang-de>Manche Freundschaften beginnen an einer Tafel. Unsere wurde ein Unternehmen.</p>
-  </div>
 
-  <!-- STORY -->
-  <div class="story">
+<div class="story-page">
+  <div class="container">
+
+    <!-- HERO -->
+    <div class="story-hero reveal">
+      <div class="section-label" data-lang-en>Our Story</div>
+      <div class="section-label" data-lang-de>Unsere Geschichte</div>
+      <h1 data-lang-en>From <span class="gradient-text">Equations</span> to Education</h1>
+      <h1 data-lang-de>Von <span class="gradient-text">Gleichungen</span> zu Bildung</h1>
+      <p class="story-hero-sub" data-lang-en>Some friendships begin at a blackboard. Ours became a company.</p>
+      <p class="story-hero-sub" data-lang-de>Manche Freundschaften beginnen an einer Tafel. Unsere wurde ein Unternehmen.</p>
+    </div>
+
     <!-- CHAPTER 1 -->
     <div class="story-block reveal">
-      <Image src={storySkyline} alt="Daniel and Ananya in Hong Kong" class="story-photo" widths={[400, 800]} sizes="(max-width: 768px) 100vw, 800px" loading="eager" />
+      <Image src={storySkyline} alt="Daniel and Ananya in Hong Kong" class="story-photo" widths={[400, 800]} sizes="(max-width: 480px) 100vw, 480px" loading="eager" />
       <div class="story-text" data-lang-en>
         <p>It started the way the best things do &mdash; by accident.</p>
         <p>I was deep in my engineering degree at RWTH Aachen, drowning in the kind of maths and physics that makes you question every life decision that led you to that lecture hall. The formulas blurred. The problem sets piled up. I needed help &mdash; not the textbook kind, but the kind that makes you <strong>see</strong> the problem differently.</p>
@@ -39,10 +40,10 @@ import storyYogurt from '../assets/img/story-yogurt.jpg';
     </div>
 
     <div class="story-pull-quote reveal" data-lang-en>
-      &ldquo;He didn&rsquo;t give me the answers.<br />He taught me how to <span class="gradient-text">think</span>.&rdquo;
+      &ldquo;He didn&rsquo;t give me the answers. He taught me how to <span class="gradient-text">think</span>.&rdquo;
     </div>
     <div class="story-pull-quote reveal" data-lang-de>
-      &ldquo;Er gab mir nicht die Antworten.<br />Er brachte mir bei, wie man <span class="gradient-text">denkt</span>.&rdquo;
+      &ldquo;Er gab mir nicht die Antworten. Er brachte mir bei, wie man <span class="gradient-text">denkt</span>.&rdquo;
     </div>
 
     <!-- CHAPTER 2 -->
@@ -57,29 +58,27 @@ import storyYogurt from '../assets/img/story-yogurt.jpg';
       </div>
     </div>
 
-    <div class="story-divider"></div>
-
     <!-- CHAPTER 3 -->
     <div class="story-block reveal">
       <div class="photo-duo">
-        <Image src={storyMarket} alt="Daniel and Ananya at a night market" widths={[400, 600]} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" />
-        <Image src={storyYogurt} alt="Daniel and Ananya enjoying frozen yogurt" widths={[400, 600]} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" />
+        <Image src={storyMarket} alt="Daniel and Ananya at a night market" widths={[400, 600]} sizes="50vw" loading="lazy" />
+        <Image src={storyYogurt} alt="Daniel and Ananya enjoying frozen yogurt" widths={[400, 600]} sizes="50vw" loading="lazy" />
       </div>
       <div class="story-text" data-lang-en>
         <p>What Ananya gave me wasn&rsquo;t a grade. It was a <strong>belief</strong> &mdash; that the right teacher doesn&rsquo;t just transfer knowledge, they transform the person receiving it. He showed me that teaching, done right, is the most powerful form of engineering there is. You&rsquo;re not building a machine. You&rsquo;re building a mind.</p>
-        <p>That idea stayed with me long after the exams were over. It followed me from Aachen to Hong Kong, from lecture halls to maker spaces. It whispered every time I watched a student&rsquo;s face light up the way mine once did across a coffee table from Ananya.</p>
+        <p>That idea stayed with me long after the exams were over. It followed me from Aachen to Hong Kong, from lecture halls to maker spaces.</p>
       </div>
       <div class="story-text" data-lang-de>
         <p>Was Ananya mir gab, war keine Note. Es war eine <strong>&Uuml;berzeugung</strong> &mdash; dass der richtige Lehrer nicht nur Wissen weitergibt, sondern den Menschen ver&auml;ndert, der es empf&auml;ngt. Er zeigte mir, dass Lehren, richtig gemacht, die m&auml;chtigste Form des Ingenieurwesens ist. Man baut keine Maschine. Man baut einen <strong>Geist</strong>.</p>
-        <p>Diese Idee blieb, lange nachdem die Pr&uuml;fungen vorbei waren. Sie folgte mir von Aachen nach Hong Kong, von H&ouml;rs&auml;len zu Maker Spaces. Sie fl&uuml;sterte jedes Mal, wenn ich das Gesicht eines Sch&uuml;lers aufleuchten sah &mdash; so wie meines einst gegen&uuml;ber von Ananya am Kaffeetisch.</p>
+        <p>Diese Idee blieb, lange nachdem die Pr&uuml;fungen vorbei waren. Sie folgte mir von Aachen nach Hong Kong, von H&ouml;rs&auml;len zu Maker Spaces.</p>
       </div>
     </div>
 
     <div class="story-pull-quote reveal" data-lang-en>
-      &ldquo;The best teachers don&rsquo;t fill your head.<br />They <span class="gradient-text">rewire</span> it.&rdquo;
+      &ldquo;The best teachers don&rsquo;t fill your head. They <span class="gradient-text">rewire</span> it.&rdquo;
     </div>
     <div class="story-pull-quote reveal" data-lang-de>
-      &ldquo;Die besten Lehrer f&uuml;llen nicht deinen Kopf.<br />Sie <span class="gradient-text">verkabeln</span> ihn neu.&rdquo;
+      &ldquo;Die besten Lehrer f&uuml;llen nicht deinen Kopf. Sie <span class="gradient-text">verkabeln</span> ihn neu.&rdquo;
     </div>
 
     <!-- CHAPTER 4 -->
@@ -87,22 +86,23 @@ import storyYogurt from '../assets/img/story-yogurt.jpg';
       <div class="story-text" data-lang-en>
         <p>That&rsquo;s why I founded <strong>CreatorPort</strong>.</p>
         <p>Not because I had a business plan. Not because the market research checked out. But because I&rsquo;d experienced firsthand what happens when someone teaches you to think &mdash; <em>really</em> think &mdash; and I wanted to give that to as many people as possible.</p>
-        <p>CreatorPort exists because of a friendship that started at a blackboard. Because a physicist in Aachen took the time to see a struggling student not as a problem to solve, but as a mind worth investing in. Every workshop we run, every student we teach, every robot we build together &mdash; it all traces back to those sessions.</p>
+        <p>CreatorPort exists because of a friendship that started at a blackboard. Because a physicist in Aachen took the time to see a struggling student not as a problem to solve, but as a mind worth investing in.</p>
         <p>To Ananya. To the belief that <strong>the right mentor changes everything.</strong></p>
       </div>
       <div class="story-text" data-lang-de>
         <p>Deshalb habe ich <strong>CreatorPort</strong> gegr&uuml;ndet.</p>
         <p>Nicht weil ich einen Businessplan hatte. Nicht weil die Marktforschung stimmte. Sondern weil ich am eigenen Leib erfahren hatte, was passiert, wenn jemand dir beibringt zu denken &mdash; <em>wirklich</em> zu denken &mdash; und ich wollte das so vielen Menschen wie m&ouml;glich weitergeben.</p>
-        <p>CreatorPort existiert wegen einer Freundschaft, die an einer Tafel begann. Weil ein Physiker in Aachen sich die Zeit nahm, einen k&auml;mpfenden Studenten nicht als Problem zu sehen, sondern als einen Geist, in den es sich lohnt zu investieren. Jeder Workshop, den wir durchf&uuml;hren, jeder Sch&uuml;ler, den wir unterrichten, jeder Roboter, den wir gemeinsam bauen &mdash; alles f&uuml;hrt zur&uuml;ck zu diesen Sitzungen.</p>
+        <p>CreatorPort existiert wegen einer Freundschaft, die an einer Tafel begann. Weil ein Physiker in Aachen sich die Zeit nahm, einen k&auml;mpfenden Studenten nicht als Problem zu sehen, sondern als einen Geist, in den es sich lohnt zu investieren.</p>
         <p>Zu Ananya. Zu der &Uuml;berzeugung, dass <strong>der richtige Mentor alles ver&auml;ndert.</strong></p>
       </div>
     </div>
+
   </div>
 
   <!-- CTA -->
   <section class="cta-section">
-    <h2 class="cta-title reveal" data-lang-en>Ready to<br /><span class="gradient-text">start learning?</span></h2>
-    <h2 class="cta-title reveal" data-lang-de>Bereit<br /><span class="gradient-text">zu lernen?</span></h2>
+    <h2 class="cta-title reveal" data-lang-en>Ready to <span class="gradient-text">start learning?</span></h2>
+    <h2 class="cta-title reveal" data-lang-de>Bereit <span class="gradient-text">zu lernen?</span></h2>
     <p class="cta-desc reveal" data-lang-en>Every great journey starts with a single conversation.</p>
     <p class="cta-desc reveal" data-lang-de>Jede gro&szlig;e Reise beginnt mit einem einzigen Gespr&auml;ch.</p>
     <div class="cta-links reveal">
@@ -110,77 +110,95 @@ import storyYogurt from '../assets/img/story-yogurt.jpg';
       <a href="mailto:hello@creatorport.com.hk" class="cta-link secondary">hello@creatorport.com.hk</a>
     </div>
   </section>
+</div>
+
 </PageLayout>
 
 <style>
-  .hero {
-    padding: 160px 40px 60px;
-    max-width: 900px; margin: 0 auto;
+  .story-page {
+    padding-top: 72px;
+  }
+
+  .story-hero {
+    text-align: center;
+    padding: 24px 0 48px;
+  }
+
+  .story-hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .story-hero-sub {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .story-block {
+    margin-bottom: 48px;
+  }
+
+  .story-photo {
+    width: 100%;
+    border-radius: var(--radius);
+    margin-bottom: 20px;
+    object-fit: cover;
+    max-height: 360px;
+    border: 1px solid var(--border);
+  }
+
+  .story-text {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .story-text strong { color: var(--text); }
+  .story-text p { margin-bottom: 16px; }
+
+  .story-pull-quote {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.4;
+    color: var(--text);
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 32px 0;
     text-align: center;
   }
 
-  .hero-label {
-    font-size: 14px; text-transform: uppercase; letter-spacing: 3px;
-    color: var(--accent-electric); font-weight: 600; margin-bottom: 24px;
-  }
-
-  .hero h1 {
-    font-size: 56px; font-weight: 800; letter-spacing: -3px; line-height: 1.1;
-    margin-bottom: 24px;
-  }
-
-  .hero-sub {
-    font-size: 18px; color: var(--text-secondary); max-width: 600px;
-    line-height: 1.8; margin: 0 auto 40px;
-  }
-
-  .story { max-width: 800px; margin: 0 auto; padding: 0 40px 80px; }
-  .story-block { margin-bottom: 80px; }
-
-  .story-photo {
-    width: 100%; border-radius: 16px; margin-bottom: 32px;
-    object-fit: cover; max-height: 500px;
-    border: 1px solid var(--border-subtle);
-  }
-
-  .story-text { font-size: 17px; color: var(--text-secondary); line-height: 1.9; }
-  .story-text strong { color: var(--text-primary); }
-  .story-text p { margin-bottom: 20px; }
-
-  .story-pull-quote {
-    font-size: 28px; font-weight: 700; letter-spacing: -1px; line-height: 1.4;
-    color: var(--text-primary); padding: 40px 0;
-    border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);
-    margin: 48px 0; text-align: center;
-  }
-
-  .story-divider {
-    width: 60px; height: 3px; background: var(--gradient-main);
-    margin: 60px auto; border-radius: 2px;
-  }
-
   .photo-duo {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
   }
 
   .photo-duo :global(img) {
-    width: 100%; height: 320px; object-fit: cover;
-    border-radius: 16px; border: 1px solid var(--border-subtle);
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
   }
 
-  @media (max-width: 768px) {
-    .hero { padding: 110px 24px 40px; }
-    .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
-    .hero-sub { font-size: 16px; }
-    .story { padding: 0 24px 60px; }
-    .story-text { font-size: 16px; }
-    .story-pull-quote { font-size: 22px; padding: 28px 0; }
-    .photo-duo { grid-template-columns: 1fr; }
-    .photo-duo :global(img) { height: 260px; }
-    .story-photo { max-height: 360px; }
-  }
+  @media (min-width: 768px) {
+    .story-hero h1 {
+      font-size: 40px;
+    }
 
-  @media (max-width: 1024px) and (min-width: 769px) {
-    .hero h1 { font-size: 48px; }
+    .story-pull-quote {
+      font-size: 24px;
+    }
+
+    .photo-duo :global(img) {
+      height: 280px;
+    }
   }
 </style>

@@ -1,108 +1,39 @@
 ---
-interface NavChild {
-  href: string;
-  en: string;
-  de: string;
-}
-
-interface NavLink {
-  href: string;
-  en: string;
-  de: string;
-  children?: NavChild[];
-}
-
-interface Props {
-  /** Nav link items */
-  links?: NavLink[];
-  /** CTA button config */
-  cta?: { href: string; en: string; de: string };
-  /** Accent color for lang toggle and hover (electric | amber | magenta) */
-  accent?: 'electric' | 'amber' | 'magenta';
-}
-
-const {
-  links = [
-    { href: '/institutions', en: 'For Schools', de: 'Für Schulen' },
-    { href: '/our-story', en: 'Our Story', de: 'Unsere Geschichte' },
-    {
-      href: '/meet-the-team',
-      en: 'Meet the Team',
-      de: 'Unser Team',
-      children: [
-        { href: '/team/daniel', en: 'Daniel Kurth', de: 'Daniel Kurth' },
-        { href: '/team/ananya', en: 'Ananya Singh', de: 'Ananya Singh' },
-      ],
-    },
-  ],
-  cta = { href: 'https://wa.me/85265427963', en: 'Get in Touch', de: 'Kontakt' },
-  accent = 'electric',
-} = Astro.props;
-
-const accentColors: Record<string, string> = {
-  electric: 'rgba(15,110,86,0.1)',
-  amber: 'rgba(239,159,39,0.1)',
-  magenta: 'rgba(216,90,48,0.1)',
-};
-
-const accentBg = accentColors[accent];
+/**
+ * Nav — Minimal app-like navigation.
+ * Logo left, links + lang toggle + hamburger right.
+ */
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const links = [
+  { href: '/our-story', en: 'Our Story', de: 'Unsere Geschichte' },
+  { href: '/team', en: 'Team', de: 'Team' },
+  { href: '/checkout', en: 'Book Now', de: 'Buchen' },
+];
 ---
 
-<nav>
-  <a href="/" class="logo">
-    <img class="logo-wordmark" src="/creatorport-logo.svg" alt="CreatorPort HK" />
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/creatorport-logo.svg" alt="CreatorPort HK" />
   </a>
-  <ul class="nav-links">
-    {links.map(link => {
-      const isActive = currentPath === link.href.replace(/\/$/, '') ||
-        (link.children && link.children.some(c => currentPath === c.href.replace(/\/$/, '')));
 
-      if (link.children) {
-        return (
-          <li class="nav-dropdown">
-            <a href={link.children[0].href} class={isActive ? 'nav-active' : ''}>
-              <span data-lang-en>{link.en}</span>
-              <span data-lang-de>{link.de}</span>
-              <span class="dropdown-arrow">&#9662;</span>
-            </a>
-            <ul class="dropdown-menu">
-              {link.children.map(child => {
-                const childActive = currentPath === child.href.replace(/\/$/, '');
-                return (
-                  <li>
-                    <a href={child.href} class={childActive ? 'nav-active' : ''}>
-                      <span data-lang-en>{child.en}</span>
-                      <span data-lang-de>{child.de}</span>
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </li>
-        );
-      }
+  <div class="nav-links">
+    {links.map(link => (
+      <a href={link.href} class={currentPath === link.href.replace(/\/$/, '') ? 'active' : ''}>
+        <span data-lang-en>{link.en}</span>
+        <span data-lang-de>{link.de}</span>
+      </a>
+    ))}
+  </div>
 
-      return (
-        <li>
-          <a href={link.href} class={isActive ? 'nav-active' : ''}>
-            <span data-lang-en>{link.en}</span>
-            <span data-lang-de>{link.de}</span>
-          </a>
-        </li>
-      );
-    })}
-    <li>
-      <div class="lang-toggle" style={`background: ${accentBg};`}>
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="de">DE</button>
-      </div>
-    </li>
-  </ul>
-  <a href={cta.href} target="_blank" class="nav-cta" data-lang-en>{cta.en}</a>
-  <a href={cta.href} target="_blank" class="nav-cta" data-lang-de>{cta.de}</a>
-  <div class="hamburger" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+    </div>
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -110,7 +41,6 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   import { setLang, initLang } from '../scripts/language';
   import { toggleMenu, initMenuCloseOnNav } from '../scripts/menu';
 
-  // Language buttons
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const lang = (btn as HTMLElement).dataset.lang as 'en' | 'de';
@@ -118,7 +48,6 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     });
   });
 
-  // Hamburger
   document.querySelector('.hamburger')?.addEventListener('click', toggleMenu);
 
   initLang();

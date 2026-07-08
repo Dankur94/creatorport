@@ -2,7 +2,6 @@
 export function toggleMenu() {
   document.querySelector('.nav-links')?.classList.toggle('open');
   document.querySelector('.hamburger')?.classList.toggle('open');
-  document.querySelector('nav')?.classList.toggle('menu-open');
 }
 
 export function initMenuCloseOnNav() {
@@ -10,7 +9,6 @@ export function initMenuCloseOnNav() {
     link.addEventListener('click', () => {
       document.querySelector('.nav-links')?.classList.remove('open');
       document.querySelector('.hamburger')?.classList.remove('open');
-      document.querySelector('nav')?.classList.remove('menu-open');
     });
   });
 }

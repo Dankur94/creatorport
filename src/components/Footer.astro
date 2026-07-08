@@ -1,19 +1,16 @@
 ---
-interface Props {
-  /** Extra middle content */
-  extra?: string;
-}
-
-const { extra } = Astro.props;
+/**
+ * Footer — Minimal, clean.
+ */
 ---
 
-<div class="footer-bottom">
-  <span>&copy; CreatorPort HK is a brand operated by &copy; Space of Possibilities Limited &middot; Hong Kong &middot; hello@creatorport.com.hk</span>
-  {extra && <span set:html={extra} />}
-  <span>
-    <a href="/privacy" style="margin-right: 20px;" data-lang-en>Privacy Policy</a>
-    <a href="/privacy" style="margin-right: 20px;" data-lang-de>Datenschutz</a>
-    <a href="/terms" data-lang-en>Terms of Service</a>
+<footer class="footer">
+  <div>&copy; {new Date().getFullYear()} CreatorPort HK &middot; Space of Possibilities Limited</div>
+  <div class="footer-links">
+    <a href="mailto:hello@creatorport.com.hk">hello@creatorport.com.hk</a>
+    <a href="/privacy" data-lang-en>Privacy</a>
+    <a href="/privacy" data-lang-de>Datenschutz</a>
+    <a href="/terms" data-lang-en>Terms</a>
     <a href="/terms" data-lang-de>AGB</a>
-  </span>
-</div>
+  </div>
+</footer>

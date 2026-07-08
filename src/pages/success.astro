@@ -5,11 +5,10 @@ import PageLayout from '../layouts/PageLayout.astro';
 <PageLayout
   title="Payment Confirmed — CreatorPort HK"
   description="Your booking is confirmed. Welcome to CreatorPort HK!"
-  navCta={{ href: '/', en: 'Home', de: 'Startseite' }}
 >
 
 <section class="success-page">
-  <div class="success-container">
+  <div class="container">
 
     <!-- Success Animation -->
     <div class="success-icon-wrap">
@@ -69,14 +68,14 @@ import PageLayout from '../layouts/PageLayout.astro';
 
     <!-- Actions -->
     <div class="success-actions">
-      <a href="https://wa.me/85265427963?text=Hi%21%20I%20just%20booked%20a%20spot%20at%20CreatorPort%20HK%21" target="_blank" class="success-btn whatsapp" data-lang-en>
+      <a href="https://wa.me/85265427963?text=Hi%21%20I%20just%20booked%20a%20spot%20at%20CreatorPort%20HK%21" target="_blank" class="btn btn-whatsapp" data-lang-en>
         Say hi on WhatsApp
       </a>
-      <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20habe%20gerade%20einen%20Platz%20bei%20CreatorPort%20HK%20gebucht%21" target="_blank" class="success-btn whatsapp" data-lang-de>
+      <a href="https://wa.me/85265427963?text=Hallo%21%20Ich%20habe%20gerade%20einen%20Platz%20bei%20CreatorPort%20HK%20gebucht%21" target="_blank" class="btn btn-whatsapp" data-lang-de>
         Sag Hallo auf WhatsApp
       </a>
-      <a href="/" class="success-btn home" data-lang-en>Back to Homepage</a>
-      <a href="/" class="success-btn home" data-lang-de>Zur&uuml;ck zur Startseite</a>
+      <a href="/" class="btn btn-secondary" data-lang-en>Back to Homepage</a>
+      <a href="/" class="btn btn-secondary" data-lang-de>Zur&uuml;ck zur Startseite</a>
     </div>
 
   </div>
@@ -86,28 +85,26 @@ import PageLayout from '../layouts/PageLayout.astro';
 
 <style>
   .success-page {
-    padding: 120px 24px 80px;
+    padding: 80px 0 60px;
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
   }
 
-  .success-container {
-    max-width: 560px;
+  .success-page .container {
     text-align: center;
   }
 
   /* Check Icon Animation */
   .success-icon-wrap {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .success-circle {
-    width: 80px;
-    height: 80px;
+    width: 72px;
+    height: 72px;
     margin: 0 auto;
-    color: var(--accent-electric);
+    color: var(--accent);
     animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -131,20 +128,12 @@ import PageLayout from '../layouts/PageLayout.astro';
     to { stroke-dashoffset: 0; }
   }
 
-  .success-container h1 {
-    font-size: 40px;
+  .success-page h1 {
+    font-size: 32px;
     font-weight: 800;
-    letter-spacing: -2px;
-    margin-bottom: 12px;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
     animation: fadeUp 0.6s ease-out 0.2s both;
-  }
-
-  .success-sub {
-    font-size: 16px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 48px;
-    animation: fadeUp 0.6s ease-out 0.3s both;
   }
 
   @keyframes fadeUp {
@@ -152,44 +141,52 @@ import PageLayout from '../layouts/PageLayout.astro';
     to { opacity: 1; transform: translateY(0); }
   }
 
+  .success-sub {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    animation: fadeUp 0.6s ease-out 0.3s both;
+  }
+
   /* Next Steps */
   .success-steps {
     text-align: left;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 20px;
-    padding: 32px;
-    margin-bottom: 40px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 32px;
     animation: fadeUp 0.6s ease-out 0.4s both;
   }
 
   .success-steps h2 {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
-    margin-bottom: 24px;
-    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
   }
 
   .step-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
   }
 
   .success-step {
     display: flex;
-    gap: 16px;
+    gap: 14px;
     align-items: flex-start;
   }
 
   .step-num {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     background: rgba(15, 110, 86, 0.08);
-    color: var(--accent-electric);
+    color: var(--accent);
     font-family: 'Space Mono', monospace;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -198,13 +195,13 @@ import PageLayout from '../layouts/PageLayout.astro';
   }
 
   .success-step strong {
-    font-size: 15px;
+    font-size: 14px;
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
 
   .success-step p {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-secondary);
     line-height: 1.6;
   }
@@ -212,70 +209,8 @@ import PageLayout from '../layouts/PageLayout.astro';
   /* Actions */
   .success-actions {
     display: flex;
+    flex-direction: column;
     gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
     animation: fadeUp 0.6s ease-out 0.5s both;
-  }
-
-  .success-btn {
-    padding: 14px 28px;
-    border-radius: 100px;
-    font-family: 'Sora', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    text-decoration: none;
-    transition: all 0.3s;
-    min-height: 48px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .success-btn.whatsapp {
-    background: #25D366;
-    color: #fff;
-  }
-
-  .success-btn.whatsapp:hover {
-    background: #1DA851;
-    transform: translateY(-2px);
-  }
-
-  .success-btn.home {
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--border-subtle);
-  }
-
-  .success-btn.home:hover {
-    border-color: var(--accent-electric);
-    color: var(--accent-electric);
-  }
-
-  /* Mobile */
-  @media (max-width: 768px) {
-    .success-page {
-      padding: 100px 16px 60px;
-      align-items: flex-start;
-    }
-
-    .success-container h1 {
-      font-size: 32px;
-      letter-spacing: -1px;
-    }
-
-    .success-steps {
-      padding: 24px 20px;
-    }
-
-    .success-actions {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .success-btn {
-      justify-content: center;
-    }
   }
 </style>
