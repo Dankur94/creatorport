@@ -1,27 +1,8 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 
-/*
- * ============================================================
- *  STRIPE PAYMENT LINKS — SETUP
- * ============================================================
- *  Replace the placeholder URLs below with your real Stripe
- *  Payment Link URLs. See /docs/STRIPE-SETUP.md for details.
- *
- *  Stripe Payment Links support ?quantity=N parameter.
- *  The JS below appends the total child count automatically.
- *
- *  1. Create Payment Links in Stripe Dashboard
- *  2. Add custom fields: Child names, Ages, Language (EN/DE)
- *  3. Set success redirect to: https://creatorport.com.hk/success
- *  4. Paste URLs below
- * ============================================================
- */
-const STRIPE_LINKS = {
-  camp: 'https://buy.stripe.com/REPLACE_WITH_CAMP_LINK',
-};
-
-const CAMP_PRICE = 3500;
+const API_BASE = 'https://mail.space-op.com';
+const PRODUCT_ID = 'a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d';
 ---
 
 <PageLayout
@@ -36,81 +17,72 @@ const CAMP_PRICE = 3500;
     <div class="checkout-header">
       <h1 data-lang-en>Book a Spot</h1>
       <h1 data-lang-de>Platz buchen</h1>
-      <p data-lang-en>Choose a program, select children, pay securely.</p>
-      <p data-lang-de>Programm w&auml;hlen, Kinder ausw&auml;hlen, sicher bezahlen.</p>
+      <p data-lang-en>Fill in details, pay securely via Stripe.</p>
+      <p data-lang-de>Details ausf&uuml;llen, sicher bezahlen via Stripe.</p>
     </div>
 
     <!-- Step 1: Program Info -->
     <div class="step-section">
       <div class="step-label"><span class="step-num">1</span> <span data-lang-en>Program</span><span data-lang-de>Programm</span></div>
-      <div class="program-tab active">
-        <span class="tab-name">Make Mars Green</span>
-        <span class="tab-meta" data-lang-en>Summer Camp &middot; $3,500</span>
-        <span class="tab-meta" data-lang-de>Sommercamp &middot; $3.500</span>
+      <div class="program-tab active" id="programTab">
+        <span class="tab-name" id="programName">Loading...</span>
+        <span class="tab-meta" id="programMeta"></span>
       </div>
     </div>
 
-    <!-- Step 2: Camp Details + Child Counter -->
+    <!-- Step 2: Camp Details -->
     <div class="step-section" id="step-details">
-      <div class="step-label"><span class="step-num">2</span> <span data-lang-en>How many children?</span><span data-lang-de>Wie viele Kinder?</span></div>
-      <div class="panel-info">
-        <div class="panel-info-row">
-          <span>📅</span>
-          <span data-lang-en>3&ndash;7 Aug 2026 &middot; Mon&ndash;Fri &middot; 9:00&ndash;12:00</span>
-          <span data-lang-de>3.&ndash;7. Aug 2026 &middot; Mo&ndash;Fr &middot; 9:00&ndash;12:00</span>
-        </div>
-        <div class="panel-info-row">
-          <span>📍</span>
-          <span>Central, Hong Kong</span>
-        </div>
-        <div class="panel-info-row">
-          <span>🤖</span>
-          <span data-lang-en>All materials included &middot; Kids keep what they build</span>
-          <span data-lang-de>Alle Materialien inklusive &middot; Kinder behalten, was sie bauen</span>
-        </div>
-      </div>
-
-      <!-- Age Group Counter -->
-      <div class="age-group">
-        <div class="age-group-info">
-          <div class="age-group-name" data-lang-en>Age 5&ndash;12</div>
-          <div class="age-group-name" data-lang-de>Alter 5&ndash;12</div>
-          <div class="age-group-price">$3,500 <span>HKD</span></div>
-        </div>
-        <div class="counter">
-          <button class="counter-btn minus" data-group="camp" type="button" disabled>&minus;</button>
-          <span class="counter-value" id="count-camp">0</span>
-          <button class="counter-btn plus" data-group="camp" type="button">+</button>
-        </div>
+      <div class="step-label"><span class="step-num">2</span> <span data-lang-en>Camp Details</span><span data-lang-de>Camp Details</span></div>
+      <div class="panel-info" id="programDetails">
+        <div class="panel-info-row"><span>loading...</span></div>
       </div>
     </div>
 
-    <!-- Booking Summary (hidden until items selected) -->
-    <div class="summary-section" id="bookingSummary" style="display: none;">
-      <div class="step-label"><span class="step-num">3</span> <span data-lang-en>Booking summary</span><span data-lang-de>Buchungs&uuml;bersicht</span></div>
-      <div class="summary-card">
-        <div class="summary-lines" id="summaryLines"></div>
-        <div class="summary-divider"></div>
-        <div class="summary-total">
-          <span data-lang-en>Total</span><span data-lang-de>Gesamt</span>
-          <span class="summary-total-amount" id="summaryTotal">$0 HKD</span>
+    <!-- Step 3: Child & Parent Info -->
+    <div class="step-section">
+      <div class="step-label"><span class="step-num">3</span> <span data-lang-en>Your details</span><span data-lang-de>Deine Angaben</span></div>
+      <form id="bookingForm" class="booking-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label data-lang-en>Child's Name *</label>
+            <label data-lang-de>Name des Kindes *</label>
+            <input type="text" id="childName" required placeholder="e.g. Max" />
+          </div>
+          <div class="form-group form-group-small">
+            <label data-lang-en>Age *</label>
+            <label data-lang-de>Alter *</label>
+            <input type="number" id="childAge" required min="1" max="18" placeholder="8" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-lang-en>Parent / Guardian Name *</label>
+          <label data-lang-de>Elternteil / Vormund Name *</label>
+          <input type="text" id="customerName" required placeholder="e.g. John Smith" />
+        </div>
+        <div class="form-group">
+          <label data-lang-en>Email *</label>
+          <label data-lang-de>E-Mail *</label>
+          <input type="email" id="customerEmail" required placeholder="parent@example.com" />
+        </div>
+        <div class="form-group">
+          <label data-lang-en>Phone (WhatsApp preferred)</label>
+          <label data-lang-de>Telefon (WhatsApp bevorzugt)</label>
+          <input type="tel" id="customerPhone" placeholder="+852 1234 5678" />
         </div>
 
-        <a href="#" class="checkout-pay-btn" id="payBtn">
-          <span data-lang-en>Pay <span id="payAmountEn">$0 HKD</span> — Apple Pay / Card</span>
-          <span data-lang-de><span id="payAmountDe">$0 HKD</span> bezahlen — Apple Pay / Karte</span>
-        </a>
+        <!-- Error message -->
+        <div id="formError" class="form-error" style="display:none;"></div>
+
+        <!-- Pay Button -->
+        <button type="submit" class="checkout-pay-btn" id="payBtn">
+          <span data-lang-en>Pay <span id="payAmount">...</span> — Apple Pay / Card</span>
+          <span data-lang-de><span id="payAmountDe">...</span> bezahlen — Apple Pay / Karte</span>
+        </button>
         <div class="summary-trust">
           <span data-lang-en>Secure payment via Stripe &middot; 100% money-back guarantee</span>
           <span data-lang-de>Sichere Zahlung via Stripe &middot; 100% Geld-zur&uuml;ck-Garantie</span>
         </div>
-      </div>
-    </div>
-
-    <!-- Empty state hint -->
-    <div class="empty-hint" id="emptyHint">
-      <p data-lang-en>Select at least one child above to continue.</p>
-      <p data-lang-de>W&auml;hle oben mindestens ein Kind aus, um fortzufahren.</p>
+      </form>
     </div>
 
     <!-- FPS Alternative (collapsible) -->
@@ -260,155 +232,67 @@ const CAMP_PRICE = 3500;
     text-align: center;
   }
 
-  /* Age Group Counter */
-  .age-group {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    transition: border-color 0.2s;
-  }
-
-  .age-group.has-count {
-    border-color: var(--accent);
-    background: rgba(15, 110, 86, 0.02);
-  }
-
-  .age-group-name {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 2px;
-  }
-
-  .age-group-price {
-    font-size: 14px;
-    color: var(--text-muted);
-  }
-
-  .age-group-price span {
-    font-size: 12px;
-  }
-
-  /* Counter */
-  .counter {
-    display: flex;
-    align-items: center;
-    background: var(--bg-subtle);
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    overflow: hidden;
-  }
-
-  .counter-btn {
-    width: 44px;
-    height: 44px;
-    border: none;
-    background: transparent;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text);
-    cursor: pointer;
-    transition: all 0.15s;
-    font-family: 'Sora', sans-serif;
-    -webkit-tap-highlight-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .counter-btn:hover:not(:disabled) {
-    background: rgba(15, 110, 86, 0.08);
-    color: var(--accent);
-  }
-
-  .counter-btn:disabled {
-    opacity: 0.25;
-    cursor: default;
-  }
-
-  .counter-value {
-    width: 40px;
-    text-align: center;
-    font-family: 'Space Mono', monospace;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-    line-height: 44px;
-  }
-
-  /* Summary */
-  .summary-section {
-    margin-bottom: 24px;
-    animation: slideUp 0.3s ease-out;
-  }
-
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .summary-card {
-    background: var(--card-bg);
-    border: 2px solid var(--accent);
-    border-radius: 16px;
-    padding: 24px;
-  }
-
-  .summary-lines {
+  /* Booking Form */
+  .booking-form {
     display: flex;
     flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-row {
+    display: flex;
     gap: 12px;
   }
 
-  .summary-line {
+  .form-group {
+    flex: 1;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
+    flex-direction: column;
+    gap: 4px;
   }
 
-  .summary-line-label {
-    color: var(--text-secondary);
+  .form-group-small {
+    flex: 0 0 80px;
   }
 
-  .summary-line-label strong {
-    color: var(--text);
+  .form-group label {
+    font-size: 12px;
     font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
   }
 
-  .summary-line-price {
-    font-family: 'Space Mono', monospace;
-    font-weight: 700;
+  .form-group input {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card-bg);
+    font-family: 'Sora', sans-serif;
     font-size: 14px;
-    white-space: nowrap;
+    color: var(--text);
+    transition: border-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  .summary-divider {
-    height: 1px;
-    background: var(--border);
-    margin: 16px 0;
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--accent);
   }
 
-  .summary-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 20px;
+  .form-group input::placeholder {
+    color: var(--text-muted);
   }
 
-  .summary-total-amount {
-    font-family: 'Space Mono', monospace;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -1px;
-    color: var(--accent);
+  .form-error {
+    padding: 12px 16px;
+    background: rgba(220, 38, 38, 0.08);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    border-radius: var(--radius);
+    color: #dc2626;
+    font-size: 13px;
+    font-weight: 500;
   }
 
   /* Pay Button */
@@ -418,43 +302,42 @@ const CAMP_PRICE = 3500;
     justify-content: center;
     width: 100%;
     padding: 16px 24px;
+    border: none;
     border-radius: var(--radius-pill);
     background: var(--accent);
     color: #fff;
     font-family: 'Sora', sans-serif;
     font-weight: 700;
     font-size: 16px;
-    text-decoration: none;
+    cursor: pointer;
     transition: all 0.2s;
     min-height: 52px;
     -webkit-tap-highlight-color: transparent;
   }
 
-  .checkout-pay-btn:hover {
+  .checkout-pay-btn:hover:not(:disabled) {
     background: var(--accent-hover);
     transform: translateY(-1px);
     box-shadow: 0 4px 16px rgba(15, 110, 86, 0.25);
+  }
+
+  .checkout-pay-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
   }
 
   .summary-trust {
     font-size: 12px;
     color: var(--text-muted);
     text-align: center;
-    margin-top: 12px;
-  }
-
-  /* Empty hint */
-  .empty-hint {
-    text-align: center;
-    padding: 20px;
-    color: var(--text-muted);
-    font-size: 14px;
-    margin-bottom: 24px;
+    margin-top: 4px;
   }
 
   /* FPS Accordion */
   .fps-accordion {
     margin-bottom: 32px;
+    margin-top: 8px;
   }
 
   .fps-toggle {
@@ -606,93 +489,120 @@ const CAMP_PRICE = 3500;
   }
 </style>
 
-<script define:vars={{ STRIPE_LINKS, CAMP_PRICE }}>
-  // State
-  var state = {
-    count: 0,
-  };
+<script define:vars={{ API_BASE, PRODUCT_ID }}>
+  // Load product info from API
+  fetch(API_BASE + '/api/v1/public/booking/products?account=cp')
+    .then(function(r) { return r.json(); })
+    .then(function(products) {
+      var product = products.find(function(p) { return p.id === PRODUCT_ID; });
+      if (!product) return;
 
-  // Elements
-  var summaryEl = document.getElementById('bookingSummary');
-  var summaryLines = document.getElementById('summaryLines');
-  var summaryTotal = document.getElementById('summaryTotal');
-  var payBtn = document.getElementById('payBtn');
-  var payAmountEn = document.getElementById('payAmountEn');
-  var payAmountDe = document.getElementById('payAmountDe');
-  var emptyHint = document.getElementById('emptyHint');
+      var nameEl = document.getElementById('programName');
+      var metaEl = document.getElementById('programMeta');
+      var detailsEl = document.getElementById('programDetails');
+      var payAmount = document.getElementById('payAmount');
+      var payAmountDe = document.getElementById('payAmountDe');
 
-  // Counter buttons
-  document.querySelectorAll('.counter-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var isPlus = btn.classList.contains('plus');
+      if (nameEl) nameEl.textContent = product.name;
 
-      if (isPlus && state.count < 6) {
-        state.count++;
-      } else if (!isPlus && state.count > 0) {
-        state.count--;
+      var priceStr = '$' + (product.price_cents / 100).toLocaleString() + ' ' + product.currency.toUpperCase();
+      if (metaEl) metaEl.textContent = 'Summer Camp \u00b7 ' + priceStr;
+      if (payAmount) payAmount.textContent = priceStr;
+      if (payAmountDe) payAmountDe.textContent = priceStr;
+
+      if (detailsEl) {
+        var startDate = product.start_date || '';
+        var endDate = product.end_date || '';
+        var location = product.location || '';
+        var ageRange = product.age_min + '\u2013' + product.age_max;
+        var spots = product.spots_remaining;
+
+        detailsEl.innerHTML =
+          '<div class="panel-info-row"><span>\ud83d\udcc5</span><span>' + startDate + ' \u2014 ' + endDate + '</span></div>' +
+          '<div class="panel-info-row"><span>\ud83d\udccd</span><span>' + location + '</span></div>' +
+          '<div class="panel-info-row"><span>\ud83e\uddd1</span><span>Ages ' + ageRange + '</span></div>' +
+          '<div class="panel-info-row"><span>\ud83c\udfab</span><span>' + spots + ' spots remaining</span></div>';
       }
-
-      // Update display
-      var countEl = document.getElementById('count-camp');
-      if (countEl) countEl.textContent = String(state.count);
-
-      // Update button states
-      var parent = btn.closest('.counter');
-      if (parent) {
-        var minus = parent.querySelector('.minus');
-        var plus = parent.querySelector('.plus');
-        if (minus) minus.disabled = state.count === 0;
-        if (plus) plus.disabled = state.count >= 6;
-      }
-
-      // Update age-group highlight
-      var ageGroup = btn.closest('.age-group');
-      if (ageGroup) {
-        ageGroup.classList.toggle('has-count', state.count > 0);
-      }
-
-      updateSummary();
+    })
+    .catch(function() {
+      // Fallback: show static info
+      var nameEl = document.getElementById('programName');
+      if (nameEl) nameEl.textContent = 'Mission Mars Summer Camp';
     });
-  });
 
-  function updateSummary() {
-    var hasItems = state.count > 0;
-    var total = state.count * CAMP_PRICE;
+  // Form submission
+  var form = document.getElementById('bookingForm');
+  var payBtn = document.getElementById('payBtn');
+  var errorEl = document.getElementById('formError');
 
-    // Toggle visibility
-    if (summaryEl) summaryEl.style.display = hasItems ? 'block' : 'none';
-    if (emptyHint) emptyHint.style.display = hasItems ? 'none' : 'block';
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    // Build summary lines
-    if (summaryLines && hasItems) {
-      var labelEn = state.count + '\u00d7 Make Mars Green \u2014 Age 5\u201312';
-      var labelDe = state.count + '\u00d7 Make Mars Green \u2014 Alter 5\u201312';
-      summaryLines.innerHTML = '<div class="summary-line">' +
-        '<span class="summary-line-label"><strong data-lang-en>' + labelEn + '</strong><strong data-lang-de>' + labelDe + '</strong></span>' +
-        '<span class="summary-line-price">$' + total.toLocaleString() + ' HKD</span>' +
-        '</div>';
+      var childName = document.getElementById('childName').value.trim();
+      var childAge = parseInt(document.getElementById('childAge').value, 10);
+      var customerName = document.getElementById('customerName').value.trim();
+      var customerEmail = document.getElementById('customerEmail').value.trim();
+      var customerPhone = (document.getElementById('customerPhone').value || '').trim();
 
-      // Re-apply language state
-      var isDE = document.body.classList.contains('lang-de');
-      summaryLines.querySelectorAll('[data-lang-en]').forEach(function(el) {
-        el.style.display = isDE ? 'none' : '';
-      });
-      summaryLines.querySelectorAll('[data-lang-de]').forEach(function(el) {
-        el.style.display = isDE ? '' : 'none';
-      });
-    }
+      if (!childName || !childAge || !customerName || !customerEmail) {
+        showError('Please fill in all required fields.');
+        return;
+      }
 
-    // Update total
-    var formatted = '$' + total.toLocaleString() + ' HKD';
-    if (summaryTotal) summaryTotal.textContent = formatted;
-    if (payAmountEn) payAmountEn.textContent = formatted;
-    if (payAmountDe) payAmountDe.textContent = formatted;
+      // Disable button, show loading
+      payBtn.disabled = true;
+      payBtn.innerHTML = '<span>Processing...</span>';
 
-    // Update pay button link
-    if (payBtn && hasItems) {
-      var baseLink = STRIPE_LINKS.camp;
-      var sep = baseLink.includes('?') ? '&' : '?';
-      payBtn.href = baseLink + sep + 'quantity=' + state.count;
+      // Collect UTM params from URL
+      var params = new URLSearchParams(window.location.search);
+
+      var body = {
+        product_id: PRODUCT_ID,
+        child_name: childName,
+        child_age: childAge,
+        customer_name: customerName,
+        customer_email: customerEmail,
+        customer_phone: customerPhone,
+        success_url: 'https://creatorport.com.hk/success',
+        cancel_url: 'https://creatorport.com.hk/checkout',
+        gclid: params.get('gclid') || '',
+        utm_source: params.get('utm_source') || '',
+        utm_campaign: params.get('utm_campaign') || '',
+      };
+
+      fetch(API_BASE + '/api/v1/public/booking/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
+        .then(function(r) {
+          if (!r.ok) return r.json().then(function(d) { throw new Error(d.detail || 'Booking failed'); });
+          return r.json();
+        })
+        .then(function(data) {
+          if (data.checkout_url) {
+            window.location.href = data.checkout_url;
+          } else {
+            throw new Error('No checkout URL returned');
+          }
+        })
+        .catch(function(err) {
+          showError(err.message || 'Something went wrong. Please try again.');
+          payBtn.disabled = false;
+          var isDE = document.body.classList.contains('lang-de');
+          payBtn.innerHTML = isDE
+            ? '<span data-lang-de>Bezahlen — Apple Pay / Karte</span>'
+            : '<span data-lang-en>Pay — Apple Pay / Card</span>';
+        });
+    });
+  }
+
+  function showError(msg) {
+    if (errorEl) {
+      errorEl.textContent = msg;
+      errorEl.style.display = 'block';
+      setTimeout(function() { errorEl.style.display = 'none'; }, 8000);
     }
   }
 
