@@ -6,7 +6,7 @@
   <title>CreatorPort</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -33,7 +33,7 @@
 
     body {
       font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-      background: var(--page-bg);
+      background: #FFFFFF;
       color: var(--ink);
       -webkit-font-smoothing: antialiased;
     }
@@ -55,21 +55,19 @@
       height: 100dvh;
     }
 
-    .card-wrap:last-child {
-      height: 100dvh;
-    }
+    /* Last card keeps 200dvh default — margin eats 100dvh,
+       remaining 100dvh ensures card is reachable */
 
     .card-wrap + .card-wrap {
       margin-top: -100dvh;
     }
 
     /* Descending z-index: Card 1 on top, peels to reveal Card 2, etc. */
-    .card-wrap:nth-child(1) .card { z-index: 6; }
-    .card-wrap:nth-child(2) .card { z-index: 5; }
-    .card-wrap:nth-child(3) .card { z-index: 4; }
-    .card-wrap:nth-child(4) .card { z-index: 3; }
-    .card-wrap:nth-child(5) .card { z-index: 2; }
-    .card-wrap:nth-child(6) .card { z-index: 1; }
+    .card-wrap:nth-child(1) .card { z-index: 5; }
+    .card-wrap:nth-child(2) .card { z-index: 4; }
+    .card-wrap:nth-child(3) .card { z-index: 3; }
+    .card-wrap:nth-child(4) .card { z-index: 2; }
+    .card-wrap:nth-child(5) .card { z-index: 1; }
 
     /* ── Card ── */
     .card {
@@ -80,39 +78,145 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 0 clamp(24px, 6vw, 80px);
+      align-items: center;
+      text-align: center;
+      padding: 6vh 24px;
+      gap: 22px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
     }
 
     .card-label {
-      font-size: 11px;
-      font-weight: 600;
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 12px;
+      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      color: var(--ink-faint);
-      margin-bottom: 16px;
+      letter-spacing: .32em;
+      color: var(--ink-soft);
     }
 
     .card-title {
       font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
-      font-size: clamp(32px, 7vw, 56px);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -1px;
+      font-size: clamp(2.6rem, 8vw, 5.2rem);
+      font-weight: 600;
+      line-height: .98;
+      letter-spacing: -.02em;
       color: var(--ink);
-      margin-bottom: 16px;
+      max-width: 14ch;
+    }
+
+    .card-hero-title {
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      white-space: nowrap;
+      font-size: 5.8vw;
+      line-height: 1;
+      letter-spacing: .32em;
+      color: var(--ink);
+      border: 2px solid var(--ink);
+      padding: .4em .5em;
     }
 
     .card-text {
-      font-size: clamp(15px, 2.5vw, 18px);
-      line-height: 1.6;
+      max-width: 38ch;
       color: var(--ink-soft);
-      max-width: 520px;
+      font-size: clamp(1rem, 2.4vw, 1.15rem);
+      line-height: 1.55;
+    }
+
+    .card-hero-img {
+      position: absolute;
+      left: -5%;
+      bottom: -5%;
+      height: 55%;
+      width: auto;
+      pointer-events: none;
+      transform: translateX(-110%);
+    }
+
+    .card-hero-img.animate {
+      animation: slideInLeft 1.2s cubic-bezier(.22, 1, .36, 1) forwards;
+    }
+
+    @keyframes slideInLeft {
+      to { transform: translateX(0); }
+    }
+
+    /* ── Burger menu — fixed, always visible ── */
+    .burger {
+      position: fixed;
+      top: clamp(16px, 4vw, 32px);
+      right: clamp(16px, 4vw, 32px);
+      z-index: 100;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      padding: 0;
+    }
+
+    .burger-line {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: var(--ink);
+      border-radius: 2px;
+    }
+
+    .card-hero-copy {
+      position: absolute;
+      top: clamp(80px, 18vw, 140px);
+      left: clamp(20px, 5vw, 48px);
+      text-align: left;
+      max-width: 70%;
+    }
+
+    .card-hero-headline {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .rwth-link {
+      font-size: .65em;
+      vertical-align: super;
+      text-decoration: underline;
+      color: var(--ink-soft);
+      margin-left: 1px;
+    }
+
+    .card-hero-sub {
+      font-size: clamp(.85rem, 2vw, 1rem);
+      color: var(--ink-soft);
+      line-height: 1.5;
+      text-align: center;
+      margin-top: -12px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .card-hero-facts {
+      font-size: clamp(.7rem, 1.6vw, .8rem);
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      line-height: 1.4;
     }
 
     .card-number {
       font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
-      font-size: clamp(120px, 20vw, 200px);
+      font-size: clamp(60px, 10vw, 100px);
       font-weight: 700;
       position: absolute;
       right: clamp(16px, 4vw, 60px);
@@ -122,80 +226,77 @@
       opacity: 0.3;
       pointer-events: none;
     }
-
-    .card-divider {
-      width: 48px;
-      height: 2px;
-      background: var(--line);
-      margin-bottom: 20px;
-    }
   </style>
 </head>
 <body>
+  <button class="burger" aria-label="Menu">
+    <span class="burger-line"></span>
+  </button>
+
   <div class="scroll-root">
     <main>
 
       <div class="card-wrap">
-        <section class="card" style="background: var(--sweep-wall);">
-          <span class="card-label">Welcome</span>
-          <h1 class="card-title">CreatorPort HK</h1>
-          <div class="card-divider"></div>
-          <p class="card-text">Where creators, educators, and makers find their next workshop space in Hong Kong.</p>
-          <span class="card-number">1</span>
+        <section class="card" style="background: #FFFFFF;">
+          <div class="card-hero-copy">
+            <p class="card-hero-headline">Build your own AI Rov<span style="color:#FFD600">e</span>r. K<span style="color:#FFD600">ee</span>p it.</p>
+            <p class="card-hero-facts">3–7 Aug (Mon–Fri) · 5×3h · 9:00–12:00 · Ages 6–12 · Sheung Wan, 3 min from MTR</p>
+          </div>
+          <h1 class="card-hero-title"><span style="color:#42A6A5">A</span>I R<span style="color:#A7BD03">O</span>B<span style="color:#A7BD03">O</span>TICS C<span style="color:#42A6A5">A</span>MP</h1>
+          <p class="card-hero-sub">Taught by a G<span style="color:#FFD600">e</span>rman&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;RWTH<a href="https://www.rwth-aachen.de" target="_blank" rel="noopener" class="rwth-link">?</a>-train<span style="color:#FFD600">e</span>d <span style="color:#FFD600">e</span>ngin<span style="color:#FFD600">e</span><span style="color:#FFD600">e</span>r.</p>
+          <img class="card-hero-img" src="/robot-hero.png" alt="Robot" />
+          <span class="card-number">1/5</span>
         </section>
       </div>
 
       <div class="card-wrap">
-        <section class="card" style="background: var(--page-bg);">
+        <section class="card" style="background: #FFFFFF;">
           <span class="card-label">What We Do</span>
           <h2 class="card-title">Workshops that inspire</h2>
-          <div class="card-divider"></div>
           <p class="card-text">AI &amp; Robotics, Art, Music, Languages — we connect instructors with curious minds aged 5 to 12 in curated venues across the city.</p>
-          <span class="card-number">2</span>
+          <img class="card-hero-img" src="/robot-cat.png" alt="Robot Cat" />
+          <span class="card-number">2/5</span>
         </section>
       </div>
 
       <div class="card-wrap">
-        <section class="card" style="background: var(--horizon);">
+        <section class="card" style="background: #FFFFFF;">
           <span class="card-label">Summer 2026</span>
           <h2 class="card-title">STEM Summer Camp</h2>
-          <div class="card-divider"></div>
           <p class="card-text">Five days of building robots, coding games, and exploring circuits. Small groups, real projects, one unforgettable week.</p>
-          <span class="card-number">3</span>
+          <span class="card-number">3/5</span>
         </section>
       </div>
 
       <div class="card-wrap">
-        <section class="card" style="background: var(--sweep-wall);">
+        <section class="card" style="background: #FFFFFF;">
           <span class="card-label">For Instructors</span>
           <h2 class="card-title">Teach what you love</h2>
-          <div class="card-divider"></div>
           <p class="card-text">We handle venues, marketing, and bookings. You bring the expertise. Fair revenue share, zero upfront cost.</p>
-          <span class="card-number">4</span>
+          <span class="card-number">4/5</span>
         </section>
       </div>
 
       <div class="card-wrap">
-        <section class="card" style="background: var(--page-bg);">
+        <section class="card" style="background: #FFFFFF;">
           <span class="card-label">Venues</span>
           <h2 class="card-title">Spaces that work</h2>
-          <div class="card-divider"></div>
           <p class="card-text">From coworking studios in Sheung Wan to maker labs in Kwun Tong — flexible rooms booked by the hour or the day.</p>
-          <span class="card-number">5</span>
+          <span class="card-number">5/5</span>
         </section>
       </div>
 
-      <div class="card-wrap">
-        <section class="card" style="background: var(--sweep-floor);">
-          <span class="card-label">Get Started</span>
-          <h2 class="card-title">Let's build together</h2>
-          <div class="card-divider"></div>
-          <p class="card-text">Whether you want to teach, learn, or host — we'd love to hear from you. Launching Summer 2026 in Hong Kong.</p>
-          <span class="card-number">6</span>
-        </section>
-      </div>
 
     </main>
   </div>
+<script>
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.querySelectorAll('.card-hero-img').forEach(img => {
+        img.classList.add('animate');
+      });
+    }, 300);
+  });
+</script>
 </body>
 </html>
