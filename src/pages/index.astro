@@ -25,8 +25,10 @@
       --page-bg: #FBFAF8;
     }
 
-    html {
-      overscroll-behavior: contain;
+    /* Body doesn't scroll → no pull-to-refresh */
+    html, body {
+      height: 100%;
+      overflow: hidden;
     }
 
     body {
@@ -36,26 +38,40 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Default: 200dvh = 100dvh card + 100dvh scroll before peel */
+    /* All scrolling happens here */
+    .scroll-root {
+      height: 100dvh;
+      overflow-y: auto;
+      overscroll-behavior-y: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* ── Card wrappers ── */
     .card-wrap {
       height: 200dvh;
     }
 
-    /* First card: shorter hold so scroll feels responsive */
     .card-wrap:first-child {
-      height: 150dvh;
+      height: 100dvh;
     }
 
-    /* Last card: no peel needed, just fills viewport */
     .card-wrap:last-child {
       height: 100dvh;
     }
 
-    /* Overlap = 100dvh so next card hides exactly behind current */
     .card-wrap + .card-wrap {
       margin-top: -100dvh;
     }
 
+    /* Descending z-index: Card 1 on top, peels to reveal Card 2, etc. */
+    .card-wrap:nth-child(1) .card { z-index: 6; }
+    .card-wrap:nth-child(2) .card { z-index: 5; }
+    .card-wrap:nth-child(3) .card { z-index: 4; }
+    .card-wrap:nth-child(4) .card { z-index: 3; }
+    .card-wrap:nth-child(5) .card { z-index: 2; }
+    .card-wrap:nth-child(6) .card { z-index: 1; }
+
+    /* ── Card ── */
     .card {
       position: sticky;
       top: 0;
@@ -67,14 +83,6 @@
       padding: 0 clamp(24px, 6vw, 80px);
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     }
-
-    /* Descending z-index: Card 1 on top, peels away to reveal Card 2, etc. */
-    .card-wrap:nth-child(1) .card { z-index: 6; }
-    .card-wrap:nth-child(2) .card { z-index: 5; }
-    .card-wrap:nth-child(3) .card { z-index: 4; }
-    .card-wrap:nth-child(4) .card { z-index: 3; }
-    .card-wrap:nth-child(5) .card { z-index: 2; }
-    .card-wrap:nth-child(6) .card { z-index: 1; }
 
     .card-label {
       font-size: 11px;
@@ -124,68 +132,70 @@
   </style>
 </head>
 <body>
-  <main>
+  <div class="scroll-root">
+    <main>
 
-    <div class="card-wrap">
-      <section class="card" style="background: var(--sweep-wall);">
-        <span class="card-label">Welcome</span>
-        <h1 class="card-title">CreatorPort HK</h1>
-        <div class="card-divider"></div>
-        <p class="card-text">Where creators, educators, and makers find their next workshop space in Hong Kong.</p>
-        <span class="card-number">1</span>
-      </section>
-    </div>
+      <div class="card-wrap">
+        <section class="card" style="background: var(--sweep-wall);">
+          <span class="card-label">Welcome</span>
+          <h1 class="card-title">CreatorPort HK</h1>
+          <div class="card-divider"></div>
+          <p class="card-text">Where creators, educators, and makers find their next workshop space in Hong Kong.</p>
+          <span class="card-number">1</span>
+        </section>
+      </div>
 
-    <div class="card-wrap">
-      <section class="card" style="background: var(--page-bg);">
-        <span class="card-label">What We Do</span>
-        <h2 class="card-title">Workshops that inspire</h2>
-        <div class="card-divider"></div>
-        <p class="card-text">AI &amp; Robotics, Art, Music, Languages — we connect instructors with curious minds aged 5 to 12 in curated venues across the city.</p>
-        <span class="card-number">2</span>
-      </section>
-    </div>
+      <div class="card-wrap">
+        <section class="card" style="background: var(--page-bg);">
+          <span class="card-label">What We Do</span>
+          <h2 class="card-title">Workshops that inspire</h2>
+          <div class="card-divider"></div>
+          <p class="card-text">AI &amp; Robotics, Art, Music, Languages — we connect instructors with curious minds aged 5 to 12 in curated venues across the city.</p>
+          <span class="card-number">2</span>
+        </section>
+      </div>
 
-    <div class="card-wrap">
-      <section class="card" style="background: var(--horizon);">
-        <span class="card-label">Summer 2026</span>
-        <h2 class="card-title">STEM Summer Camp</h2>
-        <div class="card-divider"></div>
-        <p class="card-text">Five days of building robots, coding games, and exploring circuits. Small groups, real projects, one unforgettable week.</p>
-        <span class="card-number">3</span>
-      </section>
-    </div>
+      <div class="card-wrap">
+        <section class="card" style="background: var(--horizon);">
+          <span class="card-label">Summer 2026</span>
+          <h2 class="card-title">STEM Summer Camp</h2>
+          <div class="card-divider"></div>
+          <p class="card-text">Five days of building robots, coding games, and exploring circuits. Small groups, real projects, one unforgettable week.</p>
+          <span class="card-number">3</span>
+        </section>
+      </div>
 
-    <div class="card-wrap">
-      <section class="card" style="background: var(--sweep-wall);">
-        <span class="card-label">For Instructors</span>
-        <h2 class="card-title">Teach what you love</h2>
-        <div class="card-divider"></div>
-        <p class="card-text">We handle venues, marketing, and bookings. You bring the expertise. Fair revenue share, zero upfront cost.</p>
-        <span class="card-number">4</span>
-      </section>
-    </div>
+      <div class="card-wrap">
+        <section class="card" style="background: var(--sweep-wall);">
+          <span class="card-label">For Instructors</span>
+          <h2 class="card-title">Teach what you love</h2>
+          <div class="card-divider"></div>
+          <p class="card-text">We handle venues, marketing, and bookings. You bring the expertise. Fair revenue share, zero upfront cost.</p>
+          <span class="card-number">4</span>
+        </section>
+      </div>
 
-    <div class="card-wrap">
-      <section class="card" style="background: var(--page-bg);">
-        <span class="card-label">Venues</span>
-        <h2 class="card-title">Spaces that work</h2>
-        <div class="card-divider"></div>
-        <p class="card-text">From coworking studios in Sheung Wan to maker labs in Kwun Tong — flexible rooms booked by the hour or the day.</p>
-        <span class="card-number">5</span>
-      </section>
-    </div>
+      <div class="card-wrap">
+        <section class="card" style="background: var(--page-bg);">
+          <span class="card-label">Venues</span>
+          <h2 class="card-title">Spaces that work</h2>
+          <div class="card-divider"></div>
+          <p class="card-text">From coworking studios in Sheung Wan to maker labs in Kwun Tong — flexible rooms booked by the hour or the day.</p>
+          <span class="card-number">5</span>
+        </section>
+      </div>
 
-    <div class="card-wrap">
-      <section class="card" style="background: var(--sweep-floor);">
-        <span class="card-label">Get Started</span>
-        <h2 class="card-title">Let's build together</h2>
-        <div class="card-divider"></div>
-        <p class="card-text">Whether you want to teach, learn, or host — we'd love to hear from you. Launching Summer 2026 in Hong Kong.</p>
-        <span class="card-number">6</span>
-      </section>
-    </div>
+      <div class="card-wrap">
+        <section class="card" style="background: var(--sweep-floor);">
+          <span class="card-label">Get Started</span>
+          <h2 class="card-title">Let's build together</h2>
+          <div class="card-divider"></div>
+          <p class="card-text">Whether you want to teach, learn, or host — we'd love to hear from you. Launching Summer 2026 in Hong Kong.</p>
+          <span class="card-number">6</span>
+        </section>
+      </div>
 
-  </main>
+    </main>
+  </div>
 </body>
 </html>
