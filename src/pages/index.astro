@@ -167,6 +167,97 @@
       height: 3px;
       background: var(--ink);
       border-radius: 2px;
+      transition: transform .3s ease, opacity .3s ease;
+    }
+
+    /* ── Menu Overlay ── */
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: var(--page-bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease;
+    }
+
+    .menu-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .menu-overlay nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .menu-link {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -.02em;
+      transition: opacity .2s ease;
+    }
+
+    .menu-link:hover {
+      opacity: .5;
+    }
+
+    .menu-legal {
+      display: flex;
+      gap: 16px;
+    }
+
+    .menu-legal a {
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--ink-faint);
+      text-decoration: none;
+      letter-spacing: .04em;
+    }
+
+    .menu-legal a:hover {
+      color: var(--ink);
+    }
+
+    /* Burger → X transform */
+    .burger.is-open .burger-line {
+      background: var(--ink);
+    }
+
+    .burger.is-open .burger-line::before,
+    .burger.is-open .burger-line::after {
+      content: '';
+      position: absolute;
+      width: 28px;
+      height: 3px;
+      background: var(--ink);
+      border-radius: 2px;
+    }
+
+    .burger.is-open .burger-line {
+      background: transparent;
+    }
+
+    .burger.is-open .burger-line::before {
+      transform: rotate(45deg);
+    }
+
+    .burger.is-open .burger-line::after {
+      transform: rotate(-45deg);
+    }
+
+    .burger .burger-line {
+      position: relative;
     }
 
     .card-hero-copy {
@@ -193,6 +284,11 @@
       text-decoration: underline;
       color: var(--ink-soft);
       margin-left: 1px;
+    }
+
+    .photo-gap {
+      display: inline-block;
+      width: clamp(3rem, 10vw, 8rem);
     }
 
     .card-hero-sub {
@@ -226,12 +322,394 @@
       opacity: 0.3;
       pointer-events: none;
     }
+
+    /* ── Card 2: Fullscreen video ── */
+    .card-video {
+      background: #000;
+    }
+
+    .card-bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
+    .card-video-dark::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      z-index: 1;
+    }
+
+    .video-text-full {
+      position: absolute;
+      top: clamp(20px, 5vw, 48px);
+      left: clamp(20px, 5vw, 48px);
+      right: clamp(20px, 5vw, 48px);
+      bottom: clamp(20px, 5vw, 48px);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .video-story {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+
+
+    /* ── Card 3: Why it works ── */
+    .card-scroll {
+      overflow: hidden;
+      justify-content: center;
+      align-items: stretch;
+      text-align: left;
+      padding: clamp(24px, 5vw, 48px);
+      gap: 0;
+    }
+
+    .card-scroll::-webkit-scrollbar { display: none; }
+
+    .c3-headline {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.6rem, 5vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .c3-intro {
+      font-size: clamp(.9rem, 2vw, 1.05rem);
+      color: var(--ink-soft);
+      line-height: 1.5;
+      margin-bottom: clamp(16px, 3vw, 28px);
+    }
+
+    .c3-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(12px, 2vw, 20px);
+      margin-bottom: clamp(20px, 3vw, 32px);
+    }
+
+    @media (max-width: 540px) {
+      .c3-grid { grid-template-columns: 1fr; }
+    }
+
+    .c3-item {
+      border: 1px solid var(--line);
+      padding: clamp(14px, 2vw, 20px);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .c3-icon {
+      width: 28px;
+      height: 28px;
+      color: var(--ink);
+    }
+
+    .c3-item-title {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(.85rem, 1.8vw, 1rem);
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .c3-item-text {
+      font-size: clamp(.78rem, 1.6vw, .88rem);
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    .c3-quote-wrap {
+      display: flex;
+      gap: clamp(12px, 2vw, 20px);
+      align-items: flex-start;
+      border-top: 1px solid var(--line);
+      padding-top: clamp(16px, 3vw, 24px);
+    }
+
+    .c3-avatar {
+      width: clamp(48px, 8vw, 64px);
+      height: clamp(48px, 8vw, 64px);
+      border-radius: 50%;
+      background: var(--line);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .c3-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .c3-quote {
+      font-size: clamp(.85rem, 1.8vw, .95rem);
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .c3-sig {
+      font-size: clamp(.75rem, 1.4vw, .82rem);
+      font-style: normal;
+      color: var(--ink-soft);
+      margin-top: 6px;
+    }
+
+    /* ── Card 4: Who We Are ── */
+    .card-whoweare {
+      background: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .c4-photo {
+      width: 100%;
+      height: 45%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .c4-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(16px, 4vw, 32px) clamp(20px, 5vw, 48px);
+      gap: 8px;
+      text-align: left;
+    }
+
+    .c4-title {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: var(--ink);
+    }
+
+    .c4-sub {
+      font-size: clamp(.85rem, 2vw, 1rem);
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    .c4-team {
+      display: flex;
+      gap: clamp(16px, 3vw, 32px);
+      margin-top: 8px;
+    }
+
+    .c4-member {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .c4-name {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(.9rem, 2vw, 1.05rem);
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .c4-role {
+      font-size: clamp(.75rem, 1.5vw, .85rem);
+      color: var(--ink-soft);
+    }
+
+    .c4-degree {
+      font-size: clamp(.7rem, 1.3vw, .78rem);
+      color: var(--ink-faint);
+      letter-spacing: .04em;
+    }
+
+    .c4-motto {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(.85rem, 1.8vw, 1rem);
+      font-style: italic;
+      color: var(--ink);
+      margin-top: 8px;
+    }
+
+    /* ── Card 5: Booking ── */
+    .card-booking {
+      gap: 16px;
+      justify-content: center;
+      background: #FFFFFF;
+    }
+
+    .booking-eyebrow {
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .32em;
+      color: rgba(255,255,255,.8);
+    }
+
+    .booking-title {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      color: #FFFFFF;
+    }
+
+    .booking-details {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .booking-detail {
+      font-size: clamp(.78rem, 1.8vw, .9rem);
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      line-height: 1.4;
+    }
+
+    .booking-price {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(2.4rem, 7vw, 4rem);
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1;
+      margin-top: 8px;
+    }
+
+    .booking-price-note {
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: .8rem;
+      color: rgba(255,255,255,.6);
+      margin-top: -4px;
+    }
+
+    .booking-cta {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 18px 48px;
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #FFFFFF;
+      background: var(--ink);
+      border: none;
+      border-radius: 0;
+      cursor: pointer;
+      transition: background .2s ease, transform .15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .booking-cta:hover {
+      background: #2C2520;
+    }
+
+    .booking-cta:active {
+      transform: scale(.97);
+    }
+
+    .booking-methods {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    .mini-footer-inline {
+      position: absolute;
+      bottom: clamp(8px, 2vw, 16px);
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: .65rem;
+      color: var(--ink-faint);
+      z-index: 2;
+    }
+
+    .mini-footer-inline a {
+      color: var(--ink-faint);
+      text-decoration: none;
+    }
+
+    .mini-footer-inline a:hover { color: var(--ink); }
+
+    .c5-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: clamp(.8rem, 1.8vw, .9rem);
+      font-weight: 500;
+      color: #25D366;
+      text-decoration: none;
+      transition: opacity .2s ease;
+    }
+
+    .c5-whatsapp:hover {
+      opacity: .7;
+    }
+
+    .c5-wa-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .c5-robot {
+      position: absolute;
+      left: -2%;
+      bottom: -2%;
+      height: 45%;
+      width: auto;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .card-booking > *:not(.card-bg-video):not(.card-number) {
+      position: relative;
+      z-index: 2;
+    }
   </style>
 </head>
 <body>
   <button class="burger" aria-label="Menu">
     <span class="burger-line"></span>
   </button>
+
+  <div class="menu-overlay">
+    <nav>
+      <a class="menu-link" href="/location.html">Location</a>
+      <a class="menu-link" href="/our-story.html">Our Story</a>
+      <a class="menu-link" href="/about-us.html">About Us</a>
+    </nav>
+    <div class="menu-legal">
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+  </div>
 
   <div class="scroll-root">
     <main>
@@ -243,45 +721,112 @@
             <p class="card-hero-facts">3–7 Aug (Mon–Fri) · 5×3h · 9:00–12:00 · Ages 6–12 · Sheung Wan, 3 min from MTR</p>
           </div>
           <h1 class="card-hero-title"><span style="color:#42A6A5">A</span>I R<span style="color:#A7BD03">O</span>B<span style="color:#A7BD03">O</span>TICS C<span style="color:#42A6A5">A</span>MP</h1>
-          <p class="card-hero-sub">Taught by a G<span style="color:#FFD600">e</span>rman&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;RWTH<a href="https://www.rwth-aachen.de" target="_blank" rel="noopener" class="rwth-link">?</a>-train<span style="color:#FFD600">e</span>d <span style="color:#FFD600">e</span>ngin<span style="color:#FFD600">e</span><span style="color:#FFD600">e</span>r.</p>
+          <p class="card-hero-sub">Taught by a G<span style="color:#FFD600">e</span>rman<span class="photo-gap"></span>RWTH-train<span style="color:#FFD600">e</span>d <span style="color:#FFD600">e</span>ngin<span style="color:#FFD600">e</span><span style="color:#FFD600">e</span>r.</p>
+          <a href="https://wa.me/85200000000?text=Hi%20CreatorPort%2C%20I%20have%20a%20question%20about%20the%20Summer%20Camp" class="c5-whatsapp" style="position:absolute; left:clamp(16px,4vw,32px); bottom:clamp(16px,4vw,32px); z-index:3;" target="_blank" rel="noopener">
+            <svg class="c5-wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Any questions? Contact us
+          </a>
           <img class="card-hero-img" src="/robot-hero.png" alt="Robot" />
           <span class="card-number">1/5</span>
         </section>
       </div>
 
       <div class="card-wrap">
-        <section class="card" style="background: #FFFFFF;">
-          <span class="card-label">What We Do</span>
-          <h2 class="card-title">Workshops that inspire</h2>
-          <p class="card-text">AI &amp; Robotics, Art, Music, Languages — we connect instructors with curious minds aged 5 to 12 in curated venues across the city.</p>
-          <img class="card-hero-img" src="/robot-cat.png" alt="Robot Cat" />
-          <span class="card-number">2/5</span>
+        <section class="card card-video" style="padding:0; gap:0;">
+          <video class="card-bg-video" autoplay loop muted playsinline>
+            <source src="/camp-video.mp4" type="video/mp4" />
+          </video>
+          <div class="video-text-full">
+            <div>
+              <span class="card-label" style="color:var(--ink); display:flex; align-items:center; gap:12px;"><span style="flex:1; height:1px; background:var(--ink);"></span>The Mission<span style="flex:1; height:1px; background:var(--ink);"></span></span>
+              <h2 class="card-title" style="color:var(--ink); text-align:left; font-size:clamp(1.6rem,5vw,2.8rem); margin-top:8px;">Mars is empty.<br>For now.</h2>
+              <p class="card-text" style="color:var(--ink); text-align:left; margin-top:12px;">On Day 1, your child joins Mission Control as a rover engineer. Their first job: build a rover and make it drive.</p>
+              <p class="card-text" style="color:var(--ink); text-align:left; margin-top:10px;">But driving is just the beginning. Over five days, the crew unlocks new tools: a gripper to clear the path, a drill to break the ground, an AI camera the kids train themselves — until their rovers can do what rovers were made for: bring life to Mars. Real plants. Planted by machines your child built.</p>
+            </div>
+            <div class="video-story">
+              <p class="card-text" style="color:#FFFFFF; text-align:left; font-style:italic;">Real Mars engineers can't remote-control their rovers — and neither will your child. They program every move, send the uplink, hold their breath, and watch. When it fails, that's data. When it works — that's the loudest cheer you've ever heard from a six-year-old.</p>
+              <p class="card-text" style="color:#FFFFFF; text-align:left; font-style:italic;">And on Day 3… let's just say: not everything on Mars is friendly.</p>
+            </div>
+          </div>
+          <span class="card-number" style="color:rgba(255,255,255,.6);">2/5</span>
         </section>
       </div>
 
       <div class="card-wrap">
-        <section class="card" style="background: #FFFFFF;">
-          <span class="card-label">Summer 2026</span>
-          <h2 class="card-title">STEM Summer Camp</h2>
-          <p class="card-text">Five days of building robots, coding games, and exploring circuits. Small groups, real projects, one unforgettable week.</p>
+        <section class="card card-scroll" style="background: #FFFFFF;">
+
+          <h2 class="c3-headline">N<span style="color:#FFD600">e</span>v<span style="color:#FFD600">e</span>r cod<span style="color:#FFD600">e</span>d? Still l<span style="color:#FFD600">e</span><span style="color:#42A6A5">a</span>rning t<span style="color:#A7BD03">o</span> r<span style="color:#FFD600">e</span><span style="color:#42A6A5">a</span>d? P<span style="color:#FFD600">e</span>rf<span style="color:#FFD600">e</span>ct.</h2>
+          <p class="c3-intro">This camp was designed from day one for children who have never touched a robot — here's how.</p>
+
+          <div class="c3-grid">
+            <div class="c3-item">
+              <span class="c3-item-title">Blocks and icons, not text</span>
+              <p class="c3-item-text">Programming happens with colorful blocks and arrows — no reading, no typing, no spelling.</p>
+            </div>
+            <div class="c3-item">
+              <span class="c3-item-title">First success on day one</span>
+              <p class="c3-item-text">Missions are built in small steps, so the first IT WORKS moment comes fast — and everything grows from there.</p>
+            </div>
+            <div class="c3-item">
+              <span class="c3-item-title">The engineer does the hard parts</span>
+              <p class="c3-item-text">All soldering, wiring and tricky prep is done before camp. Your child gets the exciting parts: building, programming, commanding the mission. And with a small group, nobody gets left behind.</p>
+            </div>
+            <div class="c3-item">
+              <span class="c3-item-title">Failure is data — like at NASA</span>
+              <p class="c3-item-text">When a rover misses its target, that's not a mistake — it's mission data. Kids adjust and try again.</p>
+            </div>
+          </div>
+
+
+          <img class="c5-robot" src="/rover-pink.png" alt="Rover" />
           <span class="card-number">3/5</span>
         </section>
       </div>
 
       <div class="card-wrap">
-        <section class="card" style="background: #FFFFFF;">
-          <span class="card-label">For Instructors</span>
-          <h2 class="card-title">Teach what you love</h2>
-          <p class="card-text">We handle venues, marketing, and bookings. You bring the expertise. Fair revenue share, zero upfront cost.</p>
+        <section class="card card-whoweare" style="padding:0; gap:0;">
+          <img class="c4-photo" src="/camp-class.png" alt="Camp classroom" />
+          <div class="c4-content">
+            <span class="card-label">Who We Are</span>
+            <h2 class="c4-title">From Equations to Education</h2>
+            <p class="c4-sub">Some friendships begin at a blackboard. Ours became a company.</p>
+            <div class="c4-team">
+              <div class="c4-member">
+                <span class="c4-name">Daniel Kurth</span>
+                <span class="c4-role">Founder & Lead Educator</span>
+                <span class="c4-degree">B.Sc. RWTH · Mechanical Engineering</span>
+              </div>
+              <div class="c4-member">
+                <span class="c4-name">Ananya Singh</span>
+                <span class="c4-role">Science Educator & Mentor</span>
+                <span class="c4-degree">M.Sc. RWTH · Experimental Physics</span>
+              </div>
+            </div>
+            <p class="c4-motto">RWTH Aachen University is Germany's largest technical university and one of Europe's leading engineering schools — the German equivalent of MIT.</p>
+          </div>
           <span class="card-number">4/5</span>
         </section>
       </div>
 
       <div class="card-wrap">
-        <section class="card" style="background: #FFFFFF;">
-          <span class="card-label">Venues</span>
-          <h2 class="card-title">Spaces that work</h2>
-          <p class="card-text">From coworking studios in Sheung Wan to maker labs in Kwun Tong — flexible rooms booked by the hour or the day.</p>
+        <section class="card card-booking card-video card-video-dark">
+          <video class="card-bg-video" autoplay loop muted playsinline>
+            <source src="/booking-video.mp4" type="video/mp4" />
+          </video>
+          <span class="booking-eyebrow" style="z-index:2;">Summer 2026 — Limited Spots</span>
+          <h2 class="booking-title">Missi<span style="color:#A7BD03">o</span>n M<span style="color:#42A6A5">a</span>rs<br>Summ<span style="color:#FFD600">e</span>r C<span style="color:#42A6A5">a</span>mp</h2>
+          <div class="booking-details">
+            <span class="booking-detail">3–7 Aug · Mon–Fri · 9:00–12:00</span>
+            <span class="booking-detail">Ages 6–12 · Sheung Wan · Mars rover included</span>
+          </div>
+          <span class="booking-price">HK$3,500</span>
+          <span class="booking-price-note">per child · 5 days × 3 hours</span>
+          <a href="https://buy.stripe.com/REPLACE_WITH_YOUR_PAYMENT_LINK" class="booking-cta">Book Now</a>
+          <a href="https://wa.me/85200000000?text=Hi%20CreatorPort%2C%20I%20have%20a%20question%20about%20the%20Summer%20Camp" class="c5-whatsapp" target="_blank" rel="noopener">
+            <svg class="c5-wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Any questions? Contact us
+          </a>
+          <div class="mini-footer-inline">Space of Possibilities Ltd. · Hong Kong · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="https://wa.me/85200000000">Contact</a></div>
           <span class="card-number">5/5</span>
         </section>
       </div>
@@ -296,6 +841,14 @@
         img.classList.add('animate');
       });
     }, 300);
+  });
+
+  const burger = document.querySelector('.burger');
+  const overlay = document.querySelector('.menu-overlay');
+  burger.addEventListener('click', () => {
+    const open = overlay.classList.toggle('open');
+    burger.classList.toggle('is-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
   });
 </script>
 </body>

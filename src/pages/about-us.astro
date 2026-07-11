@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — CreatorPort</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --ink: #181310; --ink-soft: #7A736A; --ink-faint: #B7AFA4; --line: #D6D0C6; --page-bg: #FBFAF8; }
+    body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif; background: var(--page-bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+    .page-wrap { max-width: 720px; margin: 0 auto; padding: clamp(80px, 12vw, 120px) clamp(20px, 5vw, 40px) 40px; }
+    .page-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: .32em; color: var(--ink-soft); margin-bottom: 12px; }
+    .page-title { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 600; line-height: 1.1; letter-spacing: -.02em; color: var(--ink); margin-bottom: 8px; }
+    .page-sub { font-size: clamp(.9rem, 2vw, 1.05rem); color: var(--ink-soft); line-height: 1.6; margin-bottom: 40px; }
+
+    .team-card { border: 1px solid var(--line); padding: clamp(24px, 4vw, 36px); margin-bottom: 28px; text-align: center; }
+    .team-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); margin-bottom: 16px; }
+    .team-name { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .team-role { font-size: 12px; text-transform: uppercase; letter-spacing: .2em; color: var(--ink-soft); font-weight: 600; margin-bottom: 4px; }
+    .team-degree { font-size: .78rem; color: var(--ink-faint); margin-bottom: 20px; }
+    .team-bio { text-align: left; font-size: clamp(.88rem, 1.8vw, .95rem); color: var(--ink-soft); line-height: 1.7; }
+    .team-bio p { margin-bottom: 12px; }
+    .team-bio strong { color: var(--ink); }
+    .team-awards { margin-top: 20px; text-align: left; }
+    .team-award { font-size: .82rem; color: var(--ink-soft); padding: 8px 0; border-top: 1px solid var(--line); }
+    .team-award a { color: var(--ink); text-decoration: none; font-weight: 600; }
+    .team-award a:hover { text-decoration: underline; }
+    .team-contact { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+    .team-contact a { color: var(--ink); text-decoration: none; font-size: .85rem; font-weight: 600; }
+    .team-contact a:hover { text-decoration: underline; }
+
+    @media (min-width: 768px) { .team-photo { width: 160px; height: 160px; } }
+
+    /* Burger + Menu */
+    .burger { position: fixed; top: clamp(16px, 4vw, 32px); right: clamp(16px, 4vw, 32px); z-index: 100; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; -webkit-tap-highlight-color: transparent; padding: 0; }
+    .burger-line { display: block; width: 28px; height: 3px; background: var(--ink); border-radius: 2px; position: relative; transition: transform .3s ease, opacity .3s ease; }
+    .menu-overlay { position: fixed; inset: 0; z-index: 99; background: var(--page-bg); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+    .menu-overlay.open { opacity: 1; pointer-events: auto; }
+    .menu-overlay nav { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+    .menu-link { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: -.02em; transition: opacity .2s ease; }
+    .menu-link:hover { opacity: .5; }
+    .menu-legal { display: flex; gap: 16px; }
+    .menu-legal a { font-size: .8rem; font-weight: 500; color: var(--ink-faint); text-decoration: none; letter-spacing: .04em; }
+    .menu-legal a:hover { color: var(--ink); }
+    .burger.is-open .burger-line { background: transparent; }
+    .burger.is-open .burger-line::before, .burger.is-open .burger-line::after { content: ''; position: absolute; width: 28px; height: 3px; background: var(--ink); border-radius: 2px; }
+    .burger.is-open .burger-line::before { transform: rotate(45deg); }
+    .burger.is-open .burger-line::after { transform: rotate(-45deg); }
+
+    .mini-footer { text-align: center; padding: 32px 20px; font-size: .7rem; color: var(--ink-faint); border-top: 1px solid var(--line); }
+    .mini-footer a { color: var(--ink-faint); text-decoration: none; }
+    .mini-footer a:hover { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <button class="burger" aria-label="Menu"><span class="burger-line"></span></button>
+  <div class="menu-overlay">
+    <nav>
+      <a class="menu-link" href="/">Home</a>
+      <a class="menu-link" href="/location.html">Location</a>
+      <a class="menu-link" href="/our-story.html">Our Story</a>
+      <a class="menu-link" href="/about-us.html">About Us</a>
+    </nav>
+    <div class="menu-legal">
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+  </div>
+
+  <main class="page-wrap">
+    <p class="page-label">Our Team</p>
+    <h1 class="page-title">Meet the Team</h1>
+    <p class="page-sub">Two RWTH-trained minds. One shared belief: the right mentor changes everything.</p>
+
+    <div class="team-card">
+      <img class="team-photo" src="/img/daniel-kurth.jpg" alt="Daniel Kurth" />
+      <h2 class="team-name">Daniel Kurth</h2>
+      <div class="team-role">Founder & Lead Educator</div>
+      <div class="team-degree">B.Sc. RWTH · Mechanical Engineering & Business · Aachen</div>
+      <div class="team-bio">
+        <p>Hi, I'm Daniel. I grew up in Pivitsheide, a small town in Germany, where I spent most of my childhood taking things apart to figure out how they worked. That curiosity eventually became a degree in Mechanical Engineering and Business Administration at RWTH Aachen — one of Germany's top engineering universities.</p>
+        <p>Since then I've worked as an engineer in product development and manufacturing on both sides of the Europe–Asia bridge. I love building things end to end: recently I designed and modelled a compact coffee roaster, and I 3D-printed and assembled a self-balancing "ballbot" robot from scratch.</p>
+        <p>I've been based in Hong Kong for two years and connected to the city since 2016. Most importantly, I'm the father of a young daughter — and that shapes how I design every single class. I build each lesson as if I were preparing it for her: the fundamentals I'd want her to truly understand, taught well enough to give her real, useful skills for the world ahead.</p>
+        <p>That's the spirit behind everything we do: not textbook theory, but the way real engineers and scientists actually work — driven by genuine curiosity and the confidence to try, fail, and try again.</p>
+      </div>
+      <div class="team-contact">
+        <a href="mailto:daniel@creatorport.com.hk">daniel@creatorport.com.hk</a>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <img class="team-photo" src="/img/ananya-singh.jpg" alt="Ananya Singh" />
+      <h2 class="team-name">Ananya Singh</h2>
+      <div class="team-role">Science Educator & Mentor</div>
+      <div class="team-degree">M.Sc. RWTH · Experimental Physics · Aachen</div>
+      <div class="team-bio">
+        <p>Ananya is a physicist at RWTH Aachen — the kind of teacher who can take a concept that has defeated you for weeks and, in twenty minutes over coffee, make it feel obvious. He doesn't just solve the equation. He dismantles the way you're thinking about it, rebuilds it from scratch, and hands it back clearer than before.</p>
+        <p>Currently a PhD candidate at the Chair of Experimental Physics & II. Institute of Physics at RWTH Aachen, Ananya brings deep scientific understanding paired with a rare gift for making complex ideas accessible.</p>
+        <p>As a mentor and science communicator, Ananya teaches physics the way it should be taught: not as a collection of formulas to memorize, but as a way of seeing the world. Available for online sessions worldwide.</p>
+      </div>
+      <div class="team-awards">
+        <div class="team-award">Physics Teaching Award "Best Supportive Teaching", RWTH Aachen, 2021</div>
+        <div class="team-award">Science Slam Winner, Cologne, 2025 — <a href="https://www.youtube.com/watch?v=hxs4gLeBBbI" target="_blank" rel="noopener">Watch Talk</a></div>
+      </div>
+      <div class="team-contact">
+        <a href="mailto:ananya@creatorport.com.hk">ananya@creatorport.com.hk</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="mini-footer">
+    Space of Possibilities Ltd. · Hong Kong · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="https://wa.me/85200000000">Contact</a>
+  </footer>
+
+<script>
+  const burger = document.querySelector('.burger');
+  const overlay = document.querySelector('.menu-overlay');
+  burger.addEventListener('click', () => {
+    const open = overlay.classList.toggle('open');
+    burger.classList.toggle('is-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+</script>
+</body>
+</html>

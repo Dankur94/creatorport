@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions — CreatorPort</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --ink: #181310; --ink-soft: #7A736A; --ink-faint: #B7AFA4; --line: #D6D0C6; --page-bg: #FBFAF8; }
+    body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif; background: var(--page-bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+    .page-wrap { max-width: 720px; margin: 0 auto; padding: clamp(80px, 12vw, 120px) clamp(20px, 5vw, 40px) 40px; }
+    .page-title { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 600; line-height: 1.1; letter-spacing: -.02em; color: var(--ink); margin-bottom: 12px; }
+    .page-sub { font-size: clamp(.85rem, 1.8vw, .92rem); color: var(--ink-soft); line-height: 1.6; margin-bottom: 32px; }
+    h2 { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 600; color: var(--ink); margin: 28px 0 12px; }
+    p, li { font-size: clamp(.88rem, 1.8vw, .95rem); color: var(--ink-soft); line-height: 1.7; margin-bottom: 12px; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    strong { color: var(--ink); }
+    .burger { position: fixed; top: clamp(16px, 4vw, 32px); right: clamp(16px, 4vw, 32px); z-index: 100; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; -webkit-tap-highlight-color: transparent; padding: 0; }
+    .burger-line { display: block; width: 28px; height: 3px; background: var(--ink); border-radius: 2px; position: relative; transition: transform .3s ease, opacity .3s ease; }
+    .menu-overlay { position: fixed; inset: 0; z-index: 99; background: var(--page-bg); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+    .menu-overlay.open { opacity: 1; pointer-events: auto; }
+    .menu-overlay nav { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+    .menu-link { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: -.02em; transition: opacity .2s ease; }
+    .menu-link:hover { opacity: .5; }
+    .menu-legal { display: flex; gap: 16px; }
+    .menu-legal a { font-size: .8rem; font-weight: 500; color: var(--ink-faint); text-decoration: none; letter-spacing: .04em; }
+    .menu-legal a:hover { color: var(--ink); }
+    .burger.is-open .burger-line { background: transparent; }
+    .burger.is-open .burger-line::before, .burger.is-open .burger-line::after { content: ''; position: absolute; width: 28px; height: 3px; background: var(--ink); border-radius: 2px; }
+    .burger.is-open .burger-line::before { transform: rotate(45deg); }
+    .burger.is-open .burger-line::after { transform: rotate(-45deg); }
+    .mini-footer { text-align: center; padding: 32px 20px; font-size: .7rem; color: var(--ink-faint); border-top: 1px solid var(--line); }
+    .mini-footer a { color: var(--ink-faint); text-decoration: none; }
+    .mini-footer a:hover { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <button class="burger" aria-label="Menu"><span class="burger-line"></span></button>
+  <div class="menu-overlay">
+    <nav>
+      <a class="menu-link" href="/">Home</a>
+      <a class="menu-link" href="/location.html">Location</a>
+      <a class="menu-link" href="/our-story.html">Our Story</a>
+      <a class="menu-link" href="/about-us.html">About Us</a>
+    </nav>
+    <div class="menu-legal"><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></div>
+  </div>
+
+  <main class="page-wrap">
+    <h1 class="page-title">Terms & Conditions</h1>
+    <p class="page-sub">These terms apply to bookings for the CreatorPort "Mission Mars" Summer Camp, operated by <strong>Space of Possibilities Limited</strong>, Hong Kong ("CreatorPort", "we").</p>
+
+    <h2>1. The camp</h2>
+    <ul>
+      <li><strong>Dates & times:</strong> 3–7 August 2026 (Monday–Friday), 9:00 am – 12:00 pm</li>
+      <li><strong>Location:</strong> 19/F Amtel Building, 144–148 Des Voeux Road Central, Hong Kong</li>
+      <li><strong>Ages:</strong> 5–12 years</li>
+      <li><strong>Included:</strong> all materials and equipment, and the rover your child builds — including its electronics — to take home on the final day</li>
+      <li><strong>Drop-off / pick-up:</strong> drop-off from 8:50 am; pick-up at 12:00 noon. Please pick your child up punctually.</li>
+    </ul>
+
+    <h2>2. Booking and payment</h2>
+    <ul>
+      <li>A place is confirmed once full payment is received via our online checkout (Stripe).</li>
+      <li>Prices are in Hong Kong Dollars and per child.</li>
+    </ul>
+
+    <h2>3. Cancellation and refunds</h2>
+    <p><strong>By you:</strong></p>
+    <ul>
+      <li>14 or more days before camp start: <strong>full refund</strong></li>
+      <li>7–13 days before camp start: <strong>50% refund</strong></li>
+      <li>Fewer than 7 days before camp start: no refund — but your place is <strong>transferable</strong> to another child, or the full amount can be <strong>credited</strong> to a future CreatorPort course</li>
+    </ul>
+    <p><strong>By us:</strong> If we must cancel the camp (e.g. minimum enrolment not reached, venue issues, or other circumstances beyond our control), you receive a <strong>100% refund</strong>. We will inform you no later than 7 days before camp start.</p>
+    <p><strong>Missed days:</strong> No refund for individually missed days. If your child misses a day, we will help them catch up the next morning.</p>
+    <p><strong>Illness:</strong> If your child is unwell with something contagious, please keep them at home — we will do our best to help them catch up, and in cases of multi-day illness with a medical note we will find a fair solution together.</p>
+
+    <h2>4. During the camp</h2>
+    <ul>
+      <li>Children are supervised at all times by the instructor. All soldering and hot-tool preparation is done before camp; children never handle hot tools.</li>
+      <li>Please send your child with a water bottle and a small snack.</li>
+      <li>Parents are warmly invited to the final 30 minutes on Day 5 (Parents' Showcase).</li>
+    </ul>
+
+    <h2>5. Photos and videos</h2>
+    <p>Photo/video consent is requested separately at booking and is optional (see our <a href="/privacy.html" style="color:var(--ink); font-weight:600;">Privacy Policy</a>).</p>
+
+    <h2>6. Liability</h2>
+    <p>We take great care in designing safe missions and materials. To the maximum extent permitted by Hong Kong law, our liability is limited to cases of negligence on our part. Parents are responsible for ensuring their child is fit to participate.</p>
+
+    <h2>7. General</h2>
+    <ul>
+      <li>These terms are governed by the laws of the Hong Kong SAR.</li>
+      <li>Contact for all questions: daniel@creatorport.com.hk · WhatsApp +852 XXXX XXXX</li>
+    </ul>
+
+    <p style="color:var(--ink-faint); font-size:.8rem; margin-top:24px;">Last updated: July 2026</p>
+  </main>
+
+  <footer class="mini-footer">
+    Space of Possibilities Ltd. · Hong Kong · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="https://wa.me/85200000000">Contact</a>
+  </footer>
+
+<script>
+  const burger = document.querySelector('.burger');
+  const overlay = document.querySelector('.menu-overlay');
+  burger.addEventListener('click', () => {
+    const open = overlay.classList.toggle('open');
+    burger.classList.toggle('is-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+</script>
+</body>
+</html>

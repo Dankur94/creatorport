@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Location — CreatorPort</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink: #181310;
+      --ink-soft: #7A736A;
+      --ink-faint: #B7AFA4;
+      --line: #D6D0C6;
+      --page-bg: #FBFAF8;
+    }
+
+    body {
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      background: var(--page-bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: clamp(80px, 12vw, 120px) clamp(20px, 5vw, 40px) 40px;
+    }
+
+    .page-label {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .32em;
+      color: var(--ink-soft);
+      margin-bottom: 12px;
+    }
+
+    .page-title {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .address {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .directions {
+      font-size: clamp(.9rem, 2vw, 1rem);
+      color: var(--ink-soft);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .facts {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .facts li {
+      font-size: clamp(.85rem, 1.8vw, .95rem);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .facts li::before {
+      content: '\2713\00a0\00a0';
+      color: #42A6A5;
+      font-weight: 700;
+    }
+
+    .map-frame {
+      width: 100%;
+      height: 320px;
+      border: 1px solid var(--line);
+      margin-bottom: 12px;
+    }
+
+    .map-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: .9rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #FFFFFF;
+      background: var(--ink);
+      transition: background .2s ease;
+      margin-bottom: 32px;
+    }
+
+    .map-btn:hover { background: #2C2520; }
+
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-faint);
+      font-size: .85rem;
+      margin-bottom: 40px;
+    }
+
+    /* ── Burger ── */
+    .burger {
+      position: fixed;
+      top: clamp(16px, 4vw, 32px);
+      right: clamp(16px, 4vw, 32px);
+      z-index: 100;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      padding: 0;
+    }
+
+    .burger-line {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: var(--ink);
+      border-radius: 2px;
+      position: relative;
+      transition: transform .3s ease, opacity .3s ease;
+    }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: var(--page-bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease;
+    }
+
+    .menu-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .menu-overlay nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .menu-link {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -.02em;
+      transition: opacity .2s ease;
+    }
+
+    .menu-link:hover { opacity: .5; }
+
+    .menu-legal {
+      display: flex;
+      gap: 16px;
+    }
+
+    .menu-legal a {
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--ink-faint);
+      text-decoration: none;
+      letter-spacing: .04em;
+    }
+
+    .menu-legal a:hover { color: var(--ink); }
+
+    .burger.is-open .burger-line { background: transparent; }
+    .burger.is-open .burger-line::before,
+    .burger.is-open .burger-line::after {
+      content: '';
+      position: absolute;
+      width: 28px;
+      height: 3px;
+      background: var(--ink);
+      border-radius: 2px;
+    }
+    .burger.is-open .burger-line::before { transform: rotate(45deg); }
+    .burger.is-open .burger-line::after { transform: rotate(-45deg); }
+
+    /* ── Footer ── */
+    .mini-footer {
+      text-align: center;
+      padding: 32px 20px;
+      font-size: .7rem;
+      color: var(--ink-faint);
+      border-top: 1px solid var(--line);
+    }
+
+    .mini-footer a {
+      color: var(--ink-faint);
+      text-decoration: none;
+    }
+
+    .mini-footer a:hover { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <button class="burger" aria-label="Menu">
+    <span class="burger-line"></span>
+  </button>
+
+  <div class="menu-overlay">
+    <nav>
+      <a class="menu-link" href="/">Home</a>
+      <a class="menu-link" href="/location.html">Location</a>
+      <a class="menu-link" href="/our-story.html">Our Story</a>
+      <a class="menu-link" href="/about-us.html">About Us</a>
+    </nav>
+    <div class="menu-legal">
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+  </div>
+
+  <main class="page-wrap">
+    <p class="page-label">Location</p>
+    <h1 class="page-title">3 minutes from Sheung Wan MTR</h1>
+
+    <p class="address">19/F Amtel Building, 144–148 Des Voeux Road Central, Hong Kong</p>
+
+    <p class="directions">Take Exit E1 or A1 at Sheung Wan Station, turn right, and walk straight for about 3 minutes. The Amtel Building entrance is on Des Voeux Road. Take the lift to the 19th floor.</p>
+
+    <ul class="facts">
+      <li>Air-conditioned classroom on the 19th floor</li>
+      <li>Child-friendly toilets on the same floor</li>
+      <li>Drop-off from 8:50 am · pick-up at 12:00 noon</li>
+    </ul>
+
+    <iframe
+      class="map-frame"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1844.2!2d114.1543809!3d22.2853932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404012fa7a50bb7%3A0x90fe171596df3769!2sLEN!5e0!3m2!1sen!2shk!4v1"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Amtel Building location">
+    </iframe>
+
+    <a class="map-btn" href="https://www.google.com/maps/place/LEN+%E5%A0%B4%E5%9C%B0%E7%A7%9F%E7%94%A8%E5%8F%8A%E5%95%86%E5%8B%99%E4%BA%A4%E6%B5%81%E7%B5%84%E7%B9%94/@22.2853932,114.1543809,17z/" target="_blank" rel="noopener">Open in Google Maps</a>
+
+    <div class="photo-placeholder">Building entrance photo (amtel-entrance.jpg — coming soon)</div>
+  </main>
+
+  <footer class="mini-footer">
+    Space of Possibilities Ltd. · Hong Kong · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="https://wa.me/85200000000">Contact</a>
+  </footer>
+
+<script>
+  const burger = document.querySelector('.burger');
+  const overlay = document.querySelector('.menu-overlay');
+  burger.addEventListener('click', () => {
+    const open = overlay.classList.toggle('open');
+    burger.classList.toggle('is-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+</script>
+</body>
+</html>
