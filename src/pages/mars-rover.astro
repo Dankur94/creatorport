@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mars Rover — CreatorPort</title>
+  <title>EK10 Mars Rover — CreatorPort</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -17,36 +17,69 @@
   </script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root { --ink: #181310; --ink-soft: #7A736A; --ink-faint: #B7AFA4; --line: #D6D0C6; --page-bg: #FBFAF8; }
+    :root { --ink: #181310; --ink-soft: #7A736A; --ink-faint: #B7AFA4; --line: #D6D0C6; --page-bg: #FBFAF8; --gold: #D9A400; }
     body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif; background: var(--page-bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
 
-    .page-wrap { max-width: 720px; margin: 0 auto; padding: clamp(80px, 12vw, 120px) clamp(20px, 5vw, 40px) 40px; }
-    .page-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: .32em; color: var(--ink-soft); margin-bottom: 12px; }
-    .page-title { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 600; line-height: 1.1; letter-spacing: -.02em; color: var(--ink); margin-bottom: 8px; }
-    .page-sub { font-size: clamp(.9rem, 2vw, 1.05rem); color: var(--ink-soft); line-height: 1.6; margin-bottom: 32px; }
+    .page-wrap { max-width: 780px; margin: 0 auto; padding: clamp(80px, 12vw, 120px) clamp(20px, 5vw, 40px) 40px; }
 
-    .rover-hero { width: 100%; margin-bottom: 32px; }
-    .rover-hero img { width: 100%; height: auto; }
+    /* Hero */
+    .hero-eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .32em; color: var(--ink-faint); margin-bottom: 12px; }
+    .hero-title { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(2rem, 5.5vw, 3.2rem); font-weight: 600; line-height: 1.05; letter-spacing: -.02em; color: var(--ink); margin-bottom: 8px; }
+    .hero-tagline { font-size: clamp(.95rem, 2.2vw, 1.1rem); color: var(--ink-soft); line-height: 1.5; margin-bottom: 16px; }
+    .hero-exclusive { font-size: clamp(.85rem, 1.8vw, .95rem); font-weight: 500; color: var(--ink); line-height: 1.6; border-left: 3px solid var(--gold); padding-left: 16px; margin-bottom: 24px; }
+    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: var(--line); border: 1px solid var(--line); margin-bottom: 32px; display: flex; align-items: center; justify-content: center; color: var(--ink-faint); font-size: .85rem; }
 
-    .section-title { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 600; color: var(--ink); margin: 32px 0 12px; }
-
-    .rover-text { font-size: clamp(.9rem, 2vw, 1rem); color: var(--ink-soft); line-height: 1.7; margin-bottom: 16px; }
-
-    .spec-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
-    .spec-list li { font-size: clamp(.85rem, 1.8vw, .95rem); color: var(--ink); line-height: 1.5; padding: 12px 16px; border: 1px solid var(--line); }
-    .spec-list li strong { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-faint); margin-bottom: 2px; font-weight: 500; }
-
-    .highlight-box { background: var(--ink); color: #FFFFFF; padding: clamp(20px, 4vw, 32px); margin: 32px 0; text-align: center; }
-    .highlight-box h3 { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 600; margin-bottom: 8px; }
-    .highlight-box p { font-size: clamp(.85rem, 1.8vw, .95rem); color: rgba(255,255,255,.75); line-height: 1.6; }
-
-    .cta-btn { display: inline-block; margin-top: 24px; padding: 18px 48px; font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1rem, 2.5vw, 1.15rem); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; color: #FFFFFF; background: var(--ink); transition: background .2s ease, transform .15s ease; }
+    /* CTA */
+    .cta-block { text-align: center; margin: 40px 0; }
+    .cta-btn { display: inline-block; padding: 18px 48px; font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1rem, 2.5vw, 1.15rem); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; color: #FFFFFF; background: var(--ink); transition: background .2s, transform .15s; -webkit-tap-highlight-color: transparent; }
     .cta-btn:hover { background: #2C2520; }
     .cta-btn:active { transform: scale(.97); }
+    .cta-sub { font-size: .8rem; color: var(--ink-faint); margin-top: 10px; line-height: 1.6; }
+    .cta-sub a { color: var(--ink); text-decoration: none; font-weight: 600; }
+    .cta-sub a:hover { text-decoration: underline; }
 
-    .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 24px 0; }
-    .photo-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; border: 1px solid var(--line); }
-    @media (max-width: 480px) { .photo-grid { grid-template-columns: 1fr; } }
+    /* Section */
+    .section-title { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.3rem, 3.5vw, 1.8rem); font-weight: 600; color: var(--ink); margin: 48px 0 20px; letter-spacing: -.01em; }
+
+    /* Feature grid */
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+    @media (max-width: 580px) { .feature-grid { grid-template-columns: 1fr; } }
+    .feature-card { border: 1px solid var(--line); padding: clamp(16px, 2.5vw, 24px); display: flex; flex-direction: column; gap: 6px; }
+    .feature-card-title { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(.9rem, 2vw, 1.05rem); font-weight: 600; color: var(--ink); }
+    .feature-card-text { font-size: clamp(.82rem, 1.6vw, .9rem); color: var(--ink-soft); line-height: 1.6; }
+
+    /* Timeline */
+    .timeline { display: flex; flex-direction: column; gap: 0; margin-bottom: 16px; }
+    .timeline-day { display: flex; gap: 16px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .timeline-day:last-child { border-bottom: none; }
+    .timeline-label { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); white-space: nowrap; min-width: 52px; }
+    .timeline-text { font-size: clamp(.85rem, 1.8vw, .95rem); color: var(--ink-soft); line-height: 1.5; }
+    .timeline-closing { font-size: clamp(.85rem, 1.8vw, .95rem); font-style: italic; color: var(--ink); line-height: 1.6; margin: 16px 0 32px; }
+
+    /* Spec table */
+    .spec-table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+    .spec-table tr { border-bottom: 1px solid var(--line); }
+    .spec-table td { padding: 10px 12px; font-size: clamp(.82rem, 1.6vw, .9rem); vertical-align: top; }
+    .spec-table td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; width: 140px; }
+    .spec-table td:last-child { color: var(--ink-soft); }
+    .spec-footnote { font-size: .75rem; color: var(--ink-faint); font-style: italic; margin-bottom: 32px; }
+
+    /* Take home */
+    .rover-text { font-size: clamp(.9rem, 2vw, 1rem); color: var(--ink-soft); line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+    .check-list li { font-size: clamp(.85rem, 1.8vw, .95rem); color: var(--ink); line-height: 1.5; }
+
+    /* Safe */
+    .safe-text { font-size: clamp(.9rem, 2vw, 1rem); color: var(--ink-soft); line-height: 1.7; margin-bottom: 32px; font-style: italic; }
+
+    /* Final CTA */
+    .final-cta { background: var(--ink); color: #FFFFFF; padding: clamp(32px, 6vw, 56px) clamp(20px, 4vw, 40px); text-align: center; margin: 48px 0 0; }
+    .final-eyebrow { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .32em; color: rgba(255,255,255,.6); margin-bottom: 10px; }
+    .final-details { font-size: clamp(.85rem, 1.8vw, .95rem); color: rgba(255,255,255,.7); margin-bottom: 20px; }
+    .final-cta .cta-btn { background: #FFFFFF; color: var(--ink); }
+    .final-cta .cta-btn:hover { background: #F0EDE8; }
+    .final-cta .cta-sub { color: rgba(255,255,255,.5); }
+    .final-cta .cta-sub a { color: rgba(255,255,255,.8); }
 
     /* Burger + Menu */
     .burger { position: fixed; top: clamp(16px, 4vw, 32px); right: clamp(16px, 4vw, 32px); z-index: 100; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; -webkit-tap-highlight-color: transparent; padding: 0; }
@@ -76,7 +109,7 @@
       <a class="menu-link" href="/location.html">Location</a>
       <a class="menu-link" href="/our-story.html">Our Story</a>
       <a class="menu-link" href="/about-us.html">About Us</a>
-      <a class="menu-link" href="/mars-rover.html">EK10</a>
+      <a class="menu-link" href="/mars-rover.html">Mars Rover EK10</a>
     </nav>
     <div class="menu-legal">
       <a href="/privacy.html">Privacy</a>
@@ -85,42 +118,104 @@
   </div>
 
   <main class="page-wrap">
-    <p class="page-label">The Rover</p>
-    <h1 class="page-title">Your child builds it. Programs it. Keeps it.</h1>
-    <p class="page-sub">The Mission Mars Rover is not a toy — it's a real programmable robot, designed and engineered in Hong Kong by CreatorPort.</p>
+    <!-- Section 1: Hero -->
+    <p class="hero-eyebrow">CreatorPort · Model EK10</p>
+    <h1 class="hero-title">The <span style="color:var(--gold)">E</span>K10 Mars Rover</h1>
+    <p class="hero-tagline">Your child builds it. Programs it. Keeps it.</p>
+    <p class="hero-exclusive">The EK10 is not sold in any store. The only way to own one: build it yourself at Mission Mars.</p>
 
-    <div class="rover-hero">
-      <img src="/rover-pink.png" alt="Mission Mars Rover" />
+    <div class="hero-img">
+      <img src="/ek10-hero.jpg" alt="CreatorPort EK10 Mars Rover" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.textContent='[ Product photo coming soon ]'" />
     </div>
 
-    <h2 class="section-title">What's inside</h2>
-    <ul class="spec-list">
-      <li><strong>Brain</strong>Arduino-based microcontroller — the same platform used in university engineering labs worldwide</li>
-      <li><strong>Movement</strong>Dual DC motors with independent control — drives, turns, reverses, spins</li>
-      <li><strong>Gripper</strong>Servo-powered mechanical arm — picks up, lifts, and places objects on the Mars surface</li>
-      <li><strong>Drill</strong>Motorized drill attachment — breaks through terrain to prepare the ground for planting</li>
-      <li><strong>AI Camera</strong>Machine vision module — kids train it themselves to recognize colors, objects, and obstacles</li>
-      <li><strong>Chassis</strong>Custom-designed frame — assembled by hand during camp, no glue, all screws and snap-fits</li>
+    <div class="cta-block">
+      <a href="/checkout.html" class="cta-btn">Book the Camp — HK$3,500</a>
+      <p class="cta-sub">5 days · Ages 6–8 · rover included · Questions or FPS/PayMe? <a href="https://wa.me/85265427963" target="_blank">Message us on WhatsApp</a></p>
+    </div>
+
+    <!-- Section 2: What's inside -->
+    <h2 class="section-title">What's inside the EK10</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="feature-card-title">Brain — BBC micro:bit</span>
+        <p class="feature-card-text">The world's most trusted educational computer — used in schools across the UK, Europe and Asia. Your child programs it with colorful blocks; at home, the free software keeps working.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-title">Drive — Tank tracks</span>
+        <p class="feature-card-text">Dual motors with independent tank-track drive. The EK10 drives, turns on the spot, reverses — and climbs terrain that wheels can't.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-title">Eyes — Laser distance sensor</span>
+        <p class="feature-card-text">A time-of-flight laser sensor (the same technology as in robot vacuums) lets the rover measure distance and stop precisely at its target.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-title">Gripper module</span>
+        <p class="feature-card-text">A servo-powered gripper that picks up, carries and places objects on the Mars surface.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-title">Drill module</span>
+        <p class="feature-card-text">Swappable with the gripper: a drill attachment that breaks the terrain to prepare the ground for planting. Modular design — kids swap tools like real mission engineers.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-title">AI Vision camera</span>
+        <p class="feature-card-text">A trainable machine-vision camera. Kids teach it themselves — at the press of a button — to recognize objects and colors. All AI runs on the device itself: no cloud, no internet, no data leaves the rover.</p>
+      </div>
+      <div class="feature-card" style="grid-column: 1 / -1;">
+        <span class="feature-card-title">Chassis — LEGO-compatible Technic</span>
+        <p class="feature-card-text">Built by hand from LEGO-compatible Technic elements. No glue, no screws — pins and snap-fits. At home, it connects with any LEGO your child already owns.</p>
+      </div>
+    </div>
+
+    <!-- Section 3: 5-day build -->
+    <h2 class="section-title">One rover. Five days. New powers every day.</h2>
+    <div class="timeline">
+      <div class="timeline-day"><span class="timeline-label">Day 1</span><span class="timeline-text">Chassis, tracks and motors: the EK10 drives</span></div>
+      <div class="timeline-day"><span class="timeline-label">Day 2</span><span class="timeline-text">The gripper: it grabs and carries</span></div>
+      <div class="timeline-day"><span class="timeline-label">Day 3</span><span class="timeline-text">The drill: it breaks ground and plants</span></div>
+      <div class="timeline-day"><span class="timeline-label">Day 4</span><span class="timeline-text">The AI camera: it sees and recognizes</span></div>
+      <div class="timeline-day"><span class="timeline-label">Day 5</span><span class="timeline-text">The full mission: drive, find, turn, plant — on its own</span></div>
+    </div>
+    <p class="timeline-closing">Every child builds their own EK10 from components. No two are identical. By Friday, it's a working robot — and it's theirs.</p>
+
+    <!-- Section 4: Specifications -->
+    <h2 class="section-title">Specifications</h2>
+    <table class="spec-table">
+      <tr><td>Model</td><td>CreatorPort EK10</td></tr>
+      <tr><td>Controller</td><td>BBC micro:bit V2 + motor expansion board</td></tr>
+      <tr><td>Drive</td><td>2× DC gear motors, tank-track drive, independent control</td></tr>
+      <tr><td>Gripper</td><td>360° servo, two-rack mechanism, modular mount</td></tr>
+      <tr><td>Drill</td><td>Modular attachment, swappable with gripper</td></tr>
+      <tr><td>Distance sensing</td><td>Laser time-of-flight sensor (VL53L0X class)</td></tr>
+      <tr><td>AI vision</td><td>Trainable on-device camera — object, color & line recognition, no cloud</td></tr>
+      <tr><td>Chassis</td><td>LEGO-compatible Technic elements, tool-free assembly</td></tr>
+      <tr><td>Power</td><td>Rechargeable battery (USB charging)</td></tr>
+      <tr><td>Programming</td><td>Block-based (MakeCode), free, runs in any browser — no installation</td></tr>
+      <tr><td>Dimensions</td><td>approx. 20 × 15 × 12 cm, ~450 g</td></tr>
+      <tr><td>In the box</td><td>Complete rover incl. all electronics, sensor, camera*, charging cable, quick-start guide for home</td></tr>
+    </table>
+    <p class="spec-footnote">*Final module configuration may vary slightly — every EK10 leaves camp fully working and complete.</p>
+
+    <!-- Section 5: Take it home -->
+    <h2 class="section-title">Take it home. Keep building.</h2>
+    <p class="rover-text">The EK10 — including all electronics, motors, sensors and the micro:bit — belongs to your child. The programming software is free and runs in any browser, so the missions continue at home: new programs, new attachments, new ideas. And because the chassis is LEGO-compatible, every brick in your home just became rover parts.</p>
+    <ul class="check-list">
+      <li>✓ Free software, works on any computer at home</li>
+      <li>✓ LEGO-compatible — extend it with bricks you already own</li>
+      <li>✓ Quick-start guide + WhatsApp support from the engineer</li>
     </ul>
 
-    <h2 class="section-title">Built over 5 days</h2>
-    <p class="rover-text">Each day of Mission Mars adds a new capability to the rover. Day 1: chassis and motors. Day 2: the gripper. Day 3: the drill. Day 4: the AI camera. Day 5: the full autonomous mission — plant life on Mars.</p>
-    <p class="rover-text">Every child builds their own rover from components. No two are identical. By the end of the week, they've assembled a working robot that can drive, grip, drill, see, and act on its own.</p>
-
-    <div class="highlight-box">
-      <h3>Your child takes it home</h3>
-      <p>The rover — including all electronics, motors, camera, and the Arduino board — belongs to your child. They can keep programming it, modifying it, and building new missions at home.</p>
-    </div>
-
-    <h2 class="section-title">No experience needed</h2>
-    <p class="rover-text">All soldering, wiring, and tricky prep work is done before camp by our engineer. Children work with safe, pre-prepared components — they get the exciting parts: building, programming, and commanding their rover.</p>
-    <p class="rover-text">Programming is done with colorful blocks and icons — no reading or typing required. If your child can stack LEGO, they can build and program this rover.</p>
-
-    <div style="text-align:center; margin: 40px 0;">
-      <a href="/checkout.html" class="cta-btn">Book the Camp — HK$3,500</a>
-      <p style="font-size:.8rem; color:var(--ink-faint); margin-top:8px;">5 days · Ages 6–12 · Mars rover included</p>
-    </div>
+    <!-- Section 6: Safe by design -->
+    <h2 class="section-title">Safe by design</h2>
+    <p class="safe-text">All soldering, wiring and tricky prep is done before camp by our engineer. Children work with safe, pre-prepared components and never handle hot tools. Programming is done with colorful blocks and icons — no reading or typing required. If your child can stack LEGO, they can build and program the EK10.</p>
   </main>
+
+  <!-- Section 7: Final CTA -->
+  <div class="final-cta">
+    <p class="final-eyebrow">Founding Camp · Summer 2026</p>
+    <p class="final-details">Mission Mars · 3–7 Aug · 9:00–12:00 · Sheung Wan</p>
+    <a href="/checkout.html" class="cta-btn">Book the Camp — HK$3,500</a>
+    <p class="cta-sub">Rover included. Prefer FPS or PayMe? <a href="https://wa.me/85265427963" target="_blank">Message us on WhatsApp</a> — we'll arrange it in one minute.</p>
+  </div>
 
   <footer class="mini-footer">
     Space of Possibilities Ltd. · Hong Kong · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="https://wa.me/85265427963">Contact</a>
