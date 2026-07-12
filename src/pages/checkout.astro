@@ -4,6 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Book Now — CreatorPort</title>
+  <meta property="og:title" content="Book your spot — Mission Mars Camp" />
+  <meta property="og:description" content="AI robotics summer camp for kids 6–12 in Hong Kong. Build, code and keep your own Mars rover. 3–7 Aug, Sheung Wan." />
+  <meta property="og:image" content="https://creatorport.com.hk/og-image.png" />
+  <meta property="og:url" content="https://creatorport.com.hk/checkout.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Book your spot — Mission Mars Camp" />
+  <meta name="twitter:description" content="AI robotics summer camp for kids 6–12 in Hong Kong. Build, code and keep your own Mars rover." />
+  <meta name="twitter:image" content="https://creatorport.com.hk/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -179,7 +188,7 @@
         <div id="formError" class="form-error"></div>
 
         <button type="submit" class="pay-btn" id="payBtn">Pay HK$3,500 — Apple Pay / Card</button>
-        <div class="trust-line">Secure payment via Stripe · 100% money-back guarantee</div>
+        <div class="trust-line">Secure payment via Stripe · <a href="/terms.html" style="color:var(--ink-faint); text-decoration:underline;">Fair cancellation policy</a></div>
       </form>
     </div>
 
@@ -191,6 +200,7 @@
       </button>
       <div class="fps-body">
         <div class="fps-inner">
+          <p style="font-family:'Space Grotesk',sans-serif; font-size:1.1rem; font-weight:700; color:var(--ink); margin-bottom:4px;">Transfer HK$3,500 via FPS</p>
           <div class="fps-qr">
             <img src="/img/fps-qr.jpg" alt="FPS QR Code" width="120" height="120" />
           </div>
@@ -200,7 +210,7 @@
             <button class="fps-copy-btn" id="fpsCopyBtn" type="button">Copy</button>
             <span class="fps-copied" id="fpsCopied">✓</span>
           </div>
-          <a href="https://wa.me/85265427963?text=Hi%21%20I%27ve%20paid%20via%20FPS.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Program%3A%20Mission%20Mars%0A-%20FPS%20reference%3A" target="_blank" class="fps-wa-btn">
+          <a href="https://wa.me/85265427963?text=Hi%21%20I%27ve%20paid%20via%20FPS.%0A-%20Child%27s%20name%3A%0A-%20Age%3A%0A-%20Program%3A%20Mission%20Mars%0A-%20Amount%3A%20HK%243%2C500%0A-%20FPS%20reference%3A" target="_blank" class="fps-wa-btn">
             Confirm on WhatsApp
           </a>
         </div>
@@ -232,6 +242,10 @@
   const payBtn = document.getElementById('payBtn');
   const errorEl = document.getElementById('formError');
 
+  // ==== TEST-MODUS: für Live-Test mit HK$10 hier den Test-Payment-Link eintragen, danach zurücktauschen ====
+  const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/dRmaEWa9KaRMgTZ7hz4c800'; // <-- echter Link (HK$3,500)
+  // const STRIPE_PAYMENT_LINK = 'HIER_TEST_LINK_HK10'; // <-- zum Testen einkommentieren
+
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -257,7 +271,7 @@
       phone: customerPhone
     }));
 
-    const stripeUrl = 'https://buy.stripe.com/dRmaEWa9KaRMgTZ7hz4c800'
+    const stripeUrl = STRIPE_PAYMENT_LINK
       + '?prefilled_email=' + encodeURIComponent(customerEmail)
       + '&client_reference_id=' + ref;
 
