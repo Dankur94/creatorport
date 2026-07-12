@@ -377,10 +377,11 @@
     /* ── Card 3: Why it works ── */
     .card-scroll {
       overflow: hidden;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: stretch;
       text-align: left;
       padding: clamp(24px, 5vw, 48px);
+      padding-top: clamp(40px, 8vw, 80px);
       gap: 0;
     }
 
@@ -405,21 +406,21 @@
 
     .c3-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(12px, 2vw, 20px);
-      margin-bottom: clamp(20px, 3vw, 32px);
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: clamp(10px, 1.5vw, 16px);
+      margin-bottom: 0;
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 720px) {
       .c3-grid { grid-template-columns: 1fr; }
     }
 
     .c3-item {
       border: 1px solid var(--line);
-      padding: clamp(14px, 2vw, 20px);
+      padding: clamp(12px, 1.5vw, 16px);
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
 
     .c3-icon {
@@ -779,10 +780,6 @@
             <div class="c3-item">
               <span class="c3-item-title">The engineer does the hard parts</span>
               <p class="c3-item-text">All soldering, wiring and tricky prep is done before camp. Your child gets the exciting parts: building, programming, commanding the mission. And with a small group, nobody gets left behind.</p>
-            </div>
-            <div class="c3-item">
-              <span class="c3-item-title">Failure is data — like at NASA</span>
-              <p class="c3-item-text">When a rover misses its target, that's not a mistake — it's mission data. Kids adjust and try again.</p>
             </div>
           </div>
 
