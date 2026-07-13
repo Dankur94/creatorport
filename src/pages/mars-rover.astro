@@ -6,13 +6,13 @@
   <title>EK10 Mars Rover — CreatorPort</title>
   <meta property="og:title" content="The EK10 Mars Rover — build it, keep it" />
   <meta property="og:description" content="AI robotics summer camp for kids 6–12 in Hong Kong. Build, code and keep your own Mars rover. 3–7 Aug, Sheung Wan." />
-  <meta property="og:image" content="https://creatorport.com.hk/og-image.png" />
+  <meta property="og:image" content="https://creatorport.com.hk/ek10-side-1.png" />
   <meta property="og:url" content="https://creatorport.com.hk/mars-rover.html" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="The EK10 Mars Rover — build it, keep it" />
   <meta name="twitter:description" content="AI robotics summer camp for kids 6–12 in Hong Kong. Build, code and keep your own Mars rover." />
-  <meta name="twitter:image" content="https://creatorport.com.hk/og-image.png" />
+  <meta name="twitter:image" content="https://creatorport.com.hk/ek10-side-1.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -36,7 +36,14 @@
     .hero-title { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(2rem, 5.5vw, 3.2rem); font-weight: 600; line-height: 1.05; letter-spacing: -.02em; color: var(--ink); margin-bottom: 8px; }
     .hero-tagline { font-size: clamp(.95rem, 2.2vw, 1.1rem); color: var(--ink-soft); line-height: 1.5; margin-bottom: 16px; }
     .hero-exclusive { font-size: clamp(.85rem, 1.8vw, .95rem); font-weight: 500; color: var(--ink); line-height: 1.6; border-left: 3px solid var(--gold); padding-left: 16px; margin-bottom: 24px; }
-    .hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: var(--line); border: 1px solid var(--line); margin-bottom: 32px; display: flex; align-items: center; justify-content: center; color: var(--ink-faint); font-size: .85rem; }
+    .hero-img { width: 100%; background: #000; margin-bottom: 32px; padding: 24px; }
+    .hero-img img { width: 100%; height: auto; max-height: 50vh; object-fit: contain; display: block; margin: 0 auto; }
+
+    /* Gallery */
+    .gallery { background: #000; margin: 0 calc(-1 * clamp(20px, 5vw, 40px)) 0; padding: clamp(20px, 4vw, 40px) clamp(20px, 5vw, 40px); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 2vw, 20px); max-width: 780px; margin: 0 auto; }
+    .gallery-grid img { width: 100%; height: 280px; object-fit: contain; display: block; }
+    @media (max-width: 580px) { .gallery-grid { grid-template-columns: 1fr; } .gallery-grid img { height: 220px; } }
 
     /* CTA */
     .cta-block { text-align: center; margin: 40px 0; }
@@ -134,12 +141,21 @@
     <p class="hero-exclusive">The EK10 is not sold in any store. The only way to own one: build it yourself at Mission Mars.</p>
 
     <div class="hero-img">
-      <img src="/ek10-hero.jpg" alt="CreatorPort EK10 Mars Rover" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.textContent='[ Product photo coming soon ]'" />
+      <img src="/ek10-side-1.png" alt="CreatorPort EK10 Mars Rover — side view" loading="eager" />
     </div>
 
     <div class="cta-block">
       <a href="/checkout.html" class="cta-btn">Book the Camp — HK$3,500</a>
       <p class="cta-sub">5 days · Ages 6–12 · rover included · Questions or FPS/PayMe? <a href="https://wa.me/85265427963" target="_blank">Message us on WhatsApp</a></p>
+    </div>
+
+    <!-- Gallery -->
+    <div class="gallery">
+      <div class="gallery-grid">
+        <img src="/ek10-front.png" alt="CreatorPort EK10 Mars Rover — front view" loading="lazy" />
+        <img src="/ek10-side-2.png" alt="CreatorPort EK10 Mars Rover — side view with gripper" loading="lazy" />
+        <img src="/ek10-top.png" alt="CreatorPort EK10 Mars Rover — top view" loading="lazy" />
+      </div>
     </div>
 
     <!-- Section 2: What's inside -->
