@@ -395,7 +395,9 @@
       gap: 0;
     }
 
-    .card-scroll::-webkit-scrollbar { display: none; }
+    .c3-text-zone {
+      flex-shrink: 0;
+    }
 
     .c3-headline {
       font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -411,82 +413,54 @@
       font-size: clamp(.9rem, 2vw, 1.05rem);
       color: var(--ink-soft);
       line-height: 1.5;
-      margin-bottom: clamp(16px, 3vw, 28px);
+      margin-bottom: clamp(16px, 3vw, 24px);
     }
 
-    .c3-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: clamp(10px, 1.5vw, 16px);
-      margin-bottom: 0;
-    }
-
-    @media (max-width: 720px) {
-      .c3-grid { grid-template-columns: 1fr; }
-    }
-
-    .c3-item {
-      border: 1px solid var(--line);
-      padding: clamp(12px, 1.5vw, 16px);
+    .c3-point {
       display: flex;
-      flex-direction: column;
-      gap: 4px;
+      gap: 10px;
+      align-items: baseline;
+      margin-bottom: 10px;
     }
 
-    .c3-icon {
-      width: 28px;
-      height: 28px;
+    .c3-point-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .c3-point-text {
+      font-size: clamp(.88rem, 1.8vw, 1rem);
       color: var(--ink);
-    }
-
-    .c3-item-title {
-      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
-      font-size: clamp(.85rem, 1.8vw, 1rem);
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    .c3-item-text {
-      font-size: clamp(.78rem, 1.6vw, .88rem);
-      color: var(--ink-soft);
       line-height: 1.5;
     }
 
-    .c3-quote-wrap {
-      display: flex;
-      gap: clamp(12px, 2vw, 20px);
-      align-items: flex-start;
-      border-top: 1px solid var(--line);
-      padding-top: clamp(16px, 3vw, 24px);
+    .c3-point-text strong {
+      font-weight: 600;
     }
 
-    .c3-avatar {
-      width: clamp(48px, 8vw, 64px);
-      height: clamp(48px, 8vw, 64px);
-      border-radius: 50%;
-      background: var(--line);
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-
-    .c3-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .c3-quote {
-      font-size: clamp(.85rem, 1.8vw, .95rem);
+    .c3-aside {
+      font-size: clamp(.8rem, 1.6vw, .88rem);
       font-style: italic;
-      color: var(--ink);
-      line-height: 1.55;
+      color: var(--ink-faint);
+      line-height: 1.5;
+      margin-top: clamp(12px, 2vw, 20px);
     }
 
-    .c3-sig {
-      font-size: clamp(.75rem, 1.4vw, .82rem);
-      font-style: normal;
-      color: var(--ink-soft);
-      margin-top: 6px;
+    .c3-rover-zone {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+    }
+
+    .c3-rover-zone img {
+      max-height: 100%;
+      max-width: 70%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      pointer-events: none;
     }
 
     /* ── Card 4: Who We Are ── */
@@ -697,15 +671,6 @@
       flex-shrink: 0;
     }
 
-    .c5-robot {
-      position: absolute;
-      left: -2%;
-      bottom: -2%;
-      height: 45%;
-      width: auto;
-      pointer-events: none;
-      z-index: -1;
-    }
 
     .card-booking > *:not(.card-bg-video):not(.card-number) {
       position: relative;
@@ -775,26 +740,26 @@
       <div class="card-wrap">
         <section class="card card-scroll" style="background: #FFFFFF;">
 
-          <h2 class="c3-headline">N<span style="color:#FFD600">e</span>v<span style="color:#FFD600">e</span>r cod<span style="color:#FFD600">e</span>d? Still l<span style="color:#FFD600">e</span><span style="color:#42A6A5">a</span>rning t<span style="color:#A7BD03">o</span> r<span style="color:#FFD600">e</span><span style="color:#42A6A5">a</span>d? P<span style="color:#FFD600">e</span>rf<span style="color:#FFD600">e</span>ct.</h2>
-          <p class="c3-intro">This camp was designed from day one for children who have never touched a robot — here's how.</p>
+          <div class="c3-text-zone">
+            <h2 class="c3-headline">N<span style="color:#FFD600">e</span>v<span style="color:#FFD600">e</span>r cod<span style="color:#FFD600">e</span>d? Still l<span style="color:#FFD600">e</span><span style="color:#42A6A5">a</span>rning t<span style="color:#A7BD03">o</span> r<span style="color:#FFD600">e</span><span style="color:#42A6A5">a</span>d? P<span style="color:#FFD600">e</span>rf<span style="color:#FFD600">e</span>ct.</h2>
+            <p class="c3-intro">Built for kids who've never touched a robot.</p>
 
-          <div class="c3-grid">
-            <div class="c3-item">
-              <span class="c3-item-title">Blocks and icons, not text</span>
-              <p class="c3-item-text">Programming happens with colorful blocks and arrows — no reading, no typing, no spelling.</p>
+            <div class="c3-point">
+              <span class="c3-point-icon">🧩</span>
+              <p class="c3-point-text"><strong>No reading needed</strong> — kids program with colorful blocks and icons, not text.</p>
             </div>
-            <div class="c3-item">
-              <span class="c3-item-title">First success on day one</span>
-              <p class="c3-item-text">Missions are built in small steps, so the first IT WORKS moment comes fast — and everything grows from there.</p>
+            <div class="c3-point">
+              <span class="c3-point-icon">🚀</span>
+              <p class="c3-point-text"><strong>Success on day one</strong> — small steps mean the first "IT WORKS!" comes fast.</p>
             </div>
-            <div class="c3-item">
-              <span class="c3-item-title">The engineer does the hard parts</span>
-              <p class="c3-item-text">All soldering, wiring and tricky prep is done before camp. Your child gets the exciting parts: building, programming, commanding the mission. And with a small group, nobody gets left behind.</p>
-            </div>
+
+            <p class="c3-aside">All the hard parts — soldering, wiring, setup — are done by the engineer. Your child gets the fun: building, programming, commanding the mission.</p>
           </div>
 
+          <div class="c3-rover-zone">
+            <img src="/rover-pink.png" alt="Mars Rover" />
+          </div>
 
-          <img class="c5-robot" src="/rover-pink.png" alt="Rover" />
           <span class="card-number">3/5</span>
         </section>
       </div>
