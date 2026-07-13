@@ -6,13 +6,13 @@
   <title>EK10 Mars Rover — CreatorPort</title>
   <meta property="og:title" content="The EK10 Mars Rover — build it, keep it" />
   <meta property="og:description" content="AI robotics summer camp for kids 6–12 in Hong Kong. Build, code and keep your own Mars rover. 3–7 Aug, Sheung Wan." />
-  <meta property="og:image" content="https://creatorport.com.hk/ek10-side-1.png" />
+  <meta property="og:image" content="https://creatorport.com.hk/ek10-hero.png" />
   <meta property="og:url" content="https://creatorport.com.hk/mars-rover.html" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="The EK10 Mars Rover — build it, keep it" />
   <meta name="twitter:description" content="AI robotics summer camp for kids 6–12 in Hong Kong. Build, code and keep your own Mars rover." />
-  <meta name="twitter:image" content="https://creatorport.com.hk/ek10-side-1.png" />
+  <meta name="twitter:image" content="https://creatorport.com.hk/ek10-hero.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -27,7 +27,7 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root { --ink: #181310; --ink-soft: #7A736A; --ink-faint: #B7AFA4; --line: #D6D0C6; --page-bg: #FBFAF8; --gold: #D9A400; }
-    body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif; background: var(--page-bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif; background: var(--page-bg); color: var(--ink); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
     .page-wrap { max-width: 780px; margin: 0 auto; padding: clamp(80px, 12vw, 120px) clamp(20px, 5vw, 40px) 40px; }
 
@@ -36,14 +36,17 @@
     .hero-title { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(2rem, 5.5vw, 3.2rem); font-weight: 600; line-height: 1.05; letter-spacing: -.02em; color: var(--ink); margin-bottom: 8px; }
     .hero-tagline { font-size: clamp(.95rem, 2.2vw, 1.1rem); color: var(--ink-soft); line-height: 1.5; margin-bottom: 16px; }
     .hero-exclusive { font-size: clamp(.85rem, 1.8vw, .95rem); font-weight: 500; color: var(--ink); line-height: 1.6; border-left: 3px solid var(--gold); padding-left: 16px; margin-bottom: 24px; }
-    .hero-img { width: 100%; background: #000; margin-bottom: 32px; padding: 24px; }
-    .hero-img img { width: 100%; height: auto; max-height: 50vh; object-fit: contain; display: block; margin: 0 auto; }
 
-    /* Gallery */
-    .gallery { background: #000; margin: 0 calc(-1 * clamp(20px, 5vw, 40px)) 0; padding: clamp(20px, 4vw, 40px) clamp(20px, 5vw, 40px); }
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 2vw, 20px); max-width: 780px; margin: 0 auto; }
-    .gallery-grid img { width: 100%; height: 280px; object-fit: contain; display: block; }
-    @media (max-width: 580px) { .gallery-grid { grid-template-columns: 1fr; } .gallery-grid img { height: 220px; } }
+    /* Rover photos — playful scattered */
+    .rover-photo { display: block; object-fit: contain; pointer-events: none; }
+    .rover-hero { width: clamp(280px, 65%, 480px); height: auto; margin: 0 auto 32px; display: block; filter: drop-shadow(0 12px 32px rgba(0,0,0,.12)); }
+    .rover-float { position: relative; margin: -20px 0 -10px; }
+    .rover-float img { display: block; object-fit: contain; filter: drop-shadow(0 8px 24px rgba(0,0,0,.10)); }
+    .rover-float-right { text-align: right; }
+    .rover-float-right img { margin-left: auto; }
+    .rover-float-left img { margin-right: auto; }
+    .rover-float-center { text-align: center; }
+    .rover-float-center img { margin: 0 auto; }
 
     /* CTA */
     .cta-block { text-align: center; margin: 40px 0; }
@@ -134,32 +137,26 @@
   </div>
 
   <main class="page-wrap">
-    <!-- Section 1: Hero -->
+    <!-- Hero -->
     <p class="hero-eyebrow">CreatorPort · Model EK10</p>
     <h1 class="hero-title">The <span style="color:var(--gold)">E</span>K10 Mars Rover</h1>
     <p class="hero-tagline">Your child builds it. Programs it. Keeps it.</p>
     <p class="hero-exclusive">The EK10 is not sold in any store. The only way to own one: build it yourself at Mission Mars.</p>
 
-    <div class="hero-img">
-      <img src="/ek10-side-1.png" alt="CreatorPort EK10 Mars Rover — side view" loading="eager" />
-    </div>
+    <img class="rover-hero" src="/ek10-hero.png" alt="CreatorPort EK10 Mars Rover — side view with gripper extended" loading="eager" />
 
     <div class="cta-block">
       <a href="/checkout.html" class="cta-btn">Book the Camp — HK$3,500</a>
       <p class="cta-sub">5 days · Ages 6–12 · rover included · Questions or FPS/PayMe? <a href="https://wa.me/85265427963" target="_blank">Message us on WhatsApp</a></p>
     </div>
 
-    <!-- Gallery -->
-    <div class="gallery">
-      <div class="gallery-grid">
-        <img src="/ek10-front.png" alt="CreatorPort EK10 Mars Rover — front view" loading="lazy" />
-        <img src="/ek10-side-2.png" alt="CreatorPort EK10 Mars Rover — side view with gripper" loading="lazy" />
-        <img src="/ek10-top.png" alt="CreatorPort EK10 Mars Rover — top view" loading="lazy" />
-      </div>
+    <!-- What's inside -->
+    <h2 class="section-title">What's inside the EK10</h2>
+
+    <div class="rover-float rover-float-right">
+      <img src="/ek10-front.png" alt="CreatorPort EK10 — front view showing micro:bit and gripper" loading="lazy" style="width: clamp(160px, 38%, 260px); transform: rotate(2deg);" />
     </div>
 
-    <!-- Section 2: What's inside -->
-    <h2 class="section-title">What's inside the EK10</h2>
     <div class="feature-grid">
       <div class="feature-card">
         <span class="feature-card-title">Brain — BBC micro:bit</span>
@@ -191,7 +188,7 @@
       </div>
     </div>
 
-    <!-- Section 3: 5-day build -->
+    <!-- 5-day build -->
     <h2 class="section-title">One rover. Five days. New powers every day.</h2>
     <div class="timeline">
       <div class="timeline-day"><span class="timeline-label">Day 1</span><span class="timeline-text">Chassis, tracks and motors: the EK10 drives</span></div>
@@ -202,7 +199,11 @@
     </div>
     <p class="timeline-closing">Every child builds their own EK10 from components. No two are identical. By Friday, it's a working robot — and it's theirs.</p>
 
-    <!-- Section 4: Specifications -->
+    <div class="rover-float rover-float-left">
+      <img src="/ek10-top.png" alt="CreatorPort EK10 — top view showing tracks and chassis" loading="lazy" style="width: clamp(140px, 32%, 220px); transform: rotate(-3deg);" />
+    </div>
+
+    <!-- Specifications -->
     <h2 class="section-title">Specifications</h2>
     <table class="spec-table">
       <tr><td>Model</td><td>CreatorPort EK10</td></tr>
@@ -219,8 +220,13 @@
     </table>
     <p class="spec-footnote">*Final module configuration may vary slightly — every EK10 leaves camp fully working and complete.</p>
 
-    <!-- Section 5: Take it home -->
+    <!-- Take it home -->
     <h2 class="section-title">Take it home. Keep building.</h2>
+
+    <div class="rover-float rover-float-right">
+      <img src="/ek10-side.png" alt="CreatorPort EK10 — side profile with servo and wiring" loading="lazy" style="width: clamp(130px, 30%, 200px); transform: rotate(1.5deg);" />
+    </div>
+
     <p class="rover-text">The EK10 — including all electronics, motors, sensors and the micro:bit — belongs to your child. The programming software is free and runs in any browser, so the missions continue at home: new programs, new attachments, new ideas. And because the chassis is LEGO-compatible, every brick in your home just became rover parts.</p>
     <ul class="check-list">
       <li>✓ Free software, works on any computer at home</li>
@@ -228,12 +234,12 @@
       <li>✓ Quick-start guide + WhatsApp support from the engineer</li>
     </ul>
 
-    <!-- Section 6: Safe by design -->
+    <!-- Safe by design -->
     <h2 class="section-title">Safe by design</h2>
     <p class="safe-text">All soldering, wiring and tricky prep is done before camp by our engineer. Children work with safe, pre-prepared components and never handle hot tools. Programming is done with colorful blocks and icons — no reading or typing required. If your child can stack LEGO, they can build and program the EK10.</p>
   </main>
 
-  <!-- Section 7: Final CTA -->
+  <!-- Final CTA -->
   <div class="final-cta">
     <p class="final-eyebrow">Founding Camp · Summer 2026</p>
     <p class="final-details">Mission Mars · 3–7 Aug · 9:00–12:00 · Sheung Wan</p>
