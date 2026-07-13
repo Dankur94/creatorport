@@ -35,39 +35,22 @@
     .checkout-header h1 { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 600; line-height: 1.1; letter-spacing: -.02em; color: var(--ink); margin-bottom: 8px; }
     .checkout-header p { font-size: clamp(.85rem, 1.8vw, .95rem); color: var(--ink-soft); line-height: 1.6; }
 
-    /* Steps */
-    .step { margin-bottom: 28px; }
-    .step-label { display: flex; align-items: center; gap: 10px; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-faint); margin-bottom: 12px; }
-    .step-num { width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: .7rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
-
     /* Program card */
-    .program-card { border: 1px solid var(--line); padding: 20px; text-align: center; }
+    .program-card { border: 1px solid var(--line); padding: 20px; text-align: center; margin-bottom: 20px; }
     .program-name { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1rem, 2.5vw, 1.15rem); font-weight: 600; color: var(--ink); margin-bottom: 4px; }
     .program-meta { font-size: .82rem; color: var(--ink-soft); }
 
     /* Details panel */
-    .details-panel { border: 1px solid var(--line); display: flex; flex-direction: column; }
+    .details-panel { border: 1px solid var(--line); display: flex; flex-direction: column; margin-bottom: 28px; }
     .details-row { display: flex; align-items: center; gap: 12px; padding: 12px 16px; font-size: clamp(.82rem, 1.8vw, .9rem); color: var(--ink-soft); border-bottom: 1px solid var(--line); }
     .details-row:last-child { border-bottom: none; }
     .details-icon { flex-shrink: 0; width: 20px; text-align: center; font-size: .9rem; }
 
-    /* Form */
-    .booking-form { display: flex; flex-direction: column; gap: 16px; }
-    .form-row { display: flex; gap: 12px; }
-    .form-group { flex: 1; display: flex; flex-direction: column; gap: 4px; }
-    .form-group-small { flex: 0 0 80px; }
-    .form-group label { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-faint); }
-    .form-group input { padding: 12px 14px; border: 1px solid var(--line); background: #fff; font-family: 'Inter', sans-serif; font-size: .9rem; color: var(--ink); transition: border-color .2s; width: 100%; }
-    .form-group input:focus { outline: none; border-color: var(--ink); }
-    .form-group input::placeholder { color: var(--ink-faint); }
-
-    .form-error { padding: 12px 16px; background: rgba(200,40,40,.06); border: 1px solid rgba(200,40,40,.15); color: #b91c1c; font-size: .82rem; font-weight: 500; display: none; }
-
     /* Pay button */
-    .pay-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 18px 24px; border: none; background: var(--ink); color: #fff; font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-weight: 600; font-size: clamp(.95rem, 2.2vw, 1.05rem); letter-spacing: .02em; cursor: pointer; transition: background .2s, transform .15s; -webkit-tap-highlight-color: transparent; }
-    .pay-btn:hover:not(:disabled) { background: #2C2520; }
-    .pay-btn:active:not(:disabled) { transform: scale(.97); }
-    .pay-btn:disabled { opacity: .5; cursor: not-allowed; }
+    .pay-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 18px 24px; border: none; background: var(--ink); color: #fff; font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-weight: 600; font-size: clamp(.95rem, 2.2vw, 1.05rem); letter-spacing: .02em; cursor: pointer; transition: background .2s, transform .15s; -webkit-tap-highlight-color: transparent; text-decoration: none; }
+    .pay-btn:hover { background: #2C2520; }
+    .pay-btn:active { transform: scale(.97); }
+    .pay-hint { font-size: .78rem; color: var(--ink-faint); text-align: center; margin-top: 10px; }
     .trust-line { font-size: .72rem; color: var(--ink-faint); text-align: center; margin-top: 6px; }
 
     /* FPS Accordion */
@@ -135,62 +118,27 @@
   <main class="page-wrap">
     <div class="checkout-header">
       <h1>Book a Spot</h1>
-      <p>Fill in details, pay securely via Stripe.</p>
+      <p>Review the details below, then pay securely via Stripe.</p>
     </div>
 
-    <!-- Step 1: Program -->
-    <div class="step">
-      <div class="step-label"><span class="step-num">1</span> Program</div>
-      <div class="program-card">
-        <div class="program-name" id="programName">Mission Mars Summer Camp</div>
-        <div class="program-meta" id="programMeta">Summer Camp · HK$3,500</div>
-      </div>
+    <!-- Program -->
+    <div class="program-card">
+      <div class="program-name">Mission Mars Summer Camp</div>
+      <div class="program-meta">Summer Camp · HK$3,500</div>
     </div>
 
-    <!-- Step 2: Camp Details -->
-    <div class="step">
-      <div class="step-label"><span class="step-num">2</span> Camp Details</div>
-      <div class="details-panel" id="programDetails">
-        <div class="details-row"><span class="details-icon">📅</span><span>3–7 August 2026, Mon–Fri, 9:00 am – 12:00 pm</span></div>
-        <div class="details-row"><span class="details-icon">📍</span><span>19/F, Amtel Building, 144–148 Des Voeux Road Central, Central</span></div>
-        <div class="details-row"><span class="details-icon">🧒</span><span>Ages 6–12</span></div>
-        <div class="details-row"><span class="details-icon">🤖</span><span>Mars rover included — your child takes it home</span></div>
-      </div>
+    <!-- Camp Details -->
+    <div class="details-panel">
+      <div class="details-row"><span class="details-icon">📅</span><span>3–7 August 2026, Mon–Fri, 9:00 am – 12:00 pm</span></div>
+      <div class="details-row"><span class="details-icon">📍</span><span>19/F, Amtel Building, 144–148 Des Voeux Road Central, Central</span></div>
+      <div class="details-row"><span class="details-icon">🧒</span><span>Ages 6–12</span></div>
+      <div class="details-row"><span class="details-icon">🤖</span><span>Mars rover included — your child takes it home</span></div>
     </div>
 
-    <!-- Step 3: Your Details -->
-    <div class="step">
-      <div class="step-label"><span class="step-num">3</span> Your Details</div>
-      <form id="bookingForm" class="booking-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Child's Name *</label>
-            <input type="text" id="childName" required placeholder="e.g. Max" />
-          </div>
-          <div class="form-group form-group-small">
-            <label>Age *</label>
-            <input type="number" id="childAge" required min="1" max="18" placeholder="8" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Parent / Guardian Name *</label>
-          <input type="text" id="customerName" required placeholder="e.g. John Smith" />
-        </div>
-        <div class="form-group">
-          <label>Email *</label>
-          <input type="email" id="customerEmail" required placeholder="parent@example.com" />
-        </div>
-        <div class="form-group">
-          <label>Phone (WhatsApp preferred)</label>
-          <input type="tel" id="customerPhone" placeholder="+852 1234 5678" />
-        </div>
-
-        <div id="formError" class="form-error"></div>
-
-        <button type="submit" class="pay-btn" id="payBtn">Pay HK$3,500 — Apple Pay / Card</button>
-        <div class="trust-line">Secure payment via Stripe · <a href="/terms.html" style="color:var(--ink-faint); text-decoration:underline;">Fair cancellation policy</a></div>
-      </form>
-    </div>
+    <!-- Pay Button -->
+    <a id="payBtn" class="pay-btn" href="https://buy.stripe.com/cNi9AS2Hi6BwcDJcBT4c802">Pay by Card — HK$3,500</a>
+    <p class="pay-hint">You'll enter your child's name and age securely at checkout.</p>
+    <div class="trust-line">Secure payment via Stripe · <a href="/terms.html" style="color:var(--ink-faint); text-decoration:underline;">Fair cancellation policy</a></div>
 
     <!-- FPS Alternative -->
     <div class="fps-section" id="fpsSection">
@@ -228,6 +176,16 @@
   </footer>
 
 <script>
+  // ============================================================
+  // STRIPE PAYMENT LINK (with Custom Fields: child name + age + phone)
+  // TEST-Zeile aktivieren für Live-Test, danach zurücktauschen!
+  // ============================================================
+  const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/cNi9AS2Hi6BwcDJcBT4c802'; // ECHT — HK$3,500 mit Custom Fields
+  // const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/4gM8wO4PqcZU7jp7hz4c801'; // TEST — HK$10
+
+  // Set href on pay button
+  document.getElementById('payBtn').href = STRIPE_PAYMENT_LINK;
+
   // Burger menu
   const burger = document.querySelector('.burger');
   const overlay = document.querySelector('.menu-overlay');
@@ -237,61 +195,9 @@
     document.body.style.overflow = open ? 'hidden' : '';
   });
 
-  // Form submission → Stripe Payment Link with prefilled email
-  const form = document.getElementById('bookingForm');
-  const payBtn = document.getElementById('payBtn');
-  const errorEl = document.getElementById('formError');
-
-  // ============================================================
-  // STRIPE PAYMENT LINK
-  // TEST-Zeile aktivieren für Live-Test mit HK$10, danach zurücktauschen!
-  // ============================================================
-  const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/dRmaEWa9KaRMgTZ7hz4c800'; // ECHT — HK$3,500
-  // const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/4gM8wO4PqcZU7jp7hz4c801'; // TEST — HK$10
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const childName = document.getElementById('childName').value.trim();
-    const childAge = parseInt(document.getElementById('childAge').value, 10);
-    const customerName = document.getElementById('customerName').value.trim();
-    const customerEmail = document.getElementById('customerEmail').value.trim();
-    const customerPhone = (document.getElementById('customerPhone').value || '').trim();
-
-    if (!childName || !childAge || !customerName || !customerEmail) {
-      showError('Please fill in all required fields.');
-      return;
-    }
-
-    payBtn.disabled = true;
-    payBtn.textContent = 'Redirecting to payment...';
-
-    // Build Stripe Payment Link with prefilled email and metadata via client_reference_id
-    const ref = encodeURIComponent(JSON.stringify({
-      child: childName,
-      age: childAge,
-      parent: customerName,
-      phone: customerPhone
-    }));
-
-    const stripeUrl = STRIPE_PAYMENT_LINK
-      + '?prefilled_email=' + encodeURIComponent(customerEmail)
-      + '&client_reference_id=' + ref;
-
-    window.location.href = stripeUrl;
-  });
-
-  function showError(msg) {
-    errorEl.textContent = msg;
-    errorEl.style.display = 'block';
-    setTimeout(function() { errorEl.style.display = 'none'; }, 6000);
-  }
-
   // FPS Accordion
-  const fpsToggle = document.getElementById('fpsToggle');
-  const fpsSection = document.getElementById('fpsSection');
-  fpsToggle.addEventListener('click', function() {
-    fpsSection.classList.toggle('open');
+  document.getElementById('fpsToggle').addEventListener('click', function() {
+    document.getElementById('fpsSection').classList.toggle('open');
   });
 
   // FPS Copy
