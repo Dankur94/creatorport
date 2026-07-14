@@ -434,10 +434,34 @@
       color: var(--ink);
     }
 
-    .c3-promo-body {
+    .c3-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .c3-checklist li {
       font-size: clamp(.88rem, 1.8vw, 1rem);
+      color: var(--ink);
+      line-height: 1.5;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .c3-checklist li::before {
+      content: '\2713';
+      position: absolute;
+      left: 0;
+      color: var(--ink-faint);
+      font-weight: 600;
+    }
+
+    .c3-promo-footer {
+      font-size: clamp(.82rem, 1.6vw, .92rem);
       color: var(--ink-soft);
-      line-height: 1.65;
+      font-style: italic;
+      margin-top: 4px;
     }
 
     @media (min-width: 768px) {
@@ -751,9 +775,14 @@
             <img src="/rover-pink.png" alt="Mars Rover" />
           </div>
           <div class="c3-promo">
-            <span class="c3-promo-eyebrow">New</span>
-            <h2 class="c3-promo-headline">Kids don't just use AI here — they build with it.</h2>
-            <p class="c3-promo-body">In our new AI Learning Unit, kids aged 6–12 train their own mini-AI, discover how tools like ChatGPT really work, and turn their ideas into real projects. Hands-on, in English, no experience needed.</p>
+            <span class="c3-promo-eyebrow">AI Trainer Academy — Included</span>
+            <h2 class="c3-promo-headline">Your child doesn't just use AI — they train one.</h2>
+            <ul class="c3-checklist">
+              <li>A hands-on AI lesson every day</li>
+              <li>Teach a real AI camera to see</li>
+              <li>Discover why AI makes mistakes — and why humans decide</li>
+            </ul>
+            <p class="c3-promo-footer">Every child graduates with their AI Trainer Certificate.</p>
           </div>
           <span class="card-number">3/5</span>
         </section>
