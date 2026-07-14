@@ -526,6 +526,23 @@
       letter-spacing: .04em;
     }
 
+    .c4-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 4px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .03em;
+      border: 1px solid var(--line);
+      color: var(--ink-soft);
+      background: var(--page-bg);
+      width: fit-content;
+    }
+    .c4-badge svg { flex-shrink: 0; }
+
     .c4-motto {
       font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
       font-size: clamp(.85rem, 1.8vw, 1rem);
@@ -768,11 +785,19 @@
                 <span class="c4-name">Daniel Kurth</span>
                 <span class="c4-role">Founder & Lead Educator</span>
                 <span class="c4-degree">B.Sc. RWTH · Mechanical Engineering</span>
+                <span class="c4-badge" aria-label="Teaching mode: On-Site, Hong Kong">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  On-Site · Hong Kong
+                </span>
               </div>
               <div class="c4-member">
                 <span class="c4-name">Ananya Singh</span>
                 <span class="c4-role">Science Educator & Mentor</span>
                 <span class="c4-degree">M.Sc. RWTH · Experimental Physics</span>
+                <span class="c4-badge" aria-label="Teaching mode: Online, Aachen, Germany">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                  Online · Aachen, DE
+                </span>
               </div>
             </div>
             <p class="c4-motto">RWTH Aachen University is Germany's largest technical university and one of Europe's leading engineering schools — the German equivalent of MIT.</p>
