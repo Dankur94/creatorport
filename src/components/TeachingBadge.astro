@@ -1,0 +1,52 @@
+---
+export interface Props {
+  mode: 'onsite' | 'online' | 'hybrid';
+}
+
+const { mode } = Astro.props;
+
+const labels: Record<string, string> = {
+  onsite: 'Vor Ort',
+  online: 'Online',
+  hybrid: 'Vor Ort & Online',
+};
+
+const label = labels[mode];
+---
+
+<span class={`teaching-badge teaching-badge--${mode}`} aria-label={`Unterrichtsform: ${label}`}>
+  {(mode === 'onsite' || mode === 'hybrid') && (
+    <svg class="teaching-badge__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+      <circle cx="12" cy="10" r="3"/>
+    </svg>
+  )}
+  {(mode === 'online' || mode === 'hybrid') && (
+    <svg class="teaching-badge__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polygon points="23 7 16 12 23 17 23 7"/>
+      <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+    </svg>
+  )}
+  <span>{label}</span>
+</span>
+
+<style>
+  .teaching-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .03em;
+    line-height: 1;
+    white-space: nowrap;
+    border: 1px solid var(--line, #D6D0C6);
+    color: var(--ink-soft, #7A736A);
+    background: var(--page-bg, #FBFAF8);
+  }
+  .teaching-badge__icon {
+    flex-shrink: 0;
+  }
+</style>

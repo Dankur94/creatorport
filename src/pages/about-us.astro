@@ -1,3 +1,6 @@
+---
+import TeachingBadge from '../components/TeachingBadge.astro';
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +41,17 @@
     .team-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); margin-bottom: 16px; }
     .team-name { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 600; color: var(--ink); margin-bottom: 4px; }
     .team-role { font-size: 12px; text-transform: uppercase; letter-spacing: .2em; color: var(--ink-soft); font-weight: 600; margin-bottom: 4px; }
-    .team-degree { font-size: .78rem; color: var(--ink-faint); margin-bottom: 20px; }
+    .team-degree { font-size: .78rem; color: var(--ink-faint); margin-bottom: 12px; }
+    .team-badge-row { margin-bottom: 20px; }
+
+    .filter-bar { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+    .filter-btn { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-size: .78rem; font-weight: 600; padding: 6px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--page-bg); color: var(--ink-soft); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+    .filter-btn:hover { border-color: var(--ink-soft); }
+    .filter-btn.active { background: var(--ink); color: var(--page-bg); border-color: var(--ink); }
+
+    .team-card[data-hidden="true"] { display: none; }
+
+    .online-note { font-size: .85rem; color: var(--ink-soft); font-style: italic; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); }
     .team-bio { text-align: left; font-size: clamp(.88rem, 1.8vw, .95rem); color: var(--ink-soft); line-height: 1.7; }
     .team-bio p { margin-bottom: 12px; }
     .team-bio strong { color: var(--ink); }
@@ -94,11 +107,18 @@
     <h1 class="page-title">Meet the Team</h1>
     <p class="page-sub">Two RWTH-trained minds. One shared belief: the right mentor changes everything.</p>
 
-    <div class="team-card">
+    <div class="filter-bar" role="group" aria-label="Filter by teaching mode">
+      <button class="filter-btn active" data-filter="all">Alle</button>
+      <button class="filter-btn" data-filter="onsite">Vor Ort</button>
+      <button class="filter-btn" data-filter="online">Online</button>
+    </div>
+
+    <div class="team-card" data-teaching-mode="onsite">
       <img class="team-photo" src="/img/daniel-kurth.jpg" alt="Daniel Kurth" />
       <h2 class="team-name">Daniel Kurth</h2>
       <div class="team-role">Founder & Lead Educator</div>
       <div class="team-degree">B.Sc. RWTH · Mechanical Engineering & Business · Aachen</div>
+      <div class="team-badge-row"><TeachingBadge mode="onsite" /></div>
       <div class="team-bio">
         <p>Hi, I'm Daniel. I grew up in Pivitsheide, a small town in Germany, where I spent most of my childhood taking things apart to figure out how they worked. That curiosity eventually became a degree in Mechanical Engineering and Business Administration at RWTH Aachen — one of Germany's top engineering universities.</p>
         <p>Since then I've worked as an engineer in product development and manufacturing on both sides of the Europe–Asia bridge. I love building things end to end: recently I designed and modelled a compact coffee roaster, and I 3D-printed and assembled a self-balancing "ballbot" robot from scratch.</p>
@@ -110,16 +130,18 @@
       </div>
     </div>
 
-    <div class="team-card">
+    <div class="team-card" data-teaching-mode="online">
       <img class="team-photo" src="/img/ananya-singh.jpg" alt="Ananya Singh" />
       <h2 class="team-name">Ananya Singh</h2>
       <div class="team-role">Science Educator & Mentor</div>
       <div class="team-degree">M.Sc. RWTH · Experimental Physics · Aachen</div>
+      <div class="team-badge-row"><TeachingBadge mode="online" /></div>
       <div class="team-bio">
         <p>Ananya is a physicist at RWTH Aachen — the kind of teacher who can take a concept that has defeated you for weeks and, in twenty minutes over coffee, make it feel obvious. He doesn't just solve the equation. He dismantles the way you're thinking about it, rebuilds it from scratch, and hands it back clearer than before.</p>
         <p>Currently a PhD candidate at the Chair of Experimental Physics & II. Institute of Physics at RWTH Aachen, Ananya brings deep scientific understanding paired with a rare gift for making complex ideas accessible.</p>
         <p>As a mentor and science communicator, Ananya teaches physics the way it should be taught: not as a collection of formulas to memorize, but as a way of seeing the world. Available for online sessions worldwide.</p>
       </div>
+      <p class="online-note">Alle Kurse finden live online per Videokonferenz statt.</p>
       <div class="team-awards">
         <div class="team-award">Physics Teaching Award "Best Supportive Teaching", RWTH Aachen, 2021</div>
         <div class="team-award">Science Slam Winner, Cologne, 2025 — <a href="https://www.youtube.com/watch?v=hxs4gLeBBbI" target="_blank" rel="noopener">Watch Talk</a></div>
@@ -141,6 +163,28 @@
     const open = overlay.classList.toggle('open');
     burger.classList.toggle('is-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
+  });
+</script>
+<script>
+  // Teaching mode filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const teamCards = document.querySelectorAll('.team-card');
+  filterBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const filter = btn.dataset.filter;
+      filterBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      teamCards.forEach(function(card) {
+        const mode = card.dataset.teachingMode;
+        if (filter === 'all') {
+          card.removeAttribute('data-hidden');
+        } else if (filter === mode || (mode === 'hybrid')) {
+          card.removeAttribute('data-hidden');
+        } else {
+          card.setAttribute('data-hidden', 'true');
+        }
+      });
+    });
   });
 </script>
 <script>
