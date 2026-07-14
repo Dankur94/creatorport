@@ -366,20 +366,74 @@
 
     .video-text-full {
       position: absolute;
-      top: clamp(20px, 5vw, 48px);
-      left: clamp(20px, 5vw, 48px);
-      right: clamp(20px, 5vw, 48px);
-      bottom: clamp(20px, 5vw, 48px);
+      inset: 0;
       z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      display: grid;
+      grid-template-rows: minmax(0, 38%) 1fr minmax(0, 30%);
+      padding: clamp(16px, 3dvh, 40px) clamp(20px, 5vw, 48px);
     }
 
-    .video-story {
+    .video-zone-top {
+      align-self: start;
+      overflow: hidden;
+      position: relative;
+      padding: clamp(10px, 2dvh, 20px);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: clamp(4px, 1dvh, 10px);
+    }
+
+    .video-zone-top::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      background: linear-gradient(180deg, rgba(255,255,255,.35) 0%, transparent 100%);
+      border-radius: 6px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .video-zone-top .card-title-c2 {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.2rem, 3.8dvh, 2.4rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      text-align: left;
+    }
+
+    .video-zone-top .card-text {
+      font-size: clamp(0.75rem, 2dvh, 1rem);
+      line-height: 1.45;
+    }
+
+    .video-zone-bottom {
+      align-self: end;
+      overflow: hidden;
+      position: relative;
+      padding: clamp(10px, 2dvh, 20px);
+      display: flex;
+      flex-direction: column;
+      gap: clamp(4px, 1dvh, 8px);
+    }
+
+    .video-zone-bottom::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      background: linear-gradient(0deg, rgba(0,0,0,.45) 0%, transparent 100%);
+      border-radius: 6px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .video-zone-bottom .card-text {
+      font-size: clamp(0.75rem, 1.9dvh, 0.95rem);
+      line-height: 1.45;
+      color: #FFFFFF;
+      font-style: italic;
+      text-align: left;
     }
 
 
@@ -754,15 +808,16 @@
             <source src="/camp-video.mp4" type="video/mp4" />
           </video>
           <div class="video-text-full">
-            <div>
+            <div class="video-zone-top" data-shrink>
               <span class="card-label" style="color:var(--ink); display:flex; align-items:center; gap:12px;"><span style="flex:1; height:1px; background:var(--ink);"></span>The Mission<span style="flex:1; height:1px; background:var(--ink);"></span></span>
-              <h2 class="card-title" style="color:var(--ink); text-align:left; font-size:clamp(1.6rem,5vw,2.8rem); margin-top:8px;">Mars is empty.<br>For now.</h2>
-              <p class="card-text" style="color:var(--ink); text-align:left; margin-top:12px;">On Day 1, your child joins Mission Control as a rover engineer. Their first job: build a rover and make it drive.</p>
-              <p class="card-text" style="color:var(--ink); text-align:left; margin-top:10px;">But driving is just the beginning. Over five days, the crew unlocks new tools: a gripper to clear the path, a drill to break the ground, an AI camera the kids train themselves — until their rovers can do what rovers were made for: bring life to Mars. Real plants. Planted by machines your child built.</p>
+              <h2 class="card-title-c2">Mars is empty.<br>For now.</h2>
+              <p class="card-text" style="color:var(--ink); text-align:left;">On Day 1, your child joins Mission Control as a rover engineer. Their first job: build a rover and make it drive.</p>
+              <p class="card-text" style="color:var(--ink); text-align:left;">But driving is just the beginning. Over five days, the crew unlocks new tools: a gripper to clear the path, a drill to break the ground, an AI camera the kids train themselves — until their rovers can do what rovers were made for: bring life to Mars. Real plants. Planted by machines your child built.</p>
             </div>
-            <div class="video-story">
-              <p class="card-text" style="color:#FFFFFF; text-align:left; font-style:italic;">Real Mars engineers can't remote-control their rovers — and neither will your child. They program every move, send the uplink, hold their breath, and watch. When it fails, that's data. When it works — that's the loudest cheer you've ever heard from a six-year-old.</p>
-              <p class="card-text" style="color:#FFFFFF; text-align:left; font-style:italic;">And on Day 3… let's just say: not everything on Mars is friendly.</p>
+            <div class="video-zone-mid"></div>
+            <div class="video-zone-bottom" data-shrink>
+              <p class="card-text">Real Mars engineers can't remote-control their rovers — and neither will your child. They program every move, send the uplink, hold their breath, and watch. When it fails, that's data. When it works — that's the loudest cheer you've ever heard from a six-year-old.</p>
+              <p class="card-text">And on Day 3… let's just say: not everything on Mars is friendly.</p>
             </div>
           </div>
           <span class="card-number" style="color:rgba(255,255,255,.6);">2/5</span>
@@ -863,6 +918,29 @@
     burger.classList.toggle('is-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   });
+</script>
+<script>
+  // Shrink-to-fit: reduce font-size until text fits in zone
+  function shrinkToFit() {
+    document.querySelectorAll('[data-shrink]').forEach(function(zone) {
+      var els = zone.querySelectorAll('.card-text, .card-title-c2');
+      // Reset first
+      els.forEach(function(el) { el.style.fontSize = ''; });
+      // Shrink if overflowing
+      var tries = 0;
+      while (zone.scrollHeight > zone.clientHeight + 1 && tries < 20) {
+        els.forEach(function(el) {
+          var current = parseFloat(getComputedStyle(el).fontSize);
+          if (current > 12) {
+            el.style.fontSize = (current - 0.5) + 'px';
+          }
+        });
+        tries++;
+      }
+    });
+  }
+  window.addEventListener('load', shrinkToFit);
+  window.addEventListener('resize', shrinkToFit);
 </script>
 <script>
   // WhatsApp click conversion tracking
