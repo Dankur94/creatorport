@@ -384,77 +384,70 @@
 
 
 
-    /* ── Card 3: Why it works ── */
+    /* ── Card 3: AI Learning Unit ── */
     .card-scroll {
       overflow: hidden;
-      justify-content: flex-start;
-      align-items: stretch;
-      text-align: left;
-      padding: clamp(24px, 5vw, 48px);
-      padding-top: clamp(40px, 8vw, 80px);
+      padding: 0;
       gap: 0;
-    }
-
-    .c3-text-zone {
-      flex-shrink: 0;
-    }
-
-    .c3-headline {
-      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
-      font-size: clamp(1.6rem, 5vw, 2.8rem);
-      font-weight: 600;
-      line-height: 1.1;
-      letter-spacing: -.02em;
-      color: var(--ink);
-      margin-bottom: 8px;
-    }
-
-    .c3-intro {
-      font-size: clamp(.9rem, 2vw, 1.05rem);
-      color: var(--ink-soft);
-      line-height: 1.5;
-      margin-bottom: clamp(16px, 3vw, 24px);
-    }
-
-    .c3-point {
-      border-left: 2px solid var(--line);
-      padding-left: 14px;
-      margin-bottom: 12px;
-    }
-
-    .c3-point-text {
-      font-size: clamp(.88rem, 1.8vw, 1rem);
-      color: var(--ink);
-      line-height: 1.5;
-    }
-
-    .c3-point-text strong {
-      font-weight: 600;
-    }
-
-    .c3-aside {
-      font-size: clamp(.8rem, 1.6vw, .88rem);
-      font-style: italic;
-      color: var(--ink-faint);
-      line-height: 1.5;
-      margin-top: clamp(12px, 2vw, 20px);
     }
 
     .c3-rover-zone {
       flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       min-height: 0;
+      overflow: hidden;
     }
 
     .c3-rover-zone img {
-      max-height: 100%;
-      max-width: 70%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       pointer-events: none;
+    }
+
+    .c3-promo {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(24px, 5vw, 40px);
+      gap: 12px;
+      text-align: left;
+    }
+
+    .c3-promo-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .25em;
+      color: var(--ink-faint);
+    }
+
+    .c3-promo-headline {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.3rem, 4vw, 2rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      color: var(--ink);
+    }
+
+    .c3-promo-body {
+      font-size: clamp(.88rem, 1.8vw, 1rem);
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+
+    @media (min-width: 768px) {
+      .card-scroll {
+        flex-direction: row;
+      }
+      .c3-rover-zone, .c3-promo {
+        flex: 1;
+        height: 100%;
+      }
+      .c3-promo {
+        padding: clamp(32px, 4vw, 60px);
+      }
     }
 
     /* ── Card 4: Who We Are ── */
@@ -700,6 +693,7 @@
       <a class="menu-link" href="/our-story.html">Our Story</a>
       <a class="menu-link" href="/about-us.html">About Us</a>
       <a class="menu-link" href="/mars-rover.html">Mars Rover EK10</a>
+      <a class="menu-link" href="/faq.html">FAQ</a>
     </nav>
     <div class="menu-legal">
       <a href="/privacy.html">Privacy</a>
@@ -750,25 +744,14 @@
 
       <div class="card-wrap">
         <section class="card card-scroll" style="background: #FFFFFF;">
-
-          <div class="c3-text-zone">
-            <h2 class="c3-headline">N<span style="color:#FFD600">e</span>v<span style="color:#FFD600">e</span>r cod<span style="color:#FFD600">e</span>d? Still l<span style="color:#FFD600">e</span><span style="color:#42A6A5">a</span>rning t<span style="color:#A7BD03">o</span> r<span style="color:#FFD600">e</span><span style="color:#42A6A5">a</span>d? P<span style="color:#FFD600">e</span>rf<span style="color:#FFD600">e</span>ct.</h2>
-            <p class="c3-intro">Built for kids who've never touched a robot.</p>
-
-            <div class="c3-point">
-              <p class="c3-point-text"><strong>No reading needed</strong> — kids program with colorful blocks and icons, not text.</p>
-            </div>
-            <div class="c3-point">
-              <p class="c3-point-text"><strong>Success on day one</strong> — small steps mean the first "IT WORKS!" comes fast.</p>
-            </div>
-
-            <p class="c3-aside">All the hard parts — soldering, wiring, setup — are done by the engineer. Your child gets the fun: building, programming, commanding the mission.</p>
-          </div>
-
           <div class="c3-rover-zone">
             <img src="/rover-pink.png" alt="Mars Rover" />
           </div>
-
+          <div class="c3-promo">
+            <span class="c3-promo-eyebrow">New</span>
+            <h2 class="c3-promo-headline">Kids don't just use AI here — they build with it.</h2>
+            <p class="c3-promo-body">In our new AI Learning Unit, kids aged 6–12 train their own mini-AI, discover how tools like ChatGPT really work, and turn their ideas into real projects. Hands-on, in English, no experience needed.</p>
+          </div>
           <span class="card-number">3/5</span>
         </section>
       </div>
@@ -824,7 +807,7 @@
             <svg class="c5-wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Any questions? Contact us
           </a>
-          <div class="mini-footer-inline">Space of Possibilities Ltd. · Hong Kong · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="https://wa.me/85265427963">Contact</a></div>
+          <div class="mini-footer-inline">Space of Possibilities Ltd. · Hong Kong · <a href="/faq.html">FAQ</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="https://wa.me/85265427963">Contact</a></div>
           <span class="card-number">5/5</span>
         </section>
       </div>

@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Story — CreatorPort</title>
-  <meta property="og:title" content="Our Story — CreatorPort" />
-  <meta property="og:description" content="AI robotics summer camp for kids 6–12 in Hong Kong. Build, code and keep your own Mars rover. 3–7 Aug, Sheung Wan." />
+  <title>FAQ — CreatorPort</title>
+  <meta name="description" content="Frequently asked questions about CreatorPort's AI robotics camp for kids 6–12 in Hong Kong. Coding experience, reading level, what to expect." />
+  <meta property="og:title" content="FAQ — CreatorPort" />
+  <meta property="og:description" content="Frequently asked questions about our AI robotics summer camp for kids 6–12 in Hong Kong." />
   <meta property="og:image" content="https://creatorport.com.hk/og-image.png" />
-  <meta property="og:url" content="https://creatorport.com.hk/our-story.html" />
+  <meta property="og:url" content="https://creatorport.com.hk/faq.html" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Our Story — CreatorPort" />
-  <meta name="twitter:description" content="AI robotics summer camp for kids 6–12 in Hong Kong. Build, code and keep your own Mars rover." />
+  <meta name="twitter:title" content="FAQ — CreatorPort" />
+  <meta name="twitter:description" content="Frequently asked questions about our AI robotics summer camp for kids 6–12 in Hong Kong." />
   <meta name="twitter:image" content="https://creatorport.com.hk/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,19 +33,47 @@
     .page-wrap { max-width: 720px; margin: 0 auto; padding: clamp(80px, 12vw, 120px) clamp(20px, 5vw, 40px) 40px; }
     .page-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: .32em; color: var(--ink-soft); margin-bottom: 12px; }
     .page-title { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 600; line-height: 1.1; letter-spacing: -.02em; color: var(--ink); margin-bottom: 8px; }
-    .page-sub { font-size: clamp(.9rem, 2vw, 1.05rem); color: var(--ink-soft); line-height: 1.6; margin-bottom: 32px; }
+    .page-sub { font-size: clamp(.9rem, 2vw, 1.05rem); color: var(--ink-soft); line-height: 1.6; margin-bottom: 40px; }
 
-    .story-section { margin-bottom: 32px; }
-    .story-section p { font-size: clamp(.9rem, 2vw, 1rem); color: var(--ink-soft); line-height: 1.7; margin-bottom: 14px; }
-    .story-section p strong { color: var(--ink); }
+    .faq-item { border-top: 1px solid var(--line); }
+    .faq-item:last-child { border-bottom: 1px solid var(--line); }
 
-    .story-photo { width: 100%; border: 1px solid var(--line); margin-bottom: 24px; object-fit: cover; max-height: 360px; }
+    .faq-item summary {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      font-weight: 600;
+      color: var(--ink);
+      padding: 20px 32px 20px 0;
+      cursor: pointer;
+      list-style: none;
+      position: relative;
+      line-height: 1.4;
+    }
 
-    .pull-quote { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.1rem, 3vw, 1.4rem); font-weight: 600; color: var(--ink); line-height: 1.4; text-align: center; padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 32px 0; }
+    .faq-item summary::-webkit-details-marker { display: none; }
 
-    .photo-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
-    .photo-duo img { width: 100%; height: 200px; object-fit: cover; border: 1px solid var(--line); }
-    @media (min-width: 768px) { .photo-duo img { height: 280px; } }
+    .faq-item summary::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--ink-faint);
+      transition: transform .2s ease;
+    }
+
+    .faq-item[open] summary::after {
+      content: '\2212';
+    }
+
+    .faq-answer {
+      font-size: clamp(.88rem, 1.8vw, .95rem);
+      color: var(--ink-soft);
+      line-height: 1.7;
+      padding: 0 0 20px 0;
+    }
 
     /* Burger + Menu */
     .burger { position: fixed; top: clamp(16px, 4vw, 32px); right: clamp(16px, 4vw, 32px); z-index: 100; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; -webkit-tap-highlight-color: transparent; padding: 0; }
@@ -85,41 +114,29 @@
   </div>
 
   <main class="page-wrap">
-    <p class="page-label">Our Story</p>
-    <h1 class="page-title">From Equations to Education</h1>
-    <p class="page-sub">Some friendships begin at a blackboard. Ours became a company.</p>
+    <p class="page-label">Support</p>
+    <h1 class="page-title">Frequently Asked Questions</h1>
+    <p class="page-sub">Everything parents ask before the first class.</p>
 
-    <div class="story-section">
-      <img class="story-photo" src="/img/story-skyline.jpg" alt="Daniel and Ananya in Hong Kong" />
-      <p>It started the way the best things do — by accident.</p>
-      <p>I was deep in my engineering degree at RWTH Aachen, drowning in the kind of maths and physics that makes you question every life decision that led you to that lecture hall. The formulas blurred. The problem sets piled up. I needed help — not the textbook kind, but the kind that makes you <strong>see</strong> the problem differently.</p>
-      <p>That's when I found <strong>Ananya</strong>.</p>
-    </div>
+    <details class="faq-item">
+      <summary>Does my child need any coding experience?</summary>
+      <p class="faq-answer">Not at all. Our camps are built for kids who've never touched a robot or written a single line of code.</p>
+    </details>
 
-    <div class="pull-quote">"He didn't give me the answers. He taught me how to think."</div>
+    <details class="faq-item">
+      <summary>What if my child can't read yet?</summary>
+      <p class="faq-answer">No problem. Kids program with colorful blocks and icons, not text. No reading needed.</p>
+    </details>
 
-    <div class="story-section">
-      <p>Ananya was a physicist at RWTH — the kind of person who could take a concept that had defeated you for weeks and, in twenty minutes over coffee, make it feel obvious. He never just solved the equation for me. He <strong>dismantled the way I was thinking about it</strong>, rebuilt it from scratch, and handed it back clearer than before.</p>
-      <p>Session after session, something shifted. It wasn't just maths anymore. He became my mentor. Then one of my closest friends. The line between tutor and friend dissolved somewhere between thermodynamics and late-night conversations about what we wanted to build with our lives.</p>
-    </div>
+    <details class="faq-item">
+      <summary>Will my child see results quickly?</summary>
+      <p class="faq-answer">Yes — small steps mean the first "IT WORKS!" moment comes fast. Success on day one.</p>
+    </details>
 
-    <div class="story-section">
-      <div class="photo-duo">
-        <img src="/img/story-market.jpg" alt="Daniel and Ananya at a night market" />
-        <img src="/img/story-yogurt.jpg" alt="Daniel and Ananya enjoying frozen yogurt" />
-      </div>
-      <p>What Ananya gave me wasn't a grade. It was a <strong>belief</strong> — that the right teacher doesn't just transfer knowledge, they transform the person receiving it. He showed me that teaching, done right, is the most powerful form of engineering there is. You're not building a machine. You're building a mind.</p>
-      <p>That idea stayed with me long after the exams were over. It followed me from Aachen to Hong Kong, from lecture halls to maker spaces.</p>
-    </div>
-
-    <div class="pull-quote">"The best teachers don't fill your head. They rewire it."</div>
-
-    <div class="story-section">
-      <p>That's why I founded <strong>CreatorPort</strong>.</p>
-      <p>Not because I had a business plan. Not because the market research checked out. But because I'd experienced firsthand what happens when someone teaches you to think — <em>really</em> think — and I wanted to give that to as many people as possible.</p>
-      <p>CreatorPort exists because of a friendship that started at a blackboard. Because a physicist in Aachen took the time to see a struggling student not as a problem to solve, but as a mind worth investing in.</p>
-      <p>To Ananya. To the belief that <strong>the right mentor changes everything.</strong></p>
-    </div>
+    <details class="faq-item">
+      <summary>Does my child need to handle soldering or wiring?</summary>
+      <p class="faq-answer">All the hard parts — soldering, wiring, setup — are done by the engineer. Your child gets the fun: building, programming, and commanding the mission.</p>
+    </details>
   </main>
 
   <footer class="mini-footer">
