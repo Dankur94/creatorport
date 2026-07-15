@@ -46,19 +46,17 @@
     .details-row:last-child { border-bottom: none; }
     .details-icon { flex-shrink: 0; width: 20px; text-align: center; font-size: .9rem; }
 
-    /* Pay button */
-    .pay-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 18px 24px; border: none; background: var(--ink); color: #fff; font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-weight: 600; font-size: clamp(.95rem, 2.2vw, 1.05rem); letter-spacing: .02em; cursor: pointer; transition: background .2s, transform .15s; -webkit-tap-highlight-color: transparent; text-decoration: none; }
+    /* Pay buttons row */
+    .pay-row { display: flex; gap: 12px; }
+    .pay-btn { display: flex; align-items: center; justify-content: center; flex: 1; padding: 18px 12px; border: none; background: var(--ink); color: #fff; font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-weight: 600; font-size: clamp(.85rem, 2vw, .95rem); letter-spacing: .02em; cursor: pointer; transition: background .2s, transform .15s; -webkit-tap-highlight-color: transparent; text-decoration: none; text-align: center; }
     .pay-btn:hover { background: #2C2520; }
     .pay-btn:active { transform: scale(.97); }
     .pay-hint { font-size: .78rem; color: var(--ink-faint); text-align: center; margin-top: 10px; }
     .trust-line { font-size: .72rem; color: var(--ink-faint); text-align: center; margin-top: 6px; }
 
     /* FPS Accordion */
-    .fps-section { margin-top: 24px; }
-    .fps-toggle { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 20px; background: transparent; border: 1px solid var(--line); font-family: 'Inter', sans-serif; font-size: .8rem; font-weight: 500; color: var(--ink-soft); cursor: pointer; transition: border-color .2s; -webkit-tap-highlight-color: transparent; }
-    .fps-toggle:hover { border-color: var(--ink-faint); }
-    .fps-chevron { font-size: .6rem; transition: transform .3s; }
-    .fps-section.open .fps-chevron { transform: rotate(180deg); }
+    .fps-section { margin-top: 0; }
+    .fps-toggle { display: none; }
     .fps-body { max-height: 0; overflow: hidden; transition: max-height .4s cubic-bezier(.16,1,.3,1); }
     .fps-section.open .fps-body { max-height: 400px; }
     .fps-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 24px 16px 8px; text-align: center; }
@@ -137,17 +135,16 @@
       <div class="details-row"><span class="details-icon">🤖</span><span>Mars rover included — your child takes it home</span></div>
     </div>
 
-    <!-- Pay Button -->
-    <a id="payBtn" class="pay-btn" href="https://buy.stripe.com/cNi9AS2Hi6BwcDJcBT4c802">Pay HK$3,500 — Apple Pay / Card</a>
+    <!-- Pay Buttons -->
+    <div class="pay-row">
+      <a id="payBtn" class="pay-btn" href="https://buy.stripe.com/cNi9AS2Hi6BwcDJcBT4c802">Apple Pay / Card</a>
+      <button id="fpsToggle" class="pay-btn" type="button">FPS (no fees)</button>
+    </div>
     <p class="pay-hint">You'll enter your child's name and age securely at checkout.</p>
     <div class="trust-line">Secure payment via Stripe · <a href="/terms.html" style="color:var(--ink-faint); text-decoration:underline;">Fair cancellation policy</a></div>
 
-    <!-- FPS Alternative -->
+    <!-- FPS Details -->
     <div class="fps-section" id="fpsSection">
-      <button class="fps-toggle" id="fpsToggle" type="button">
-        Prefer bank transfer? Pay via FPS (no fees)
-        <span class="fps-chevron">▾</span>
-      </button>
       <div class="fps-body">
         <div class="fps-inner">
           <p style="font-family:'Space Grotesk',sans-serif; font-size:1.1rem; font-weight:700; color:var(--ink); margin-bottom:4px;">Transfer HK$3,500 via FPS</p>
