@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RWTH Aachen University — CreatorPort</title>
+  <meta name="description" content="Why RWTH Aachen matters. Germany's #1 university for Mechanical Engineering — and where CreatorPort's founders trained." />
+  <meta property="og:title" content="RWTH Aachen University — CreatorPort" />
+  <meta property="og:description" content="Germany's #1 university for Mechanical Engineering — and where CreatorPort's founders trained." />
+  <meta property="og:image" content="https://creatorport.com.hk/og-image.png" />
+  <meta property="og:url" content="https://creatorport.com.hk/rwth.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RWTH Aachen University — CreatorPort" />
+  <meta name="twitter:description" content="Germany's #1 university for Mechanical Engineering — and where CreatorPort's founders trained." />
+  <meta name="twitter:image" content="https://creatorport.com.hk/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18308725750"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18308725750');
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --ink: #181310; --ink-soft: #7A736A; --ink-faint: #B7AFA4; --line: #D6D0C6; --page-bg: #FBFAF8; }
+    body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif; background: var(--page-bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+    .page-wrap { max-width: 720px; margin: 0 auto; padding: clamp(80px, 12vw, 120px) clamp(20px, 5vw, 40px) 40px; }
+    .page-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: .32em; color: var(--ink-soft); margin-bottom: 12px; }
+    .page-title { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 600; line-height: 1.1; letter-spacing: -.02em; color: var(--ink); margin-bottom: 8px; }
+    .page-sub { font-size: clamp(.9rem, 2vw, 1.05rem); color: var(--ink-soft); line-height: 1.6; margin-bottom: 40px; }
+
+    .section { margin-bottom: 48px; }
+    .section-title { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 600; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 12px; }
+    .section p { font-size: clamp(.88rem, 1.8vw, 1rem); color: var(--ink-soft); line-height: 1.7; margin-bottom: 12px; }
+    .section p:last-child { margin-bottom: 0; }
+
+    .highlight-box { background: #FFFFFF; border: 1px solid var(--line); border-radius: 8px; padding: clamp(20px, 4vw, 32px); margin-bottom: 32px; }
+    .highlight-box .stat { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 700; color: var(--ink); line-height: 1.2; margin-bottom: 4px; }
+    .highlight-box .stat-note { font-size: clamp(.8rem, 1.6vw, .9rem); color: var(--ink-soft); }
+
+    .industry-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .industry-list li { padding: 6px 16px; border: 1px solid var(--line); border-radius: 999px; font-size: clamp(.78rem, 1.5vw, .88rem); font-weight: 500; color: var(--ink-soft); background: #FFFFFF; }
+
+    .founders { display: flex; flex-direction: column; gap: 24px; margin-top: 24px; }
+    .founder { background: #FFFFFF; border: 1px solid var(--line); border-radius: 8px; padding: clamp(16px, 3vw, 24px); }
+    .founder-name { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1rem, 2vw, 1.15rem); font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .founder-detail { font-size: clamp(.82rem, 1.6vw, .92rem); color: var(--ink-soft); line-height: 1.6; }
+
+    /* Burger + Menu */
+    .burger { position: fixed; top: clamp(16px, 4vw, 32px); right: clamp(16px, 4vw, 32px); z-index: 100; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; -webkit-tap-highlight-color: transparent; padding: 0; }
+    .burger-line { display: block; width: 28px; height: 3px; background: var(--ink); border-radius: 2px; position: relative; transition: transform .3s ease, opacity .3s ease; }
+    .menu-overlay { position: fixed; inset: 0; z-index: 99; background: var(--page-bg); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+    .menu-overlay.open { opacity: 1; pointer-events: auto; }
+    .menu-overlay nav { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+    .menu-link { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: -.02em; transition: opacity .2s ease; }
+    .menu-link:hover { opacity: .5; }
+    .menu-legal { display: flex; gap: 16px; }
+    .menu-legal a { font-size: .8rem; font-weight: 500; color: var(--ink-faint); text-decoration: none; letter-spacing: .04em; }
+    .menu-legal a:hover { color: var(--ink); }
+    .burger.is-open .burger-line { background: transparent; }
+    .burger.is-open .burger-line::before, .burger.is-open .burger-line::after { content: ''; position: absolute; width: 28px; height: 3px; background: var(--ink); border-radius: 2px; }
+    .burger.is-open .burger-line::before { transform: rotate(45deg); }
+    .burger.is-open .burger-line::after { transform: rotate(-45deg); }
+
+    .mini-footer { text-align: center; padding: 32px 20px; font-size: .7rem; color: var(--ink-faint); border-top: 1px solid var(--line); }
+    .mini-footer a { color: var(--ink-faint); text-decoration: none; }
+    .mini-footer a:hover { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <button class="burger" aria-label="Menu"><span class="burger-line"></span></button>
+  <div class="menu-overlay">
+    <nav>
+      <a class="menu-link" href="/">Home</a>
+      <a class="menu-link" href="/location.html">Location</a>
+      <a class="menu-link" href="/our-story.html">Our Story</a>
+      <a class="menu-link" href="/about-us.html">About Us</a>
+      <a class="menu-link" href="/mars-rover.html">Mars Rover EK10</a>
+      <a class="menu-link" href="/rwth.html">RWTH Aachen</a>
+      <a class="menu-link" href="/faq.html">FAQ</a>
+    </nav>
+    <div class="menu-legal">
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+  </div>
+
+  <main class="page-wrap">
+    <p class="page-label">Where We Trained</p>
+    <h1 class="page-title">RWTH Aachen University</h1>
+    <p class="page-sub">One of Europe's leading technical universities — and where CreatorPort's founders were trained.</p>
+
+    <div class="highlight-box">
+      <p class="stat">#1 in Germany for Mechanical Engineering</p>
+      <p class="stat-note">QS World University Rankings 2025 — Subject: Mechanical, Aeronautical & Manufacturing Engineering</p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">About the University</h2>
+      <p>RWTH Aachen is Germany's largest technical university, founded in 1870. With over 47,000 students and 260 institutes, it is one of Europe's most prestigious institutions for engineering and natural sciences.</p>
+      <p>The university is a member of the TU9 — the alliance of Germany's nine leading institutes of technology — and a founding member of IDEA League, a network of Europe's top five technical universities.</p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Industry Partnerships</h2>
+      <p>RWTH Aachen is deeply integrated with global industry. Its graduates and researchers work at the forefront of automotive engineering, aerospace, and advanced manufacturing. The university maintains close partnerships with leading companies:</p>
+      <ul class="industry-list">
+        <li>Volkswagen</li>
+        <li>Porsche</li>
+        <li>BMW</li>
+        <li>Mercedes-Benz</li>
+        <li>Siemens</li>
+        <li>Bosch</li>
+        <li>Ford</li>
+        <li>Bayer</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Our Founders at RWTH</h2>
+      <div class="founders">
+        <div class="founder">
+          <p class="founder-name">Daniel Kurth</p>
+          <p class="founder-detail">B.Sc. in Mechanical Engineering with a specialisation in Production Engineering, plus Business Administration. Trained at the intersection of engineering precision and entrepreneurial thinking — now bringing that hands-on approach to the next generation in Hong Kong.</p>
+        </div>
+        <div class="founder">
+          <p class="founder-name">Ananya Singh</p>
+          <p class="founder-detail">M.Sc. in Experimental Physics. Researched at one of Europe's top physics faculties, developing the scientific rigour and curiosity-driven mindset that shapes how she teaches children to think like scientists.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="mini-footer">
+    Space of Possibilities Ltd. · Hong Kong · <a href="/faq.html">FAQ</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="https://wa.me/85265427963">Contact</a>
+  </footer>
+
+<script>
+  const burger = document.querySelector('.burger');
+  const overlay = document.querySelector('.menu-overlay');
+  burger.addEventListener('click', () => {
+    const open = overlay.classList.toggle('open');
+    burger.classList.toggle('is-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+</script>
+<script>
+  // WhatsApp click conversion tracking
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18308725750/bCRrCN_g6M4cEPb3o5pE'
+      });
+    });
+  });
+</script>
+</body>
+</html>
