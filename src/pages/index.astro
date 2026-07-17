@@ -395,7 +395,7 @@
 
     .video-zone-top .card-title-c2 {
       font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
-      font-size: clamp(1.2rem, 3.8dvh, 2.4rem);
+      font-size: clamp(1.3rem, 4dvh, 2.6rem);
       font-weight: 600;
       line-height: 1.1;
       letter-spacing: -.02em;
@@ -404,8 +404,8 @@
     }
 
     .video-zone-top .card-text {
-      font-size: clamp(0.75rem, 2dvh, 1rem);
-      line-height: 1.45;
+      font-size: clamp(0.82rem, 2.2dvh, 1.1rem);
+      line-height: 1.5;
     }
 
     .video-zone-bottom {
@@ -429,8 +429,8 @@
     }
 
     .video-zone-bottom .card-text {
-      font-size: clamp(0.75rem, 1.9dvh, 0.95rem);
-      line-height: 1.45;
+      font-size: clamp(0.82rem, 2.1dvh, 1.05rem);
+      line-height: 1.5;
       color: #FFFFFF;
       font-style: italic;
       text-align: left;
@@ -603,6 +603,21 @@
       letter-spacing: .04em;
     }
 
+    .c4-degree-sub {
+      font-size: clamp(.65rem, 1.2vw, .82rem);
+      color: var(--ink-faint);
+      letter-spacing: .04em;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .c4-degree-sub::before {
+      content: '·';
+      position: absolute;
+      left: 2px;
+      font-weight: 700;
+    }
+
     .c4-badge {
       display: inline-flex;
       align-items: center;
@@ -655,6 +670,9 @@
       }
       .c4-degree {
         font-size: clamp(.8rem, 1.1vw, .92rem);
+      }
+      .c4-degree-sub {
+        font-size: clamp(.75rem, 1vw, .88rem);
       }
       .c4-badge {
         font-size: .8rem;
@@ -874,9 +892,9 @@
                 <span class="c4-name">Daniel Kurth</span>
                 <span class="c4-role">Founder & Lead Educator</span>
                 <span class="c4-degree">B.Sc.RWTH</span>
-                <span class="c4-degree">Mechanical Engineering</span>
+                <span class="c4-degree-sub">Mechanical Engineering</span>
+                <span class="c4-degree-sub">Business Administration</span>
                 <span class="c4-degree">Specialised in Production Engineering</span>
-                <span class="c4-degree">Business Administration</span>
                 <span class="c4-badge" aria-label="Teaching mode: On-Site, Hong Kong">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                   On-Site · Hong Kong
@@ -887,8 +905,8 @@
                 <span class="c4-role">Science Educator & Mentor</span>
                 <span class="c4-degree">Researcher in Condensed Matter Physics</span>
                 <span class="c4-degree">M.Sc.RWTH</span>
-                <span class="c4-degree">Experimental Physics</span>
-                <span class="c4-degree">Theoretical Physics</span>
+                <span class="c4-degree-sub">Experimental Physics</span>
+                <span class="c4-degree-sub">Theoretical Physics</span>
                 <span class="c4-badge" aria-label="Teaching mode: Online, Aachen, Germany">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
                   Online · Aachen, DE
