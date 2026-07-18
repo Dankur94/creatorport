@@ -960,6 +960,8 @@
       var els = zone.querySelectorAll('.card-text, .card-title-c2');
       // Reset first
       els.forEach(function(el) { el.style.fontSize = ''; });
+      // Only shrink on mobile (<768px)
+      if (window.innerWidth >= 768) return;
       // Shrink if overflowing
       var tries = 0;
       while (zone.scrollHeight > zone.clientHeight + 1 && tries < 20) {
