@@ -438,121 +438,21 @@
 
 
 
-    /* ── Card 3: AI Learning Unit ── */
+    /* ── Card 4: Math Learnings ── */
     .card-scroll {
       overflow: hidden;
       padding: 0;
       gap: 0;
-    }
-
-    .c3-rover-zone {
-      flex: 1;
-      min-height: 0;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .c3-rover-zone img {
-      max-width: 85%;
-      max-height: 95%;
-      object-fit: contain;
-      pointer-events: none;
-    }
-
-    .c3-promo {
-      flex: 1;
-      display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: clamp(24px, 5vw, 40px);
-      gap: 12px;
-      text-align: left;
-    }
-
-    .c3-promo-eyebrow {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .25em;
-      color: var(--ink-faint);
-    }
-
-    .c3-promo-headline {
-      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
-      font-size: clamp(1.3rem, 4vw, 2rem);
-      font-weight: 600;
-      line-height: 1.15;
-      letter-spacing: -.02em;
-      color: var(--ink);
-    }
-
-    .c3-checklist {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .c3-checklist li {
-      font-size: clamp(.88rem, 1.8vw, 1rem);
-      color: var(--ink);
-      line-height: 1.5;
-      padding-left: 24px;
-      position: relative;
-    }
-
-    .c3-checklist li::before {
-      content: '\2713';
-      position: absolute;
-      left: 0;
-      color: var(--ink-faint);
-      font-weight: 600;
-    }
-
-    .c3-promo-footer {
-      font-size: clamp(.82rem, 1.6vw, .92rem);
-      color: var(--ink-soft);
-      font-style: italic;
-      margin-top: 4px;
-    }
-
-    @media (min-width: 768px) {
-      .card-scroll {
-        flex-direction: row;
-      }
-      .c3-rover-zone, .c3-promo {
-        flex: 1;
-        height: 100%;
-      }
-      .c3-promo {
-        padding: clamp(32px, 4vw, 60px);
-      }
-    }
-
-    /* ── Card 4: Who We Are ── */
-    .card-whoweare {
-      background: #FFFFFF;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .c4-photo {
-      width: 100%;
-      height: 45%;
-      object-fit: cover;
-      flex-shrink: 0;
     }
 
     .c4-content {
-      flex: 1;
+      padding: clamp(24px, 5vw, 40px) clamp(24px, 5vw, 40px) 0;
+      text-align: left;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: clamp(16px, 4vw, 32px) clamp(20px, 5vw, 48px);
       gap: 8px;
-      text-align: left;
+      flex-shrink: 0;
     }
 
     .c4-title {
@@ -565,19 +465,97 @@
     }
 
     .c4-sub {
+      font-size: clamp(.88rem, 2vw, 1.1rem);
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+
+    .c4-graphic {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(16px, 3vw, 32px);
+      overflow: hidden;
+    }
+
+    .c4-graphic img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @media (min-width: 768px) {
+      .c4-title {
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+      }
+      .c4-sub {
+        font-size: clamp(.95rem, 1.5vw, 1.15rem);
+      }
+    }
+
+    /* ── Card 3: Who We Are ── */
+    .card-whoweare {
+      background: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .c3-robot {
+      position: absolute;
+      bottom: -5%;
+      left: -5%;
+      width: 42%;
+      max-width: 220px;
+      object-fit: contain;
+      pointer-events: none;
+      opacity: .12;
+      z-index: 0;
+    }
+
+    .c3-photo {
+      width: 100%;
+      height: 45%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .c3-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(16px, 4vw, 32px) clamp(20px, 5vw, 48px);
+      gap: 8px;
+      text-align: left;
+    }
+
+    .c3-title {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: var(--ink);
+    }
+
+    .c3-sub {
       font-size: clamp(.85rem, 2vw, 1.1rem);
       color: var(--ink-soft);
       line-height: 1.55;
     }
 
-    .c4-team {
+    .c3-team {
       display: flex;
       justify-content: center;
       gap: clamp(16px, 3vw, 32px);
       margin-top: 8px;
     }
 
-    .c4-member {
+    .c3-member {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -585,25 +563,25 @@
       flex: 1;
     }
 
-    .c4-name {
+    .c3-name {
       font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
       font-size: clamp(.9rem, 2vw, 1.15rem);
       font-weight: 600;
       color: var(--ink);
     }
 
-    .c4-role {
+    .c3-role {
       font-size: clamp(.75rem, 1.5vw, .95rem);
       color: var(--ink-soft);
     }
 
-    .c4-degree {
+    .c3-degree {
       font-size: clamp(.7rem, 1.3vw, .88rem);
       color: var(--ink-faint);
       letter-spacing: .04em;
     }
 
-    .c4-degree-sub {
+    .c3-degree-sub {
       font-size: clamp(.65rem, 1.2vw, .82rem);
       color: var(--ink-faint);
       letter-spacing: .04em;
@@ -611,14 +589,14 @@
       position: relative;
     }
 
-    .c4-degree-sub::before {
+    .c3-degree-sub::before {
       content: '·';
       position: absolute;
       left: 2px;
       font-weight: 700;
     }
 
-    .c4-badge {
+    .c3-badge {
       display: inline-flex;
       align-items: center;
       gap: 4px;
@@ -633,9 +611,9 @@
       background: var(--page-bg);
       width: fit-content;
     }
-    .c4-badge svg { flex-shrink: 0; }
+    .c3-badge svg { flex-shrink: 0; }
 
-    .c4-motto {
+    .c3-motto {
       font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
       font-size: clamp(.85rem, 1.8vw, 1.05rem);
       font-style: italic;
@@ -647,34 +625,34 @@
       .card-whoweare {
         flex-direction: row;
       }
-      .c4-photo {
+      .c3-photo {
         width: 40%;
         height: 100%;
         flex-shrink: 0;
       }
-      .c4-content {
+      .c3-content {
         padding: clamp(24px, 3vw, 48px);
         gap: 14px;
       }
-      .c4-title {
+      .c3-title {
         font-size: clamp(1.6rem, 3vw, 2.4rem);
       }
-      .c4-sub {
+      .c3-sub {
         font-size: clamp(.95rem, 1.5vw, 1.15rem);
       }
-      .c4-name {
+      .c3-name {
         font-size: clamp(1rem, 1.5vw, 1.2rem);
       }
-      .c4-role {
+      .c3-role {
         font-size: clamp(.85rem, 1.2vw, 1rem);
       }
-      .c4-degree {
+      .c3-degree {
         font-size: clamp(.8rem, 1.1vw, .92rem);
       }
-      .c4-degree-sub {
+      .c3-degree-sub {
         font-size: clamp(.75rem, 1vw, .88rem);
       }
-      .c4-badge {
+      .c3-badge {
         font-size: .8rem;
       }
     }
@@ -866,7 +844,7 @@
           </video>
           <div class="video-text-full">
             <div class="video-zone-top" data-shrink>
-              <h2 class="card-title-c2">Something doesn't feel right — and you know it.</h2>
+              <h2 class="card-title-c2">Something doesn't feel right.</h2>
               <p class="card-text" style="color:var(--ink); text-align:left;">The current education system…</p>
               <p class="card-text" style="color:var(--ink); text-align:left;"><strong>Kills natural curiosity</strong> — children ask fewer and fewer questions, instead of being encouraged to find answers</p>
               <p class="card-text" style="color:var(--ink); text-align:left;"><strong>Teaches math without confidence or joy</strong> — Hong Kong: world-class scores, below-average joy</p>
@@ -883,56 +861,51 @@
 
       <div class="card-wrap">
         <section class="card card-whoweare" style="padding:0; gap:0;">
-          <img class="c4-photo" src="/camp-class.png" alt="Camp classroom" />
-          <div class="c4-content">
-            <h2 class="c4-title">That's why we created The Art of Engineering.</h2>
-            <p class="c4-sub">We're not career tutors — we've never known only the school system. We're an engineer and a scientist who use math every day to solve real problems. And we know exactly which skills the real world rewards, because we work in it.</p>
-            <div class="c4-team">
-              <div class="c4-member">
-                <span class="c4-name">Daniel Kurth</span>
-                <span class="c4-role">Founder & Lead Educator</span>
-                <span class="c4-degree">B.Sc.RWTH</span>
-                <span class="c4-degree-sub">Mechanical Engineering</span>
-                <span class="c4-degree-sub" style="padding-left:24px;">Specialised in Production Engineering</span>
-                <span class="c4-degree-sub">Business Administration</span>
-                <span class="c4-badge" aria-label="Teaching mode: On-Site, Hong Kong">
+          <img class="c3-photo" src="/camp-class.png" alt="Camp classroom" />
+          <div class="c3-content">
+            <h2 class="c3-title">That's why we created The Art of Engineering.</h2>
+            <p class="c3-sub">We're not career tutors — we've never known only the school system. We're an engineer and a scientist who use math every day to solve real problems. And we know exactly which skills the real world rewards, because we work in it.</p>
+            <div class="c3-team">
+              <div class="c3-member">
+                <span class="c3-name">Daniel Kurth</span>
+                <span class="c3-role">Founder & Lead Educator</span>
+                <span class="c3-degree">B.Sc.RWTH</span>
+                <span class="c3-degree-sub">Mechanical Engineering</span>
+                <span class="c3-degree-sub" style="padding-left:24px;">Specialised in Production Engineering</span>
+                <span class="c3-degree-sub">Business Administration</span>
+                <span class="c3-badge" aria-label="Teaching mode: On-Site, Hong Kong">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                   On-Site · Hong Kong
                 </span>
               </div>
-              <div class="c4-member">
-                <span class="c4-name">Ananya Singh</span>
-                <span class="c4-role">Science Educator & Mentor</span>
-                <span class="c4-degree">Researcher in Condensed Matter Physics</span>
-                <span class="c4-degree">M.Sc.RWTH</span>
-                <span class="c4-degree-sub">Experimental Physics</span>
-                <span class="c4-degree-sub">Theoretical Physics</span>
-                <span class="c4-badge" aria-label="Teaching mode: Online, Aachen, Germany">
+              <div class="c3-member">
+                <span class="c3-name">Ananya Singh</span>
+                <span class="c3-role">Science Educator & Mentor</span>
+                <span class="c3-degree">Researcher in Condensed Matter Physics</span>
+                <span class="c3-degree">M.Sc.RWTH</span>
+                <span class="c3-degree-sub">Experimental Physics</span>
+                <span class="c3-degree-sub">Theoretical Physics</span>
+                <span class="c3-badge" aria-label="Teaching mode: Online, Aachen, Germany">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
                   Online · Aachen, DE
                 </span>
               </div>
             </div>
-            <p class="c4-sub" style="margin-top:12px;">Their canvas won't be a piece of paper — it will be three-dimensional space. Their paint: engines, sensors, motors, servos, grippers, data, code, and hundreds of LEGO-compatible parts.</p>
+            <p class="c3-sub" style="margin-top:12px;">Their canvas won't be a piece of paper — it will be three-dimensional space. Their paint: engines, sensors, motors, servos, grippers, data, code, and hundreds of LEGO-compatible parts.</p>
           </div>
+          <img class="c3-robot" src="/robot-hero.png" alt="Robot" />
           <span class="card-number">3/5</span>
         </section>
       </div>
 
       <div class="card-wrap">
         <section class="card card-scroll" style="background: #FFFFFF;">
-          <div class="c3-rover-zone">
-            <img src="/robot-hero.png" alt="Robot" />
+          <div class="c4-content">
+            <h2 class="c4-title">Math your child can drive.</h2>
+            <p class="c4-sub">We start where your child can touch it — and end where the math makes sense.</p>
           </div>
-          <div class="c3-promo">
-            <span class="c3-promo-eyebrow">AI Trainer Academy — Included</span>
-            <h2 class="c3-promo-headline">Your child doesn't just use AI — they train one.</h2>
-            <ul class="c3-checklist">
-              <li>A hands-on AI lesson every day</li>
-              <li>Teach a real AI camera to see</li>
-              <li>Discover why AI makes mistakes — and why humans decide</li>
-            </ul>
-            <p class="c3-promo-footer">Every child graduates with their AI Trainer Certificate.</p>
+          <div class="c4-graphic">
+            <img src="/key-learnings-math.svg" alt="Key Learnings — Primary Mathematics" />
           </div>
           <span class="card-number">4/5</span>
         </section>
