@@ -374,13 +374,19 @@
     }
 
     .video-zone-top {
-      align-self: start;
+      align-self: end;
       overflow: hidden;
       position: relative;
       padding: clamp(10px, 2dvh, 20px);
       display: flex;
       flex-direction: column;
       gap: clamp(4px, 1dvh, 10px);
+    }
+
+    @media (min-width: 768px) {
+      .video-zone-top {
+        align-self: start;
+      }
     }
 
     .video-zone-top::before {
