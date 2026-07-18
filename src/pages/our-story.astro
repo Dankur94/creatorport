@@ -15,7 +15,7 @@
   <meta name="twitter:image" content="https://creatorport.com.hk/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18308725750"></script>
   <script>
@@ -106,8 +106,8 @@
 
     <div class="story-section">
       <div class="photo-duo">
-        <img src="/img/story-market.jpg" alt="Daniel and Ananya at a night market" />
-        <img src="/img/story-yogurt.jpg" alt="Daniel and Ananya enjoying frozen yogurt" />
+        <picture><source srcset="/img/story-market.webp" type="image/webp" /><img src="/img/story-market.jpg" alt="Daniel and Ananya at a night market" loading="lazy" /></picture>
+        <picture><source srcset="/img/story-yogurt.webp" type="image/webp" /><img src="/img/story-yogurt.jpg" alt="Daniel and Ananya enjoying frozen yogurt" loading="lazy" /></picture>
       </div>
       <p>What Ananya gave me wasn't a grade. It was a <strong>belief</strong> — that the right teacher doesn't just transfer knowledge, they transform the person receiving it. He showed me that teaching, done right, is the most powerful form of engineering there is. You're not building a machine. You're building a mind.</p>
       <p>That idea stayed with me long after the exams were over. It followed me from Aachen to Hong Kong, from lecture halls to maker spaces.</p>
