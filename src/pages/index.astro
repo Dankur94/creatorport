@@ -163,64 +163,93 @@
       position: absolute;
       bottom: clamp(80px, 16vw, 160px);
       right: clamp(16px, 4vw, 32px);
-      background: #181310;
-      color: #fff;
-      padding: clamp(14px, 3vw, 24px) clamp(18px, 4vw, 32px);
-      border-radius: 12px;
+      background: #fff;
+      color: var(--ink);
+      padding: clamp(16px, 3vw, 28px) clamp(20px, 4vw, 36px);
+      border-radius: 20px;
       z-index: 2;
       text-align: center;
-      max-width: 320px;
+      max-width: 300px;
+      box-shadow: 0 2px 20px rgba(0,0,0,.08), 0 0 0 1px rgba(0,0,0,.04);
     }
 
     .c1-banner-label {
       font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-      font-size: clamp(.65rem, 1.6vw, .75rem);
-      font-weight: 500;
+      font-size: clamp(.6rem, 1.4vw, .7rem);
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: .12em;
-      color: #A7BD03;
-      margin-bottom: 6px;
+      letter-spacing: .08em;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
     }
 
     .c1-banner-price {
       font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
-      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
       font-weight: 700;
       line-height: 1.1;
+      color: var(--ink);
     }
 
     .c1-banner-old {
-      font-size: clamp(.85rem, 2vw, 1rem);
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(.8rem, 1.8vw, .95rem);
       font-weight: 400;
       text-decoration: line-through;
-      color: #B7AFA4;
-      margin-right: 8px;
+      color: var(--ink-faint);
+      display: block;
+      margin-bottom: 2px;
     }
 
     .c1-banner-save {
       display: inline-block;
-      margin-top: 6px;
+      margin-top: 10px;
       font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-      font-size: clamp(.65rem, 1.5vw, .75rem);
-      font-weight: 600;
-      background: #A7BD03;
-      color: #181310;
-      padding: 3px 10px;
-      border-radius: 20px;
-      letter-spacing: .02em;
+      font-size: clamp(.6rem, 1.4vw, .7rem);
+      font-weight: 500;
+      background: #f0f0f0;
+      color: var(--ink);
+      padding: 4px 12px;
+      border-radius: 100px;
     }
 
     .c1-banner-deadline {
-      font-size: clamp(.6rem, 1.4vw, .7rem);
-      color: #B7AFA4;
-      margin-top: 6px;
+      font-size: clamp(.6rem, 1.3vw, .68rem);
+      color: var(--ink-faint);
+      margin-top: 8px;
+    }
+
+    .c1-banner-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(.72rem, 1.6vw, .82rem);
+      font-weight: 500;
+      color: #fff;
+      background: #25D366;
+      padding: 8px 16px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+
+    .c1-banner-wa:hover {
+      opacity: .85;
+    }
+
+    .c1-banner-wa svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
     }
 
     @media (min-width: 768px) {
       .c1-banner {
         bottom: clamp(80px, 10vw, 140px);
         right: clamp(40px, 8vw, 120px);
-        max-width: 360px;
+        max-width: 340px;
       }
     }
 
@@ -914,16 +943,17 @@
           <span class="card-label">Our Founding Summer Camp</span>
           <h1 class="card-hero-title" style="font-size:4.2vw;">TH<span style="color:#FFD600">E</span> <span style="color:#42A6A5">A</span>RT <span style="color:#A7BD03">O</span>F <span style="color:#FFD600">E</span>NGIN<span style="color:#FFD600">EE</span>RING</h1>
           <p class="card-hero-sub">Wh<span style="color:#FFD600">e</span>r<span style="color:#FFD600">e</span> a G<span style="color:#FFD600">e</span>rman <span style="color:#FFD600">e</span>ngin<span style="color:#FFD600">ee</span>r and a physicist r<span style="color:#FFD600">e</span>ignit<span style="color:#FFD600">e</span> th<span style="color:#FFD600">e</span> curiosity that school drills away — and t<span style="color:#FFD600">e</span>ach th<span style="color:#FFD600">e</span> skills AI can't r<span style="color:#FFD600">e</span>plac<span style="color:#FFD600">e</span>.</p>
-          <a href="https://wa.me/85265427963?text=Hi%20CreatorPort%2C%20I%20have%20a%20question%20about%20the%20Summer%20Camp" class="c5-whatsapp" style="position:absolute; left:clamp(16px,4vw,32px); bottom:clamp(16px,4vw,32px); z-index:3;" target="_blank" rel="noopener">
-            <svg class="c5-wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Any questions? Contact us
-          </a>
           <img class="card-hero-img" src="/rover-pink.webp" alt="Mars Rover" />
           <div class="c1-banner">
             <div class="c1-banner-label">Founding Parents Rate</div>
-            <div class="c1-banner-price"><span class="c1-banner-old">HK$3,500</span> HK$2,450</div>
+            <span class="c1-banner-old">HK$3,500</span>
+            <div class="c1-banner-price">HK$2,450</div>
             <span class="c1-banner-save">Save HK$1,050</span>
             <div class="c1-banner-deadline">Until 26 July</div>
+            <a href="https://wa.me/85265427963?text=Hi%20CreatorPort%2C%20I'd%20like%20the%20Founding%20Parents%20Rate%20for%20the%20Summer%20Camp" class="c1-banner-wa" target="_blank" rel="noopener" onclick="gtag('event','conversion',{send_to:'AW-18308725750/bCRrCN_g6M4cEPb3o5pE'});">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp us
+            </a>
           </div>
           <span class="card-number">1/5</span>
         </section>
