@@ -159,20 +159,68 @@
       }
     }
 
-    .c1-takehome {
+    .c1-banner {
       position: absolute;
-      right: -10%;
-      bottom: clamp(60px, 14vw, 150px);
-      width: clamp(360px, 91vw, 720px);
-      pointer-events: none;
+      bottom: clamp(80px, 16vw, 160px);
+      right: clamp(16px, 4vw, 32px);
+      background: #181310;
+      color: #fff;
+      padding: clamp(14px, 3vw, 24px) clamp(18px, 4vw, 32px);
+      border-radius: 12px;
       z-index: 2;
+      text-align: center;
+      max-width: 320px;
+    }
+
+    .c1-banner-label {
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(.65rem, 1.6vw, .75rem);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: #A7BD03;
+      margin-bottom: 6px;
+    }
+
+    .c1-banner-price {
+      font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .c1-banner-old {
+      font-size: clamp(.85rem, 2vw, 1rem);
+      font-weight: 400;
+      text-decoration: line-through;
+      color: #B7AFA4;
+      margin-right: 8px;
+    }
+
+    .c1-banner-save {
+      display: inline-block;
+      margin-top: 6px;
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: clamp(.65rem, 1.5vw, .75rem);
+      font-weight: 600;
+      background: #A7BD03;
+      color: #181310;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: .02em;
+    }
+
+    .c1-banner-deadline {
+      font-size: clamp(.6rem, 1.4vw, .7rem);
+      color: #B7AFA4;
+      margin-top: 6px;
     }
 
     @media (min-width: 768px) {
-      .c1-takehome {
-        bottom: clamp(60px, 8vw, 120px);
+      .c1-banner {
+        bottom: clamp(80px, 10vw, 140px);
         right: clamp(40px, 8vw, 120px);
-        width: clamp(360px, 38vw, 540px);
+        max-width: 360px;
       }
     }
 
@@ -871,7 +919,12 @@
             Any questions? Contact us
           </a>
           <img class="card-hero-img" src="/rover-pink.webp" alt="Mars Rover" />
-          <img class="c1-takehome" src="/take-home-robot.webp" alt="Take home your own smart robot" />
+          <div class="c1-banner">
+            <div class="c1-banner-label">Founding Parents Rate</div>
+            <div class="c1-banner-price"><span class="c1-banner-old">HK$3,500</span> HK$2,450</div>
+            <span class="c1-banner-save">Save HK$1,050</span>
+            <div class="c1-banner-deadline">Until 26 July</div>
+          </div>
           <span class="card-number">1/5</span>
         </section>
       </div>
