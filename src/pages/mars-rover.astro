@@ -69,12 +69,6 @@
     .feature-card-text { font-size: clamp(.82rem, 1.6vw, .9rem); color: var(--ink-soft); line-height: 1.6; }
 
     /* Timeline */
-    .timeline { display: flex; flex-direction: column; gap: 0; margin-bottom: 16px; }
-    .timeline-day { display: flex; gap: 16px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--line); }
-    .timeline-day:last-child { border-bottom: none; }
-    .timeline-label { font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink); white-space: nowrap; min-width: 52px; }
-    .timeline-text { font-size: clamp(.85rem, 1.8vw, .95rem); color: var(--ink-soft); line-height: 1.5; }
-    .timeline-closing { font-size: clamp(.85rem, 1.8vw, .95rem); font-style: italic; color: var(--ink); line-height: 1.6; margin: 16px 0 32px; }
 
     /* Spec table */
     .spec-table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
@@ -190,17 +184,6 @@
         <p class="feature-card-text">Built by hand from LEGO-Technic-compatible bricks. No glue, no screws — pins and snap-fits. At home, it connects with any bricks your child already owns.</p>
       </div>
     </div>
-
-    <!-- 5-day build -->
-    <h2 class="section-title">One rover. Five days. New powers every day.</h2>
-    <div class="timeline">
-      <div class="timeline-day"><span class="timeline-label">Day 1</span><span class="timeline-text">Chassis, tracks and motors: the EK10 drives</span></div>
-      <div class="timeline-day"><span class="timeline-label">Day 2</span><span class="timeline-text">The gripper: it grabs and carries</span></div>
-      <div class="timeline-day"><span class="timeline-label">Day 3</span><span class="timeline-text">The drill: it breaks ground and plants</span></div>
-      <div class="timeline-day"><span class="timeline-label">Day 4</span><span class="timeline-text">The AI camera: it sees and recognizes</span></div>
-      <div class="timeline-day"><span class="timeline-label">Day 5</span><span class="timeline-text">The full mission: drive, find, turn, plant — on its own</span></div>
-    </div>
-    <p class="timeline-closing">Every child builds their own EK10 from components. No two are identical. By Friday, it's a working robot — and it's theirs.</p>
 
     <div class="rover-float rover-float-left">
       <img src="/ek10-top.png" alt="CreatorPort EK10 — top view showing tracks and chassis" loading="lazy" style="width: clamp(140px, 32%, 220px); transform: rotate(-3deg);" />
