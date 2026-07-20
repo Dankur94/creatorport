@@ -159,6 +159,46 @@
       }
     }
 
+    /* Card 1: padding moved from inline style so media queries can override */
+    .card-wrap:first-child > .card {
+      padding: 0 24px 14vh;
+    }
+
+    /* Card 1 mobile: vertical flow — fixes text overlap */
+    @media (max-width: 767px) {
+      .card-wrap:first-child {
+        height: auto;
+        min-height: 100dvh;
+      }
+      .card-wrap:first-child > .card {
+        height: auto;
+        min-height: 100dvh;
+        justify-content: flex-start;
+        padding: clamp(70px, 16vw, 100px) 20px 48px;
+        gap: 14px;
+      }
+      .card-hero-copy {
+        position: static;
+        max-width: 100%;
+        text-align: center;
+        order: 10;
+      }
+      .card-hero-sub {
+        margin-top: 0;
+      }
+      .c1-banner {
+        position: static;
+        bottom: auto;
+        right: auto;
+        margin: 4px auto 0;
+        order: 5;
+      }
+      .card-wrap:first-child .card-label { order: 1; }
+      .card-wrap:first-child .card-hero-title { order: 2; }
+      .card-wrap:first-child .card-hero-sub { order: 3; }
+      .card-hero-img { z-index: 0; }
+    }
+
     .c1-banner {
       position: absolute;
       bottom: clamp(80px, 16vw, 160px);
@@ -935,7 +975,7 @@
     <main>
 
       <div class="card-wrap">
-        <section class="card" style="background: #FFFFFF; padding: 0 24px 14vh;">
+        <section class="card" style="background: #FFFFFF;">
           <div class="card-hero-copy">
 
             <p class="card-hero-facts">Educator: Daniel Kurth · 3–7 Aug (Mon–Fri) · 5×3h · 9:00–12:00 · P1–P6 · 1:6 ratio · English · Sheung Wan</p>
