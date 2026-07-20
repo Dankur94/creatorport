@@ -180,7 +180,8 @@
         gap: 14px;
       }
       .card-wrap:first-child .card-hero-copy {
-        position: static;
+        position: relative;
+        z-index: 1;
         max-width: 100%;
         text-align: center;
         left: auto;
@@ -189,17 +190,19 @@
       }
       .card-wrap:first-child .card-hero-sub {
         margin-top: 0;
+        position: relative;
+        z-index: 1;
       }
       .card-wrap:first-child .c1-banner {
-        position: static;
+        position: relative;
+        z-index: 1;
         bottom: auto;
         right: auto;
         margin: 4px auto 0;
         order: 5;
       }
-      .card-wrap:first-child .card-label { order: 1; }
-      .card-wrap:first-child .card-hero-title { order: 2; }
-      .card-wrap:first-child .card-hero-sub { order: 3; }
+      .card-wrap:first-child .card-label { order: 1; position: relative; z-index: 1; }
+      .card-wrap:first-child .card-hero-title { order: 2; position: relative; z-index: 1; }
       .card-wrap:first-child .card-hero-img { z-index: 0; }
     }
 
