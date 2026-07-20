@@ -164,7 +164,9 @@
       padding: 0 24px 14vh;
     }
 
-    /* Card 1 mobile: vertical flow — fixes text overlap */
+    /* Card 1 mobile: vertical flow — fixes text overlap
+       Selectors use .card-wrap:first-child for higher specificity
+       so they beat the single-class rules later in the stylesheet */
     @media (max-width: 767px) {
       .card-wrap:first-child {
         height: auto;
@@ -177,16 +179,18 @@
         padding: clamp(70px, 16vw, 100px) 20px 48px;
         gap: 14px;
       }
-      .card-hero-copy {
+      .card-wrap:first-child .card-hero-copy {
         position: static;
         max-width: 100%;
         text-align: center;
+        left: auto;
+        top: auto;
         order: 10;
       }
-      .card-hero-sub {
+      .card-wrap:first-child .card-hero-sub {
         margin-top: 0;
       }
-      .c1-banner {
+      .card-wrap:first-child .c1-banner {
         position: static;
         bottom: auto;
         right: auto;
@@ -196,7 +200,7 @@
       .card-wrap:first-child .card-label { order: 1; }
       .card-wrap:first-child .card-hero-title { order: 2; }
       .card-wrap:first-child .card-hero-sub { order: 3; }
-      .card-hero-img { z-index: 0; }
+      .card-wrap:first-child .card-hero-img { z-index: 0; }
     }
 
     .c1-banner {
